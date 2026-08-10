@@ -822,6 +822,105 @@
         color: var(--bol-ink-mute);
       }
 
+      /* Custom testimonial card layout across quote sections */
+      .bol-quote {
+        padding: 60px 0;
+        background: var(--s-mirror);
+        color: var(--s-mirror-ink);
+      }
+      .bol-quote.bol-quote-b,
+      .bol-quote.bol-quote-c {
+        background: var(--s-mirror);
+        color: var(--s-mirror-ink);
+      }
+      .bol-quote .testimonial-card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 40px 64px;
+        max-width: 1100px;
+        width: min(100%, 1100px);
+        margin: 0 auto;
+      }
+      .bol-quote .quote-mark {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--bol-display);
+        font-size: 220px;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.18);
+        font-weight: 700;
+        user-select: none;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .bol-quote .quote-mark.left {
+        left: 24px;
+      }
+      .bol-quote .quote-mark.right {
+        right: 24px;
+        transform: translateY(-50%) rotate(180deg);
+      }
+      .bol-quote .testimonial-content {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        margin-left: 90px;
+      }
+      .bol-quote .testimonial-content p {
+        color: inherit;
+        font-family: var(--bol-display);
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(1.3rem, 2.6vw, 1.85rem);
+        line-height: 1.38;
+        margin: 0 0 20px;
+      }
+      .bol-quote .testimonial-content p b {
+        color: #fff;
+        font-weight: 700;
+      }
+      .bol-quote .author {
+        color: #a9d9b3;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .bol-quote .author-role {
+        color: inherit;
+        opacity: 0.85;
+        font-size: 13px;
+        margin-top: 4px;
+      }
+      @media (max-width: 640px) {
+        .bol-quote .testimonial-card {
+          padding: 90px 20px 100px;
+        }
+        .bol-quote .quote-mark {
+          font-size: 90px;
+        }
+        .bol-quote .quote-mark.left {
+          top: 0;
+          left: 0;
+          transform: none;
+        }
+        .bol-quote .quote-mark.right {
+          top: auto;
+          bottom: 0;
+          right: 0;
+          transform: rotate(180deg);
+        }
+        .bol-quote .testimonial-content {
+          max-width: 100%;
+          margin-left: 0;
+        }
+        .bol-quote .testimonial-content p {
+          font-size: 16px;
+        }
+      }
+
       /* 4 — PLAN (1-2-3, locked) */
       .bol-plan {
         background: var(--s-plan);
@@ -2245,28 +2344,19 @@
 
       <!-- QUOTE 1 · the Seeker, vouching for the Guide -->
       <section class="bol-quote" id="quote-1">
-        <div class="bol-shell">
-          <div class="bol-quote-inner">
-            <div class="bol-quote-portrait">
-              <img
-                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=320&q=80"
-                alt="Placeholder for shot list: a participant portrait, natural light, unposed"
-              />
-            </div>
-            <div class="bol-quote-body">
-              <p class="bol-quote-head">Nobody tried to fix me</p>
-              <blockquote>
-                I had spent years assuming the questions I carried meant
-                something was wrong with me. Here they turned out to be the
-                point. Nobody tried to fix them and nobody tried to convert me.
-              </blockquote>
-              <p class="bol-quote-who">
-                <span class="bol-quote-name">Name pending</span><br />
-                <span class="bol-quote-role"
-                  >High school teacher. In spiritual direction three
-                  years.</span
-                >
-              </p>
+        <div class="testimonial-card">
+          <span class="quote-mark left">&#8220;</span>
+          <span class="quote-mark right">&#8220;</span>
+          <div class="testimonial-content">
+            <p>
+              I had spent years assuming the questions I carried meant something
+              was wrong with me.
+              <b>Here they turned out to be the point.</b> Nobody tried to fix
+              them and nobody tried to convert me.
+            </p>
+            <div class="author">Name pending</div>
+            <div class="author-role">
+              High school teacher. In spiritual direction three years.
             </div>
           </div>
         </div>
@@ -2433,28 +2523,19 @@
 
       <!-- QUOTE 2 · the Activist, vouching for the programs -->
       <section class="bol-quote bol-quote-b">
-        <div class="bol-shell">
-          <div class="bol-quote-inner">
-            <div class="bol-quote-portrait">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=320&q=80"
-                alt="Placeholder for shot list: a participant portrait, natural light, unposed"
-              />
-            </div>
-            <div class="bol-quote-body">
-              <p class="bol-quote-head">I am still doing the work</p>
-              <blockquote>
-                I run a nonprofit and I was running on empty. My director never
-                told me to step back from the work. She helped me find what the
-                work was standing on. I am still doing it, and I am steadier.
-              </blockquote>
-              <p class="bol-quote-who">
-                <span class="bol-quote-name">Name pending</span><br />
-                <span class="bol-quote-role"
-                  >Executive director, housing nonprofit. Community of Practice
-                  member.</span
-                >
-              </p>
+        <div class="testimonial-card">
+          <span class="quote-mark left">&#8220;</span>
+          <span class="quote-mark right">&#8220;</span>
+          <div class="testimonial-content">
+            <p>
+              I run a nonprofit and I was running on empty. My director never
+              told me to step back from the work. She helped me find what the
+              work was standing on. I am still doing it, and I am steadier.
+            </p>
+            <div class="author">Name pending</div>
+            <div class="author-role">
+              Executive director, housing nonprofit. Community of Practice
+              member.
             </div>
           </div>
         </div>
@@ -2541,29 +2622,18 @@
 
       <!-- QUOTE 3 · no religious background, vouching for the workshops -->
       <section class="bol-quote bol-quote-c">
-        <div class="bol-shell">
-          <div class="bol-quote-inner">
-            <div class="bol-quote-portrait">
-              <img
-                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=320&q=80"
-                alt="Placeholder for shot list: a participant portrait, natural light, unposed"
-              />
-            </div>
-            <div class="bol-quote-body">
-              <p class="bol-quote-head">
-                I was sure I would be the odd one out
-              </p>
-              <blockquote>
-                I do not belong to a religion and I was fairly sure I would not
-                fit. I was wrong. I walked in with no vocabulary for any of this
-                and left with a practice I actually keep.
-              </blockquote>
-              <p class="bol-quote-who">
-                <span class="bol-quote-name">Name pending</span><br />
-                <span class="bol-quote-role"
-                  >Hospice nurse. Listen to Your Life, autumn cohort.</span
-                >
-              </p>
+        <div class="testimonial-card">
+          <span class="quote-mark left">&#8220;</span>
+          <span class="quote-mark right">&#8220;</span>
+          <div class="testimonial-content">
+            <p>
+              I do not belong to a religion and I was fairly sure I would not
+              fit. I was wrong. I walked in with no vocabulary for any of this
+              and left with a practice I actually keep.
+            </p>
+            <div class="author">Name pending</div>
+            <div class="author-role">
+              Hospice nurse. Listen to Your Life, autumn cohort.
             </div>
           </div>
         </div>
