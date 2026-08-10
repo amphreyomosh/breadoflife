@@ -1077,36 +1077,23 @@
       }
       .bol-event {
         display: grid;
-        grid-template-columns: 96px 108px minmax(0, 1fr) auto;
+        grid-template-columns: 96px minmax(0, 1fr) 176px;
         gap: clamp(18px, 2.4vw, 34px);
         align-items: center;
         padding: 22px 0;
         border-top: 1px solid var(--bol-hairline);
+        max-width: 1100px;
+        margin: 0 auto;
         text-decoration: none;
         color: inherit;
       }
-      .bol-event-media {
-        aspect-ratio: 4/3;
-        overflow: hidden;
-        background: var(--bol-hairline);
-      }
-      .bol-event-media img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
-      }
-      .bol-event:hover .bol-event-media img {
-        transform: scale(1.05);
-      }
-      .bol-event:last-of-type {
-        border-bottom: 1px solid var(--bol-hairline);
-      }
       .bol-event-date {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
         font-family: var(--bol-display);
         font-size: 1.15rem;
         color: var(--bol-loam);
-        white-space: nowrap;
         line-height: 1.3;
       }
       .bol-event-date span {
@@ -1117,7 +1104,29 @@
         text-transform: uppercase;
         color: var(--bol-ink-mute);
         font-weight: 600;
-        margin-top: 5px;
+      }
+      .bol-event-meta {
+        font-size: 14px;
+        color: var(--bol-ink-mute);
+        white-space: normal;
+        line-height: 1.5;
+      }
+      .bol-event-media {
+        width: 100%;
+        min-width: 0;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        border-radius: 2px;
+        background: #f5f0e8;
+      }
+      .bol-event-media img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .bol-event:last-of-type {
+        border-bottom: 1px solid var(--bol-hairline);
       }
       .bol-event h3 {
         font-size: 1.28rem;
@@ -1128,11 +1137,10 @@
         font-size: 1.02rem;
         line-height: 1.55;
         color: var(--bol-ink-mute);
-      }
-      .bol-event-meta {
-        font-size: 14px;
-        color: var(--bol-ink-mute);
-        white-space: nowrap;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
       .bol-event:hover h3 {
         text-decoration: underline;
@@ -1514,27 +1522,112 @@
           display: none;
         }
         .bol-event {
-          grid-template-columns: 96px minmax(0, 1fr);
+          display: grid;
+          grid-template-columns: 1fr auto;
+          grid-template-rows: auto auto auto;
+          grid-template-areas:
+            "date meta"
+            "content content"
+            "media media";
           gap: 16px;
           align-items: start;
         }
-        .bol-event-media {
-          grid-row: span 2;
-          aspect-ratio: 1/1;
-        }
-        .bol-event-meta {
-          grid-column: 2;
+        .bol-event-date {
+          grid-area: date;
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
+          margin-bottom: 0;
         }
         .bol-event-date span {
-          display: inline;
-          margin: 0 0 0 8px;
+          display: block;
+          margin-left: 0;
+        }
+        .bol-event > div:nth-child(2) {
+          grid-area: content;
+        }
+        .bol-event-meta {
+          grid-area: meta;
+          align-self: start;
+          justify-self: end;
+          white-space: normal;
+          margin: 0;
+        }
+        .bol-event-media {
+          grid-area: media;
+          grid-column: 1 / -1;
+          aspect-ratio: 16 / 10;
         }
         .bol-footer-grid {
           grid-template-columns: 1fr;
         }
+        .bol-signup-row {
+          flex-wrap: nowrap;
+        }
+        .bol-signup input {
+          flex: 1 1 auto;
+          min-width: 0;
+          padding: 15px 16px;
+        }
+        .bol-signup button {
+          flex: 0 0 auto;
+          width: auto;
+          margin: 0;
+          border-radius: 0 4px 4px 0;
+          min-width: 58px;
+          padding: 0 18px;
+        }
+        .bol-signup-button-icon {
+          display: none;
+        }
+        .bol-signup-button-text {
+          display: inline-flex;
+        }
+        .bol-signup-button-icon,
+        .bol-signup-button-text {
+          align-items: center;
+          justify-content: center;
+          gap: 0.2rem;
+        }
+        .bol-signup-button-icon {
+          font-size: 1.1rem;
+        }
       }
 
       @media (max-width: 980px) {
+        .bol-signup-button-text {
+          display: none;
+        }
+        .bol-signup-button-icon {
+          display: inline-flex;
+        }
+        .bol-signup-row {
+          flex-wrap: nowrap;
+          align-items: center;
+          gap: 0;
+          width: 100%;
+          min-width: 0;
+        }
+        .bol-signup input {
+          flex: 1 1 auto;
+          min-width: 0;
+          padding: 15px 12px;
+        }
+        .bol-signup button {
+          min-width: 46px;
+          width: auto;
+          height: 46px;
+          padding: 0 14px;
+          border-radius: 4px;
+          margin: 0;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .bol-signup-button-icon {
+          display: inline-flex;
+          font-size: 1.15rem;
+        }
         /* hamburger takes over while the CTA stays reachable */
         .bol-masthead-inner {
           justify-content: flex-start;
@@ -2553,12 +2646,10 @@
           </div>
 
           <a class="bol-event" href="#">
-            <div class="bol-event-date">14 Aug<span>Thursday</span></div>
-            <div class="bol-event-media">
-              <img
-                src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=400&q=80"
-                alt="Placeholder for shot list: a quiet room set for practice"
-              />
+            <div class="bol-event-date">
+              14 Aug
+              <span>Thursday</span>
+              <div class="bol-event-meta">Sacramento &middot; 6:30pm</div>
             </div>
             <div>
               <h3>Contemplative prayer for beginners</h3>
@@ -2567,46 +2658,55 @@
                 assumed.
               </p>
             </div>
-            <div class="bol-event-meta">Sacramento &middot; 6:30pm</div>
+            <div class="bol-event-media">
+              <img
+                src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=400&q=80"
+                alt="Open path landscape"
+              />
+            </div>
           </a>
 
           <a class="bol-event" href="#">
-            <div class="bol-event-date">6 Sep<span>Saturday</span></div>
-            <div class="bol-event-media">
-              <img
-                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80"
-                alt="Placeholder for shot list: hands resting, close and unposed"
-              />
+            <div class="bol-event-date">
+              6 Sep
+              <span>Saturday</span>
+              <div class="bol-event-meta">Sacramento &middot; 9:00am</div>
             </div>
             <div>
               <h3>Sitting with grief</h3>
               <p>A half day for people carrying a loss, recent or long held.</p>
             </div>
-            <div class="bol-event-meta">Sacramento &middot; 9:00am</div>
+            <div class="bol-event-media">
+              <img
+                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80"
+                alt="Hands writing in a journal"
+              />
+            </div>
           </a>
 
           <a class="bol-event" href="#">
-            <div class="bol-event-date">18 Sep<span>Thursday</span></div>
-            <div class="bol-event-media">
-              <img
-                src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=400&q=80"
-                alt="Placeholder for shot list: an open path or landscape"
-              />
+            <div class="bol-event-date">
+              18 Sep
+              <span>Thursday</span>
+              <div class="bol-event-meta">Online &middot; 7:00pm</div>
             </div>
             <div>
               <h3>Discernment when the next step is unclear</h3>
               <p>Practices for a decision you have been carrying a while.</p>
             </div>
-            <div class="bol-event-meta">Online &middot; 7:00pm</div>
+            <div class="bol-event-media">
+              <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80"
+                alt="Quiet interior space"
+              />
+            </div>
           </a>
 
           <a class="bol-event" href="#">
-            <div class="bol-event-date">2 Oct<span>Thursday</span></div>
-            <div class="bol-event-media">
-              <img
-                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80"
-                alt="Placeholder for shot list: hands writing in a journal"
-              />
+            <div class="bol-event-date">
+              2 Oct
+              <span>Thursday</span>
+              <div class="bol-event-meta">Sacramento &middot; 6:00pm</div>
             </div>
             <div>
               <h3>Listen to Your Life: autumn cohort opens</h3>
@@ -2615,7 +2715,12 @@
                 the group fills.
               </p>
             </div>
-            <div class="bol-event-meta">Sacramento &middot; 6:00pm</div>
+            <div class="bol-event-media">
+              <img
+                src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80"
+                alt="Paper and pen on table"
+              />
+            </div>
           </a>
         </div>
       </section>
@@ -2696,7 +2801,12 @@
                   placeholder="Email address"
                   autocomplete="email"
                 />
-                <button type="button" id="bolSignupBtn">Subscribe</button>
+                <button type="button" id="bolSignupBtn">
+                  <span class="bol-signup-button-text">Subscribe</span>
+                  <span class="bol-signup-button-icon" aria-hidden="true"
+                    >&gt;</span
+                  >
+                </button>
               </div>
               <p
                 class="bol-signup-note"
