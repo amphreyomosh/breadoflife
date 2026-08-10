@@ -549,8 +549,8 @@
         color: var(--bol-accent);
       }
       .bol-hero-sub {
-        font-size: clamp(1.05rem, 1.6vw, 1.22rem);
-        line-height: 1.6;
+        font-size: clamp(1.15rem, 1.75vw, 1.28rem);
+        line-height: 1.7;
         max-width: 48ch;
         margin: 28px 0 36px;
         color: rgba(243, 239, 230, 0.9);
@@ -921,52 +921,133 @@
         }
       }
 
-      /* 4 — PLAN (1-2-3, locked) */
-      .bol-plan {
-        background: var(--s-plan);
-        border-top: 1px solid var(--bol-hairline);
-        border-bottom: 1px solid var(--bol-hairline);
-        padding: var(--bol-rhythm) 0;
+      .bol-ways-section {
+        font-family: "Karla", sans-serif;
+        max-width: 1150px;
+        margin: 0 auto;
+        padding: 60px 20px;
       }
-      .bol-plan-head {
-        max-width: 54ch;
-        margin-bottom: clamp(40px, 5vw, 64px);
+      .bol-ways-heading {
+        font-family: "Fraunces", serif;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 1.15;
+        color: #1f2a1c;
+        margin: 0 0 16px;
+        max-width: 640px;
       }
-      .bol-plan-title {
-        font-size: clamp(1.9rem, 3.6vw, 2.6rem);
-        margin-bottom: 18px;
-      }
-      .bol-plan-head p {
-        color: var(--bol-ink-soft);
-        font-size: 1.08rem;
-        line-height: 1.65;
-      }
-      .bol-plan-steps {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        border-left: 1px solid var(--bol-hairline);
-      }
-      .bol-plan-step {
-        padding: 0 clamp(20px, 3vw, 40px);
-        border-right: 1px solid var(--bol-hairline);
-      }
-      .bol-plan-num {
-        font-family: var(--bol-display);
-        font-size: 2.4rem;
-        color: var(--bol-wheat-ink);
-        line-height: 1;
-        display: block;
-        margin-bottom: 20px;
-      }
-      .bol-plan-step h3 {
-        font-size: 1.4rem;
-        margin-bottom: 14px;
-      }
-      .bol-plan-step p {
-        font-size: 1.06rem;
+      .bol-ways-subhead {
+        font-size: 16px;
         line-height: 1.6;
-        color: var(--bol-ink-soft);
-        margin-bottom: 20px;
+        color: #5b5f55;
+        max-width: 560px;
+        margin: 0 0 40px;
+      }
+      .bol-ways-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 20px;
+        min-height: 440px;
+      }
+      .bol-photo {
+        background: #eff0e8;
+        border: 0.5px solid #d8d9cc;
+        border-radius: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .bol-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .bol-photo-placeholder {
+        text-align: center;
+        color: #9a9c8c;
+        font-size: 13px;
+      }
+      .bol-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 20px;
+      }
+      .bol-card {
+        background: #f5f6f0;
+        border: 0.5px solid #d8d9cc;
+        border-radius: 4px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .bol-card-light {
+        background: #faf7f0;
+        color: #1f2a1c;
+        border-color: #d8d9cc;
+      }
+      .bol-card-amber {
+        background: #c9a25e;
+        color: #1f2a1c;
+        border-color: #c9a25e;
+      }
+      .bol-card-dark {
+        background: #355030;
+        color: #ffffff;
+        border-color: #355030;
+      }
+      .bol-card-wide {
+        grid-column: 1 / 3;
+      }
+      .bol-card-number {
+        font-family: "Fraunces", serif;
+        font-size: 20px;
+        color: inherit;
+      }
+      .bol-card-title {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: 18px;
+        color: inherit;
+        margin: 8px 0 8px;
+      }
+      .bol-card-body {
+        font-size: 16px;
+        line-height: 1.75;
+        color: inherit;
+        margin: 0 0 10px;
+        max-width: 440px;
+      }
+      .bol-card-link {
+        font-size: 14px;
+        color: inherit;
+        font-weight: 500;
+        text-decoration: underline;
+      }
+      .bol-card-link:hover {
+        text-decoration: underline;
+      }
+      @media (max-width: 780px) {
+        .bol-ways-grid {
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
+        .bol-photo {
+          min-height: 260px;
+        }
+        .bol-cards {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+        }
+        .bol-card-wide {
+          grid-column: 1;
+        }
+        .bol-ways-heading {
+          font-size: 30px;
+        }
       }
 
       /* 5 — OFFER (borderless horizontal rows, locked) */
@@ -1033,8 +1114,8 @@
         color: var(--bol-ink-soft);
         max-width: 52ch;
         margin: 0;
-        font-size: 1.06rem;
-        line-height: 1.65;
+        font-size: 1.12rem;
+        line-height: 1.8;
       }
       .bol-offer-go {
         font-size: 14px;
@@ -1134,8 +1215,8 @@
       }
       .bol-event p {
         margin: 0;
-        font-size: 1.02rem;
-        line-height: 1.55;
+        font-size: 1.1rem;
+        line-height: 1.65;
         color: var(--bol-ink-mute);
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -2086,10 +2167,10 @@
       }
 
       .step-desc {
-        font-size: 0.92rem;
-        line-height: 1.55;
+        font-size: 1rem;
+        line-height: 1.65;
         color: var(--flour-cream);
-        opacity: 0.8;
+        opacity: 0.9;
         flex-grow: 1;
       }
 
@@ -2135,9 +2216,9 @@
       }
 
       .steps-bar-note {
-        font-size: 0.95rem;
+        font-size: 1rem;
         color: var(--dark-loam);
-        opacity: 0.85;
+        opacity: 0.9;
       }
 
       .steps-bar-note strong {
@@ -2359,7 +2440,6 @@
             ></div>
             <div class="step-card-overlay"></div>
             <div class="step-card-inner">
-              <span class="step-number">01</span>
               <h3 class="step-title">Reach Out</h3>
               <p class="step-desc">
                 Write to us using the address at the bottom of this page. Tell
@@ -2377,7 +2457,6 @@
             ></div>
             <div class="step-card-overlay"></div>
             <div class="step-card-inner">
-              <span class="step-number">02</span>
               <h3 class="step-title">Have a Conversation</h3>
               <p class="step-desc">
                 We'll set up a short call to listen and help you find a director
@@ -2394,7 +2473,6 @@
             ></div>
             <div class="step-card-overlay"></div>
             <div class="step-card-inner">
-              <span class="step-number">03</span>
               <h3 class="step-title">Meet Together</h3>
               <p class="step-desc">
                 You and your director begin meeting monthly, in person or by
@@ -2411,7 +2489,6 @@
             ></div>
             <div class="step-card-overlay"></div>
             <div class="step-card-inner">
-              <span class="step-number">04</span>
               <h3 class="step-title">Keep Returning</h3>
               <p class="step-desc">
                 Spiritual direction isn't a program with an end date. Many
@@ -2463,56 +2540,52 @@
         </div>
       </section>
 
-      <!-- 4 · PLAN -->
-      <section class="bol-plan" id="plan">
-        <div class="bol-shell">
-          <div class="bol-plan-head">
-            <h2 class="bol-plan-title">
-              Three ways in, and none of them require you to be ready.
-            </h2>
-            <p>
-              Most people start with one conversation or one short workshop. You
-              can decide what comes next after that.
-            </p>
+      <!-- Bread of Life — "Three ways in" section with photo + cards -->
+      <section class="bol-ways-section" id="plan">
+        <h2 class="bol-ways-heading">
+          Three ways in, and none of them require you to be ready.
+        </h2>
+        <p class="bol-ways-subhead">
+          Most people start with one conversation or one short workshop. You can
+          decide what comes next after that.
+        </p>
+
+        <div class="bol-ways-grid">
+          <div class="bol-photo">
+            <img
+              src="https://cdn.pixabay.com/photo/2021/12/31/15/13/bread-6906033_1280.jpg"
+              alt="Bread"
+            />
           </div>
-          <div class="bol-plan-steps">
-            <div class="bol-plan-step">
-              <span class="bol-plan-num">1</span>
-              <h3>Find a spiritual director</h3>
-              <p>
+
+          <div class="bol-cards">
+            <div class="bol-card bol-card-light">
+              <h3 class="bol-card-title">Find a spiritual director</h3>
+              <p class="bol-card-body">
                 Browse our directory, read a few profiles, and reach out to
                 whoever sounds like someone you could talk to. First
                 conversations are free.
               </p>
-              <a class="bol-textlink" href="#offer"
-                >Browse the directory
-                <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
-              >
+              <a href="#" class="bol-card-link">Browse the directory</a>
             </div>
-            <div class="bol-plan-step">
-              <span class="bol-plan-num">2</span>
-              <h3>Join a community</h3>
-              <p>
+
+            <div class="bol-card bol-card-amber">
+              <h3 class="bol-card-title">Join a community</h3>
+              <p class="bol-card-body">
                 Our Community of Practice meets regularly for shared practice
                 and honest conversation. Come once and see how it sits with you.
               </p>
-              <a class="bol-textlink" href="#offer"
-                >See how it works
-                <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
-              >
+              <a href="#" class="bol-card-link">See how it works</a>
             </div>
-            <div class="bol-plan-step">
-              <span class="bol-plan-num">3</span>
-              <h3>Start where you are</h3>
-              <p>
+
+            <div class="bol-card bol-card-wide bol-card-dark">
+              <h3 class="bol-card-title">Start where you are</h3>
+              <p class="bol-card-body">
                 A single workshop on grief, discernment, or contemplative prayer
                 is the lowest-commitment door we have. Two hours, no background
                 required.
               </p>
-              <a class="bol-textlink" href="#upcoming"
-                >View the calendar
-                <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
-              >
+              <a href="#" class="bol-card-link">View the calendar</a>
             </div>
           </div>
         </div>
