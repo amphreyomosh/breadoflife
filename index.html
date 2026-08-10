@@ -1772,6 +1772,245 @@
         margin: 10px 0 0;
       }
 
+      :root {
+        --flour-cream: #faf7f0;
+        --dark-loam: #2a2521;
+        --sage-green: #47653f;
+        --deep-sage: #355030;
+        --wheat: #c9a25e;
+        --hairline: #dcd4c4;
+      }
+
+      section.steps {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 96px 32px 80px;
+      }
+
+      .steps-head {
+        max-width: 620px;
+        margin-bottom: 56px;
+      }
+
+      .steps-head h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        line-height: 1.15;
+        color: var(--dark-loam);
+        margin-bottom: 20px;
+      }
+
+      .steps-head .rule {
+        width: 64px;
+        height: 2px;
+        background: var(--wheat);
+        margin-bottom: 20px;
+      }
+
+      .steps-head p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: var(--dark-loam);
+        opacity: 0.85;
+      }
+
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--hairline);
+        border-left: 1px solid var(--hairline);
+        margin-bottom: 40px;
+      }
+
+      .step-card {
+        position: relative;
+        border-right: 1px solid var(--hairline);
+        border-bottom: 1px solid var(--hairline);
+        min-height: 360px;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .step-card-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        filter: grayscale(45%) sepia(18%) brightness(0.9);
+        transform: scale(1.04);
+        transition:
+          filter 0.5s ease,
+          transform 0.6s ease;
+        z-index: -2;
+      }
+
+      .step-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(42, 37, 33, 0.72) 0%,
+          rgba(42, 37, 33, 0.86) 55%,
+          rgba(42, 37, 33, 0.94) 100%
+        );
+        transition: background 0.4s ease;
+        z-index: -1;
+      }
+
+      .step-card-inner {
+        position: relative;
+        height: 100%;
+        padding: 58px 26px 20px 26px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 16px;
+      }
+
+      .step-number {
+        font-family: "Fraunces", serif;
+        font-weight: 400;
+        font-size: 2.25rem;
+        color: var(--wheat);
+        line-height: 1;
+        transition: color 0.3s ease;
+      }
+
+      .step-title {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: 1.25rem;
+        line-height: 1.3;
+        color: var(--flour-cream);
+      }
+
+      .step-desc {
+        font-size: 0.92rem;
+        line-height: 1.55;
+        color: var(--flour-cream);
+        opacity: 0.8;
+        flex-grow: 1;
+      }
+
+      .step-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1px solid transparent;
+        pointer-events: none;
+        transition: border-color 0.3s ease;
+      }
+
+      .step-card:hover .step-card-bg {
+        filter: grayscale(15%) sepia(8%) brightness(1);
+        transform: scale(1.1);
+      }
+
+      .step-card:hover .step-card-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(42, 37, 33, 0.55) 0%,
+          rgba(42, 37, 33, 0.78) 55%,
+          rgba(42, 37, 33, 0.9) 100%
+        );
+      }
+
+      .step-card:hover .step-number {
+        color: var(--flour-cream);
+      }
+
+      .step-card:hover::after {
+        border-color: var(--wheat);
+      }
+
+      .steps-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+
+        padding: 22px 2px;
+      }
+
+      .steps-bar-note {
+        font-size: 0.95rem;
+        color: var(--dark-loam);
+        opacity: 0.85;
+      }
+
+      .steps-bar-note strong {
+        font-weight: 600;
+        color: var(--deep-sage);
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--sage-green);
+        color: var(--flour-cream);
+        font-family: "Karla", sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        letter-spacing: 0.01em;
+        padding: 14px 26px;
+        text-decoration: none;
+        border: 1px solid var(--sage-green);
+        white-space: nowrap;
+        transition:
+          background 0.2s ease,
+          color 0.2s ease;
+      }
+
+      .cta-button:hover {
+        background: var(--flour-cream);
+        color: var(--deep-sage);
+      }
+
+      .cta-button svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 860px) {
+        .steps-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 560px) {
+        section.steps {
+          padding: 64px 20px 56px;
+        }
+        .steps-grid {
+          grid-template-columns: 1fr;
+        }
+        .steps-bar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .cta-button {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cta-button,
+        .step-card-bg,
+        .step-card-overlay,
+        .step-number,
+        .step-card::after {
+          transition: none;
+        }
+        .step-card:hover .step-card-bg {
+          transform: none;
+        }
+      }
+
       @media (max-width: 900px) {
         .bol-rev-panel {
           width: 100vw;
@@ -1905,70 +2144,107 @@
       </section>
 
       <!-- 3 · GUIDE -->
-      <section class="bol-guide" id="guide">
-        <div class="bol-shell bol-guide-grid">
-          <div class="bol-guide-stack">
-            <figure class="bol-guide-figure">
-              <img
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80"
-                alt="Placeholder for shot list: real participants in conversation at a workshop table, natural light"
-              />
-            </figure>
-            <figure class="bol-guide-figure bol-guide-figure-sm">
-              <img
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=700&q=80"
-                alt="Placeholder for shot list: a small group mid-conversation, natural light"
-              />
-            </figure>
-          </div>
-          <div>
-            <h2 class="bol-guide-title">
-              Three decades of walking alongside people.
-            </h2>
-            <div class="bol-guide-body">
-              <p>
-                Bread of Life began in the Sacramento area three decades ago,
-                and the work has been the same ever since: sitting with people
-                while they figure out what is true for them. We do not hand out
-                answers. We are interested in the questions you are actually
-                living with, and in what happens when you stop rushing past
-                them.
-              </p>
-              <p>
-                We are interfaith by conviction, not by compromise. People
-                arrive here Christian, Buddhist, Jewish, formerly religious, and
-                entirely unaffiliated, and none of them are asked to become
-                anything else.
-              </p>
-              <p>
-                <strong
-                  >We are not a church. We are not a therapy practice.</strong
-                >
-                We are something a little harder to describe and, most people
-                find, a lot harder to leave.
+      <section class="steps" id="guide">
+        <div class="steps-head">
+          <h2>Starting with a Spiritual Director</h2>
+          <div class="rule"></div>
+          <p>
+            There is no application to fill out and no test to pass. Just a few
+            steps between where you are now and your first conversation.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div
+              class="step-card-bg"
+              style="
+                background-image: url(&quot;https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1759605883983-HPOXV643OJ5QYJR15ZIZ/lili-popper-lu15z1m_KfM-unsplash.jpg?format=2500w&quot;);
+              "
+            ></div>
+            <div class="step-card-overlay"></div>
+            <div class="step-card-inner">
+              <span class="step-number">01</span>
+              <h3 class="step-title">Reach Out</h3>
+              <p class="step-desc">
+                Write to us using the address at the bottom of this page. Tell
+                us as much or as little as you'd like about what brought you
+                here.
               </p>
             </div>
-            <dl class="bol-guide-facts">
-              <div>
-                <dt>Founded</dt>
-                <dd>1996</dd>
-              </div>
-              <div>
-                <dt>Directors in our network</dt>
-                <dd>24</dd>
-              </div>
-              <div>
-                <dt>Traditions represented</dt>
-                <dd>All of them</dd>
-              </div>
-            </dl>
-            <p class="bol-signoff">
-              If you are reading this and wondering whether you would fit here,
-              write and ask me. That is what the address at the bottom of this
-              page is for.
-              <span>Darlene Carlson, Board Chair</span>
-            </p>
           </div>
+          <div class="step-card">
+            <div
+              class="step-card-bg"
+              style="
+                background-image: url(&quot;https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/6b2f32e8-1523-49d4-8b39-0c85d5cdd3da/jens-lelie-u0vgcIOQG08-unsplash.jpg?format=2500w&quot;);
+              "
+            ></div>
+            <div class="step-card-overlay"></div>
+            <div class="step-card-inner">
+              <span class="step-number">02</span>
+              <h3 class="step-title">Have a Conversation</h3>
+              <p class="step-desc">
+                We'll set up a short call to listen and help you find a director
+                whose way of listening feels right for you.
+              </p>
+            </div>
+          </div>
+          <div class="step-card">
+            <div
+              class="step-card-bg"
+              style="
+                background-image: url(&quot;https://cdn.pixabay.com/photo/2016/12/27/17/10/pendulum-1934311_1280.jpg&quot;);
+              "
+            ></div>
+            <div class="step-card-overlay"></div>
+            <div class="step-card-inner">
+              <span class="step-number">03</span>
+              <h3 class="step-title">Meet Together</h3>
+              <p class="step-desc">
+                You and your director begin meeting monthly, in person or by
+                video, at a pace that stays yours to set.
+              </p>
+            </div>
+          </div>
+          <div class="step-card">
+            <div
+              class="step-card-bg"
+              style="
+                background-image: url(&quot;https://cdn.pixabay.com/photo/2020/05/25/15/44/sabbath-5219152_1280.jpg&quot;);
+              "
+            ></div>
+            <div class="step-card-overlay"></div>
+            <div class="step-card-inner">
+              <span class="step-number">04</span>
+              <h3 class="step-title">Keep Returning</h3>
+              <p class="step-desc">
+                Spiritual direction isn't a program with an end date. Many
+                people meet with their director for years.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="steps-bar">
+          <p class="steps-bar-note">
+            Most people are matched with a director within
+            <strong>two weeks</strong> of reaching out.
+          </p>
+          <a href="#" class="cta-button">
+            Begin Your Own Path
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
         </div>
       </section>
 
