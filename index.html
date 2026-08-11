@@ -1271,14 +1271,15 @@
       }
       .bol-closing-word {
         font-family: var(--bol-display);
-        font-size: clamp(4rem, 10.5vw, 8.5rem);
-        line-height: 0.9;
+        font-size: clamp(3.4rem, 9vw, 7rem);
+        line-height: 0.95;
         color: var(--bol-sage);
         margin: 0 0 clamp(30px, 4vw, 52px);
         letter-spacing: -0.035em;
+        white-space: nowrap;
       }
       .bol-closing-word em {
-        display: block;
+        display: inline;
         font-style: italic;
         color: var(--bol-wheat-ink);
       }
@@ -2699,7 +2700,7 @@
           }
           .wwo-selector__indicator {
             position: absolute;
-            background-color: #C9A25E;
+            background-color: #c9a25e;
             z-index: -1;
             transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
             pointer-events: none;
@@ -2781,7 +2782,7 @@
               class="wwo-selector__item"
               role="tab"
               aria-current="true"
-              data-image="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+              data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxRiX54YfjE8S-WQzoZxiMbU_Cbs0Eek6C3LFyDJqCLNvlrIQgR_nQk5A&s=10"
               data-desc="Two-hour sessions on contemplative prayer, grief, discernment, and listening. Come to one and none of the others. No prerequisites and no expectation that you will return."
               data-link="#upcoming"
               data-link-text="See the calendar"
@@ -2793,7 +2794,7 @@
               class="wwo-selector__item"
               role="tab"
               aria-current="false"
-              data-image="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80"
+              data-image="https://joshuanhook.com/wp-content/uploads/2019/10/blog-listen-to-your-body-icon.jpg"
               data-desc="Our flagship program. A guided sequence of sessions for paying attention to your own life closely enough to notice what it has been telling you. Small groups, facilitated, over several weeks."
               data-link="#offer"
               data-link-text="Learn more"
@@ -2807,7 +2808,7 @@
               class="wwo-selector__item"
               role="tab"
               aria-current="false"
-              data-image="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=900&q=80"
+              data-image="https://www.fullnessoflife.org/wp-content/uploads/2018/12/Spiritual-Accompaniment.jpg"
               data-desc="Someone who comes alongside you and listens closely, month after month, while you work out what is actually going on in your life. Not advice. Not therapy. Not tied to any one tradition. For most people this is the reason they found us."
               data-link="#plan"
               data-link-text="Find a director"
@@ -2819,7 +2820,7 @@
               class="wwo-selector__item"
               role="tab"
               aria-current="false"
-              data-image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"
+              data-image="https://pub-773823ff476d4e1ea312a63a1287e053.r2.dev/generic/Article_SmallGroup.jpg"
               data-desc="People on the same inward road, meeting regularly to practice together and talk honestly about how it is going. Membership is ongoing, and you can visit before you decide."
               data-link="#offer"
               data-link-text="How it works"
@@ -2831,7 +2832,7 @@
               class="wwo-selector__item"
               role="tab"
               aria-current="false"
-              data-image="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80"
+              data-image="https://wp.retreatsandvenues.com/wp-content/uploads/2025/08/Campfire-skits-at-RV-retreat-1024x682.jpg"
               data-desc="A few days away from your ordinary life, with space for silence, direction, and rest. Held a few times a year, in community and alone."
               data-link="#offer"
               data-link-text="See upcoming dates"
@@ -2843,7 +2844,7 @@
               class="wwo-selector__item"
               role="tab"
               aria-current="false"
-              data-image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+              data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNWSt9qIaRKTeXbDT4-_wlPTvE8hxeNgD2SPVWmv-baFDlF7Qu3wf6Syg&s=10"
               data-desc="For those discerning a call to accompany others. A multi-year formation program combining supervised practice, peer feedback, and study."
               data-link="#offer"
               data-link-text="Read about the program"
@@ -2857,7 +2858,7 @@
             <img
               class="wwo-selector__image"
               id="wwo-sel-image"
-              src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxRiX54YfjE8S-WQzoZxiMbU_Cbs0Eek6C3LFyDJqCLNvlrIQgR_nQk5A&s=10"
               alt="Short workshops"
             />
             <p class="wwo-selector__desc" id="wwo-sel-desc">
@@ -2875,7 +2876,9 @@
           function updateWwoIndicator(instantly) {
             const list = document.querySelector(".wwo-selector__list");
             if (!list) return;
-            const activeBtn = list.querySelector(".wwo-selector__item[aria-current='true']");
+            const activeBtn = list.querySelector(
+              ".wwo-selector__item[aria-current='true']",
+            );
             const indicator = list.querySelector(".wwo-selector__indicator");
             if (activeBtn && indicator) {
               if (instantly) {
@@ -3069,7 +3072,7 @@
       <!-- 8 · CLOSING -->
       <section class="bol-closing">
         <div class="bol-shell">
-          <p class="bol-closing-word">Come in<em>slowly.</em></p>
+          <p class="bol-closing-word">Come in<em> slowly.</em></p>
           <h2 class="bol-closing-title">
             You do not need to have it figured out.
           </h2>
