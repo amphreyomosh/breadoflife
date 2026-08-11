@@ -2592,107 +2592,264 @@
       </section>
 
       <!-- 5 · WHAT WE OFFER -->
-      <section class="bol-offer" id="offer">
-        <div class="bol-shell">
-          <div class="bol-offer-head">
-            <h2 class="bol-offer-title">What we offer</h2>
-            <p class="bol-offer-note">
-              Four ways to practice with us. Two of them are good places to
-              start.
-            </p>
+      <section class="wwo-selector" aria-label="What we offer">
+        <style>
+          .wwo-selector {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 48px 24px;
+            font-family: "Karla", sans-serif;
+            color: #2e2a1f;
+          }
+          .wwo-selector__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 24px;
+            border-bottom: 1px solid #d8d2be;
+            padding-bottom: 20px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+          }
+          .wwo-selector__title {
+            font-family: "Fraunces", serif;
+            font-weight: 500;
+            font-size: 30px;
+            margin: 0;
+          }
+          .wwo-selector__intro {
+            font-size: 16px;
+            color: #6b6551;
+            max-width: 280px;
+            margin: 0;
+            line-height: 1.5;
+          }
+          .wwo-selector__body {
+            display: flex;
+            gap: 40px;
+          }
+          .wwo-selector__list {
+            width: 260px;
+            flex-shrink: 0;
+          }
+          .wwo-selector__item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            border-left: 2px solid transparent;
+            padding: 14px 0 14px 18px;
+            cursor: pointer;
+            font-family: inherit;
+            color: inherit;
+          }
+          .wwo-selector__item[aria-current="true"] {
+            border-left-color: #3f4a34;
+          }
+          .wwo-selector__item-label {
+            font-size: 16px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #8b8567;
+            margin: 0 0 2px;
+          }
+          .wwo-selector__item-name {
+            font-family: "Fraunces", serif;
+            font-weight: 500;
+            font-size: 18px;
+            margin: 0;
+            transition: color 0.2s ease;
+          }
+          .wwo-selector__item[aria-current="false"] .wwo-selector__item-name {
+            color: #6b6551;
+          }
+          .wwo-selector__panel {
+            flex: 1;
+            min-width: 0;
+          }
+          .wwo-selector__image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 0%;
+            background: #ddd6c0;
+            margin-bottom: 20px;
+            display: block;
+          }
+          .wwo-selector__desc {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #5c5642;
+            margin: 0 0 16px;
+            max-width: 520px;
+          }
+          .wwo-selector__link {
+            font-size: 16px;
+            color: #3f4a34;
+            text-decoration: none;
+            border-bottom: 1px solid #3f4a34;
+            padding-bottom: 1px;
+          }
+          .wwo-selector__link:hover {
+            opacity: 0.7;
+          }
+          @media (max-width: 700px) {
+            .wwo-selector__body {
+              flex-direction: column;
+              gap: 24px;
+            }
+            .wwo-selector__list {
+              width: 100%;
+              display: flex;
+              overflow-x: auto;
+              gap: 8px;
+            }
+            .wwo-selector__item {
+              width: auto;
+              white-space: nowrap;
+              border-left: none;
+              border-bottom: 2px solid transparent;
+              padding: 8px 4px;
+            }
+            .wwo-selector__item[aria-current="true"] {
+              border-left-color: transparent;
+              border-bottom-color: #3f4a34;
+            }
+            .wwo-selector__image {
+              height: 200px;
+            }
+          }
+        </style>
+
+        <div class="wwo-selector__header">
+          <h2 class="wwo-selector__title">What we offer</h2>
+          <p class="wwo-selector__intro">
+            Four ways to practice with us. Two of them are good places to start.
+          </p>
+        </div>
+
+        <div class="wwo-selector__body">
+          <div
+            class="wwo-selector__list"
+            role="tablist"
+            aria-label="What we offer options"
+          >
+            <button
+              class="wwo-selector__item"
+              role="tab"
+              aria-current="true"
+              data-image="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+              data-desc="Two-hour sessions on contemplative prayer, grief, discernment, and listening. Come to one and none of the others. No prerequisites and no expectation that you will return."
+              data-link="#upcoming"
+              data-link-text="See the calendar"
+            >
+              <p class="wwo-selector__item-label">Good first step</p>
+              <p class="wwo-selector__item-name">Short workshops</p>
+            </button>
+            <button
+              class="wwo-selector__item"
+              role="tab"
+              aria-current="false"
+              data-image="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80"
+              data-desc="Our flagship program. A guided sequence of sessions for paying attention to your own life closely enough to notice what it has been telling you. Small groups, facilitated, over several weeks."
+              data-link="#offer"
+              data-link-text="Learn more"
+            >
+              <p class="wwo-selector__item-label">
+                Good first step · Guided program
+              </p>
+              <p class="wwo-selector__item-name">Listen to your life</p>
+            </button>
+            <button
+              class="wwo-selector__item"
+              role="tab"
+              aria-current="false"
+              data-image="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=900&q=80"
+              data-desc="Someone who comes alongside you and listens closely, month after month, while you work out what is actually going on in your life. Not advice. Not therapy. Not tied to any one tradition. For most people this is the reason they found us."
+              data-link="#plan"
+              data-link-text="Find a director"
+            >
+              <p class="wwo-selector__item-label">One-on-one</p>
+              <p class="wwo-selector__item-name">Spiritual direction</p>
+            </button>
+            <button
+              class="wwo-selector__item"
+              role="tab"
+              aria-current="false"
+              data-image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"
+              data-desc="People on the same inward road, meeting regularly to practice together and talk honestly about how it is going. Membership is ongoing, and you can visit before you decide."
+              data-link="#offer"
+              data-link-text="How it works"
+            >
+              <p class="wwo-selector__item-label">Ongoing community</p>
+              <p class="wwo-selector__item-name">Community of practice</p>
+            </button>
+            <button
+              class="wwo-selector__item"
+              role="tab"
+              aria-current="false"
+              data-image="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80"
+              data-desc="A few days away from your ordinary life, with space for silence, direction, and rest. Held a few times a year, in community and alone."
+              data-link="#offer"
+              data-link-text="See upcoming dates"
+            >
+              <p class="wwo-selector__item-label">Multi-day</p>
+              <p class="wwo-selector__item-name">Retreats</p>
+            </button>
+            <button
+              class="wwo-selector__item"
+              role="tab"
+              aria-current="false"
+              data-image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+              data-desc="For those discerning a call to accompany others. A multi-year formation program combining supervised practice, peer feedback, and study."
+              data-link="#offer"
+              data-link-text="Read about the program"
+            >
+              <p class="wwo-selector__item-label">For directors</p>
+              <p class="wwo-selector__item-name">Training program</p>
+            </button>
           </div>
 
-          <a class="bol-offer-row" href="#upcoming">
-            <div class="bol-offer-media">
-              <img
-                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
-                alt="Placeholder for shot list: people around a table with notebooks and coffee"
-              />
-            </div>
-            <div>
-              <p class="bol-offer-tags">Good first step</p>
-              <h3>Short workshops</h3>
-              <p>
-                Two-hour sessions on contemplative prayer, grief, discernment,
-                and listening. Come to one and none of the others. No
-                prerequisites and no expectation that you will return.
-              </p>
-            </div>
-            <span class="bol-offer-go"
-              >See the calendar
-              <span class="bol-arrow" aria-hidden="true">&rarr;</span></span
+          <div class="wwo-selector__panel">
+            <img
+              class="wwo-selector__image"
+              id="wwo-sel-image"
+              src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+              alt="Short workshops"
+            />
+            <p class="wwo-selector__desc" id="wwo-sel-desc">
+              Two-hour sessions on contemplative prayer, grief, discernment, and
+              listening. Come to one and none of the others. No prerequisites
+              and no expectation that you will return.
+            </p>
+            <a class="wwo-selector__link" id="wwo-sel-link" href="#upcoming"
+              >See the calendar</a
             >
-          </a>
-
-          <a class="bol-offer-row" href="#">
-            <div class="bol-offer-media">
-              <img
-                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80"
-                alt="Placeholder for shot list: hands writing in a journal, coffee nearby"
-              />
-            </div>
-            <div>
-              <p class="bol-offer-tags">
-                Good first step &middot; Guided program
-              </p>
-              <h3>Listen to Your Life</h3>
-              <p>
-                Our flagship program. A guided sequence of sessions for paying
-                attention to your own life closely enough to notice what it has
-                been telling you. Small groups, facilitated, over several weeks.
-              </p>
-            </div>
-            <span class="bol-offer-go"
-              >Learn more
-              <span class="bol-arrow" aria-hidden="true">&rarr;</span></span
-            >
-          </a>
-
-          <a class="bol-offer-row" href="#plan">
-            <div class="bol-offer-media">
-              <img
-                src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=900&q=80"
-                alt="Placeholder for shot list: the labyrinth photo from the current site"
-              />
-            </div>
-            <div>
-              <p class="bol-offer-tags">One-on-one</p>
-              <h3>Spiritual direction</h3>
-              <p>
-                Someone who comes alongside you and listens closely, month after
-                month, while you work out what is actually going on in your
-                life. Not advice. Not therapy. Not tied to any one tradition.
-                For most people this is the reason they found us.
-              </p>
-            </div>
-            <span class="bol-offer-go"
-              >Find a director
-              <span class="bol-arrow" aria-hidden="true">&rarr;</span></span
-            >
-          </a>
-
-          <a class="bol-offer-row" href="#">
-            <div class="bol-offer-media">
-              <img
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"
-                alt="Placeholder for shot list: circle of chairs, group mid-conversation"
-              />
-            </div>
-            <div>
-              <p class="bol-offer-tags">Ongoing community</p>
-              <h3>Community of Practice</h3>
-              <p>
-                People on the same inward road, meeting regularly to practice
-                together and talk honestly about how it is going. Membership is
-                ongoing, and you can visit before you decide.
-              </p>
-            </div>
-            <span class="bol-offer-go"
-              >How it works
-              <span class="bol-arrow" aria-hidden="true">&rarr;</span></span
-            >
-          </a>
+          </div>
         </div>
+
+        <script>
+          document
+            .querySelectorAll(".wwo-selector__item")
+            .forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                document
+                  .querySelectorAll(".wwo-selector__item")
+                  .forEach(function (b) {
+                    b.setAttribute("aria-current", "false");
+                  });
+                btn.setAttribute("aria-current", "true");
+                document.getElementById("wwo-sel-image").src =
+                  btn.getAttribute("data-image");
+                document.getElementById("wwo-sel-desc").textContent =
+                  btn.getAttribute("data-desc");
+                var link = document.getElementById("wwo-sel-link");
+                link.href = btn.getAttribute("data-link");
+                link.textContent = btn.getAttribute("data-link-text");
+              });
+            });
+        </script>
       </section>
 
       <!-- QUOTE 2 · the Activist, vouching for the programs -->
