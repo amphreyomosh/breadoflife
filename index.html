@@ -249,6 +249,7 @@
       }
       html {
         -webkit-text-size-adjust: 100%;
+        overflow-x: hidden;
       }
       body {
         margin: 0;
@@ -317,6 +318,15 @@
       .bol-btn:hover {
         background: var(--bol-sage-deep);
         border-color: var(--bol-sage-deep);
+      }
+      .bol-btn[href="#plan"]:hover,
+      .bol-hero-actions .bol-btn[href="#plan"]:hover,
+      .bol-closing-actions .bol-btn[href="#plan"]:hover,
+      .bol-actions .bol-btn[href="#plan"]:hover,
+      body.hero-cream .bol-hero-actions .bol-btn[href="#plan"]:hover {
+        background: var(--bol-sage) !important;
+        border-color: var(--bol-cream) !important;
+        color: var(--bol-cream) !important;
       }
       .bol-btn-ghost {
         background: transparent;
@@ -893,8 +903,12 @@
         margin-top: 4px;
       }
       @media (max-width: 640px) {
+        .bol-quote {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
         .bol-quote .testimonial-card {
-          padding: 90px 40px 100px;
+          padding: 90px 32px 100px;
         }
         .bol-quote .quote-mark {
           font-size: 90px;
@@ -1252,13 +1266,26 @@
         font-family: var(--bol-display);
         font-style: italic;
         color: #fff;
-        font-size: clamp(1.18rem, 2.4vw, 2.7rem);
+        font-size: 20px;
         text-align: center;
         transition:
           transform 0.25s ease,
           opacity 0.25s ease,
           filter 0.25s ease;
         will-change: transform, opacity, filter;
+      }
+      @media (min-width: 981px) {
+        .bol-band-caption {
+          font-size: 3.2rem;
+        }
+      }
+      @media (max-width: 640px) {
+        .bol-band {
+          height: 400px;
+        }
+        .bol-band-caption {
+          font-size: 20px;
+        }
       }
 
       /* 8 — CLOSING */
@@ -1271,10 +1298,15 @@
         font-family: var(--bol-display);
         font-size: clamp(3.4rem, 9vw, 7rem);
         line-height: 0.95;
-        color: var(--bol-sage);
-        margin: 0 0 clamp(30px, 4vw, 52px);
+        margin: 0 0 18px;
+        color: var(--bol-loam);
         letter-spacing: -0.035em;
         white-space: nowrap;
+      }
+      @media (max-width: 640px) {
+        .bol-closing-word {
+          white-space: normal;
+        }
       }
       .bol-closing-word em {
         display: inline;
@@ -1389,12 +1421,12 @@
         flex: 0 0 auto;
         width: 36px;
         height: 36px;
+        border: 1px solid var(--bol-sage);
         border-radius: 50%;
-        background: rgba(216, 209, 198, 0.14);
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--bol-sage);
+        color: #fff;
       }
       .bol-footer-cinfo svg {
         width: 16px;
@@ -1679,6 +1711,12 @@
         }
         .bol-signup-button-icon {
           font-size: 1.1rem;
+        }
+      }
+
+      @media (min-width: 981px) {
+        .bol-signup-button-icon {
+          display: none !important;
         }
       }
 
@@ -3287,6 +3325,12 @@
 
         function updateBandCaption() {
           if (!band || !caption) return;
+          var viewportWidth = window.innerWidth;
+          if (viewportWidth < 981) {
+            caption.style.transform = "none";
+            caption.style.fontSize = "";
+            return;
+          }
           var rect = band.getBoundingClientRect();
           var viewportHeight = window.innerHeight;
           var start = viewportHeight * 0.15;
