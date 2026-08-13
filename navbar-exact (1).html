@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bread of Life — Navbar (exact extract)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* fixed across all palettes */
+        --bol-cream: #faf7f0;
+        --bol-loam: #2a2521;
+        --bol-panel: #ffffff;
+        --bol-ink-soft: #4a423b;
+        --bol-ink-mute: #6e6459;
+        --bol-hairline: #b9ac93;
+        --bol-hairline-soft: #dcd4c4;
+
+        /* PALETTE 1 — Original (default) */
+        --bol-sage: #47653f;
+        --bol-sage-deep: #355030;
+
+        /* ACCENT — Wheat (default). *-ink is the light-background safe variant. */
+        --bol-accent: #c9a25e;
+        --bol-accent-ink: #8a6a2b;
+
+        /* aliases kept so existing rules keep working */
+        --bol-wheat: var(--bol-accent);
+        --bol-wheat-ink: var(--bol-accent-ink);
+
+        --bol-display: "Fraunces", Georgia, serif;
+        --bol-body: "Karla", system-ui, -apple-system, sans-serif;
+        --bol-gutter: clamp(20px, 5vw, 72px);
+        --bol-rhythm: clamp(76px, 9vw, 136px);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bol-cream);
+        color: var(--bol-loam);
+        font-family: var(--bol-body);
+        font-size: 17px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      :focus-visible {
+        outline: 2px solid var(--bol-sage);
+        outline-offset: 3px;
+      }
+      .bol-shell {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 var(--bol-gutter);
+      }
+
+      .bol-btn {
+        display: inline-block;
+        font-family: var(--bol-body);
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        padding: 15px 30px;
+        text-decoration: none;
+        border: 1px solid var(--bol-sage);
+        border-radius: 4px;
+        background: var(--bol-sage);
+        color: #fff;
+        transition:
+          background 0.18s ease,
+          border-color 0.18s ease;
+      }
+      .bol-btn:hover {
+        background: var(--bol-sage-deep);
+        border-color: var(--bol-sage-deep);
+      }
+      .bol-btn-ghost {
+        background: transparent;
+        color: var(--bol-sage);
+      }
+      .bol-btn-ghost:hover {
+        background: var(--bol-sage);
+        color: #fff;
+      }
+
+      /* masthead — 5 items, one CTA */
+      .bol-masthead {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: rgba(250, 247, 240, 0.97);
+        border-bottom: 1px solid var(--bol-hairline);
+        backdrop-filter: blur(8px);
+      }
+      .bol-masthead-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: clamp(18px, 2.2vw, 30px);
+        min-height: 92px;
+      }
+      .bol-wordmark {
+        display: block;
+        flex: 0 0 auto;
+        line-height: 0;
+      }
+      .bol-wordmark img {
+        display: block;
+        width: auto;
+        height: clamp(44px, 4.4vw, 58px);
+        max-width: min(50vw, 300px);
+        object-fit: contain;
+        transform: translateY(
+          -9%
+        ); /* optical centring: ink sits low in the bounding box */
+      }
+      .bol-menu {
+        display: contents;
+      }
+      .bol-nav {
+        display: flex;
+        align-items: center;
+        gap: clamp(18px, 1.9vw, 26px);
+        flex-wrap: nowrap;
+        flex: 0 1 auto;
+        min-width: 0;
+      }
+      .bol-nav a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 3px;
+        transition: border-color 0.18s ease;
+      }
+      .bol-nav a:hover {
+        border-color: var(--bol-loam);
+      }
+      .bol-actions {
+        display: flex;
+        align-items: center;
+        gap: clamp(8px, 0.9vw, 10px);
+        flex: 0 0 auto;
+      }
+      .bol-masthead .bol-btn {
+        padding: 11px clamp(14px, 1.5vw, 20px);
+        font-size: clamp(13px, 1vw, 14px);
+        white-space: nowrap;
+      }
+      .bol-masthead .bol-btn-ghost {
+        border-color: var(--bol-hairline);
+        color: var(--bol-sage);
+      }
+      .bol-masthead .bol-btn-ghost:hover {
+        background: var(--bol-sage);
+        border-color: var(--bol-sage);
+        color: #fff;
+      }
+      .bol-navtoggle {
+        display: none;
+        background: none;
+        border: 1px solid var(--bol-hairline);
+        border-radius: 4px;
+        cursor: pointer;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        place-items: center;
+        color: var(--bol-loam);
+        transition:
+          border-color 0.18s ease,
+          background 0.18s ease;
+      }
+      .bol-navtoggle:hover {
+        border-color: var(--bol-sage);
+        background: #fff;
+      }
+      .bol-burger {
+        display: block;
+        position: relative;
+        width: 22px;
+        height: 14px;
+      }
+      .bol-burger i {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1.5px;
+        background: currentColor;
+        transition:
+          transform 0.22s cubic-bezier(0.3, 0.7, 0.2, 1),
+          opacity 0.14s ease;
+      }
+      .bol-burger i:nth-child(1) {
+        top: 0;
+      }
+      .bol-burger i:nth-child(2) {
+        top: 6.25px;
+      }
+      .bol-burger i:nth-child(3) {
+        top: 12.5px;
+      }
+      .bol-masthead.bol-open .bol-navtoggle {
+        border-color: var(--bol-sage);
+        background: var(--bol-sage);
+        color: #fff;
+      }
+      .bol-masthead.bol-open .bol-burger i:nth-child(1) {
+        transform: translateY(6.25px) rotate(45deg);
+      }
+      .bol-masthead.bol-open .bol-burger i:nth-child(2) {
+        opacity: 0;
+      }
+      .bol-masthead.bol-open .bol-burger i:nth-child(3) {
+        transform: translateY(-6.25px) rotate(-45deg);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bol-burger i {
+          transition: none;
+        }
+      }
+
+      @media (max-width: 1280px) {
+        /* six nav items plus two buttons: win room from spacing, never from labels */
+        .bol-nav {
+          gap: 15px;
+        }
+        .bol-nav a {
+          font-size: 14px;
+        }
+        .bol-masthead .bol-btn {
+          padding: 11px 14px;
+          font-size: 13px;
+        }
+        .bol-wordmark img {
+          height: clamp(40px, 4vw, 50px);
+        }
+      }
+
+      @media (max-width: 1120px) {
+        /* keep both buttons; win the room from type and spacing instead */
+        .bol-nav {
+          gap: 12px;
+        }
+        .bol-nav a {
+          font-size: 13px;
+        }
+        .bol-masthead .bol-btn {
+          padding: 10px 12px;
+          font-size: 12.5px;
+          letter-spacing: 0.01em;
+        }
+        .bol-actions {
+          gap: 8px;
+        }
+        .bol-wordmark img {
+          height: clamp(38px, 3.6vw, 46px);
+        }
+      }
+
+      @media (max-width: 980px) {
+        /* hamburger takes over while the CTA stays reachable */
+        .bol-masthead-inner {
+          justify-content: flex-start;
+          gap: 12px;
+        }
+        .bol-nav {
+          display: none;
+        }
+        .bol-navtoggle {
+          display: grid;
+          order: 3;
+          flex: 0 0 auto;
+        }
+        .bol-actions {
+          order: 2;
+          margin-left: auto;
+          flex: 0 1 auto;
+          min-width: 0;
+        }
+        .bol-actions .bol-btn {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .bol-actions .bol-btn-ghost {
+          display: none;
+        }
+        .bol-masthead.bol-open .bol-masthead-inner {
+          position: relative;
+        }
+        .bol-masthead.bol-open .bol-nav {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--bol-cream);
+          border-bottom: 1px solid var(--bol-hairline);
+          padding: 8px var(--bol-gutter) 20px;
+          max-height: calc(100vh - 92px);
+          overflow: auto;
+        }
+        .bol-masthead.bol-open .bol-nav a {
+          font-size: 16px;
+          padding: 13px 0;
+          border-bottom: 1px solid var(--bol-hairline);
+        }
+        .bol-masthead.bol-open .bol-nav a:last-of-type {
+          border-bottom: 0;
+        }
+      }
+
+      @media (max-width: 600px) {
+        /* only the wordmark and the menu button survive; nav + CTAs move into one drawer */
+        .bol-masthead-inner {
+          min-height: 76px;
+          justify-content: space-between;
+          gap: 12px;
+        }
+        .bol-actions {
+          display: none;
+        }
+        .bol-navtoggle {
+          margin-left: auto;
+        }
+
+        /* the drawer itself: one panel, one position, everything inside it stacks in flow */
+        .bol-masthead.bol-open .bol-menu {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--bol-cream);
+          border-bottom: 1px solid var(--bol-hairline);
+          max-height: calc(100vh - 76px);
+          overflow: auto;
+        }
+
+        /* nav links: first in the stack, no longer positioned on their own */
+        .bol-masthead.bol-open .bol-nav {
+          position: static;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 8px var(--bol-gutter) 0;
+        }
+        .bol-masthead.bol-open .bol-nav a {
+          font-size: 16px;
+          padding: 13px 0;
+          border-bottom: 1px solid var(--bol-hairline);
+        }
+        .bol-masthead.bol-open .bol-nav a:last-of-type {
+          border-bottom: 0;
+        }
+
+        /* Donate + Find a Spiritual Director: last in the stack, at the bottom of the drawer */
+        .bol-masthead.bol-open .bol-actions {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 10px;
+          position: static;
+          padding: 16px var(--bol-gutter) 24px;
+          text-align: center;
+          margin-top: 0;
+        }
+        .bol-masthead.bol-open .bol-actions .bol-btn {
+          padding: 15px 20px;
+          font-size: 16px;
+        }
+        .bol-masthead.bol-open .bol-actions .bol-btn-ghost {
+          display: inline-block;
+        }
+        .bol-navtoggle {
+          width: 44px;
+          height: 44px;
+        }
+      }
+
+     
+    </style>
+  </head>
+  <body>
+    <header class="bol-masthead" id="bolMasthead">
+      <div class="bol-shell bol-masthead-inner">
+        <a class="bol-wordmark" href="#top" aria-label="Bread of Life, home"
+          ><img
+            src="https://images.squarespace-cdn.com/content/6a662e2b61e351419c14bc1c/da841121-67d7-4217-aa37-7107060eef73/bread+of+life+logo.png?content-type=image%2Fpng"
+            alt="Bread of Life"
+        /></a>
+        <div class="bol-menu">
+          <nav class="bol-nav" aria-label="Primary">
+            <a href="#top">Home</a>
+            <a href="#guide">About</a>
+            <a href="#offer">Programs</a>
+            <a href="#plan">Spiritual Direction</a>
+            <a href="#offer">Community</a>
+            <a href="#footer">Contact</a>
+          </nav>
+          <div class="bol-actions">
+            <a class="bol-btn bol-btn-ghost" href="#">Donate</a>
+            <a class="bol-btn" href="#plan">Find a Spiritual Director</a>
+          </div>
+        </div>
+        <button
+          class="bol-navtoggle"
+          id="bolNavToggle"
+          aria-expanded="false"
+          aria-label="Open menu"
+        >
+          <span class="bol-burger" aria-hidden="true"
+            ><i></i><i></i><i></i
+          ></span>
+        </button>
+      </div>
+    </header>
+
+   
+    <script>
+      (function () {
+        var mast = document.getElementById("bolMasthead"),
+          toggle = document.getElementById("bolNavToggle");
+        toggle.addEventListener("click", function () {
+          var open = mast.classList.toggle("bol-open");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        });
+        mast
+          .querySelectorAll(".bol-nav a, .bol-actions a")
+          .forEach(function (a) {
+            a.addEventListener("click", function () {
+              mast.classList.remove("bol-open");
+              toggle.setAttribute("aria-expanded", "false");
+              toggle.setAttribute("aria-label", "Open menu");
+            });
+          });
+      })();
+    </script>
+  </body>
+</html>

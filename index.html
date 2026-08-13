@@ -3072,7 +3072,7 @@
       <!-- 8 · CLOSING -->
       <section class="bol-closing">
         <div class="bol-shell">
-          <p class="bol-closing-word">Come in<em> slowly.</em></p>
+          <p class="bol-closing-word">Come in<em> as you are.</em></p>
           <h2 class="bol-closing-title">
             You do not need to have it figured out.
           </h2>
@@ -3295,8 +3295,7 @@
           if (captionBaseSize) {
             caption.style.fontSize = captionBaseSize * scale + "px";
           }
-          caption.style.opacity = String(1 - progress);
-          caption.style.filter = "blur(" + progress * 4 + "px)";
+         
         }
 
         window.addEventListener("scroll", updateBandCaption, { passive: true });
