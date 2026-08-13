@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Bread of life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Karla, system-ui, sans-serif;
+        margin: 0;
+        padding: 40px;
+        background: #faf7f0;
+        color: #2a2521;
+      }
+      .container {
+        max-width: 820px;
+        margin: 0 auto;
+      }
+      h1 {
+        font-family: Fraunces, Georgia, serif;
+      }
+      form {
+        display: grid;
+        gap: 12px;
+      }
+      label {
+        font-weight: 600;
+      }
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        padding: 10px;
+        border: 1px solid #d8d2be;
+        border-radius: 4px;
+        width: 100%;
+      }
+      .actions {
+        margin-top: 12px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 16px;
+        background: #c9a25e;
+        border: none;
+        color: #fff;
+        border-radius: 4px;
+        text-decoration: none;
+      }
+      a.back {
+        display: inline-block;
+        margin-bottom: 18px;
+        color: #355030;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a class="back" href="index.html">← Back to home</a>
+      <h1>Contact</h1>
+      <p>
+        If you'd like to reach out, use the form below or email us at
+        <strong>info@breadoflife.org</strong>.
+      </p>
+      <form
+        action="mailto:info@breadoflife.org"
+        method="post"
+        enctype="text/plain"
+      >
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" />
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" />
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="8"></textarea>
+        <div class="actions">
+          <button class="btn" type="submit">Send</button>
+          <a
+            class="btn"
+            href="mailto:info@breadoflife.org"
+            style="background: #8a6a2b"
+            >Email us</a
+          >
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
