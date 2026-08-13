@@ -2182,7 +2182,7 @@
         padding: 58px 26px 20px 26px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: flex-start;
         gap: 16px;
         margin-top: 40px;
       }
@@ -2248,6 +2248,21 @@
 
       .step-card:hover::after {
         border-color: var(--wheat);
+      }
+
+      .step-link {
+        display: inline-block;
+        margin-top: 8px;
+        color: #fff;
+        text-decoration: underline;
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+      .step-link:hover {
+        color: var(--bol-wheat);
+        text-decoration: underline;
       }
 
       .steps-bar {
@@ -2476,7 +2491,7 @@
         </div>
 
         <div class="steps-grid">
-          <a class="step-card" href="contact.html">
+          <div class="step-card">
             <div
               class="step-card-bg"
               style="
@@ -2489,9 +2504,12 @@
               <p class="step-desc">
                 Send us a note through our contact page. Tell us as much or as
                 little as you'd like about what brought you here.
+
+              
               </p>
+             
             </div>
-          </a>
+          </div>
           <div class="step-card">
             <div
               class="step-card-bg"
