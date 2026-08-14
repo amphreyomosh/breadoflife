@@ -1105,10 +1105,10 @@
         background: var(--bol-hairline);
       }
       .bol-offer-media img {
-        transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
+        transition: transform 1.2s cubic-bezier(0.2, 0.6, 0.2, 1);
       }
       .bol-offer-row:hover .bol-offer-media img {
-        transform: scale(1.035);
+        transform: scale(1.08);
       }
       .bol-offer-tags {
         font-size: 12px;
@@ -2188,8 +2188,8 @@
         filter: grayscale(45%) sepia(18%) brightness(0.9);
         transform: scale(1.04);
         transition:
-          filter 0.5s ease,
-          transform 0.6s ease;
+          filter 1.2s ease,
+          transform 1.2s ease;
         z-index: -2;
       }
 
@@ -2198,9 +2198,9 @@
         inset: 0;
         background: linear-gradient(
           180deg,
-          rgba(42, 37, 33, 0.72) 0%,
-          rgba(42, 37, 33, 0.86) 55%,
-          rgba(42, 37, 33, 0.94) 100%
+          rgba(0, 0, 0, 0.45) 0%,
+          rgba(0, 0, 0, 0.65) 55%,
+          rgba(0, 0, 0, 0.75) 100%
         );
         transition: background 0.4s ease;
         z-index: -1;
@@ -2208,7 +2208,7 @@
 
       .step-card-inner {
         position: relative;
-        padding: 58px 26px 30px 26px;
+        padding: 80px 26px 30px 26px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -2259,15 +2259,15 @@
 
       .step-card:hover .step-card-bg {
         filter: grayscale(15%) sepia(8%) brightness(1);
-        transform: scale(1.1);
+        transform: scale(1.15);
       }
 
       .step-card:hover .step-card-overlay {
         background: linear-gradient(
           180deg,
-          rgba(42, 37, 33, 0.55) 0%,
-          rgba(42, 37, 33, 0.78) 55%,
-          rgba(42, 37, 33, 0.9) 100%
+          rgba(0, 0, 0, 0.25) 0%,
+          rgba(0, 0, 0, 0.45) 55%,
+          rgba(0, 0, 0, 0.55) 100%
         );
       }
 
@@ -2365,6 +2365,12 @@
         .cta-button {
           width: 100%;
           justify-content: center;
+        }
+      }
+
+      @media (min-width: 981px) {
+        .step-card {
+          min-height: 440px;
         }
       }
 
@@ -2525,16 +2531,16 @@
             <div
               class="step-card-bg"
               style="
-                background-image: url(&quot;https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1759605883983-HPOXV643OJ5QYJR15ZIZ/lili-popper-lu15z1m_KfM-unsplash.jpg?format=2500w&quot;);
+                background-image: url(&quot;https://images.unsplash.com/photo-1762770651108-3acd8c3c6845?fm=jpg&q=60&w=3000&auto=format&fit=crop&quot;);
               "
             ></div>
             <div class="step-card-overlay"></div>
             <div class="step-card-inner">
               <h3 class="step-title">Reach Out</h3>
-              <p class="step-desc">
-                Send us a note through our contact page. Tell us as much or as
-                little as you'd like about what brought you here.
-              </p>
+               <p class="step-desc">
+                 Send us a note through our contact page. Tell us as much or as
+                 little as you'd like about what brought you here.
+               </p>
                <a class="step-link" href="contact.html">Contact us</a>
             </div>
           </div>
@@ -2542,50 +2548,53 @@
             <div
               class="step-card-bg"
               style="
-                background-image: url(&quot;https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/6b2f32e8-1523-49d4-8b39-0c85d5cdd3da/jens-lelie-u0vgcIOQG08-unsplash.jpg?format=2500w&quot;);
+                background-image: url(&quot;https://images.unsplash.com/photo-1772471754740-6e1e6dfd17e5?fm=jpg&q=60&w=3000&auto=format&fit=crop&quot;);
               "
             ></div>
             <div class="step-card-overlay"></div>
             <div class="step-card-inner">
               <h3 class="step-title">Have a Conversation</h3>
-              <p class="step-desc">
-                We'll set up a short call to listen and help you find a director
-                whose way of listening feels right for you.
-              </p>
-            </div>
-          </div>
-          <div class="step-card">
-            <div
-              class="step-card-bg"
-              style="
-                background-image: url(&quot;https://cdn.pixabay.com/photo/2016/12/27/17/10/pendulum-1934311_1280.jpg&quot;);
-              "
-            ></div>
-            <div class="step-card-overlay"></div>
-            <div class="step-card-inner">
-              <h3 class="step-title">Meet Together</h3>
-              <p class="step-desc">
-                You and your director begin meeting monthly, in person or by
-                video, at a pace that stays yours to set.
-              </p>
-            </div>
-          </div>
-          <div class="step-card">
-            <div
-              class="step-card-bg"
-              style="
-                background-image: url(&quot;https://cdn.pixabay.com/photo/2020/05/25/15/44/sabbath-5219152_1280.jpg&quot;);
-              "
-            ></div>
-            <div class="step-card-overlay"></div>
-            <div class="step-card-inner">
-              <h3 class="step-title">Keep Returning</h3>
-              <p class="step-desc">
-                Spiritual direction isn't a program with an end date. Many
-                people meet with their director for years.
-              </p>
-            </div>
-          </div>
+               <p class="step-desc">
+                 We'll set up a short call to listen and help you find a director
+                 whose way of listening feels right for you.
+               </p>
+               <a class="step-link" href="#plan">Find a director</a>
+             </div>
+           </div>
+           <div class="step-card">
+             <div
+               class="step-card-bg"
+               style="
+                 background-image: url(&quot;https://images.unsplash.com/photo-1550177977-ad69e8f3cae0?fm=jpg&q=60&w=3000&auto=format&fit=crop&quot;);
+               "
+             ></div>
+             <div class="step-card-overlay"></div>
+             <div class="step-card-inner">
+               <h3 class="step-title">Meet Together</h3>
+               <p class="step-desc">
+                 You and your director begin meeting monthly, in person or by
+                 video, at a pace that stays yours to set.
+               </p>
+               <a class="step-link" href="#upcoming">See the calendar</a>
+             </div>
+           </div>
+           <div class="step-card">
+             <div
+               class="step-card-bg"
+               style="
+                 background-image: url(&quot;https://images.unsplash.com/photo-1770029967512-d3105259ce1d?fm=jpg&q=60&w=3000&auto=format&fit=crop&quot;);
+               "
+             ></div>
+             <div class="step-card-overlay"></div>
+             <div class="step-card-inner">
+               <h3 class="step-title">Keep Returning</h3>
+               <p class="step-desc">
+                 Spiritual direction isn't a program with an end date. Many
+                 people meet with their director for years.
+               </p>
+               <a class="step-link" href="#offer">Community of practice</a>
+             </div>
+           </div>
         </div>
 
         <div class="steps-bar">
