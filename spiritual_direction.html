@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find a Spiritual Director | Bread of Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bol-cream:#faf7f0; --bol-loam:#2a2521; --bol-panel:#ffffff;
+    --bol-ink-soft:#4a423b; --bol-ink-mute:#6e6459;
+    --bol-hairline:#b9ac93; --bol-hairline-soft:#dcd4c4;
+    --bol-sage:#47653f; --bol-sage-deep:#355030;
+    --bol-accent:#c9a25e; --bol-accent-ink:#8a6a2b;
+    --bol-wheat:var(--bol-accent); --bol-wheat-ink:var(--bol-accent-ink);
+    --bol-display:"Fraunces",Georgia,serif; --bol-body:"Karla",system-ui,-apple-system,sans-serif;
+    --bol-gutter:clamp(20px,5vw,72px); --bol-rhythm:clamp(64px,7vw,104px);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;}
+  body{margin:0;background:var(--bol-cream);color:var(--bol-loam);font-family:var(--bol-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  img{display:block;width:100%;height:100%;object-fit:cover;}
+  h1,h2,h3{font-family:var(--bol-display);font-weight:400;margin:0;line-height:1.1;letter-spacing:-0.015em;}
+  p{margin:0 0 1.15em;} p:last-child{margin-bottom:0;}
+  :focus-visible{outline:2px solid var(--bol-sage);outline-offset:3px;}
+  .bol-shell{max-width:1240px;margin:0 auto;padding:0 var(--bol-gutter);}
+  .bol-eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--bol-sage);margin:0 0 16px;}
+  .bol-btn{display:inline-block;font-family:var(--bol-body);font-size:15px;font-weight:600;letter-spacing:.02em;padding:15px 30px;text-decoration:none;border:1px solid var(--bol-sage);border-radius:4px;background:var(--bol-sage);color:#fff;transition:background .18s ease,border-color .18s ease;}
+  .bol-btn:hover{background:var(--bol-sage-deep);border-color:var(--bol-sage-deep);}
+  .bol-btn-ghost{background:transparent;color:var(--bol-sage);}
+  .bol-btn-ghost:hover{background:var(--bol-sage);color:#fff;}
+  .bol-textlink{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:15px;color:var(--bol-sage);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .18s ease;}
+  .bol-textlink:hover{border-color:currentColor;}
+  .bol-arrow{transition:transform .18s ease;}
+  .bol-textlink:hover .bol-arrow{transform:translateX(5px);}
+
+  /* MASTHEAD (identical to homepage) */
+  .bol-masthead{position:sticky;top:0;z-index:60;background:rgba(250,247,240,.97);border-bottom:1px solid var(--bol-hairline);backdrop-filter:blur(8px);}
+  .bol-masthead-inner{display:flex;align-items:center;justify-content:space-between;gap:clamp(18px,2.2vw,30px);min-height:92px;}
+  .bol-wordmark{display:block;flex:0 0 auto;line-height:0;}
+  .bol-wordmark img{display:block;width:auto;height:clamp(44px,4.4vw,58px);max-width:min(50vw,300px);object-fit:contain;transform:translateY(-9%);}
+  .bol-menu{display:contents;}
+  .bol-nav{display:flex;align-items:center;gap:clamp(18px,1.9vw,26px);flex-wrap:nowrap;flex:0 1 auto;min-width:0;}
+  .bol-nav a{text-decoration:none;color:inherit;font-size:15px;font-weight:500;white-space:nowrap;border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .18s ease;}
+  .bol-nav a:hover{border-color:var(--bol-loam);}
+  .bol-actions{display:flex;align-items:center;gap:clamp(8px,.9vw,10px);flex:0 0 auto;}
+  .bol-masthead .bol-btn{padding:11px clamp(14px,1.5vw,20px);font-size:clamp(13px,1vw,14px);white-space:nowrap;}
+  .bol-masthead .bol-btn-ghost{border-color:var(--bol-hairline);color:var(--bol-sage);}
+  .bol-masthead .bol-btn-ghost:hover{background:var(--bol-sage);border-color:var(--bol-sage);color:#fff;}
+  .bol-navtoggle{display:none;background:none;border:1px solid var(--bol-hairline);border-radius:4px;cursor:pointer;width:48px;height:48px;padding:0;place-items:center;color:var(--bol-loam);transition:border-color .18s ease,background .18s ease;}
+  .bol-navtoggle:hover{border-color:var(--bol-sage);background:#fff;}
+  .bol-burger{display:block;position:relative;width:22px;height:14px;}
+  .bol-burger i{position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .22s cubic-bezier(.3,.7,.2,1),opacity .14s ease;}
+  .bol-burger i:nth-child(1){top:0;} .bol-burger i:nth-child(2){top:6.25px;} .bol-burger i:nth-child(3){top:12.5px;}
+  .bol-masthead.bol-open .bol-navtoggle{border-color:var(--bol-sage);background:var(--bol-sage);color:#fff;}
+  .bol-masthead.bol-open .bol-burger i:nth-child(1){transform:translateY(6.25px) rotate(45deg);}
+  .bol-masthead.bol-open .bol-burger i:nth-child(2){opacity:0;}
+  .bol-masthead.bol-open .bol-burger i:nth-child(3){transform:translateY(-6.25px) rotate(-45deg);}
+  @media (prefers-reduced-motion:reduce){.bol-burger i{transition:none;}}
+
+  @media (max-width:1280px){
+    .bol-nav{gap:15px;} .bol-nav a{font-size:14px;}
+    .bol-masthead .bol-btn{padding:11px 14px;font-size:13px;}
+    .bol-wordmark img{height:clamp(40px,4vw,50px);}
+  }
+  @media (max-width:1120px){
+    .bol-nav{gap:12px;} .bol-nav a{font-size:13px;}
+    .bol-masthead .bol-btn{padding:10px 12px;font-size:12.5px;letter-spacing:.01em;}
+    .bol-actions{gap:8px;} .bol-wordmark img{height:clamp(38px,3.6vw,46px);}
+  }
+  @media (max-width:980px){
+    .bol-masthead-inner{justify-content:flex-start;gap:12px;}
+    .bol-nav{display:none;}
+    .bol-navtoggle{display:grid;order:3;flex:0 0 auto;}
+    .bol-actions{order:2;margin-left:auto;flex:0 1 auto;min-width:0;}
+    .bol-actions .bol-btn{overflow:hidden;text-overflow:ellipsis;}
+    .bol-actions .bol-btn-ghost{display:none;}
+    .bol-masthead.bol-open .bol-masthead-inner{position:relative;}
+    .bol-masthead.bol-open .bol-menu{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bol-cream);border-bottom:1px solid var(--bol-hairline);max-height:100vh;overflow:auto;}
+    .bol-masthead.bol-open .bol-nav{display:flex;flex-direction:column;align-items:stretch;gap:0;position:static;padding:8px var(--bol-gutter) 0;}
+    .bol-masthead.bol-open .bol-nav a{font-size:18px;padding:16px 0;border-bottom:1px solid var(--bol-hairline);}
+    .bol-masthead.bol-open .bol-nav a:last-of-type{border-bottom:0;}
+    .bol-masthead.bol-open .bol-actions{display:flex;flex-direction:row;align-items:center;gap:10px;position:static;padding:16px var(--bol-gutter) 24px;justify-content:center;}
+    .bol-masthead.bol-open .bol-actions .bol-btn{padding:11px 14px;font-size:13px;}
+    .bol-masthead.bol-open .bol-actions .bol-btn-ghost{display:inline-block;}
+  }
+  @media (max-width:600px){
+    .bol-masthead-inner{min-height:76px;justify-content:space-between;gap:12px;}
+    .bol-actions{display:none;}
+    .bol-navtoggle{margin-left:auto;width:44px;height:44px;}
+    .bol-masthead.bol-open .bol-menu{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bol-cream);border-bottom:1px solid var(--bol-hairline);max-height:100vh;overflow:auto;}
+    .bol-masthead.bol-open .bol-nav{position:static;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:8px var(--bol-gutter) 0;}
+    .bol-masthead.bol-open .bol-nav a{font-size:16px;padding:13px 0;border-bottom:1px solid var(--bol-hairline);}
+    .bol-masthead.bol-open .bol-nav a:last-of-type{border-bottom:0;}
+    .bol-masthead.bol-open .bol-actions{display:flex;flex-direction:column;align-items:stretch;gap:10px;position:static;padding:16px 0 24px;text-align:center;margin-top:0;}
+    .bol-masthead.bol-open .bol-actions .bol-btn{padding:15px 20px;font-size:16px;margin:0 var(--bol-gutter);}
+    .bol-masthead.bol-open .bol-actions .bol-btn-ghost{display:inline-block;}
+  }
+
+  /* HERO */
+  .bol-dir-hero{position:relative;isolation:isolate;overflow:hidden;background:var(--bol-sage-deep);padding:clamp(56px,7vw,110px) 0 clamp(60px,7vw,96px);}
+  .bol-dir-hero-bg{position:absolute;inset:0;z-index:0;}
+  .bol-dir-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 45%;}
+  .bol-dir-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(53,80,48,.82) 0%,rgba(53,80,48,.72) 45%,rgba(53,80,48,.9) 100%);}
+  .bol-dir-hero .bol-shell{position:relative;z-index:1;max-width:820px;text-align:center;margin:0 auto;}
+  .bol-dir-hero .bol-eyebrow{color:var(--bol-accent);text-align:center;}
+  .bol-dir-hero h1{font-size:clamp(2.1rem,4.2vw,3.1rem);color:#fff;margin-bottom:18px;}
+  .bol-dir-hero p{color:rgba(243,239,230,.9);font-size:1.05rem;line-height:1.7;max-width:640px;margin:0 auto 30px;}
+  .bol-dir-hero-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .bol-dir-hero-actions .bol-btn{background:var(--bol-accent);border-color:var(--bol-accent);color:var(--bol-loam);}
+  .bol-dir-hero-actions .bol-btn:hover{background:var(--bol-accent-ink);border-color:var(--bol-accent-ink);color:#fff;}
+  .bol-dir-hero-actions .bol-btn-ghost{border-color:rgba(255,255,255,.5);color:#fff;}
+  .bol-dir-hero-actions .bol-btn-ghost:hover{background:#fff;color:var(--bol-sage-deep);}
+
+  /* PILLARS */
+  .bol-pillars{background:var(--bol-panel);border-bottom:1px solid var(--bol-hairline-soft);padding:clamp(28px,3vw,40px) 0;}
+  .bol-pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bol-hairline-soft);}
+  .bol-pillar{background:var(--bol-panel);padding:26px 28px;}
+  .bol-pillar h4{font-size:1.02rem;font-weight:500;color:var(--bol-loam);margin-bottom:8px;}
+  .bol-pillar p{font-size:14px;color:var(--bol-ink-mute);line-height:1.6;}
+  @media (max-width:760px){.bol-pillars-grid{grid-template-columns:1fr;}}
+
+  /* MATCHER */
+  .bol-matcher{padding:var(--bol-rhythm) 0 clamp(40px,5vw,64px);}
+  .bol-matcher-panel{background:var(--bol-panel);border:1px solid var(--bol-hairline-soft);padding:clamp(24px,3vw,40px);border-radius:4px;}
+  .bol-matcher-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;padding-bottom:22px;border-bottom:1px solid var(--bol-hairline-soft);margin-bottom:0;}
+  .bol-matcher-head h3{font-size:clamp(1.4rem,2.4vw,1.85rem);color:var(--bol-loam);}
+  .bol-matcher-head p{font-size:14px;color:var(--bol-ink-mute);margin-top:6px;}
+  .bol-reset{background:none;border:none;font-size:13px;color:var(--bol-ink-mute);cursor:pointer;font-family:var(--bol-body);}
+  .bol-reset:hover{color:var(--bol-sage);}
+  .bol-matcher-block{padding:22px 0;border-bottom:1px solid var(--bol-hairline-soft);}
+  .bol-matcher-block:last-of-type{border-bottom:none;}
+  .bol-matcher-label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bol-loam);margin-bottom:14px;}
+  .bol-matcher-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+  .bol-chip{padding:12px 14px;text-align:left;border:1px solid var(--bol-hairline-soft);background:var(--bol-cream);font-family:var(--bol-body);font-size:13px;font-weight:600;color:var(--bol-loam);border-radius:4px;cursor:pointer;transition:all .15s ease;}
+  .bol-chip:hover{border-color:var(--bol-sage);}
+  .bol-chip.active{background:var(--bol-sage);border-color:var(--bol-sage);color:#fff;}
+  .bol-chip-season{padding:14px;}
+  .bol-chip-season .t{font-weight:700;font-size:14px;margin-bottom:4px;}
+  .bol-chip-season .d{font-size:11.5px;opacity:.75;line-height:1.4;}
+  .bol-matcher-actions{padding-top:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;}
+  .bol-fmt-toggle{display:inline-flex;border:1px solid var(--bol-hairline-soft);background:var(--bol-cream);border-radius:4px;padding:3px;}
+  .bol-fmt-toggle button{padding:8px 16px;font-family:var(--bol-body);font-size:12.5px;font-weight:600;background:none;border:none;border-radius:3px;color:var(--bol-loam);cursor:pointer;}
+  .bol-fmt-toggle button.active{background:var(--bol-sage);color:#fff;}
+
+  /* DIRECTORY */
+  .bol-directory{max-width:1240px;margin:0 auto;padding:0 var(--bol-gutter) var(--bol-rhythm);}
+  .bol-search-bar{background:var(--bol-panel);border:1px solid var(--bol-hairline-soft);border-radius:4px;padding:20px 22px;margin-bottom:32px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;}
+  .bol-search-input-wrap{position:relative;flex:1;min-width:220px;}
+  .bol-search-input-wrap input{width:100%;padding:11px 14px 11px 40px;font-size:14px;font-family:var(--bol-body);border:1px solid var(--bol-hairline-soft);background:var(--bol-cream);border-radius:4px;}
+  .bol-search-input-wrap input:focus{outline:none;border-color:var(--bol-sage);}
+  .bol-search-input-wrap svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--bol-ink-mute);}
+  .bol-search-bar select{padding:11px 12px;font-size:13px;font-family:var(--bol-body);border:1px solid var(--bol-hairline-soft);background:var(--bol-cream);border-radius:4px;min-width:220px;}
+  .bol-results-count{font-size:12.5px;font-weight:700;color:var(--bol-sage);white-space:nowrap;}
+
+  #directors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
+  .bol-dir-card{background:var(--bol-panel);border:1px solid var(--bol-hairline-soft);border-radius:4px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .18s ease,border-color .18s ease;}
+  .bol-dir-card:hover{transform:translateY(-3px);border-color:var(--bol-sage);}
+  .bol-dir-card-top{display:flex;gap:16px;margin-bottom:16px;}
+  .bol-dir-card img{width:76px;height:76px;object-fit:cover;border:1px solid var(--bol-hairline-soft);flex-shrink:0;}
+  .bol-dir-faith{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bol-sage);display:block;}
+  .bol-dir-card h3{font-size:1.15rem;color:var(--bol-loam);margin:2px 0 2px;}
+  .bol-dir-meta{font-size:12px;color:var(--bol-ink-mute);display:block;}
+  .bol-dir-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+  .bol-tag{padding:2px 8px;font-size:10px;font-weight:700;border-radius:2px;}
+  .bol-tag-inperson{background:rgba(71,101,63,.12);color:var(--bol-sage);}
+  .bol-tag-online{background:rgba(201,162,94,.18);color:var(--bol-accent-ink);}
+  .bol-tag-wait{background:var(--bol-hairline-soft);color:var(--bol-ink-mute);}
+  .bol-dir-bio{font-size:13px;color:var(--bol-ink-soft);line-height:1.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px;}
+  .bol-dir-quote{border-left:2px solid var(--bol-accent);padding-left:12px;margin:12px 0;font-family:var(--bol-display);font-style:italic;font-size:13px;color:var(--bol-ink-mute);}
+  .bol-dir-card-foot{padding-top:16px;border-top:1px solid var(--bol-hairline-soft);display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .bol-dir-card-foot .bol-btn{padding:9px 16px;font-size:12.5px;}
+  .bol-dir-card-foot .bol-btn-outline{background:transparent;color:var(--bol-sage);border:1px solid var(--bol-sage);}
+  .bol-dir-card-foot .bol-btn-outline:hover{background:var(--bol-sage);color:#fff;}
+
+  #empty-state{display:none;text-align:center;padding:60px 30px;background:var(--bol-panel);border:1px solid var(--bol-hairline-soft);border-radius:4px;}
+  #empty-state.show{display:block;}
+  #empty-state h3{font-size:1.3rem;color:var(--bol-loam);margin-bottom:8px;}
+  #empty-state p{color:var(--bol-ink-mute);font-size:14px;margin-bottom:20px;}
+
+  /* FAQ */
+  .bol-faq{background:var(--bol-panel);border-top:1px solid var(--bol-hairline-soft);padding:var(--bol-rhythm) 0;}
+  .bol-faq-inner{max-width:780px;margin:0 auto;padding:0 var(--bol-gutter);}
+  .bol-faq-head{text-align:center;margin-bottom:40px;}
+  .bol-faq-head h2{font-size:clamp(1.7rem,3vw,2.2rem);color:var(--bol-loam);}
+  details.bol-faq-item{background:var(--bol-cream);border:1px solid var(--bol-hairline-soft);border-radius:4px;padding:18px 20px;margin-bottom:12px;cursor:pointer;}
+  details.bol-faq-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;font-family:var(--bol-display);font-weight:500;font-size:1.02rem;color:var(--bol-loam);}
+  details.bol-faq-item summary::-webkit-details-marker{display:none;}
+  details.bol-faq-item[open] summary .bol-chev{transform:rotate(180deg);}
+  .bol-chev{color:var(--bol-sage);transition:transform .18s ease;}
+  details.bol-faq-item p{font-size:14px;color:var(--bol-ink-soft);margin-top:12px;padding-top:12px;border-top:1px solid var(--bol-hairline-soft);line-height:1.7;}
+
+  /* DIRECTOR FULL PAGE */
+  #director-page{background:var(--bol-cream);}
+  .bol-dp-topbar{border-bottom:1px solid var(--bol-hairline-soft);background:var(--bol-panel);padding:18px 0;}
+  .bol-dp-back{background:none;border:none;font-family:var(--bol-body);font-size:13px;font-weight:700;color:var(--bol-sage);cursor:pointer;display:inline-flex;align-items:center;gap:6px;}
+  .bol-dp-back:hover{text-decoration:underline;}
+  .bol-dp-content{max-width:860px;margin:0 auto;padding:clamp(40px,5vw,64px) var(--bol-gutter);}
+  .bol-dp-content h1{font-size:clamp(2rem,3.6vw,2.7rem);color:var(--bol-loam);margin-bottom:10px;}
+  .bol-dp-role{font-size:14px;color:var(--bol-ink-mute);margin-bottom:28px;}
+  .bol-dp-top{display:flex;flex-wrap:wrap;gap:32px;padding-bottom:32px;border-bottom:1px solid var(--bol-hairline-soft);}
+  .bol-dp-top img{width:220px;height:220px;object-fit:cover;border:1px solid var(--bol-hairline-soft);flex-shrink:0;}
+  .bol-dp-quote{padding:18px;background:var(--bol-panel);border-left:3px solid var(--bol-accent);font-family:var(--bol-display);font-style:italic;font-size:1.2rem;color:var(--bol-loam);margin-bottom:16px;}
+  .bol-dp-body{padding:32px 0;font-size:15px;color:var(--bol-ink-soft);line-height:1.75;}
+  .bol-dp-body h4{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bol-loam);margin-bottom:14px;}
+  .bol-dp-body .bol-pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+  .bol-pill{padding:8px 14px;font-size:12.5px;background:var(--bol-panel);border:1px solid var(--bol-hairline-soft);color:var(--bol-loam);}
+  .bol-pill-accent{background:var(--bol-cream);border-color:rgba(71,101,63,.35);color:var(--bol-sage);font-weight:600;}
+  .bol-dp-foot{padding-top:28px;border-top:1px solid var(--bol-hairline-soft);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;}
+  .bol-hidden{display:none;}
+
+  /* MODAL */
+  .bol-modal-scrim{position:fixed;inset:0;z-index:70;background:rgba(42,37,33,.55);display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto;}
+  .bol-modal-scrim.show{display:flex;}
+  .bol-modal{background:var(--bol-cream);border:1px solid var(--bol-hairline-soft);max-width:520px;width:100%;padding:clamp(24px,3vw,36px);position:relative;border-radius:4px;}
+  .bol-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:26px;color:var(--bol-ink-mute);cursor:pointer;line-height:1;}
+  .bol-modal-close:hover{color:var(--bol-loam);}
+  .bol-modal h3{font-size:1.5rem;color:var(--bol-loam);margin:4px 0 8px;}
+  .bol-modal p{font-size:13px;color:var(--bol-ink-mute);margin-bottom:20px;}
+  .bol-field{margin-bottom:16px;}
+  .bol-field label{display:block;font-size:12px;font-weight:700;color:var(--bol-loam);margin-bottom:6px;}
+  .bol-field input,.bol-field select,.bol-field textarea{width:100%;padding:11px 13px;font-size:14px;font-family:var(--bol-body);border:1px solid var(--bol-hairline-soft);background:var(--bol-panel);border-radius:4px;}
+  .bol-field input:focus,.bol-field select:focus,.bol-field textarea:focus{outline:none;border-color:var(--bol-sage);}
+  .bol-modal .bol-btn{width:100%;text-align:center;}
+
+  /* FOOTER (identical to homepage) */
+  .bol-footer{background:var(--bol-loam);color:#d8d1c6;padding:clamp(60px,7vw,90px) 0 44px;}
+  .bol-footer-grid{display:grid;grid-template-columns:1.6fr 1.15fr 1fr 1fr;gap:clamp(30px,3.4vw,52px);align-items:start;}
+  .bol-footer h4{position:relative;font-family:var(--bol-body);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#bfb5a5;margin:0 0 24px;padding-bottom:14px;}
+  .bol-footer h4::after{content:"";position:absolute;left:0;bottom:0;width:26px;height:2px;background:var(--bol-sage);}
+  .bol-footer ul{list-style:none;margin:0;padding:0;}
+  .bol-footer li{margin-bottom:14px;font-size:17px;line-height:1.6;}
+  .bol-footer a{color:inherit;text-decoration:none;font-size:17px;border-bottom:1px solid transparent;transition:border-color .18s ease;}
+  .bol-footer a:hover{border-color:#d8d1c6;}
+  .bol-footer-highlight{color:var(--bol-accent);}
+  .bol-footer-mark{margin-bottom:20px;line-height:0;}
+  .bol-footer-mark img{display:block;width:auto;height:clamp(62px,6.6vw,84px);max-width:330px;object-fit:contain;transform:translateY(-6%);}
+  .bol-footer-mission{font-size:17px;line-height:1.65;color:#c3baaa;max-width:38ch;margin-bottom:26px;}
+  .bol-footer-cinfo{display:flex;gap:14px;margin-bottom:22px;}
+  .bol-footer-cinfo .ic{flex:0 0 auto;width:36px;height:36px;border:1px solid var(--bol-sage);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;}
+  .bol-footer-cinfo svg{width:16px;height:16px;}
+  .bol-footer-cinfo .label{display:block;font-size:13px;color:#9d9488;margin-bottom:4px;}
+  .bol-footer-cinfo .value{font-size:16px;line-height:1.5;color:#f3efe6;}
+  .bol-signup label{display:block;font-size:15px;line-height:1.6;color:#c3baaa;margin-bottom:14px;max-width:34ch;}
+  .bol-signup-row{display:flex;border:1px solid #4a433c;border-radius:4px;overflow:hidden;}
+  .bol-signup input{flex:1;min-width:0;background:transparent;border:0;padding:15px 22px;color:#f3efe6;font-family:var(--bol-body);font-size:16px;}
+  .bol-signup input::placeholder{color:#7c7367;}
+  .bol-signup button{background:var(--bol-sage);border:0;border-radius:4px;margin:3px;color:#fff;font-family:var(--bol-body);font-weight:600;font-size:15px;padding:0 24px;cursor:pointer;transition:background .18s ease;}
+  .bol-signup button:hover{background:var(--bol-sage-deep);}
+  .bol-signup-note{font-size:14px;line-height:1.6;color:#9d9488;margin-top:14px;}
+  .bol-colophon{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-top:clamp(44px,5vw,64px);padding-top:26px;border-top:1px solid #4a433c;font-size:14px;line-height:1.6;color:#bfb5a5;}
+  .bol-footer-social{display:flex;gap:12px;}
+  .bol-footer-social a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(216,209,198,.14);color:#fff;border-bottom:none;transition:background .18s ease,color .18s ease;}
+  .bol-footer-social a:hover{background:var(--bol-sage);color:#fff;}
+  .bol-footer-social svg{width:18px;height:18px;}
+  @media (max-width:1000px){.bol-footer-grid{grid-template-columns:1fr 1fr;gap:36px 32px;}}
+  @media (max-width:600px){
+    .bol-footer-grid{grid-template-columns:1fr;}
+    .bol-signup-row{flex-wrap:nowrap;}
+    .bol-signup input{flex:1 1 auto;min-width:0;padding:15px 16px;}
+    .bol-signup button{flex:0 0 auto;width:auto;margin:0;border-radius:0 4px 4px 0;min-width:58px;padding:0 18px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="bol-masthead" id="bolMasthead">
+  <div class="bol-shell bol-masthead-inner">
+    <a class="bol-wordmark" href="index.html#top" aria-label="Bread of Life, home">
+      <img src="https://images.squarespace-cdn.com/content/6a662e2b61e351419c14bc1c/da841121-67d7-4217-aa37-7107060eef73/bread+of+life+logo.png?content-type=image%2Fpng" alt="Bread of Life">
+    </a>
+    <div class="bol-menu">
+      <nav class="bol-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="index.html#guide">About</a>
+        <a href="index.html#offer">Programs</a>
+        <a href="#" aria-current="page">Spiritual Direction</a>
+        <a href="index.html#offer">Community</a>
+        <a href="index.html#footer">Contact</a>
+      </nav>
+      <div class="bol-actions">
+        <a class="bol-btn bol-btn-ghost" href="#">Donate</a>
+        <a class="bol-btn" href="#directory-section">Find a Spiritual Director</a>
+      </div>
+    </div>
+    <button class="bol-navtoggle" id="bolNavToggle" aria-expanded="false" aria-label="Open menu">
+      <span class="bol-burger" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+  </div>
+</header>
+
+<div id="site-content">
+
+  <section class="bol-dir-hero">
+    <div class="bol-dir-hero-bg" aria-hidden="true">
+      <img src="forest-path-hero.png" alt="A sun-dappled forest path" referrerpolicy="no-referrer">
+    </div>
+    <div class="bol-shell">
+      <span class="bol-eyebrow">Spiritual Direction &middot; Sacramento, Davis, Auburn &amp; Online</span>
+      <h1>Find a director whose way of listening feels right for you.</h1>
+      <p>Spiritual direction is a quiet, contemplative listening relationship with a trained companion. Filter the directory below by faith background, life season, or way of encountering the sacred to find someone you could talk to.</p>
+      <div class="bol-dir-hero-actions">
+        <a href="#directory-section" class="bol-btn">Browse Directors (<span id="total-count-badge">14</span>)</a>
+        <button onclick="openIntakeModal()" class="bol-btn bol-btn-ghost">Not sure where to start?</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="bol-pillars">
+    <div class="bol-shell">
+      <div class="bol-pillars-grid">
+        <div class="bol-pillar">
+          <h4>Contemplative listening</h4>
+          <p>Not therapy, not advice. A slow, unhurried companion to help you pay attention to the deeper currents of your life.</p>
+        </div>
+        <div class="bol-pillar">
+          <h4>Open to all paths</h4>
+          <p>Welcoming every faith tradition, spiritual seekers, agnostics, and those questioning or deconstructing dogma.</p>
+        </div>
+        <div class="bol-pillar">
+          <h4>Sacramento &amp; worldwide</h4>
+          <p>Meet in person at Bread of Life, Auburn, or Davis, or connect online from anywhere by video.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bol-matcher" id="quick-matcher">
+    <div class="bol-shell">
+      <div class="bol-matcher-panel">
+        <div class="bol-matcher-head">
+          <div>
+            <span class="bol-eyebrow" style="margin-bottom:6px;">Guided Matcher</span>
+            <h3>Where should you begin?</h3>
+            <p>Select what applies to instantly filter the directory below.</p>
+          </div>
+          <button class="bol-reset" onclick="resetAllFilters()">Reset all</button>
+        </div>
+
+        <div class="bol-matcher-block">
+          <label class="bol-matcher-label">1. Where do you encounter depth or the sacred most naturally?</label>
+          <div class="bol-matcher-grid" id="matcher-encounter-buttons">
+            <button class="bol-chip" onclick="toggleMatcherEncounter('Nature and the outdoors', this)">Nature &amp; outdoors</button>
+            <button class="bol-chip" onclick="toggleMatcherEncounter('Silence and stillness', this)">Silence &amp; stillness</button>
+            <button class="bol-chip" onclick="toggleMatcherEncounter('Music and the arts', this)">Music &amp; the arts</button>
+            <button class="bol-chip" onclick="toggleMatcherEncounter('Poetry and writing', this)">Poetry &amp; writing</button>
+            <button class="bol-chip" onclick="toggleMatcherEncounter('Embodied practice / movement', this)">Embodied movement</button>
+          </div>
+        </div>
+
+        <div class="bol-matcher-block">
+          <label class="bol-matcher-label">2. What season or question are you carrying right now?</label>
+          <div class="bol-matcher-grid" id="matcher-season-buttons">
+            <button class="bol-chip bol-chip-season" onclick="toggleMatcherSeason('Life transitions', this)"><div class="t">Life transitions</div><div class="d">Navigating career, retirement, relocation, or identity shifts</div></button>
+            <button class="bol-chip bol-chip-season" onclick="toggleMatcherSeason('Burnout and vocational renewal', this)"><div class="t">Burnout &amp; renewal</div><div class="d">Depleted caregivers, leaders, and activists seeking grounding</div></button>
+            <button class="bol-chip bol-chip-season" onclick="toggleMatcherSeason('Discernment and big decisions', this)"><div class="t">Discernment</div><div class="d">Listening for clarity at major crossroads</div></button>
+            <button class="bol-chip bol-chip-season" onclick="toggleMatcherSeason('Grief and loss', this)"><div class="t">Grief &amp; loss</div><div class="d">Gentle companionship through mourning</div></button>
+            <button class="bol-chip bol-chip-season" onclick="toggleMatcherSeason('Deconstruction / questioning faith', this)"><div class="t">Doubt &amp; deconstruction</div><div class="d">Safe space to question unhelpful religious dogma</div></button>
+          </div>
+        </div>
+
+        <div class="bol-matcher-actions">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="font-size:13px;font-weight:600;color:var(--bol-ink-soft);">Format:</span>
+            <div class="bol-fmt-toggle">
+              <button id="fmt-any" class="active" onclick="setFormatFilter('any')">Any</button>
+              <button id="fmt-inperson" onclick="setFormatFilter('in-person')">In-Person</button>
+              <button id="fmt-virtual" onclick="setFormatFilter('virtual')">Online</button>
+            </div>
+          </div>
+          <a href="#directory-section" class="bol-btn">View filtered directors &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bol-directory" id="directory-section">
+    <div class="bol-search-bar">
+      <div class="bol-search-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="search-input" placeholder="Search directors by name, keyword, or background..." oninput="handleSearchChange(this.value)">
+      </div>
+      <select id="faith-select" onchange="handleFaithChange(this.value)">
+        <option value="">All Faith Traditions</option>
+        <option value="Christian / Protestant">Christian / Protestant</option>
+        <option value="Catholic & Ignatian">Catholic &amp; Ignatian</option>
+        <option value="Interfaith / Interspiritual">Interfaith / Interspiritual</option>
+        <option value="Contemplative / Mystical">Contemplative / Mystical</option>
+        <option value="Spiritual but not religious">Spiritual but not religious</option>
+      </select>
+      <span class="bol-results-count">Showing <span id="results-count">14</span> Directors</span>
+    </div>
+
+    <div id="directors-grid"></div>
+
+    <div id="empty-state">
+      <h3>No directors match all selected criteria.</h3>
+      <p>Try clearing some filter tags or adjusting your search term.</p>
+      <button class="bol-btn" onclick="resetAllFilters()">Reset all filters</button>
+    </div>
+  </section>
+
+  <section class="bol-faq" id="faq-section">
+    <div class="bol-faq-inner">
+      <div class="bol-faq-head">
+        <span class="bol-eyebrow">Frequently Asked</span>
+        <h2>Understanding spiritual direction</h2>
+      </div>
+      <details class="bol-faq-item">
+        <summary><span>How is spiritual direction different from therapy or coaching?</span><span class="bol-chev">&darr;</span></summary>
+        <p>Therapy often focuses on psychological wound healing and symptom relief. Coaching focuses on goal attainment. Spiritual direction is contemplative companionship: sitting together to listen for the deeper movements of your soul and the sacred in everyday life, without an agenda to fix or judge you.</p>
+      </details>
+      <details class="bol-faq-item">
+        <summary><span>Do I need to be religious or Christian?</span><span class="bol-chev">&darr;</span></summary>
+        <p>No. Bread of Life is not a church. Our directors accompany people of all faith backgrounds — Catholic, Protestant, Jewish, Buddhist-informed, interspiritual — as well as those who are spiritual but not religious, agnostic, or in the midst of questioning religious dogma.</p>
+      </details>
+      <details class="bol-faq-item">
+        <summary><span>How often do sessions take place, and what are the fees?</span><span class="bol-chev">&darr;</span></summary>
+        <p>Directees typically meet with their director once a month for 50–60 minutes. Directors operate on a sliding scale, typically $60 to $120 per session, and cost is never meant to be a barrier.</p>
+      </details>
+    </div>
+  </section>
+
+</div><!-- /#site-content -->
+
+<article id="director-page" class="bol-hidden">
+  <div class="bol-dp-topbar">
+    <div class="bol-shell">
+      <button class="bol-dp-back" onclick="backToDirectory()">&larr; Back to Directory</button>
+    </div>
+  </div>
+  <div class="bol-dp-content" id="director-page-content"></div>
+</article>
+
+<div id="intake-modal" class="bol-modal-scrim">
+  <div class="bol-modal">
+    <button class="bol-modal-close" onclick="closeIntakeModal()">&times;</button>
+    <span class="bol-eyebrow" style="margin-bottom:4px;">Spiritual Direction Intake</span>
+    <h3 id="intake-title">Begin your journey</h3>
+    <p id="intake-desc">Share a little about yourself, and our coordinator will help pair you with a compatible director.</p>
+    <form onsubmit="handleIntakeSubmit(event)">
+      <div class="bol-field"><label>Full Name</label><input required type="text"></div>
+      <div class="bol-field"><label>Email Address</label><input required type="email"></div>
+      <div class="bol-field">
+        <label>Preferred Meeting Format</label>
+        <select><option>Online (Video / Phone)</option><option>In-Person (Sacramento / Davis / Auburn)</option><option>No Preference</option></select>
+      </div>
+      <div class="bol-field"><label>What prompts you to seek spiritual direction at this time?</label><textarea rows="3"></textarea></div>
+      <button type="submit" class="bol-btn">Submit Intake Request</button>
+    </form>
+  </div>
+</div>
+
+<footer class="bol-footer" id="footer">
+  <div class="bol-shell">
+    <div class="bol-footer-grid">
+      <div>
+        <div class="bol-footer-mark">
+          <img src="https://images.squarespace-cdn.com/content/6a662e2b61e351419c14bc1c/da841121-67d7-4217-aa37-7107060eef73/bread+of+life+logo.png?content-type=image%2Fpng" alt="Bread of Life">
+        </div>
+        <p class="bol-footer-mission">An interfaith contemplative community in the Sacramento area, here so that people living with real questions do not have to sit with them alone.</p>
+        <div class="bol-signup">
+          <label for="bolEmail">Subscribe to our newsletter for workshop dates and occasional notes on practice.</label>
+          <div class="bol-signup-row">
+            <input id="bolEmail" type="email" placeholder="Email address" autocomplete="email">
+            <button type="button" id="bolSignupBtn">Subscribe</button>
+          </div>
+          <p class="bol-signup-note" id="bolSignupNote" aria-live="polite"></p>
+        </div>
+      </div>
+      <div>
+        <h4>Contact Bread of Life</h4>
+        <div class="bol-footer-cinfo">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h3.2l1.3 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.3V17a2 2 0 0 1-2.2 2A15 15 0 0 1 3 5.2 2 2 0 0 1 5 4Z"/></svg></span>
+          <span><span class="label">Call us</span><a class="value" href="tel:19166481803">(916) 648 1803</a></span>
+        </div>
+        <div class="bol-footer-cinfo">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>
+          <span><span class="label">Visit our location</span><span class="value">Bread of Life Center<br>1260 Fulton Avenue, Suite A<br>Sacramento, CA 95825, USA</span></span>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="index.html#guide">About</a></li>
+          <li><a href="index.html#offer">Programs and Groups</a></li>
+          <li><a class="bol-footer-highlight" href="#">Spiritual Direction</a></li>
+          <li><a href="index.html#offer">Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="index.html#upcoming">Workshops</a></li>
+          <li><a href="index.html#quote-1">Our Stories</a></li>
+          <li><a href="index.html#footer">Contact</a></li>
+          <li><a href="#">Donate</a></li>
+          <li><a href="#">The Vault</a></li>
+          <li><a href="#">Registration Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bol-colophon">
+      <span>&copy; Bread of Life. A 501(c)(3) nonprofit. &middot; <a href="#">Privacy</a></span>
+      <div class="bol-footer-social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 9.5H15.5V6.5H13.2C11.1 6.5 9.7 7.9 9.7 10V12H7.5V15H9.7V21H12.7V15H14.8L15.2 12H12.7V10.3C12.7 9.8 12.9 9.5 13.5 9.5Z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="7" cy="7.2" r="1.7"/><rect x="5.4" y="10.4" width="3.2" height="8.2"/><path d="M11.2 10.4H14.3V11.8C14.9 10.8 16 10.1 17.4 10.1C20 10.1 21 11.9 21 14.5V18.6H17.8V15C17.8 14 17.5 13.2 16.4 13.2C15.4 13.2 14.9 13.9 14.9 15V18.6H11.2V10.4Z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var mast=document.getElementById("bolMasthead"), toggle=document.getElementById("bolNavToggle");
+  toggle.addEventListener("click",function(){
+    var open=mast.classList.toggle("bol-open");
+    toggle.setAttribute("aria-expanded",open?"true":"false");
+    toggle.setAttribute("aria-label",open?"Close menu":"Open menu");
+  });
+  mast.querySelectorAll(".bol-nav a, .bol-actions a").forEach(function(a){
+    a.addEventListener("click",function(){
+      mast.classList.remove("bol-open");
+      toggle.setAttribute("aria-expanded","false");
+      toggle.setAttribute("aria-label","Open menu");
+    });
+  });
+  var btn=document.getElementById("bolSignupBtn"),input=document.getElementById("bolEmail"),note=document.getElementById("bolSignupNote");
+  btn.addEventListener("click",function(){
+    var v=input.value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ note.textContent="Enter an email address so we can send you the dates."; input.focus(); return; }
+    note.textContent="You are on the list. Check your inbox to confirm."; input.value="";
+  });
+})();
+</script>
+
+<script>
+const DIRECTORS = [
+  { id:'erin-matteson', name:'Erin Matteson', pronouns:'she/her', roles:['Director of Spiritual Formation','Spiritual Director','Retreat Leader','Musician'], experienceYears:18, inPerson:false, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/d3928e04-bb95-43e3-a72b-2b67ae405e95/Erin2-Photo.jpeg?format=1500w', quote:'Spiritual direction invites you into relationship whether you attend a church, mosque, synagogue, temple, or none of these.', faithTradition:'Interfaith / Interspiritual', faithCategories:['Interfaith / Interspiritual','Christian / Protestant'], companionshipAreas:['Life transitions','Grief and loss','Burnout and vocational renewal','Deconstruction / questioning faith'], encounterWays:['Music and the arts','Nature and the outdoors','Silence and stillness','Poetry and writing'], bio:'Erin has a passion for creating safe space for deep listening and compassionate companionship for the growing and deepening of each soul. She loves making music and spending time in nature.' },
+  { id:'eun-joo-lech', name:'Eun Joo Lech', pronouns:'she/her', roles:['Spiritual Director','Facilitator'], experienceYears:7, inPerson:true, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/0e0a14a3-b9dc-4dc2-a6e2-b65e53ec3b8e/image0%281%29.jpg?format=1500w', quote:'Approach critical times of change as sacred invitations for opening your schedule, mind, and heart.', faithTradition:'Christian / Protestant', faithCategories:['Christian / Protestant','Interfaith / Interspiritual'], companionshipAreas:['Life transitions','Discernment and big decisions','Cultural / cross-cultural identity','Parenting & family dynamics'], encounterWays:['Nature and the outdoors','Silence and stillness','Embodied practice / movement'], bio:'Eun finds deep joy in sitting with those in transitional seasons, empty nesters, and mid-lifers. She has a B.A. in Ethnic Studies and is an avid gardener.' },
+  { id:'jane-rabin', name:'Jane Rabin', pronouns:'she/her', roles:['Spiritual Director','Artist'], experienceYears:12, inPerson:false, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1603818174677-XDKN17FFRVMJV1WXHVSY/Jane%2BRabin.jpg?format=1500w', quote:'All journeys have a secret destination of which the traveler is unaware.', faithTradition:'Jewish & Contemplative', faithCategories:['Contemplative / Mystical','Interfaith / Interspiritual'], companionshipAreas:['Life transitions','Creativity and the inner critic','Aging and elderhood','Grief and loss'], encounterWays:['Music and the arts','Nature and the outdoors','Poetry and writing'], bio:'Jane probes beneath articulated words to discover and unlock deeper meanings. She was trained at Bread of Life and loves hiking and art.' },
+  { id:'jeff-mitchell', name:'Jeff Mitchell', pronouns:'he/him', roles:['Spiritual Director','Contemplative Retreat Leader'], experienceYears:15, inPerson:true, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1546019883518-1M0KR1UU4X5YZDSM0G94/Jeff+Mitchell.jpg?format=1500w', quote:'The fullness of joy is to behold God in everything.', faithTradition:'Contemplative Christian', faithCategories:['Christian / Protestant','Contemplative / Mystical'], companionshipAreas:['Contemplative prayer & Centering Prayer','Vocational discernment','Men’s spirituality','Spiritual crisis / dark night'], encounterWays:['Silence and stillness','Sacred texts / scripture','Nature and the outdoors'], bio:'Jeff is a presenter for Centering Prayer workshops for Contemplative Outreach, Ltd, and leads retreats in spiritual formation.' },
+  { id:'marilyn-bueler', name:'Marilyn Bueler', pronouns:'she/her', roles:['Spiritual Director','Enneagram Practitioner','Educator'], experienceYears:14, inPerson:true, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1546018987637-LTF0RZEXJFLUAUG62HI6/Marilyn+Bueler.png?format=1500w', quote:'Each human personality is like a piece of music, having an individual tone and a rhythm of its own.', faithTradition:'Franciscan & Interfaith', faithCategories:['Catholic & Ignatian','Interfaith / Interspiritual'], companionshipAreas:['Enneagram exploration','Academic & intellectual spirituality','Aging and elderhood','Life transitions'], encounterWays:['Poetry and writing','Nature and the outdoors','Silence and stillness'], bio:'Marilyn is certified by the Franciscan Spiritual Center and views personality through the Enneagram to help transform how we respond to life.' },
+  { id:'sandi-john', name:'Sandi John', pronouns:'she/her', roles:['Spiritual Director','Psychotherapist','Former Pastor'], experienceYears:20, inPerson:false, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/9a05a993-9ba7-44e1-883e-2cac27fb0865/Sandi+John.JPG?format=1500w', quote:'Be faithful to small things because it is in them that your strength lies.', faithTradition:'Contemplative / Progressive Christian', faithCategories:['Christian / Protestant','Contemplative / Mystical'], companionshipAreas:['Trauma & embodied healing','Social justice & activism','12-Step & recovery spirituality','Grief and loss'], encounterWays:['Embodied practice / movement','Nature and the outdoors','Silence and stillness'], bio:'Having served as pastor and hospice chaplain, Sandi lives at the crossroads of contemplation and social justice.' },
+  { id:'susan-cosio', name:'Susan Cosio', pronouns:'she/her', roles:['Spiritual Director','Chaplain','Author'], experienceYears:11, inPerson:true, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/3ceee21a-b7e6-49b4-8311-bebcf20fb4f1/Susan+Cosio.jpg?format=1500w', quote:'Creating space to discern the quiet prompts of the Spirit in everyday life.', faithTradition:'Christian / Ecumenical', faithCategories:['Christian / Protestant','Contemplative / Mystical'], companionshipAreas:['Vocational discernment','Healthcare & caregiver burnout','Grief and loss','Writing as spiritual practice'], encounterWays:['Poetry and writing','Silence and stillness','Sacred texts / scripture'], bio:'Susan is a Fuller Seminary graduate trained at the Journey Center. She meets directees in Sacramento, Auburn, Davis, or online.' },
+  { id:'tom-morgan', name:'Tom Morgan', pronouns:'he/him', roles:['Spiritual Director','Supervisor','Faculty'], experienceYears:19, inPerson:true, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/5a814014-709a-481e-989b-e47dd6bde059/Tom+Morgan+new+2022.jpg?format=1500w', quote:'Healthy growth is less about learning new truths than about discovering what we already know.', faithTradition:'Christian & Contemplative', faithCategories:['Christian / Protestant','Contemplative / Mystical'], companionshipAreas:['Supervision for spiritual directors','Men’s spirituality','Burnout and vocational renewal','Life transitions'], encounterWays:['Silence and stillness','Nature and the outdoors','Sacred texts / scripture'], bio:'Tom received training through Christian Formation & Direction Ministries in LA and serves as a supervisor and mentor.' },
+  { id:'wyn-cane', name:'Wyn Cane', pronouns:'she/her', roles:['Spiritual Director','Nature Contemplative'], experienceYears:16, inPerson:true, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1546019126712-CWGK9C9TPDQ4KFCFH90Q/Wyn+Cane.png?format=1500w', quote:'Nature and silence teach us to listen to the quiet spark within.', faithTradition:'Interspiritual & Nature Mysticism', faithCategories:['Interfaith / Interspiritual','Spiritual but not religious','Contemplative / Mystical'], companionshipAreas:['Eco-spirituality & earth connection','Aging and elderhood','Dreams and symbolic inner work','Life transitions'], encounterWays:['Nature and the outdoors','Silence and stillness','Embodied practice / movement'], bio:'Wyn believes there is a divine spark at the heart of human existence and companions seekers in nature and silence.' },
+  { id:'lindsay-demary', name:'Lindsay Demary', pronouns:'she/her', roles:['Spiritual Director','Soul Care Specialist'], experienceYears:6, inPerson:false, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1630260a-42c4-4bf8-a2b4-0f426cc914ab/Lindsay+Demary.JPG?format=1500w', quote:'Creating open space for honest dialogue about your narrative and creative temperament.', faithTradition:'Christian / Formational', faithCategories:['Christian / Protestant','Contemplative / Mystical'], companionshipAreas:['Young adulthood & quarter-life','Attachment theory & inner child','Foster care / adoption journey','Deconstruction / questioning faith'], encounterWays:['Music and the arts','Poetry and writing','Embodied practice / movement'], bio:'Lindsay holds a Masters in Spiritual Formation & Soul Care from the Institute for Spiritual Formation.' },
+  { id:'darlene-carlson', name:'Darlene Carlson', pronouns:'she/her', roles:['Spiritual Director','Educator'], experienceYears:15, inPerson:true, virtual:true, acceptingNew:false, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1763150609613-IIOU8MJT3RHBQ631VUQH/darlene-carlson-portrait.webp?format=1500w', quote:'You move toward what you pay attention to.', faithTradition:'Catholic & Ignatian', faithCategories:['Catholic & Ignatian','Contemplative / Mystical'], companionshipAreas:['Ignatian spirituality & discernment','Women’s faith formation','Prayer rhythm development','Grief and loss'], encounterWays:['Silence and stillness','Sacred texts / scripture','Nature and the outdoors'], bio:'Darlene has led faith sharing groups for over 15 years with deep background as a catechist.' },
+  { id:'carol-abbott', name:'Carol Abbott', pronouns:'she/her', roles:['Spiritual Director','Faculty Member'], experienceYears:22, inPerson:true, virtual:true, acceptingNew:false, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/7d95317b-3e2a-4eaf-bbbc-042894d73326/Carol+Abbott+2023.jpg?format=1500w', quote:'We don’t see things as they are, we see them as we are.', faithTradition:'Ecumenical & Contemplative', faithCategories:['Christian / Protestant','Interfaith / Interspiritual'], companionshipAreas:['Group spiritual direction','Listen to Your Life processes','Spiritual leadership','Discernment and big decisions'], encounterWays:['Poetry and writing','Silence and stillness','Music and the arts'], bio:'Carol facilitates spiritual direction groups and has been long-time faculty for Listen to Your Life at Bread of Life.' },
+  { id:'sandra-lommasson', name:'Sandra Lommasson', pronouns:'she/her', roles:['Founding Director','Supervisor','Author'], experienceYears:30, inPerson:true, virtual:true, acceptingNew:false, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1623280650845-U8W4QZKFXGUHWSPF8TB3/Sandra+%28002%29.jpg?format=1500w', quote:'If you could understand a single grain of wheat, you would die for wonder.', faithTradition:'Contemplative & Mystical', faithCategories:['Contemplative / Mystical','Interfaith / Interspiritual','Christian / Protestant'], companionshipAreas:['Supervision & formation of directors','SDI International leadership','Deep mystical tradition','Spiritual crisis / dark night'], encounterWays:['Silence and stillness','Nature and the outdoors','Poetry and writing'], bio:'Sandra is a retreat leader and mentor who served on the Council of Spiritual Directors International (1999–2005).' },
+  { id:'lucie-geller', name:'Lucie Geller', pronouns:'she/her', roles:['Spiritual Director','Retreat Facilitator'], experienceYears:8, inPerson:true, virtual:true, acceptingNew:true, photoUrl:'https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/e21dcc9b-22e0-41db-a4df-21c93a68f067/image.jpeg?format=1500w', quote:'You are enough. You have nothing to prove to anybody.', faithTradition:'Interfaith & Guided Meditation', faithCategories:['Interfaith / Interspiritual','Spiritual but not religious','Contemplative / Mystical'], companionshipAreas:['Guided meditation & small groups','Storytelling as sacred practice','Deconstruction / questioning faith','Creativity and the inner critic'], encounterWays:['Music and the arts','Silence and stillness','Poetry and writing'], bio:'Lucie offers guided meditation and storytelling in small groups and was formed as a Director through Bread of Life.' }
+];
+
+let currentSearch='', currentFaith='', currentFormat='any', selectedEncounters=[], selectedSeasons=[];
+
+document.addEventListener('DOMContentLoaded', ()=>{ renderDirectors(); });
+
+function renderDirectors(){
+  const grid=document.getElementById('directors-grid'), empty=document.getElementById('empty-state'), countEl=document.getElementById('results-count');
+  const filtered = DIRECTORS.filter(d=>{
+    if(currentSearch){
+      const q=currentSearch.toLowerCase();
+      if(!d.name.toLowerCase().includes(q) && !d.bio.toLowerCase().includes(q) && !d.faithTradition.toLowerCase().includes(q)) return false;
+    }
+    if(currentFaith && !d.faithCategories.includes(currentFaith)) return false;
+    if(currentFormat==='in-person' && !d.inPerson) return false;
+    if(currentFormat==='virtual' && !d.virtual) return false;
+    if(selectedEncounters.length>0 && !selectedEncounters.some(e=>d.encounterWays.includes(e))) return false;
+    if(selectedSeasons.length>0 && !selectedSeasons.some(s=>d.companionshipAreas.includes(s))) return false;
+    return true;
+  });
+  countEl.innerText=filtered.length;
+  if(filtered.length===0){ grid.innerHTML=''; empty.classList.add('show'); return; }
+  empty.classList.remove('show');
+  grid.innerHTML = filtered.map(d=>`
+    <div class="bol-dir-card">
+      <div>
+        <div class="bol-dir-card-top">
+          <img src="${d.photoUrl}" alt="${d.name}" referrerpolicy="no-referrer">
+          <div>
+            <span class="bol-dir-faith">${d.faithTradition}</span>
+            <h3>${d.name}</h3>
+            <span class="bol-dir-meta">${d.pronouns} &middot; ${d.experienceYears} yrs experience</span>
+            <div class="bol-dir-tags">
+              ${d.inPerson?'<span class="bol-tag bol-tag-inperson">In-Person</span>':''}
+              ${d.virtual?'<span class="bol-tag bol-tag-online">Online</span>':''}
+              ${!d.acceptingNew?'<span class="bol-tag bol-tag-wait">Waitlist</span>':''}
+            </div>
+          </div>
+        </div>
+        <p class="bol-dir-bio">${d.bio}</p>
+        <blockquote class="bol-dir-quote">"${d.quote}"</blockquote>
+      </div>
+      <div class="bol-dir-card-foot">
+        <button class="bol-textlink" style="border:none;background:none;font-size:12.5px;cursor:pointer;padding:0;" onclick="showDirectorPage('${d.id}')">Read full bio <span class="bol-arrow">&rarr;</span></button>
+        <button class="bol-btn bol-btn-outline" onclick="openIntakeModal('${d.name}')">Connect</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function handleSearchChange(v){ currentSearch=v; renderDirectors(); }
+function handleFaithChange(v){ currentFaith=v; renderDirectors(); }
+
+function setFormatFilter(fmt){
+  currentFormat=fmt;
+  ['any','inperson','virtual'].forEach(k=>{});
+  document.getElementById('fmt-any').className = fmt==='any' ? 'active' : '';
+  document.getElementById('fmt-inperson').className = fmt==='in-person' ? 'active' : '';
+  document.getElementById('fmt-virtual').className = fmt==='virtual' ? 'active' : '';
+  renderDirectors();
+}
+
+function toggleMatcherEncounter(val, btn){
+  if(selectedEncounters.includes(val)){ selectedEncounters=selectedEncounters.filter(x=>x!==val); btn.classList.remove('active'); }
+  else{ selectedEncounters.push(val); btn.classList.add('active'); }
+  renderDirectors();
+}
+function toggleMatcherSeason(val, btn){
+  if(selectedSeasons.includes(val)){ selectedSeasons=selectedSeasons.filter(x=>x!==val); btn.classList.remove('active'); }
+  else{ selectedSeasons.push(val); btn.classList.add('active'); }
+  renderDirectors();
+}
+
+function resetAllFilters(){
+  currentSearch=''; currentFaith=''; currentFormat='any'; selectedEncounters=[]; selectedSeasons=[];
+  document.getElementById('search-input').value='';
+  document.getElementById('faith-select').value='';
+  setFormatFilter('any');
+  document.querySelectorAll('.bol-chip').forEach(b=>b.classList.remove('active'));
+  renderDirectors();
+}
+
+function showDirectorPage(id){
+  const d=DIRECTORS.find(x=>x.id===id); if(!d) return;
+  const content=document.getElementById('director-page-content');
+  content.innerHTML=`
+    <span class="bol-eyebrow">${d.faithTradition}</span>
+    <h1>${d.name}</h1>
+    <p class="bol-dp-role">${d.roles.join(' &middot; ')} &middot; ${d.pronouns} &middot; ${d.experienceYears} yrs experience</p>
+    <div class="bol-dp-top">
+      <img src="${d.photoUrl}" alt="${d.name}" referrerpolicy="no-referrer">
+      <div style="flex:1;min-width:240px;">
+        <blockquote class="bol-dp-quote">"${d.quote}"</blockquote>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          ${d.inPerson?'<span class="bol-tag bol-tag-inperson" style="font-size:11px;padding:4px 10px;">In-Person (Sacramento)</span>':''}
+          ${d.virtual?'<span class="bol-tag bol-tag-online" style="font-size:11px;padding:4px 10px;">Online</span>':''}
+          ${!d.acceptingNew?'<span class="bol-tag bol-tag-wait" style="font-size:11px;padding:4px 10px;">Currently a waitlist</span>':''}
+        </div>
+      </div>
+    </div>
+    <div class="bol-dp-body">
+      <p style="font-size:16px;">${d.bio}</p>
+      <div style="margin-top:24px;">
+        <h4>Companionship Focus Areas</h4>
+        <div class="bol-pill-row">${d.companionshipAreas.map(a=>`<span class="bol-pill">${a}</span>`).join('')}</div>
+      </div>
+      <div>
+        <h4>Ways of Encountering the Sacred</h4>
+        <div class="bol-pill-row">${d.encounterWays.map(e=>`<span class="bol-pill bol-pill-accent">${e}</span>`).join('')}</div>
+      </div>
+    </div>
+    <div class="bol-dp-foot">
+      <button class="bol-dp-back" onclick="backToDirectory()">&larr; Back to Directory</button>
+      <button class="bol-btn" onclick="openIntakeModal('${d.name}')">Request consultation with ${d.name.split(' ')[0]}</button>
+    </div>
+  `;
+  document.getElementById('site-content').classList.add('bol-hidden');
+  document.getElementById('director-page').classList.remove('bol-hidden');
+  window.scrollTo({top:0,behavior:'instant'});
+  try{ history.pushState({director:id},'','#director/'+id); }catch(e){}
+}
+
+function backToDirectory(){
+  document.getElementById('director-page').classList.add('bol-hidden');
+  document.getElementById('site-content').classList.remove('bol-hidden');
+  window.scrollTo({top:0,behavior:'instant'});
+  try{ history.pushState({},'',window.location.pathname+window.location.search); }catch(e){}
+}
+
+window.addEventListener('popstate',(e)=>{
+  if(e.state && e.state.director){ showDirectorPage(e.state.director); }
+  else{ document.getElementById('director-page').classList.add('bol-hidden'); document.getElementById('site-content').classList.remove('bol-hidden'); }
+});
+
+(function checkInitialHash(){
+  const match=window.location.hash.match(/^#director\/(.+)$/);
+  if(match){ document.addEventListener('DOMContentLoaded', ()=>showDirectorPage(match[1])); }
+})();
+
+function openIntakeModal(directorName){
+  const title=document.getElementById('intake-title'), desc=document.getElementById('intake-desc');
+  if(directorName){ title.innerText=`Connect with ${directorName}`; desc.innerText=`Send an inquiry directly to begin an introductory conversation with ${directorName}.`; }
+  else{ title.innerText='Spiritual Direction Matching Intake'; desc.innerText='Share a little about yourself, and our coordinator will help pair you with a compatible director.'; }
+  document.getElementById('intake-modal').classList.add('show');
+}
+function closeIntakeModal(){ document.getElementById('intake-modal').classList.remove('show'); }
+function handleIntakeSubmit(e){ e.preventDefault(); alert('Thank you! Your intake inquiry has been received. A Bread of Life coordinator will contact you shortly.'); closeIntakeModal(); }
+</script>
+
+</body>
+</html>
