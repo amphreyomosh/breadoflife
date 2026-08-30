@@ -2859,8 +2859,7 @@
             }
           }
         </style>
-
-        <div class="wwo-selector__header">
+<div class="wwo-selector__header">
           <h2 class="wwo-selector__title">What we offer</h2>
           <p class="wwo-selector__intro">
             Four ways to practice with us. Two of them are good places to start.
@@ -2954,7 +2953,7 @@
             <img
               class="wwo-selector__image"
               id="wwo-sel-image"
-              src="https://images.unsplash.com/photo-1760367121776-91c24addd769?fm=jpg&q=60&w=3000&auto=format&fit=crop"
+              src="https://pixabay.com/get/gbffcfe2481696fda97e05a75f1be0be1b6af0fecfc9b23739d32a9548b28c73408e6486cac6aa69fe095e5031a7f2641fb3ed69da60cae37119df3eddb50cd5d_1920.jpg"
               alt="Short workshops"
             />
             <p class="wwo-selector__desc" id="wwo-sel-desc">
@@ -2992,6 +2991,20 @@
             }
           }
 
+          function setWwoPanelFromButton(btn) {
+            const nameEl = btn.querySelector(".wwo-selector__item-name");
+            document.getElementById("wwo-sel-image").src =
+              btn.getAttribute("data-image");
+            document.getElementById("wwo-sel-image").alt = nameEl
+              ? nameEl.textContent
+              : "";
+            document.getElementById("wwo-sel-desc").textContent =
+              btn.getAttribute("data-desc");
+            var link = document.getElementById("wwo-sel-link");
+            link.href = btn.getAttribute("data-link");
+            link.textContent = btn.getAttribute("data-link-text");
+          }
+
           document
             .querySelectorAll(".wwo-selector__item")
             .forEach(function (btn) {
@@ -3002,13 +3015,7 @@
                     b.setAttribute("aria-current", "false");
                   });
                 btn.setAttribute("aria-current", "true");
-                document.getElementById("wwo-sel-image").src =
-                  btn.getAttribute("data-image");
-                document.getElementById("wwo-sel-desc").textContent =
-                  btn.getAttribute("data-desc");
-                var link = document.getElementById("wwo-sel-link");
-                link.href = btn.getAttribute("data-link");
-                link.textContent = btn.getAttribute("data-link-text");
+                setWwoPanelFromButton(btn);
                 updateWwoIndicator(false);
               });
             });
@@ -3017,6 +3024,10 @@
             updateWwoIndicator(true);
           });
           window.addEventListener("load", function () {
+            const activeBtn = document.querySelector(
+              ".wwo-selector__item[aria-current='true']",
+            );
+            if (activeBtn) setWwoPanelFromButton(activeBtn);
             updateWwoIndicator(true);
           });
           // Run immediately
