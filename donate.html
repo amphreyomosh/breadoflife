@@ -488,37 +488,214 @@
       margin-top: 10px;
     }
 
-    /* Footer */
-    .bol-footer {
-      background: var(--bol-loam);
-      color: #d8d1c6;
-      padding: 64px 0 36px;
-      border-top: 1px solid #4a433c;
-    }
-    .bol-footer-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1.15fr 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-    @media (max-width: 980px) {
-      .bol-footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 600px) {
-      .bol-footer-grid { grid-template-columns: 1fr; }
-    }
-    .bol-footer h4 {
-      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
-      font-weight: 700; color: #bfb5a5; margin: 0 0 16px;
-      padding-bottom: 8px; border-bottom: 2px solid var(--bol-sage);
-      display: inline-block;
-    }
-    .bol-footer ul { list-style: none; margin: 0; padding: 0; }
-    .bol-footer li { margin-bottom: 10px; font-size: 14.5px; }
-    .colophon {
-      margin-top: 48px; padding-top: 24px; border-top: 1px solid #4a433c;
-      font-size: 12px; color: #9d9488; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-    }
+      /* FOOTER */
+      .bol-footer {
+        background: var(--bol-loam);
+        color: #d8d1c6;
+        padding: clamp(60px, 7vw, 90px) 0 44px;
+      }
+      .bol-footer-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1.15fr 1fr 1fr;
+        gap: clamp(30px, 3.4vw, 52px);
+        align-items: start;
+      }
+      .bol-footer h4 {
+        position: relative;
+        font-family: var(--bol-body);
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #bfb5a5;
+        margin: 0 0 24px;
+        padding-bottom: 14px;
+      }
+      .bol-footer h4::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 26px;
+        height: 2px;
+        background: var(--bol-sage);
+      }
+      .bol-footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .bol-footer li {
+        margin-bottom: 14px;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      .bol-footer-addr {
+        line-height: 1.65;
+        margin-bottom: 20px;
+      }
+      .bol-footer a {
+        color: inherit;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.18s ease;
+      }
+      .bol-footer a:hover {
+        border-color: #d8d1c6;
+      }
+      .bol-footer-highlight {
+        color: var(--bol-accent);
+      }
+      .bol-footer-mark {
+        margin-bottom: 20px;
+        line-height: 0;
+      }
+      .bol-footer-mark img {
+        display: block;
+        width: auto;
+        height: clamp(62px, 6.6vw, 84px);
+        max-width: 330px;
+        object-fit: contain;
+        transform: translateY(-6%);
+      }
+      .bol-footer-mission {
+        font-size: 17px;
+        line-height: 1.65;
+        color: #c3baaa;
+        max-width: 38ch;
+        margin-bottom: 26px;
+      }
+
+      /* contact column — icon + label + value rows */
+      .bol-footer-cinfo {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+      .bol-footer-cinfo .ic {
+        flex: 0 0 auto;
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--bol-sage);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+      .bol-footer-cinfo svg {
+        width: 16px;
+        height: 16px;
+      }
+      .bol-footer-cinfo .label {
+        display: block;
+        font-size: 13px;
+        color: #9d9488;
+        margin-bottom: 4px;
+      }
+      .bol-footer-cinfo .value {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #f3efe6;
+      }
+      a.value:hover {
+        border-color: #d8d1c6;
+      }
+
+      /* brand column — signup pill */
+      .bol-signup label {
+        display: block;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #c3baaa;
+        margin-bottom: 14px;
+        max-width: 34ch;
+      }
+      .bol-signup-row {
+        display: flex;
+        border: 1px solid #4a433c;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .bol-signup input {
+        flex: 1;
+        min-width: 0;
+        background: transparent;
+        border: 0;
+        padding: 15px 22px;
+        color: #f3efe6;
+        font-family: var(--bol-body);
+        font-size: 16px;
+      }
+      .bol-signup input::placeholder {
+        color: #7c7367;
+      }
+      .bol-signup button {
+        background: var(--bol-sage);
+        border: 0;
+        border-radius: 4px;
+        margin: 3px;
+        color: #fff;
+        font-family: var(--bol-body);
+        font-weight: 600;
+        font-size: 15px;
+        padding: 0 24px;
+        cursor: pointer;
+        transition: background 0.18s ease;
+      }
+      .bol-signup button:hover {
+        background: var(--bol-sage-deep);
+      }
+      .bol-signup-note {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #9d9488;
+        margin-top: 14px;
+      }
+
+      /* bottom bar — copyright left, social icons right */
+      .bol-colophon {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-top: clamp(44px, 5vw, 64px);
+        padding-top: 26px;
+        border-top: 1px solid #4a433c;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #bfb5a5;
+      }
+      .bol-colophon a {
+        font-size: inherit;
+        color: inherit;
+      }
+      .bol-footer-social {
+        display: flex;
+        gap: 12px;
+      }
+      .bol-footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(216, 209, 198, 0.14);
+        color: #fff;
+        border-bottom: none;
+        transition: background 0.18s ease, color 0.18s ease;
+      }
+      .bol-footer-social a:hover {
+        background: var(--bol-sage);
+        color: #fff;
+      }
+      .bol-footer-social svg {
+        width: 18px;
+        height: 18px;
+      }
 
     /* Checkout Modal */
     .modal-backdrop {
