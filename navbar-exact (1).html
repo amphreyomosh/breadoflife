@@ -186,6 +186,32 @@
         transition: color 0.18s ease;
       }
 
+      .bol-nav-item { position: relative; }
+      .bol-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 240px;
+        background: #fff;
+        border: 1px solid var(--bol-hairline-soft);
+        box-shadow: 0 12px 30px rgba(42,37,33,0.1);
+        padding: 10px 0;
+        display: none;
+        z-index: 70;
+        border-radius: 4px;
+      }
+      .bol-nav-item:hover .bol-dropdown,
+      .bol-nav-item:focus-within .bol-dropdown { display: block; }
+      .bol-dropdown a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 14px;
+        color: var(--bol-loam);
+        white-space: nowrap;
+        border-bottom: none;
+      }
+      .bol-dropdown a:hover { background: var(--bol-cream); color: var(--bol-sage-deep); }
+
       .bol-nav a::after {
         content: "";
         position: absolute;
@@ -519,17 +545,45 @@
         <!-- Menu Container (3/4 drawer on tablet, Pop fullscreen on mobile) -->
         <div class="bol-menu-wrapper" id="bolMenuWrapper">
           <nav class="bol-nav" aria-label="Primary Navigation">
-            <a href="#top">Home</a>
-            <a href="#about">About</a>
-            <a href="#programs">Programs</a>
-            <a href="#spiritual-direction">Spiritual Direction</a>
-            <a href="#community">Community</a>
-            <a href="#contact">Contact</a>
+            <a href="index.html">Home</a>
+            <div class="bol-nav-item">
+              <a href="about.html">About</a>
+              <div class="bol-dropdown">
+                <a href="our-vision.html">Our Vision</a>
+                <a href="#">Our Equity Statement</a>
+                <a href="our-leadership.html">Our Leadership</a>
+                <a href="#">Work at Bread of Life</a>
+                <a href="#">Our Donors</a>
+                <a href="#">Our Stories</a>
+                <a href="#">Podcast</a>
+              </div>
+            </div>
+            <div class="bol-nav-item">
+              <a href="index.html#programs">Programs</a>
+              <div class="bol-dropdown">
+                <a href="#">Listen to Your Life</a>
+                <a href="#">Internship in the Art of Spiritual Direction</a>
+                <a href="#">Group Spiritual Direction</a>
+                <a href="spiritual-direction.html">Spiritual Direction</a>
+                <a href="#">Online Courses</a>
+              </div>
+            </div>
+            <a href="spiritual_direction.html">Spiritual Direction</a>
+            <div class="bol-nav-item">
+              <a href="index.html#community">Community</a>
+              <div class="bol-dropdown">
+                <a href="#">A Community of Practice</a>
+                <a href="#">An Invitation</a>
+                <a href="#">Vision Statement</a>
+                <a href="#">Our Agreements</a>
+              </div>
+            </div>
+            <a href="contact.html">Contact</a>
           </nav>
 
           <div class="bol-actions">
-            <a class="bol-btn bol-btn-ghost" href="#donate">Donate</a>
-            <a class="bol-btn" href="#spiritual-direction">Find a Spiritual Director</a>
+            <a class="bol-btn bol-btn-ghost" href="donate.html">Donate</a>
+            <a class="bol-btn" href="spiritual_direction.html">Find a Spiritual Director</a>
           </div>
         </div>
 

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Leadership | Bread of Life (Modern Minimalist)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bol-cream: #FAF7F0;
+      --bol-loam: #2a2521;
+      --bol-sage: #3E5A38;
+      --bol-sage-deep: #30452B;
+      --bol-forest-night: #243520;
+      --bol-accent: #B8935A;
+      --bol-accent-ink: #8A6726;
+      --bol-hairline: #dcd4c4;
+      --bol-display: "Fraunces", Georgia, serif;
+      --bol-body: "Karla", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--bol-body);
+      margin: 0;
+      background: var(--bol-cream);
+      color: var(--bol-loam);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Minimal Masthead */
+    .bol-header {
+      background: #FAF7F0;
+      border-bottom: 1px solid var(--bol-hairline);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+    }
+    .bol-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bol-header-logo img {
+      height: 46px;
+      display: block;
+    }
+    .bol-header-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .bol-header-nav a:hover { color: var(--bol-sage); }
+    .bol-btn-sage {
+      background: var(--bol-sage);
+      color: #fff !important;
+      padding: 9px 18px;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+    .bol-btn-sage:hover { background: var(--bol-sage-deep); }
+
+    /* Site masthead and button styles (copied from index.html for parity) */
+    .bol-shell { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,5vw,72px); }
+    .bol-btn {
+      display: inline-block;
+      font-family: var(--bol-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 15px 30px;
+      text-decoration: none;
+      border: 1px solid var(--bol-sage);
+      border-radius: 4px;
+      background: var(--bol-sage);
+      color: #fff;
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
+    .bol-btn:hover { background: var(--bol-sage-deep); border-color: var(--bol-sage-deep); }
+    .bol-btn-ghost {
+      background: transparent;
+      color: var(--bol-sage);
+      border: 1px solid var(--bol-hairline);
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: inline-block;
+      font-size: 13px;
+      line-height: 1;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    }
+    .bol-btn-ghost:hover { background: var(--bol-sage); color: #fff; border-color: var(--bol-sage); }
+
+    .bol-textlink { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; font-weight: 600; font-size: 15px; color: var(--bol-sage); border-bottom: 1px solid transparent; padding-bottom: 2px; transition: border-color 0.18s ease; }
+
+    .bol-masthead {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(250,247,240,0.97);
+      border-bottom: 1px solid var(--bol-hairline);
+      backdrop-filter: blur(8px);
+    }
+    .bol-masthead-inner { display:flex; align-items:center; justify-content:space-between; gap:clamp(18px,2.2vw,30px); min-height:92px; }
+    .bol-wordmark { display:block; flex:0 0 auto; line-height:0; }
+    .bol-wordmark img { display:block; width:auto; height:clamp(44px,4.4vw,58px); max-width:min(50vw,300px); object-fit:contain; transform: translateY(-9%); }
+    .bol-menu { display: contents; }
+    .bol-nav { display:flex; gap:clamp(18px,1.9vw,26px); align-items:center; flex-wrap:nowrap; flex:0 1 auto; min-width:0; }
+    .bol-nav a { text-decoration:none; color:inherit; font-size:15px; font-weight:500; white-space:nowrap; border-bottom:1px solid transparent; padding-bottom:3px; transition: border-color 0.18s ease; }
+    .bol-nav a:hover { border-color: var(--bol-loam); }
+    .bol-actions { display:flex; align-items:center; gap:clamp(8px,0.9vw,10px); flex:0 0 auto; }
+    .bol-masthead .bol-btn { padding: 11px clamp(14px,1.5vw,20px); font-size: clamp(13px,1vw,14px); white-space: nowrap; }
+    .bol-masthead .bol-btn-ghost { border-color: var(--bol-hairline); color: var(--bol-sage); }
+    .bol-masthead .bol-btn-ghost:hover { background: var(--bol-sage); border-color: var(--bol-sage); color: #fff; }
+    .bol-navtoggle { display:none; background:none; border:1px solid var(--bol-hairline); border-radius:4px; cursor:pointer; width:48px; height:48px; padding:0; place-items:center; color:var(--bol-loam); transition: border-color 0.18s ease, background 0.18s ease; }
+    .bol-navtoggle:hover { border-color: var(--bol-sage); background: #fff; }
+    .bol-burger { display:block; position:relative; width:22px; height:14px; }
+    .bol-burger i { position:absolute; left:0; right:0; height:1.5px; background: currentColor; transition: transform 0.22s cubic-bezier(0.3,0.7,0.2,1), opacity 0.14s ease; }
+    .bol-burger i:nth-child(1){ top:0; }
+    .bol-burger i:nth-child(2){ top:6.25px; }
+    .bol-burger i:nth-child(3){ top:12.5px; }
+    .bol-masthead.bol-open .bol-navtoggle { border-color: var(--bol-sage); background: var(--bol-sage); color: #fff; }
+    .bol-masthead.bol-open .bol-burger i:nth-child(1){ transform: translateY(6.25px) rotate(45deg); }
+    .bol-masthead.bol-open .bol-burger i:nth-child(2){ opacity: 0; }
+    .bol-masthead.bol-open .bol-burger i:nth-child(3){ transform: translateY(-6.25px) rotate(-45deg); }
+
+    .hero-green {
+      position: relative;
+      background: linear-gradient(135deg, var(--bol-forest-night) 0%, var(--bol-sage-deep) 60%, var(--bol-sage) 100%);
+      color: #f3efe6;
+      padding: clamp(70px, 9vw, 120px) 24px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg-image {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.28;
+      mix-blend-mode: luminosity;
+      pointer-events: none;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(circle at center, rgba(62,90,56,0.3) 0%, rgba(36,53,32,0.85) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(184,147,90,0.4);
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #f3efe6;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--bol-display);
+      font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+      line-height: 1.05;
+      font-weight: 300;
+      margin: 0 0 20px;
+      color: #ffffff;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--bol-accent);
+      font-weight: 400;
+    }
+    .hero-sub {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.65;
+      color: rgba(243,239,230,0.92);
+      max-width: 58ch;
+      margin: 0 auto 28px;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      font-size: 12.5px;
+      color: #d8d1c6;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 18px;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .shell {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .pullquote {
+      text-align: center;
+      margin: 20px auto 60px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--bol-hairline);
+    }
+    .pullquote blockquote {
+      font-family: var(--bol-display);
+      font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+      line-height: 1.45;
+      color: var(--bol-sage-deep);
+      font-style: italic;
+      margin: 0 auto;
+      max-width: 38ch;
+    }
+
+    .sec-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--bol-hairline);
+      padding-bottom: 10px;
+      margin: 50px 0 30px;
+    }
+    .sec-header h2 {
+      font-family: var(--bol-display);
+      font-size: 1.8rem;
+      color: var(--bol-sage-deep);
+      margin: 0;
+      font-weight: 400;
+    }
+    .sec-header span {
+      font-size: 12px;
+      color: var(--bol-accent-ink);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .staff-row {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      padding: 30px 0;
+      border-bottom: 1px solid rgba(220,212,196,0.6);
+    }
+    .staff-row:last-child { border-bottom: none; }
+    .staff-num {
+      font-family: var(--bol-display);
+      font-size: 1.6rem;
+      color: var(--bol-accent);
+      font-weight: 300;
+      width: 36px;
+      flex-shrink: 0;
+    }
+    .staff-img {
+      width: 88px;
+      height: 88px;
+      border-radius: 12px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--bol-hairline);
+    }
+    .staff-info { flex: 1; }
+    .staff-name {
+      font-family: var(--bol-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--bol-loam);
+      margin: 0 0 2px;
+    }
+    .staff-role {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--bol-sage);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+    .staff-formation {
+      font-size: 12px;
+      color: var(--bol-accent-ink);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .staff-bio {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(42,37,33,0.85);
+      margin: 0;
+    }
+
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .board-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .board-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #b9ac93;
+      margin-bottom: 10px;
+      filter: grayscale(80%);
+      transition: filter 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    }
+    .board-card:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+      border-color: var(--bol-sage);
+    }
+    .board-name {
+      font-family: var(--bol-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--bol-loam);
+      margin-bottom: 2px;
+    }
+    .board-role {
+      font-size: 11px;
+      color: var(--bol-accent-ink);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .board-desc {
+      font-size: 10.5px;
+      color: rgba(42,37,33,0.65);
+      line-height: 1.35;
+      max-width: 14ch;
+    }
+
+    .transparency-box {
+      margin: 60px 0 40px;
+      padding: 24px 28px;
+      background: #ffffff;
+      border: 1px solid var(--bol-hairline);
+      border-radius: 10px;
+    }
+    .transparency-box h3 {
+      font-family: var(--bol-display);
+      font-size: 1.15rem;
+      color: var(--bol-sage-deep);
+      margin: 0 0 6px;
+    }
+    .transparency-box p {
+      font-size: 13px;
+      color: rgba(42,37,33,0.8);
+      margin: 0 0 12px;
+      line-height: 1.6;
+    }
+    .transparency-tags {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--bol-accent-ink);
+    }
+
+    /* FOOTER (canonical) */
+    .bol-footer {
+      background: var(--bol-loam);
+      color: #d8d1c6;
+      padding: clamp(60px, 7vw, 90px) 0 44px;
+    }
+    .bol-footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1.15fr 1fr 1fr;
+      gap: clamp(30px, 3.4vw, 52px);
+      align-items: start;
+    }
+    .bol-footer h4 { position: relative; font-family: var(--bol-body); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #bfb5a5; margin: 0 0 24px; padding-bottom: 14px; }
+    .bol-footer h4::after { content: ""; position: absolute; left: 0; bottom: 0; width: 26px; height: 2px; background: var(--bol-sage); }
+    .bol-footer ul { list-style: none; margin: 0; padding: 0; }
+    .bol-footer li { margin-bottom: 14px; font-size: 17px; line-height: 1.6; }
+    .bol-footer-addr { line-height: 1.65; margin-bottom: 20px; }
+    .bol-footer a { color: inherit; text-decoration: none; font-size: 17px; border-bottom: 1px solid transparent; transition: border-color 0.18s ease; }
+    .bol-footer a:hover { border-color: #d8d1c6; }
+    .bol-footer-highlight { color: var(--bol-accent); }
+    .bol-footer-mark { margin-bottom: 20px; line-height: 0; }
+    .bol-footer-mark img { display: block; width: auto; height: clamp(62px, 6.6vw, 84px); max-width: 330px; object-fit: contain; transform: translateY(-6%); }
+    .bol-footer-mission { font-size: 17px; line-height: 1.65; color: #c3baaa; max-width: 38ch; margin-bottom: 26px; }
+    .bol-footer-cinfo { display: flex; gap: 14px; margin-bottom: 22px; }
+    .bol-footer-cinfo .ic { flex: 0 0 auto; width: 36px; height: 36px; border: 1px solid var(--bol-sage); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .bol-footer-cinfo svg { width: 16px; height: 16px; }
+    .bol-footer-cinfo .label { display: block; font-size: 13px; color: #9d9488; margin-bottom: 4px; }
+    .bol-footer-cinfo .value { font-size: 16px; line-height: 1.5; color: #f3efe6; }
+    a.value:hover { border-color: #d8d1c6; }
+    .bol-signup label { display: block; font-size: 15px; line-height: 1.6; color: #c3baaa; margin-bottom: 14px; max-width: 34ch; }
+    .bol-signup-row { display: flex; border: 1px solid #4a433c; border-radius: 4px; overflow: hidden; }
+    .bol-signup input { flex: 1; min-width: 0; background: transparent; border: 0; padding: 15px 22px; color: #f3efe6; font-family: var(--bol-body); font-size: 16px; }
+    .bol-signup input::placeholder { color: #7c7367; }
+    .bol-signup button { background: var(--bol-sage); border: 0; border-radius: 4px; margin: 3px; color: #fff; font-family: var(--bol-body); font-weight: 600; font-size: 15px; padding: 0 24px; cursor: pointer; transition: background 0.18s ease; }
+    .bol-signup button:hover { background: var(--bol-sage-deep); }
+    .bol-signup-note { font-size: 14px; line-height: 1.6; color: #9d9488; margin-top: 14px; }
+    .bol-colophon { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: clamp(44px, 5vw, 64px); padding-top: 26px; border-top: 1px solid #4a433c; font-size: 14px; line-height: 1.6; color: #bfb5a5; }
+    .bol-colophon a { font-size: inherit; color: inherit; }
+    .bol-footer-social { display: flex; gap: 12px; }
+    .bol-footer-social a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(216, 209, 198, 0.14); color: #fff; border-bottom: none; transition: background 0.18s ease, color 0.18s ease; }
+    .bol-footer-social a:hover { background: var(--bol-sage); color: #fff; }
+    .bol-footer-social svg { width: 18px; height: 18px; }
+
+    @media (max-width: 720px) {
+      .staff-row { flex-direction: column; gap: 14px; }
+      .board-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+<script src="/_aistudio-iframe.js?v=2f1c016a"></script></head>
+<body>
+  <header class="bol-masthead" id="bolMasthead">
+    <div class="bol-shell bol-masthead-inner">
+      <a class="bol-wordmark" href="index.html" aria-label="Bread of Life, home">
+        <img src="https://images.squarespace-cdn.com/content/6a662e2b61e351419c14bc1c/da841121-67d7-4217-aa37-7107060eef73/bread+of+life+logo.png?content-type=image%2Fpng" alt="Bread of Life" />
+      </a>
+      <div class="bol-menu">
+        <nav class="bol-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="index.html#offer">Programs</a>
+          <a href="spiritual_direction.html">Spiritual Direction</a>
+          <a href="index.html#offer">Community</a>
+          <a href="index.html#footer">Contact</a>
+        </nav>
+        <div class="bol-actions">
+          <a class="bol-btn bol-btn-ghost" href="donate.html">Donate</a>
+          <a class="bol-btn" href="spiritual_direction.html">Find a Spiritual Director</a>
+        </div>
+      </div>
+      <button class="bol-navtoggle" id="bolNavToggle" aria-expanded="false" aria-label="Open menu">
+        <span class="bol-burger" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero-green">
+    <div class="hero-bg-image" id="heroBgImage">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-title">Stewards of <em>the Threshold</em></h1>
+      <p class="hero-sub">The board and staff who steward Bread of Life—holding a trustworthy, unhurried space for sacred questioning, communal formation, and quiet spiritual accompaniment.</p>
+      
+      <div class="hero-meta">
+        <span>&bull; 501(c)(3) Nonprofit Governance</span>
+        <span>&bull; 28-Year Sacramento Lineage</span>
+        <span>&bull; Volunteer Board Stewardship</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="shell">
+    <div class="pullquote">
+      <blockquote>
+        &ldquo;We do not direct someone toward a predetermined answer. We accompany them in the presence of what is already unfolding.&rdquo;
+      </blockquote>
+    </div>
+
+    <div class="sec-header">
+      <h2>Leadership &amp; Staff</h2>
+      <span>Practice Cohorts &amp; Intake</span>
+    </div>
+
+    <div class="staff-row">
+      <div class="staff-num">01</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1623280650845-U8W4QZKFXGUHWSPF8TB3/Sandra+%28002%29.jpg" alt="Sandra Lomasson" class="staff-img" referrerpolicy="no-referrer">
+      <div class="staff-info">
+        <h3 class="staff-name">Sandra Lomasson</h3>
+        <div class="staff-role">Founder &amp; Spiritual Director</div>
+        <div class="staff-formation">Master Formator &bull; Since 1996</div>
+        <p class="staff-bio">Founder of Bread of Life Center and a seasoned Spiritual Director whose lifelong passion is creating processes and pathways that awaken people to the sacred presence woven through everyday life. Since 1996, she has devoted herself to forming spiritual directors and leaders across religious and public spheres.</p>
+      </div>
+    </div>
+
+    <div class="staff-row">
+      <div class="staff-num">02</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1545971701911-64V5N1TSFOFYDL512ZTZ/Jean%2BHolsten.jpg" alt="Jean Holsten" class="staff-img" referrerpolicy="no-referrer">
+      <div class="staff-info">
+        <h3 class="staff-name">Jean Holsten</h3>
+        <div class="staff-role">Dynamic Dialogue Facilitator</div>
+        <div class="staff-formation">Reflective Cohorts &amp; Communal Discernment</div>
+        <p class="staff-bio">Part of the Bread of Life leadership team. Guides cohorts and community members through Dynamic Dialogue, nurturing contemplative awareness in times of change, transition, and interpersonal complexity.</p>
+      </div>
+    </div>
+
+    <div class="staff-row">
+      <div class="staff-num">03</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/f8de3fa8-ce8d-4c0c-8d79-fb8c432b30ba/20240316_121843.jpg" alt="Tom Morgan" class="staff-img" referrerpolicy="no-referrer">
+      <div class="staff-info">
+        <h3 class="staff-name">Tom Morgan</h3>
+        <div class="staff-role">Spiritual Direction Intake Coordinator</div>
+        <div class="staff-formation">Initial Discernment &amp; Seeker Pairing</div>
+        <p class="staff-bio">Coordinates intake for those seeking a spiritual director through Bread of Life. Tom offers a steady, compassionate ear to help you find the right director for your unique spiritual pilgrimage.</p>
+      </div>
+    </div>
+
+    <div class="sec-header" style="margin-top: 60px;">
+      <h2>Board of Directors</h2>
+      <span>Fiduciary &amp; Legal Oversight</span>
+    </div>
+
+    <div class="board-grid">
+      <div class="board-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1763150609613-IIOU8MJT3RHBQ631VUQH/darlene-carlson-portrait.webp" alt="Darlene Carlson" referrerpolicy="no-referrer">
+        <div class="board-name">Darlene Carlson</div>
+        <div class="board-role">President</div>
+        <div class="board-desc">Strategic discernment &amp; governance</div>
+      </div>
+
+      <div class="board-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1772557360450-80W9ZQXM04T0AWV6T70M/Screenshot+2025-12-31+at+4.05.47%E2%80%AFPM.jpeg" alt="Jennifer Ramsey" referrerpolicy="no-referrer">
+        <div class="board-name">Jennifer Ramsey</div>
+        <div class="board-role">Treasurer</div>
+        <div class="board-desc">Fiscal stewardship &amp; audits</div>
+      </div>
+
+      <div class="board-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1767122031871-JFZJ1GKG40F06DLSCUZQ/IMG_6956.jpeg" alt="Chris Motley" referrerpolicy="no-referrer">
+        <div class="board-name">Chris Motley</div>
+        <div class="board-role">Secretary</div>
+        <div class="board-desc">Civic outreach &amp; community ties</div>
+      </div>
+
+      <div class="board-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1763158829304-URWKD8YCJXSIATFISORF/Caroleee.png" alt="Carolee Catterall" referrerpolicy="no-referrer">
+        <div class="board-name">Carolee Catterall</div>
+        <div class="board-role">Board Member</div>
+        <div class="board-desc">Formation &amp; director cohorts</div>
+      </div>
+
+      <div class="board-card">
+        <img src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1763150654486-XAPRMEJ737U1WK5CUUWA/hazelwatson.webp" alt="Hazel Watson" referrerpolicy="no-referrer">
+        <div class="board-name">Hazel Watson</div>
+        <div class="board-role">Board Member</div>
+        <div class="board-desc">Hospitality &amp; interfaith welcoming</div>
+      </div>
+    </div>
+
+    <div class="transparency-box">
+      <h3>100% Volunteer Board Governance</h3>
+      <p>Bread of Life is an independent 501(c)(3) religious nonprofit. All governing board members serve without compensation, ensuring that all contributed donor gifts and scholarship endowments directly support seekers, internship cohorts, and spiritual formation programs.</p>
+      <div class="transparency-tags">
+        <span>&check; Annual independent review</span>
+        <span>&check; SDI ethical compliance</span>
+        <span>&check; Conflict-of-interest policy</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; padding-top: 40px; border-top: 1px solid var(--bol-hairline);">
+      <p style="font-family: var(--bol-display); font-size: 2.2rem; font-weight: 300; margin: 0 0 10px;">
+        Come in <em style="font-style: italic; color: var(--bol-accent-ink);">as you are.</em>
+      </p>
+      <p style="font-size: 14px; color: rgba(42,37,33,0.75); margin: 0 0 24px;">Meet the community, then find your own way in.</p>
+      <a href="our-vision.html" class="bol-btn-sage" style="display: inline-block;">Read Our Vision &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="bol-footer" id="footer">
+    <div class="bol-shell">
+      <div class="bol-footer-grid">
+        <div>
+          <div class="bol-footer-mark">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlcAAADwCAYAAAAtvUH7AAEAAElEQVR42uydd5wcV5Xvf+dWVcfpyTloRqOco2XZlu0ZZzC2MTAD7LLssvBsYPex+9hll7DQ3buEJcMCBploWFK3c5AtW1a3LFkO0ijnMKMZhcm5c1Xd8/7obmksy8YGA8a+Xz62penqqurqEvXT757zO4BCoVAoFArFXzBHjqxzAgBz7P1HOh/lJyL/GyQSYGahro5CoVAoFArFq6Cra2dxVljx9M1b7xrYsPFnjzKzg5mJmUldIYVCoVAoFIpXADNroVBIY+biWKz7e48/8ZPBA4fXH2Vmb+51JawUCoVCoVAoXgmhUEjL/7qze3Pblq1385at936bmUv8fr+urpBCoVAoFIpXTCQS0d+srozf7xdtbdAAgJm9+/ev/9UTT/7kdCQSWpPfRjlWCoVCoVAoXg1vOuHAzBSJRHS//0odADzuAvQP7/nm01t/eXrHjge7hof3NuSE159NdObquwRzRI9EIso5UygUCoXiL0RkCCEETnbv/PdnnnloVv6h/kYWVcznlv8AYDx1as4TT96xsWPXr/hY55MbmbkJANauXWv8Oc6NOaRFIi9ehlTqSqFQKBSK173QCGlEZDOPLNq9I/Lf8fGBSO4lAsBvJEEFgKLRgCAiC4DNzB5g4F0bI/e/d+P6n7W4Xb6RmdOXXVZYOPe57DVhQUTmH/ecAgS0iGg0itbWoCQiCcCeso0GYNnk5ImVRw9tk0pcKRQKhULx+hcczMze3bvv/9rY+EDi6us/PAh85I30+UQ0GqCcoGIAkpl9sdjOi6NP/ui70GJzxsdGBluufNehktLF1xPRAADKCSv52p9PWESj+wkAzp1TUOb1LLN0AInl3V07L09MDsx74rFvLrUyE0tT6T5KJAaVc6VQKBQKxeuZaDSqtba2Wsz9S5OJnusMo/BHRNQVCrVpRGT/BQopAkDhcBjt7e2SiBg5Fyj3+qLdHb+87u7w5z7m8okGr6MUlaXN97S0/PP7AdhElGZmjYjs3Htfg/OJCqJWCYCnnk9uGw+Amsnxo9fv2PEENE3c9OjDwWYrE5s9OdEH057E5MQ44vEJlJQ0o7hs2oQSVwqFQqFQvI4ZHLyDhdBw/z3f/5e0Oc7vfs83vgh8AG1tIX6917fnXalwOIz9+/dPdaYAAEIYsO1MATD8ga4jOxevu+e/5o+OD15aWuWC4XCmGuuXf3PRwpsfdTicT5hmJrdPv/h9RWU+wqFi/35qDQbz4owBZF0p0sDSKgHMuae7t900PtRVvfmJb7VMTA7UgeKOifEBxGKDMDNpJBKxjK4ZjsLiCpSVNGL50gWAUf2NS9f8zf8ocaVQKBQKxetWnGw3gBXW0hWRD+7ecc+tdQ3LtgHo9vv9r/ly2B8ooHJENQCIRqOIRl9cm+RwupFOJeakEz1zR8Z6LjvTf7r17vC/Frs0mpmJT0DXXaipmT60cMmquyprL/s2EZ3MvZWYs5rslXzuc+cU1aJR4I47Wjkchmxvb7fPE3alwPj08fGTF/ecPPi2+PhA9X2/+USFy0X1ExP9sDNxjE+MwLKSsGQyA3ZqBQXFWlFpPWobqh1eb/loVWXj+vLyxgdrmy4/QES7gferZUGFQqFQKH73wzqk5WtwWluD1p/mmBGdaKXJbF53YM+GH6RSKVy08rovEpFkZi0YDP4pRBNNFTPZWX1hCoeBiooKGhy8g89zkazz9lEDoHnnvrvZTpjXC13e8MSTX100NnDcnUqOICPj8BVUYmBc61m8sKVrxpxVPy0pmX03EcWBrNPU1taG3BLgy5yrXwALKCvszjpkLzgfoTlgW6Oruo9mfoHRy7WNH7bhg3fWjE6cKzA7YQYGOiBnUlD2iZSyXgGmmTo5CThhLeoEoWFtQ6Ptzrj8hRv8XgLf71o0ZWxgoLmR4loJ" alt="Bread of Life" />
+          </div>
+          <p class="bol-footer-mission">An interfaith contemplative community in the Sacramento area, here so that people living with real questions do not have to sit with them alone.</p>
+          <div class="bol-signup">
+            <label for="bolEmail">Subscribe to our newsletter for workshop dates and occasional notes on practice.</label>
+            <div class="bol-signup-row">
+              <input id="bolEmail" type="email" placeholder="Email address" autocomplete="email" />
+              <button type="button" id="bolSignupBtn"><span class="bol-signup-button-text">Subscribe</span><span class="bol-signup-button-icon" aria-hidden="true">&gt;</span></button>
+            </div>
+            <p class="bol-signup-note" id="bolSignupNote" aria-live="polite"></p>
+          </div>
+        </div>
+        <div>
+          <h4>Contact Bread of Life</h4>
+          <div class="bol-footer-cinfo">
+            <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h3.2l1.3 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.3V17a2 2 0 0 1-2.2 2A15 15 0 0 1 3 5.2 2 2 0 0 1 5 4Z"/></svg></span>
+            <span><span class="label">Call us</span><a class="value" href="tel:19166481803">(916) 648 1803</a></span>
+          </div>
+          <div class="bol-footer-cinfo">
+            <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>
+            <span><span class="label">Visit our location</span><span class="value">Bread of Life Center<br/>1260 Fulton Avenue, Suite A<br/>Sacramento, CA 95825, USA</span></span>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#offer">Programs and Groups</a></li>
+            <li><a class="bol-footer-highlight" href="spiritual_direction.html">Spiritual Direction</a></li>
+            <li><a href="#offer">Community</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#upcoming">Workshops</a></li>
+            <li><a href="#quote-1">Our Stories</a></li>
+            <li><a href="#footer">Contact</a></li>
+            <li><a href="#">Donate</a></li>
+            <li><a href="#">The Vault</a></li>
+            <li><a href="#">Registration Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bol-colophon">
+        <span>&copy; Bread of Life. A 501(c)(3) nonprofit. &middot; <a href="#">Privacy</a></span>
+        <div class="bol-footer-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 9.5H15.5V6.5H13.2C11.1 6.5 9.7 7.9 9.7 10V12H7.5V15H9.7V21H12.7V15H14.8L15.2 12H12.7V10.3C12.7 9.8 12.9 9.5 13.5 9.5Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="7" cy="7.2" r="1.7"/><rect x="5.4" y="10.4" width="3.2" height="8.2"/><path d="M11.2 10.4H14.3V11.8C14.9 10.8 16 10.1 17.4 10.1C20 10.1 21 11.9 21 14.5V18.6H17.8V15C17.8 14 17.5 13.2 16.4 13.2C15.4 13.2 14.9 13.9 14.9 15V18.6H11.2V10.4Z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="2" width="18" height="20" rx="5"/><path d="M7 11.5A4.5 4.5 0 0 0 11.5 16 4.5 4.5 0 0 0 16 11.5 4.5 4.5 0 0 0 11.5 7 4.5 4.5 0 0 0 7 11.5Z"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (function(){
+      var btn = document.getElementById("bolSignupBtn"), input = document.getElementById("bolEmail"), note = document.getElementById("bolSignupNote");
+      if (btn && input && note) {
+        btn.addEventListener("click", function(){
+          var v = input.value.trim();
+          if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){
+            note.textContent = "Enter an email address so we can send you the dates.";
+            input.focus();
+            return;
+          }
+          note.textContent = "You are on the list. Check your inbox to confirm.";
+          input.value = "";
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

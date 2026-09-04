@@ -25,7 +25,7 @@
   h1,h2,h3{font-family:var(--bol-display);font-weight:400;margin:0;line-height:1.1;letter-spacing:-0.015em;}
   p{margin:0 0 1.15em;} p:last-child{margin-bottom:0;}
   :focus-visible{outline:2px solid var(--bol-sage);outline-offset:3px;}
-  .bol-shell{max-width:1240px;margin:0 auto;padding:0 var(--bol-gutter);}
+  .bol-shell{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,72px);}
   .bol-eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--bol-sage);margin:0 0 16px;}
   .bol-btn{display:inline-block;font-family:var(--bol-body);font-size:15px;font-weight:600;letter-spacing:.02em;padding:15px 30px;text-decoration:none;border:1px solid var(--bol-sage);border-radius:4px;background:var(--bol-sage);color:#fff;transition:background .18s ease,border-color .18s ease;}
   .bol-btn:hover{background:var(--bol-sage-deep);border-color:var(--bol-sage-deep);}
@@ -36,7 +36,7 @@
   .bol-arrow{transition:transform .18s ease;}
   .bol-textlink:hover .bol-arrow{transform:translateX(5px);}
 
-  /* MASTHEAD (identical to homepage) */
+  /* MASTHEAD (aligned to homepage) */
   .bol-masthead{position:sticky;top:0;z-index:60;background:rgba(250,247,240,.97);border-bottom:1px solid var(--bol-hairline);backdrop-filter:blur(8px);}
   .bol-masthead-inner{display:flex;align-items:center;justify-content:space-between;gap:clamp(18px,2.2vw,30px);min-height:92px;}
   .bol-wordmark{display:block;flex:0 0 auto;line-height:0;}
@@ -45,6 +45,11 @@
   .bol-nav{display:flex;align-items:center;gap:clamp(18px,1.9vw,26px);flex-wrap:nowrap;flex:0 1 auto;min-width:0;}
   .bol-nav a{text-decoration:none;color:inherit;font-size:15px;font-weight:500;white-space:nowrap;border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .18s ease;}
   .bol-nav a:hover{border-color:var(--bol-loam);}
+  .bol-nav-item{position:relative;}
+  .bol-dropdown{position:absolute;top:100%;left:0;min-width:240px;background:#fff;border:1px solid var(--bol-hairline-soft);box-shadow:0 12px 30px rgba(42,37,33,.1);padding:10px 0;display:none;z-index:70;border-radius:4px;}
+  .bol-nav-item:hover .bol-dropdown,.bol-nav-item:focus-within .bol-dropdown{display:block;}
+  .bol-dropdown a{display:block;padding:10px 20px;font-size:14px;color:var(--bol-loam);white-space:nowrap;border-bottom:none;}
+  .bol-dropdown a:hover{background:var(--bol-cream);color:var(--bol-sage-deep);}
   .bol-actions{display:flex;align-items:center;gap:clamp(8px,.9vw,10px);flex:0 0 auto;}
   .bol-masthead .bol-btn{padding:11px clamp(14px,1.5vw,20px);font-size:clamp(13px,1vw,14px);white-space:nowrap;}
   .bol-masthead .bol-btn-ghost{border-color:var(--bol-hairline);color:var(--bol-sage);}
@@ -100,14 +105,14 @@
   }
 
   /* HERO */
-  .bol-dir-hero{position:relative;isolation:isolate;overflow:hidden;background:var(--bol-sage-deep);padding:clamp(56px,7vw,110px) 0 clamp(60px,7vw,96px);}
+  .bol-dir-hero{position:relative;isolation:isolate;overflow:hidden;background:#000;padding:clamp(80px,11vw,150px) 0 clamp(70px,9vw,120px);min-height:720px;display:flex;align-items:center;}
   .bol-dir-hero-bg{position:absolute;inset:0;z-index:0;}
   .bol-dir-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 45%;}
-  .bol-dir-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(53,80,48,.82) 0%,rgba(53,80,48,.72) 45%,rgba(53,80,48,.9) 100%);}
-  .bol-dir-hero .bol-shell{position:relative;z-index:1;max-width:820px;text-align:center;margin:0 auto;}
-  .bol-dir-hero .bol-eyebrow{color:var(--bol-accent);text-align:center;}
-  .bol-dir-hero h1{font-size:clamp(2.1rem,4.2vw,3.1rem);color:#fff;margin-bottom:18px;}
-  .bol-dir-hero p{color:rgba(243,239,230,.9);font-size:1.05rem;line-height:1.7;max-width:640px;margin:0 auto 30px;}
+  .bol-dir-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,8,.26) 0%,rgba(8,10,8,.38) 30%,rgba(8,10,8,.60) 100%);}
+  .bol-dir-hero .bol-shell{position:relative;z-index:1;max-width:860px;text-align:center;margin:0 auto;}
+  .bol-dir-hero .bol-eyebrow{color:var(--bol-accent);text-align:center;letter-spacing:.18em;}
+  .bol-dir-hero h1{font-size:clamp(2.65rem,4.8vw,5rem);color:#fff;margin-bottom:22px;line-height:.96;max-width:900px;margin-left:auto;margin-right:auto;}
+  .bol-dir-hero p{color:rgba(243,239,230,.95);font-size:1.08rem;line-height:1.7;max-width:700px;margin:0 auto 36px;}
   .bol-dir-hero-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
   .bol-dir-hero-actions .bol-btn{background:var(--bol-accent);border-color:var(--bol-accent);color:var(--bol-loam);}
   .bol-dir-hero-actions .bol-btn:hover{background:var(--bol-accent-ink);border-color:var(--bol-accent-ink);color:#fff;}
@@ -124,7 +129,8 @@
 
   /* MATCHER */
   .bol-matcher{padding:var(--bol-rhythm) 0 clamp(40px,5vw,64px);}
-  .bol-matcher-panel{background:var(--bol-panel);border:1px solid var(--bol-hairline-soft);padding:clamp(24px,3vw,40px);border-radius:4px;}
+  .bol-matcher .bol-shell{max-width:none;padding-left:clamp(18px,2.4vw,52px);padding-right:clamp(18px,2.4vw,52px);}
+  .bol-matcher-panel{background:var(--bol-panel);border:1px solid var(--bol-hairline-soft);padding:clamp(24px,3vw,40px);border-radius:4px;max-width:none;width:100%;margin:0;}
   .bol-matcher-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;padding-bottom:22px;border-bottom:1px solid var(--bol-hairline-soft);margin-bottom:0;}
   .bol-matcher-head h3{font-size:clamp(1.4rem,2.4vw,1.85rem);color:var(--bol-loam);}
   .bol-matcher-head p{font-size:14px;color:var(--bol-ink-mute);margin-top:6px;}
@@ -146,7 +152,7 @@
   .bol-fmt-toggle button.active{background:var(--bol-sage);color:#fff;}
 
   /* DIRECTORY */
-  .bol-directory{max-width:1240px;margin:0 auto;padding:0 var(--bol-gutter) var(--bol-rhythm);}
+  .bol-directory{max-width:none;margin:0;padding:0 clamp(18px,2.4vw,52px) var(--bol-rhythm);}
   .bol-search-bar{background:var(--bol-panel);border:1px solid var(--bol-hairline-soft);border-radius:4px;padding:20px 22px;margin-bottom:32px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;}
   .bol-search-input-wrap{position:relative;flex:1;min-width:220px;}
   .bol-search-input-wrap input{width:100%;padding:11px 14px 11px 40px;font-size:14px;font-family:var(--bol-body);border:1px solid var(--bol-hairline-soft);background:var(--bol-cream);border-radius:4px;}
@@ -274,14 +280,14 @@
     <div class="bol-menu">
       <nav class="bol-nav" aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="index.html#guide">About</a>
+        <a href="about.html">About</a>
         <a href="index.html#offer">Programs</a>
-        <a href="#" aria-current="page">Spiritual Direction</a>
+        <a href="spiritual_direction.html" aria-current="page">Spiritual Direction</a>
         <a href="index.html#offer">Community</a>
         <a href="index.html#footer">Contact</a>
       </nav>
       <div class="bol-actions">
-        <a class="bol-btn bol-btn-ghost" href="#">Donate</a>
+        <a class="bol-btn bol-btn-ghost" href="donate.html">Donate</a>
         <a class="bol-btn" href="#directory-section">Find a Spiritual Director</a>
       </div>
     </div>
@@ -295,7 +301,7 @@
 
   <section class="bol-dir-hero">
     <div class="bol-dir-hero-bg" aria-hidden="true">
-      <img src="forest-path-hero.png" alt="A sun-dappled forest path" referrerpolicy="no-referrer">
+      <img src="../forest-path-hero.png" alt="A sun-dappled forest path" referrerpolicy="no-referrer">
     </div>
     <div class="bol-shell">
       <span class="bol-eyebrow">Spiritual Direction &middot; Sacramento, Davis, Auburn &amp; Online</span>

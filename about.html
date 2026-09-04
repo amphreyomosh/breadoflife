@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Bread of Life (Design 1 - Editorial Sanctuary)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bol-cream: #faf7f0;
+      --bol-cream-rgb: 250,247,240;
+      --bol-loam: #2a2521;
+      --bol-loam-rgb: 42,37,33;
+      --bol-panel: #ffffff;
+      --bol-hairline: #b9ac93;
+      --bol-hairline-soft: #dcd4c4;
+      --bol-sage: #3E5A38;
+      --bol-sage-deep: #30452B;
+      --bol-accent: #B8935A;
+      --bol-accent-ink: #8A6726;
+      --bol-display: "Fraunces", Georgia, serif;
+      --bol-body: "Karla", system-ui, -apple-system, sans-serif;
+      --bol-gutter: clamp(20px, 5vw, 72px);
+    }
+
+    * { box-sizing: border-box; }
+    body { font-family: var(--bol-body); margin:0; background: var(--bol-cream); color: var(--bol-loam); line-height: 1.6; }
+    a { color: inherit; }
+
+    .bol-shell { max-width: 1240px; margin: 0 auto; padding: 0 var(--bol-gutter,24px); }
+    .bol-masthead { position: sticky; top: 0; z-index: 60; background: rgba(250,247,240,0.97); border-bottom: 1px solid var(--bol-hairline); backdrop-filter: blur(8px); }
+    .bol-masthead-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 20px;
+      min-height: 88px;
+    }
+    .bol-wordmark img { display:block; width:auto; height:46px; object-fit:contain; }
+    .bol-menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(18px, 1.8vw, 28px);
+      flex: 1 1 auto;
+      margin-left: auto;
+    }
+    .bol-nav {
+      display:flex;
+      align-items:center;
+      gap: clamp(18px, 1.9vw, 26px);
+      flex-wrap: nowrap;
+      min-width: 0;
+      margin-left: auto;
+    }
+    .bol-nav a {
+      text-decoration:none;
+      color: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      white-space: nowrap;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 3px;
+      transition: border-color 0.18s ease;
+    }
+    .bol-nav a:hover { color: var(--bol-sage); border-color: var(--bol-loam); }
+    .bol-nav-item { position: relative; }
+    .bol-dropdown {
+      position: absolute; top: 100%; left: 0; min-width: 240px;
+      background: #fff; border: 1px solid var(--bol-hairline-soft);
+      box-shadow: 0 12px 30px rgba(42,37,33,0.1);
+      padding: 10px 0; display: none; z-index: 70; border-radius: 4px;
+    }
+    .bol-nav-item:hover .bol-dropdown,
+    .bol-nav-item:focus-within .bol-dropdown { display: block; }
+    .bol-dropdown a {
+      display: block; padding: 10px 20px; font-size: 14px;
+      color: var(--bol-loam); white-space: nowrap; border-bottom: none;
+    }
+    .bol-dropdown a:hover { background: var(--bol-cream); color: var(--bol-sage-deep); }
+    .bol-actions {
+      display:flex;
+      align-items:center;
+      gap: clamp(8px, 0.9vw, 10px);
+      flex: 0 0 auto;
+      margin-left: 20px;
+    }
+
+    .bol-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--bol-body); font-size: clamp(13px, 1vw, 14px); font-weight: 600;
+      padding: 11px clamp(14px, 1.5vw, 20px); text-decoration: none; border-radius: 6px;
+      border: 1px solid var(--bol-sage); background: var(--bol-sage);
+      color: #fff; cursor: pointer; transition: all 0.18s ease; white-space: nowrap;
+    }
+    .bol-btn:hover { background: var(--bol-sage-deep); border-color: var(--bol-sage-deep); }
+    .bol-btn-ghost {
+      background: transparent; color: var(--bol-sage);
+      border: 1px solid var(--bol-sage); padding: 11px clamp(14px, 1.5vw, 20px); font-size: clamp(13px, 1vw, 14px);
+    }
+    .bol-btn-ghost:hover { background: var(--bol-sage); border-color: var(--bol-sage); color: #fff; }
+
+    /* Hero */
+    .bol-hero {
+      position: relative; isolation: isolate; overflow: hidden;
+      background: var(--bol-sage-deep);
+      padding: clamp(54px, 7vw, 96px) 0;
+      min-height: 700px; display: flex; align-items: center;
+      color: #fff; border-bottom: 1px solid rgba(184,147,90,0.3);
+    }
+    .bol-hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .bol-hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.28; }
+    .bol-hero-bg::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(100deg, rgba(48,69,43,0.92) 0%, rgba(48,69,43,0.7) 50%, rgba(48,69,43,0.35) 100%);
+    }
+    .bol-hero .bol-shell {
+      position: relative; z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .bol-hero-title {
+      font-family: var(--bol-display);
+      font-size: clamp(2.4rem, 4.8vw, 4.1rem);
+      line-height: 1.05; max-width: 18ch; color: #fff; margin: 0 auto 18px; font-weight: 300;
+      text-align: center;
+    }
+    .bol-hero-title em { font-style: italic; color: var(--bol-accent); font-weight: 400; }
+    .bol-hero-sub {
+      font-family: var(--bol-body); font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.7; max-width: 58ch; color: rgba(243,239,230,0.92); margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Narrative Body */
+    .narrative-body {
+      max-width: 820px; margin: 0 auto;
+      padding: clamp(72px, 9vw, 112px) 24px clamp(88px, 10vw, 120px);
+      font-size: 1.1rem; line-height: 1.75; color: var(--bol-loam);
+    }
+    .narrative-body p { margin: 0 0 28px; }
+    .narrative-body h3 { font-family: var(--bol-display); font-weight: 400; font-size: 1.6rem; color: var(--bol-loam); margin: 60px 0 18px; }
+
+    .mission-block {
+      background: #FAF8F2;
+      border-left: 4px solid var(--bol-sage);
+      padding: 30px 32px;
+      margin: 52px 0 44px;
+      font-style: italic;
+      color: var(--bol-sage-deep);
+      font-family: var(--bol-display);
+      font-size: 1.25rem;
+      line-height: 1.5;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .narrative-pullquote {
+      font-family: var(--bol-display);
+      font-style: italic;
+      font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+      line-height: 1.4;
+      color: var(--bol-accent-ink);
+      border-left: 3px solid var(--bol-accent);
+      padding-left: 24px;
+      margin: 52px 0 54px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px; margin: 54px 0 48px;
+    }
+    .value-card {
+      background: #ffffff;
+      border: 1px solid var(--bol-hairline-soft);
+      border-radius: 12px;
+      padding: 24px 20px;
+      box-shadow: 0 4px 12px rgba(42,37,33,0.03);
+    }
+    .value-card h4 {
+      font-family: var(--bol-display);
+      font-size: 1.25rem;
+      color: var(--bol-loam);
+      margin: 0 0 8px;
+      font-weight: 600;
+    }
+    .value-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+      color: rgba(42,37,33,0.8);
+    }
+
+    .founder-block {
+      display: flex; gap: 24px; align-items: flex-start;
+      background: #fff; border: 1px solid var(--bol-hairline-soft);
+      border-radius: 12px; padding: 28px; margin: 52px 0 44px;
+    }
+    .founder-block img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--bol-accent); }
+    .founder-block h4 { font-family: var(--bol-display); font-size: 1.15rem; margin: 0 0 6px; color: var(--bol-loam); font-weight: 600; }
+    .founder-block p { font-size: 0.95rem; line-height: 1.6; margin: 0; color: rgba(42,37,33,0.8); }
+
+    /* Closing */
+    .bol-closing {
+      background: #FAF4E8;
+      border-top: 1px solid var(--bol-hairline-soft);
+      padding: clamp(70px, 9vw, 110px) 0;
+      text-align: center;
+    }
+    .bol-closing-word {
+      font-family: var(--bol-display);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      margin: 0 0 16px;
+      color: var(--bol-loam);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+    .bol-closing-word em { font-style: italic; color: var(--bol-accent-ink); font-weight: 400; }
+    .bol-closing p:not(.bol-closing-word) {
+      max-width: 48ch; margin: 0 auto 32px;
+      font-size: 1.1rem; line-height: 1.65; color: rgba(42,37,33,0.82);
+    }
+
+    /* Footer */
+    .bol-footer {
+      background: var(--bol-loam);
+      color: #d8d1c6;
+      padding: 68px 0 36px;
+      border-top: 1px solid #4a433c;
+    }
+    .bol-footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1.15fr 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 860px) {
+      .bol-footer-grid { grid-template-columns: 1fr; }
+    }
+    .colophon {
+      margin-top: 48px; padding-top: 24px; border-top: 1px solid #4a433c;
+      font-size: 12px; color: #9d9488; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+
+    /* Modal */
+    dialog {
+      border: 1px solid var(--bol-hairline); border-radius: 16px; padding: 0;
+      max-width: 520px; width: 90%; background: #fff; box-shadow: 0 24px 64px rgba(42,37,33,0.25);
+    }
+    dialog::backdrop { background: rgba(42,37,33,0.6); backdrop-filter: blur(4px); }
+    .modal-inner { padding: 32px; }
+    /* FOOTER (copied from index.html) */
+    .bol-footer {
+      background: var(--bol-loam);
+      color: #d8d1c6;
+      padding: clamp(60px, 7vw, 90px) 0 44px;
+    }
+    .bol-footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1.15fr 1fr 1fr;
+      gap: clamp(30px, 3.4vw, 52px);
+      align-items: start;
+    }
+    .bol-footer h4 {
+      position: relative;
+      font-family: var(--bol-body);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #bfb5a5;
+      margin: 0 0 24px;
+      padding-bottom: 14px;
+    }
+    .bol-footer h4::after { content: ""; position: absolute; left: 0; bottom: 0; width: 26px; height: 2px; background: var(--bol-sage); }
+    .bol-footer ul { list-style: none; margin: 0; padding: 0; }
+    .bol-footer li { margin-bottom: 14px; font-size: 17px; line-height: 1.6; }
+    .bol-footer-addr { line-height: 1.65; margin-bottom: 20px; }
+    .bol-footer a { color: inherit; text-decoration: none; font-size: 17px; border-bottom: 1px solid transparent; transition: border-color 0.18s ease; }
+    .bol-footer a:hover { border-color: #d8d1c6; }
+    .bol-footer-highlight { color: var(--bol-accent); }
+    .bol-footer-mark { margin-bottom: 20px; line-height: 0; }
+    .bol-footer-mark img { display: block; width: auto; height: clamp(62px, 6.6vw, 84px); max-width: 330px; object-fit: contain; transform: translateY(-6%); }
+    .bol-footer-mission { font-size: 17px; line-height: 1.65; color: #c3baaa; max-width: 38ch; margin-bottom: 26px; }
+    .bol-footer-cinfo { display: flex; gap: 14px; margin-bottom: 22px; }
+    .bol-footer-cinfo .ic { flex: 0 0 auto; width: 36px; height: 36px; border: 1px solid var(--bol-sage); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .bol-footer-cinfo svg { width: 16px; height: 16px; }
+    .bol-footer-cinfo .label { display: block; font-size: 13px; color: #9d9488; margin-bottom: 4px; }
+    .bol-footer-cinfo .value { font-size: 16px; line-height: 1.5; color: #f3efe6; }
+    a.value:hover { border-color: #d8d1c6; }
+    .bol-signup label { display: block; font-size: 15px; line-height: 1.6; color: #c3baaa; margin-bottom: 14px; max-width: 34ch; }
+    .bol-signup-row { display: flex; border: 1px solid #4a433c; border-radius: 4px; overflow: hidden; }
+    .bol-signup input { flex: 1; min-width: 0; background: transparent; border: 0; padding: 15px 22px; color: #f3efe6; font-family: var(--bol-body); font-size: 16px; }
+    .bol-signup input::placeholder { color: #7c7367; }
+    .bol-signup button { background: var(--bol-sage); border: 0; border-radius: 4px; margin: 3px; color: #fff; font-family: var(--bol-body); font-weight: 600; font-size: 15px; padding: 0 24px; cursor: pointer; transition: background 0.18s ease; }
+    .bol-signup button:hover { background: var(--bol-sage-deep); }
+    .bol-signup-note { font-size: 14px; line-height: 1.6; color: #9d9488; margin-top: 14px; }
+    .bol-colophon { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: clamp(44px, 5vw, 64px); padding-top: 26px; border-top: 1px solid #4a433c; font-size: 14px; line-height: 1.6; color: #bfb5a5; }
+    .bol-colophon a { font-size: inherit; color: inherit; }
+    .bol-footer-social { display: flex; gap: 12px; }
+    .bol-footer-social a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(216, 209, 198, 0.14); color: #fff; border-bottom: none; transition: background 0.18s ease, color 0.18s ease; }
+    .bol-footer-social a:hover { background: var(--bol-sage); color: #fff; }
+    .bol-footer-social svg { width: 18px; height: 18px; }
+  </style>
+</head>
+<body>
+
+  <!-- Masthead -->
+  <header class="bol-masthead">
+    <div class="bol-shell bol-masthead-inner">
+      <a class="bol-wordmark" href="index.html" aria-label="Bread of Life">
+        <img src="https://images.squarespace-cdn.com/content/6a662e2b61e351419c14bc1c/da841121-67d7-4217-aa37-7107060eef73/bread+of+life+logo.png?content-type=image%2Fpng" alt="Bread of Life" />
+      </a>
+      <div class="bol-menu">
+        <nav class="bol-nav" aria-label="Primary">
+          <a href="#top">Home</a>
+
+          <div class="bol-nav-item">
+            <a href="about.html" style="color:var(--bol-sage); font-weight:700;">About</a>
+            <div class="bol-dropdown">
+              <a href="our-vision.html">Our Vision</a>
+              <a href="#">Our Equity Statement</a>
+              <a href="our-leadership.html">Our Leadership</a>
+              <a href="#">Work at Bread of Life</a>
+              <a href="#">Our Donors</a>
+              <a href="#">Our Stories</a>
+              <a href="#">Podcast</a>
+            </div>
+          </div>
+
+          <div class="bol-nav-item">
+            <a href="index.html#offer">Programs</a>
+            <div class="bol-dropdown">
+              <a href="#">Listen to Your Life</a>
+              <a href="#">Internship in the Art of Spiritual Direction</a>
+              <a href="#">Group Spiritual Direction</a>
+              <a href="spiritual_direction.html">Spiritual Direction</a>
+              <a href="#">Online Courses</a>
+            </div>
+          </div>
+
+          <a href="spiritual_direction.html">Spiritual Direction</a>
+
+          <div class="bol-nav-item">
+            <a href="index.html#offer">Community</a>
+            <div class="bol-dropdown">
+              <a href="#">A Community of Practice</a>
+              <a href="#">An Invitation</a>
+              <a href="#">Vision Statement</a>
+              <a href="#">Our Agreements</a>
+            </div>
+          </div>
+
+          <a href="index.html#footer">Contact</a>
+        </nav>
+        <div class="bol-actions">
+          <a class="bol-btn bol-btn-ghost" href="donate.html">Donate</a>
+          <a class="bol-btn" href="spiritual_direction.html">Find a Spiritual Director</a>
+        </div>
+      </div>
+      <button class="bol-navtoggle" id="bolNavToggle" aria-expanded="false" aria-label="Open menu">
+        <span class="bol-burger" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bol-hero">
+    <div class="bol-hero-bg">
+      <img src="https://images.unsplash.com/photo-1517582082343-63e26f9dbd68?fm=jpg&q=70&w=2000&auto=format&fit=crop" alt="Sunlight through desert trees" />
+    </div>
+    <div class="bol-shell">
+      <h1 class="bol-hero-title">About <em>Bread of Life</em></h1>
+      <p class="bol-hero-sub">An interfaith contemplative community rooted in the Sacramento area for three decades — open to anyone carrying real questions.</p>
+    </div>
+  </section>
+
+  <!-- Narrative Body -->
+  <article class="narrative-body">
+    <p>Bread of Life began quietly, the way most lasting things do — with a handful of people who believed that spiritual life didn't have to mean choosing a side. Not everyone who walks through our door comes from the same tradition, or any tradition at all. What they share is a willingness to sit with the questions rather than rush past them.</p>
+
+    <div class="mission-block">
+      We exist so that people carrying real questions do not have to sit with them alone.
+    </div>
+
+    <p>Over the years, that willingness has taken different shapes: one-on-one spiritual direction, small gatherings, workshops built around a season of life rather than a doctrine. None of it asks you to arrive with the right beliefs. It asks you to arrive.</p>
+
+    <blockquote class="narrative-pullquote">
+      &ldquo;The work isn't to convince anyone of anything. It's to make room.&rdquo;
+    </blockquote>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <h4>Listening</h4>
+        <p>We practice the kind of attention that notices what is already moving beneath the surface of a life.</p>
+      </div>
+      <div class="value-card">
+        <h4>Hospitality</h4>
+        <p>Everyone is invited to come as they are, without needing their beliefs or doubts to be fully polished.</p>
+      </div>
+      <div class="value-card">
+        <h4>Formation</h4>
+        <p>We believe transformation is slower and deeper than performance; it grows through prayer, reflection, and trust.</p>
+      </div>
+    </div>
+
+    <div style="margin: 40px 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--bol-hairline-soft);">
+      <img style="width: 100%; height: 320px; object-fit: cover; display: block;" src="https://images.unsplash.com/photo-1441829266145-b8a2fda3c19d?fm=jpg&q=70&w=2000&auto=format&fit=crop" alt="Path through blooming trees" />
+    </div>
+
+    <h3>Where we come from</h3>
+    <p>Bread of Life grew out of a conviction shared by a small founding community: that people who have left institutional religion, or never found their way into one, still deserve companionship in the questions that matter most.</p>
+
+    <div class="founder-block">
+      <img src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1623280650845-U8W4QZKFXGUHWSPF8TB3/Sandra+%28002%29.jpg?format=1500w" alt="Sandra Lommasson" referrerpolicy="no-referrer" />
+      <div>
+        <h4>Sandra Lommasson, Founding Director</h4>
+        <p>Sandra helped shape the earliest form of this community and continues to mentor directors today. Her full story lives in her director profile — this page is about what she helped build, not about her alone.</p>
+      </div>
+    </div>
+
+    <h3>Where we are now</h3>
+    <p>Today, Bread of Life supports a community of trained spiritual directors, hosts workshops throughout the year, and keeps building spaces — some quiet, some communal — for people to slow down and listen.</p>
+  </article>
+
+  <!-- Closing -->
+  <section class="bol-closing">
+    <div class="bol-shell">
+      <p class="bol-closing-word">Come in <em>as you are.</em></p>
+      <p>Whatever brought you here, you don't need the right words for it yet.</p>
+      <button type="button" class="bol-btn" onclick="openDirectorModal()" style="padding:14px 32px; font-size:15px;">
+        Find a Spiritual Director &rarr;
+      </button>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      var btn = document.getElementById("bolSignupBtn"), input = document.getElementById("bolEmail"), note = document.getElementById("bolSignupNote");
+      if (btn && input && note) {
+        btn.addEventListener("click", function(){
+          var v = input.value.trim();
+          if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){
+            note.textContent = "Enter an email address so we can send you the dates.";
+            input.focus();
+            return;
+          }
+          note.textContent = "You are on the list. Check your inbox to confirm.";
+          input.value = "";
+        });
+      }
+    })();
+  </script>
+  <footer class="bol-footer" id="footer">
+    <div class="bol-shell">
+      <div class="bol-footer-grid">
+        <div>
+          <div class="bol-footer-mark">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlcAAADwCAYAAAAtvUH7AAEAAElEQVR42uydd5wcV5Xvf+dWVcfpyTloRqOco2XZlu0ZZzC2MTAD7LLssvBsYPex+9hll7DQ3buEJcMCBploWFK3c5AtW1a3LFkO0ijnMKMZhcm5c1Xd8/7obmksy8YGA8a+Xz62penqqurqEvXT757zO4BCoVAoFArFXzBHjqxzAgBz7P1HOh/lJyL/GyQSYGahro5CoVAoFArFq6Cra2dxVljx9M1b7xrYsPFnjzKzg5mJmUldIYVCoVAoFIpXADNroVBIY+biWKz7e48/8ZPBA4fXH2Vmb+51JawUCoVCoVAoXgmhUEjL/7qze3Pblq1385at936bmUv8fr+urpBCoVAoFIpXTCQS0d+srozf7xdtbdAAgJm9+/ev/9UTT/7kdCQSWpPfRjlWCoVCoVAoXg1vOuHAzBSJRHS//0odADzuAvQP7/nm01t/eXrHjge7hof3NuSE159NdObquwRzRI9EIso5UygUCoXiL0RkCCEETnbv/PdnnnloVv6h/kYWVcznlv8AYDx1as4TT96xsWPXr/hY55MbmbkJANauXWv8Oc6NOaRFIi9ehlTqSqFQKBSK173QCGlEZDOPLNq9I/Lf8fGBSO4lAsBvJEEFgKLRgCAiC4DNzB5g4F0bI/e/d+P6n7W4Xb6RmdOXXVZYOPe57DVhQUTmH/ecAgS0iGg0itbWoCQiCcCeso0GYNnk5ImVRw9tk0pcKRQKhULx+hcczMze3bvv/9rY+EDi6us/PAh85I30+UQ0GqCcoGIAkpl9sdjOi6NP/ui70GJzxsdGBluufNehktLF1xPRAADKCSv52p9PWESj+wkAzp1TUOb1LLN0AInl3V07L09MDsx74rFvLrUyE0tT6T5KJAaVc6VQKBQKxeuZaDSqtba2Wsz9S5OJnusMo/BHRNQVCrVpRGT/BQopAkDhcBjt7e2SiBg5Fyj3+qLdHb+87u7w5z7m8okGr6MUlaXN97S0/PP7AdhElGZmjYjs3Htfg/OJCqJWCYCnnk9uGw+Amsnxo9fv2PEENE3c9OjDwWYrE5s9OdEH057E5MQ44vEJlJQ0o7hs2oQSVwqFQqFQvI4ZHLyDhdBw/z3f/5e0Oc7vfs83vgh8AG1tIX6917fnXalwOIz9+/dPdaYAAEIYsO1MATD8ga4jOxevu+e/5o+OD15aWuWC4XCmGuuXf3PRwpsfdTicT5hmJrdPv/h9RWU+wqFi/35qDQbz4owBZF0p0sDSKgHMuae7t900PtRVvfmJb7VMTA7UgeKOifEBxGKDMDNpJBKxjK4ZjsLiCpSVNGL50gWAUf2NS9f8zf8ocaVQKBQKxetWnGw3gBXW0hWRD+7ecc+tdQ3LtgHo9vv9r/ly2B8ooHJENQCIRqOIRl9cm+RwupFOJeakEz1zR8Z6LjvTf7r17vC/Frs0mpmJT0DXXaipmT60cMmquyprL/s2EZ3MvZWYs5rslXzuc+cU1aJR4I47Wjkchmxvb7fPE3alwPj08fGTF/ecPPi2+PhA9X2/+USFy0X1ExP9sDNxjE+MwLKSsGQyA3ZqBQXFWlFpPWobqh1eb/loVWXj+vLyxgdrmy4/QES7gferZUGFQqFQKH73wzqk5WtwWluD1p/mmBGdaKXJbF53YM+GH6RSKVy08rovEpFkZi0YDP4pRBNNFTPZWX1hCoeBiooKGhy8g89zkazz9lEDoHnnvrvZTpjXC13e8MSTX100NnDcnUqOICPj8BVUYmBc61m8sKVrxpxVPy0pmX03EcWBrNPU1taG3BLgy5yrXwALKCvszjpkLzgfoTlgW6Oruo9vMfoHRy7WNH7bhg3fWjE6cKzA7YQYGOiBnUlD2iZSyXgGmmTo5CThhLeoEoWFtQ6Ptzrj8hRv8XgLf71o0ZWxgoLmR4loJ" alt="Bread of Life" />
+          </div>
+          <p class="bol-footer-mission">An interfaith contemplative community in the Sacramento area, here so that people living with real questions do not have to sit with them alone.</p>
+          <div class="bol-signup">
+            <label for="bolEmail">Subscribe to our newsletter for workshop dates and occasional notes on practice.</label>
+            <div class="bol-signup-row">
+              <input id="bolEmail" type="email" placeholder="Email address" autocomplete="email" />
+              <button type="button" id="bolSignupBtn"><span class="bol-signup-button-text">Subscribe</span><span class="bol-signup-button-icon" aria-hidden="true">&gt;</span></button>
+            </div>
+            <p class="bol-signup-note" id="bolSignupNote" aria-live="polite"></p>
+          </div>
+        </div>
+        <div>
+          <h4>Contact Bread of Life</h4>
+          <div class="bol-footer-cinfo">
+            <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h3.2l1.3 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.3V17a2 2 0 0 1-2.2 2A15 15 0 0 1 3 5.2 2 2 0 0 1 5 4Z"/></svg></span>
+            <span><span class="label">Call us</span><a class="value" href="tel:19166481803">(916) 648 1803</a></span>
+          </div>
+          <div class="bol-footer-cinfo">
+            <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>
+            <span><span class="label">Visit our location</span><span class="value">Bread of Life Center<br/>1260 Fulton Avenue, Suite A<br/>Sacramento, CA 95825, USA</span></span>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#offer">Programs and Groups</a></li>
+            <li><a class="bol-footer-highlight" href="spiritual_direction.html">Spiritual Direction</a></li>
+            <li><a href="#offer">Community</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#upcoming">Workshops</a></li>
+            <li><a href="#quote-1">Our Stories</a></li>
+            <li><a href="#footer">Contact</a></li>
+            <li><a href="#">Donate</a></li>
+            <li><a href="#">The Vault</a></li>
+            <li><a href="#">Registration Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bol-colophon">
+        <span>&copy; Bread of Life. A 501(c)(3) nonprofit. &middot; <a href="#">Privacy</a></span>
+        <div class="bol-footer-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 9.5H15.5V6.5H13.2C11.1 6.5 9.7 7.9 9.7 10V12H7.5V15H9.7V21H12.7V15H14.8L15.2 12H12.7V10.3C12.7 9.8 12.9 9.5 13.5 9.5Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="7" cy="7.2" r="1.7"/><rect x="5.4" y="10.4" width="3.2" height="8.2"/><path d="M11.2 10.4H14.3V11.8C14.9 10.8 16 10.1 17.4 10.1C20 10.1 21 11.9 21 14.5V18.6H17.8V15C17.8 14 17.5 13.2 16.4 13.2C15.4 13.2 14.9 13.9 14.9 15V18.6H11.2V10.4Z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="2" width="18" height="20" rx="5"/><path d="M7 11.5A4.5 4.5 0 0 0 11.5 16 4.5 4.5 0 0 0 16 11.5 4.5 4.5 0 0 0 11.5 7 4.5 4.5 0 0 0 7 11.5Z"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dialog for Finding a Spiritual Director -->
+  <dialog id="directorDialog">
+    <div class="modal-inner">
+      <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:18px;">
+        <div>
+          <span style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--bol-accent-ink);">Companion on the Journey</span>
+          <h3 style="font-family:var(--bol-display); font-size:1.6rem; margin:4px 0 0; color:var(--bol-loam);">
+            Begin with a Director
+          </h3>
+        </div>
+        <button type="button" onclick="closeDirectorModal()" style="background:none; border:none; font-size:24px; cursor:pointer; color:#777;">&times;</button>
+      </div>
+      <p style="font-size:14px; color:rgba(42,37,33,0.8); line-height:1.6; margin-bottom:20px;">
+        Spiritual direction is a confidential, holy space to reflect on the sacred movement in your everyday life. We will pair you thoughtfully with an experienced companion.
+      </p>
+      <form onsubmit="event.preventDefault(); alert('Thank you. A director coordinator from Bread of Life will reach out with gentleness.'); closeDirectorModal();">
+        <label style="display:block; font-size:12px; font-weight:700; text-transform:uppercase; margin-bottom:4px; color:var(--bol-accent-ink);">Your Name</label>
+        <input type="text" required placeholder="First and last name" style="width:100%; padding:10px; border:1px solid var(--bol-hairline); border-radius:6px; margin-bottom:14px; font-family:var(--bol-body);">
+
+        <label style="display:block; font-size:12px; font-weight:700; text-transform:uppercase; margin-bottom:4px; color:var(--bol-accent-ink);">Email Address</label>
+        <input type="email" required placeholder="you@example.com" style="width:100%; padding:10px; border:1px solid var(--bol-hairline); border-radius:6px; margin-bottom:14px; font-family:var(--bol-body);">
+
+        <label style="display:block; font-size:12px; font-weight:700; text-transform:uppercase; margin-bottom:4px; color:var(--bol-accent-ink);">What draws you to spiritual direction right now?</label>
+        <textarea rows="3" placeholder="A transition, longing for stillness, grief, vocational questions..." style="width:100%; padding:10px; border:1px solid var(--bol-hairline); border-radius:6px; margin-bottom:20px; font-family:var(--bol-body);"></textarea>
+
+        <button type="submit" class="bol-btn" style="width:100%; padding:12px; font-size:14.5px;">Submit Inquiry</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script>
+    function openDirectorModal() {
+      const d = document.getElementById('directorDialog');
+      if (d) d.showModal();
+    }
+    function closeDirectorModal() {
+      const d = document.getElementById('directorDialog');
+      if (d) d.close();
+    }
+  </script>
+</body>
+</html>
