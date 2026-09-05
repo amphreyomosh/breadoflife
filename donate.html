@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate | Bread of Life</title>
+
+  <!-- Google Fonts: Fraunces & Karla -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bol-cream: #faf7f0;
+      --bol-loam: #2a2521;
+      --bol-hairline: #b9ac93;
+      --bol-hairline-soft: #dcd4c4;
+      --bol-sage: #3E5A38;
+      --bol-sage-deep: #30452B;
+      --bol-accent: #B8935A;
+      --bol-accent-ink: #8A6726;
+      --bol-display: "Fraunces", Georgia, serif;
+      --bol-body: "Karla", system-ui, -apple-system, sans-serif;
+      --bol-gutter: clamp(20px, 5vw, 72px);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--bol-body);
+      margin: 0;
+      background: var(--bol-cream);
+      color: var(--bol-loam);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+
+    .bol-shell { max-width: 1240px; margin: 0 auto; padding: 0 var(--bol-gutter, 24px); }
+
+    .bol-btn {
+      display: inline-block;
+      font-family: var(--bol-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 15px 30px;
+      text-decoration: none;
+      border: 1px solid var(--bol-sage);
+      border-radius: 4px;
+      background: var(--bol-sage);
+      color: #fff;
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
+    .bol-btn:hover { background: var(--bol-sage-deep); border-color: var(--bol-sage-deep); }
+    .bol-btn-ghost { background: transparent; color: var(--bol-sage); }
+    .bol-btn-ghost:hover { background: var(--bol-sage); color: #fff; }
+
+    /* masthead — 5 items, one CTA */
+    .bol-masthead {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(250, 247, 240, 0.97);
+      border-bottom: 1px solid var(--bol-hairline);
+      backdrop-filter: blur(8px);
+    }
+    .bol-masthead-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(18px, 2.2vw, 30px);
+      min-height: 92px;
+    }
+    .bol-wordmark {
+      display: block;
+      flex: 0 0 auto;
+      line-height: 0;
+    }
+    .bol-wordmark img {
+      display: block;
+      width: auto;
+      height: clamp(44px, 4.4vw, 58px);
+      max-width: min(50vw, 300px);
+      object-fit: contain;
+      transform: translateY(-9%); /* optical centring */
+    }
+    .bol-menu {
+      display: contents;
+    }
+    .bol-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 1.9vw, 26px);
+      flex-wrap: nowrap;
+      flex: 0 1 auto;
+      min-width: 0;
+    }
+    .bol-nav a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      white-space: nowrap;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 3px;
+      transition: border-color 0.18s ease;
+    }
+    .bol-nav a:hover { border-color: var(--bol-loam); }
+    .bol-actions {
+      display: flex;
+      align-items: center;
+      gap: clamp(8px, 0.9vw, 10px);
+      flex: 0 0 auto;
+    }
+    .bol-masthead .bol-btn { padding: 11px clamp(14px, 1.5vw, 20px); font-size: clamp(13px, 1vw, 14px); white-space: nowrap; }
+    .bol-masthead .bol-btn-ghost { border-color: var(--bol-hairline); color: var(--bol-sage); }
+    .bol-masthead .bol-btn-ghost:hover { background: var(--bol-sage); background: var(--bol-sage); border-color: var(--bol-sage); color: #fff; }
+    .bol-navtoggle { display: none; background: none; border: 1px solid var(--bol-hairline); border-radius: 4px; cursor: pointer; width: 48px; height: 48px; padding: 0; place-items: center; color: var(--bol-loam); transition: border-color 0.18s ease, background 0.18s ease; }
+    .bol-navtoggle:hover { border-color: var(--bol-sage); background: #fff; }
+    .bol-burger { display: block; position: relative; width: 22px; height: 14px; }
+    .bol-burger i { position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor; transition: transform 0.22s cubic-bezier(0.3, 0.7, 0.2, 1), opacity 0.14s ease; }
+    .bol-burger i:nth-child(1) { top: 0; }
+    .bol-burger i:nth-child(2) { top: 6.25px; }
+    .bol-burger i:nth-child(3) { top: 12.5px; }
+    .bol-masthead.bol-open .bol-navtoggle { border-color: var(--bol-sage); background: var(--bol-sage); color: #fff; }
+    .bol-masthead.bol-open .bol-burger i:nth-child(1) { transform: translateY(6.25px) rotate(45deg); }
+    .bol-masthead.bol-open .bol-burger i:nth-child(2) { opacity: 0; }
+    .bol-masthead.bol-open .bol-burger i:nth-child(3) { transform: translateY(-6.25px) rotate(-45deg); }
+    @media (prefers-reduced-motion: reduce) { .bol-burger i { transition: none; } }
+
+    /* Hero Section */
+    .sanctuary-hero {
+      background: #30452B;
+      color: #fff;
+      padding: clamp(56px, 7vw, 96px) 0;
+    }
+    .sanctuary-hero h1 {
+      font-family: var(--bol-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      font-weight: 300;
+      margin: 0 0 16px;
+    }
+    .sanctuary-hero h1 em { font-style: italic; color: var(--bol-accent); }
+    .sanctuary-hero p {
+      font-size: 1.15rem;
+      max-width: 60ch;
+      color: rgba(243,239,230,0.9);
+      margin: 0;
+      line-height: 1.7;
+    }
+    .sanctuary-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(184,147,90,0.25);
+      border: 1px solid rgba(184,147,90,0.4);
+      color: #f3efe6;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* Split Main Layout */
+    .sanctuary-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding: clamp(48px, 6vw, 84px) 0;
+    }
+    @media (min-width: 980px) {
+      .sanctuary-grid {
+        grid-template-columns: 1.25fr 1fr;
+        gap: 56px;
+        align-items: start;
+      }
+    }
+
+    /* Narrative Column */
+    .narrative-col h2 {
+      font-family: var(--bol-display);
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+      color: var(--bol-loam);
+      margin: 0 0 20px;
+      font-weight: 400;
+    }
+    .narrative-col p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(42,37,33,0.88);
+      margin-bottom: 22px;
+    }
+    .pullquote-box {
+      border-left: 4px solid var(--bol-accent);
+      padding: 16px 24px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 0 8px 8px 0;
+      margin: 32px 0;
+    }
+    .pullquote-box p {
+      font-family: var(--bol-display);
+      font-style: italic;
+      font-size: 1.22rem;
+      line-height: 1.5;
+      color: var(--bol-sage-deep);
+      margin: 0 0 8px;
+    }
+    .pullquote-sub {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bol-accent-ink);
+    }
+
+    /* Impact Mini Cards */
+    .impact-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 36px 0;
+    }
+    .impact-stat {
+      background: #fff;
+      border: 1px solid var(--bol-hairline-soft);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .impact-stat .num {
+      font-family: var(--bol-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--bol-sage);
+      margin-bottom: 4px;
+    }
+    .impact-stat .label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--bol-loam);
+      margin-bottom: 4px;
+    }
+    .impact-stat .desc {
+      font-size: 12px;
+      color: rgba(42,37,33,0.7);
+      line-height: 1.5;
+    }
+
+    /* Accordion */
+    .accordion-item {
+      background: #fff;
+      border: 1px solid var(--bol-hairline-soft);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .accordion-toggle {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      font-family: var(--bol-body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--bol-loam);
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .accordion-content {
+      padding: 0 20px 20px;
+      font-size: 14px;
+      color: rgba(42,37,33,0.85);
+      display: none;
+      border-top: 1px solid #faf7f0;
+      background: #fdfcf9;
+    }
+    .accordion-item.active .accordion-content { display: block; }
+    .accordion-copy-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--bol-sage);
+      color: var(--bol-sage);
+      border-radius: 4px;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    /* Giving Card (Right Column) */
+    .giving-card-wrapper {
+      position: sticky;
+      top: 110px;
+    }
+    .giving-card {
+      background: #ffffff;
+      border: 1px solid var(--bol-hairline);
+      border-radius: 16px;
+      box-shadow: 0 16px 36px rgba(42,37,33,0.08);
+      overflow: hidden;
+    }
+    .giving-card-head {
+      background: var(--bol-sage);
+      color: #fff;
+      padding: 24px;
+      text-align: center;
+    }
+    .giving-card-head .overtitle {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bol-accent);
+      margin-bottom: 4px;
+    }
+    .giving-card-head h3 {
+      font-family: var(--bol-display);
+      font-size: 1.6rem;
+      margin: 0 0 6px;
+      font-weight: 400;
+    }
+    .giving-card-head .tax-note {
+      font-size: 12px;
+      opacity: 0.85;
+      margin: 0;
+    }
+
+    .giving-card-body { padding: 24px; }
+    .form-group { margin-bottom: 20px; }
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(42,37,33,0.7);
+      margin-bottom: 8px;
+    }
+
+    /* Frequency Switch */
+    .freq-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 4px;
+      background: var(--bol-cream);
+      border: 1px solid var(--bol-hairline-soft);
+      border-radius: 8px;
+    }
+    .freq-btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      padding: 10px;
+      font-family: var(--bol-body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--bol-loam);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .freq-btn.active {
+      background: var(--bol-sage);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Amount Presets Grid */
+    .amount-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .amt-btn {
+      appearance: none;
+      border: 1px solid var(--bol-hairline-soft);
+      background: var(--bol-cream);
+      color: var(--bol-loam);
+      padding: 12px 6px;
+      font-family: var(--bol-display);
+      font-size: 17px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .amt-btn:hover { border-color: var(--bol-sage); background: #fff; }
+    .amt-btn.active {
+      background: var(--bol-sage-deep);
+      border-color: var(--bol-sage-deep);
+      color: #fff;
+      box-shadow: 0 0 0 2px rgba(184,147,90,0.4);
+    }
+    .custom-amt-wrap {
+      grid-column: span 3;
+      position: relative;
+      margin-top: 4px;
+    }
+    .custom-amt-wrap .cur {
+      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      font-weight: 700; color: var(--bol-accent-ink);
+    }
+    .custom-amt-input {
+      width: 100%;
+      padding: 10px 14px 10px 30px;
+      border: 1px solid var(--bol-hairline-soft);
+      border-radius: 8px;
+      font-family: var(--bol-body);
+      font-size: 14px;
+      background: var(--bol-cream);
+      color: var(--bol-loam);
+    }
+    .custom-amt-input:focus {
+      outline: none;
+      border-color: var(--bol-sage);
+      background: #fff;
+    }
+
+    .bol-select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--bol-hairline-soft);
+      border-radius: 8px;
+      background: #fff;
+      font-family: var(--bol-body);
+      font-size: 14px;
+      color: var(--bol-loam);
+    }
+
+    .fee-box {
+      background: var(--bol-cream);
+      border: 1px solid var(--bol-hairline-soft);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 12.5px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .fee-box input { margin-top: 2px; }
+
+    .tribute-toggle-link {
+      background: none; border: none; padding: 0;
+      color: var(--bol-sage); text-decoration: underline;
+      font-size: 12.5px; font-weight: 600; cursor: pointer;
+    }
+    .tribute-fields {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      background: #FAF4E8;
+      border: 1px solid rgba(184,147,90,0.3);
+      border-radius: 8px;
+    }
+    .tribute-fields input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--bol-hairline-soft);
+      border-radius: 4px;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .submit-give-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--bol-sage);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-family: var(--bol-body);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(62,90,56,0.25);
+      transition: background 0.18s ease;
+    }
+    .submit-give-btn:hover { background: var(--bol-sage-deep); }
+    .give-secure-foot {
+      font-size: 11.5px;
+      text-align: center;
+      color: rgba(42,37,33,0.6);
+      margin-top: 10px;
+    }
+
+      /* FOOTER */
+      .bol-footer {
+        background: var(--bol-loam);
+        color: #d8d1c6;
+        padding: clamp(60px, 7vw, 90px) 0 44px;
+      }
+      .bol-footer-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1.15fr 1fr 1fr;
+        gap: clamp(30px, 3.4vw, 52px);
+        align-items: start;
+      }
+      .bol-footer h4 {
+        position: relative;
+        font-family: var(--bol-body);
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #bfb5a5;
+        margin: 0 0 24px;
+        padding-bottom: 14px;
+      }
+      .bol-footer h4::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 26px;
+        height: 2px;
+        background: var(--bol-sage);
+      }
+      .bol-footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .bol-footer li {
+        margin-bottom: 14px;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      .bol-footer-addr {
+        line-height: 1.65;
+        margin-bottom: 20px;
+      }
+      .bol-footer a {
+        color: inherit;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.18s ease;
+      }
+      .bol-footer a:hover {
+        border-color: #d8d1c6;
+      }
+      .bol-footer-highlight {
+        color: var(--bol-accent);
+      }
+      .bol-footer-mark {
+        margin-bottom: 20px;
+        line-height: 0;
+      }
+      .bol-footer-mark img {
+        display: block;
+        width: auto;
+        height: clamp(62px, 6.6vw, 84px);
+        max-width: 330px;
+        object-fit: contain;
+        transform: translateY(-6%);
+      }
+      .bol-footer-mission {
+        font-size: 17px;
+        line-height: 1.65;
+        color: #c3baaa;
+        max-width: 38ch;
+        margin-bottom: 26px;
+      }
+
+      /* contact column — icon + label + value rows */
+      .bol-footer-cinfo {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+      .bol-footer-cinfo .ic {
+        flex: 0 0 auto;
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--bol-sage);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+      .bol-footer-cinfo svg {
+        width: 16px;
+        height: 16px;
+      }
+      .bol-footer-cinfo .label {
+        display: block;
+        font-size: 13px;
+        color: #9d9488;
+        margin-bottom: 4px;
+      }
+      .bol-footer-cinfo .value {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #f3efe6;
+      }
+      a.value:hover {
+        border-color: #d8d1c6;
+      }
+
+      /* brand column — signup pill */
+      .bol-signup label {
+        display: block;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #c3baaa;
+        margin-bottom: 14px;
+        max-width: 34ch;
+      }
+      .bol-signup-row {
+        display: flex;
+        border: 1px solid #4a433c;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .bol-signup input {
+        flex: 1;
+        min-width: 0;
+        background: transparent;
+        border: 0;
+        padding: 15px 22px;
+        color: #f3efe6;
+        font-family: var(--bol-body);
+        font-size: 16px;
+      }
+      .bol-signup input::placeholder {
+        color: #7c7367;
+      }
+      .bol-signup button {
+        background: var(--bol-sage);
+        border: 0;
+        border-radius: 4px;
+        margin: 3px;
+        color: #fff;
+        font-family: var(--bol-body);
+        font-weight: 600;
+        font-size: 15px;
+        padding: 0 24px;
+        cursor: pointer;
+        transition: background 0.18s ease;
+      }
+      .bol-signup button:hover {
+        background: var(--bol-sage-deep);
+      }
+      .bol-signup-note {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #9d9488;
+        margin-top: 14px;
+      }
+
+      /* bottom bar — copyright left, social icons right */
+      .bol-colophon {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-top: clamp(44px, 5vw, 64px);
+        padding-top: 26px;
+        border-top: 1px solid #4a433c;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #bfb5a5;
+      }
+      .bol-colophon a {
+        font-size: inherit;
+        color: inherit;
+      }
+      .bol-footer-social {
+        display: flex;
+        gap: 12px;
+      }
+      .bol-footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(216, 209, 198, 0.14);
+        color: #fff;
+        border-bottom: none;
+        transition: background 0.18s ease, color 0.18s ease;
+      }
+      .bol-footer-social a:hover {
+        background: var(--bol-sage);
+        color: #fff;
+      }
+      .bol-footer-social svg {
+        width: 18px;
+        height: 18px;
+      }
+
+    /* Checkout Modal */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px); z-index: 100;
+      display: none; align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-box {
+      background: #faf7f0; border: 1px solid var(--bol-hairline);
+      border-radius: 12px; max-width: 480px; width: 100%;
+      overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+    .modal-head {
+      background: var(--bol-sage); color: #fff; padding: 18px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .modal-head h4 { font-family: var(--bol-display); margin: 0; font-size: 1.25rem; }
+    .modal-close { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; }
+    .modal-body { padding: 24px; font-size: 14px; }
+    .receipt-card {
+      background: #fff; border: 1px solid var(--bol-hairline-soft);
+      padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Masthead Navigation -->
+  <header class="bol-masthead" id="bolMasthead">
+    <div class="bol-shell bol-masthead-inner">
+      <a class="bol-wordmark" href="index.html" aria-label="Bread of Life">
+        <img src="https://images.squarespace-cdn.com/content/6a662e2b61e351419c14bc1c/da841121-67d7-4217-aa37-7107060eef73/bread+of+life+logo.png?content-type=image%2Fpng" alt="Bread of Life" />
+      </a>
+      <div class="bol-menu">
+        <nav class="bol-nav" aria-label="Primary">
+          <a href="#top">Home</a>
+          <a href="about.html">About</a>
+          <a href="index.html#offer">Programs</a>
+          <a href="spiritual_direction.html">Spiritual Direction</a>
+          <a href="index.html#offer">Community</a>
+          <a href="index.html#footer">Contact</a>
+        </nav>
+        <div class="bol-actions">
+          <a class="bol-btn bol-btn-ghost" href="donate.html">Donate</a>
+          <a class="bol-btn" href="spiritual_direction.html">Find a Spiritual Director</a>
+        </div>
+      </div>
+      <button class="bol-navtoggle" id="bolNavToggle" aria-expanded="false" aria-label="Open menu">
+        <span class="bol-burger" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="sanctuary-hero">
+    <div class="bol-shell">
+      <h1>Partner with <em>Bread of Life</em></h1>
+      <p>If Bread of Life has made a difference in who you are and how you live, we invite you to companion others on their journey. Your gifts ensure our contemplative sanctuary remains open to everyone.</p>
+    </div>
+  </section>
+
+  <!-- Main Split Layout -->
+  <main class="bol-shell">
+    <div class="sanctuary-grid">
+      <!-- Left Column: Story & Transparency -->
+      <div class="narrative-col">
+        <h2>About the Lagerstrom Scholarship Fund</h2>
+        <p>Ron and Velma Lagerstrom were beloved, longtime friends of Bread of Life. Ron served as a compassionate spiritual director at the Center, and Velma faithfully guided our community on the Board. When Ron passed in January 2021, this designated fund was established to honor his legacy of gentle, unconditional listening.</p>
+
+        <div class="pullquote-box">
+          <p>&ldquo;This scholarship fund supports those on the margins who are in great need of support on the spiritual journey, but who, because of financial hardship, would otherwise not be able to participate.&rdquo;</p>
+          <div class="pullquote-sub">100% of designated gifts go directly to seeker scholarships</div>
+        </div>
+
+        <p>Whether you offer a one-time gift or a sustaining monthly pledge, your contribution keeps this interfaith contemplative community thriving so no seeker has to sit with life&apos;s real questions alone.</p>
+
+        <!-- Impact row -->
+        <div class="impact-row">
+          <div class="impact-stat">
+            <div class="num">$50/mo</div>
+            <div class="label">Subsidized Sessions</div>
+            <div class="desc">Provides 1 monthly spiritual companionship session for someone in hardship.</div>
+          </div>
+          <div class="impact-stat">
+            <div class="num">$100/mo</div>
+            <div class="label">Workshop Inclusion</div>
+            <div class="desc">Enables a marginalized seeker to join a 6-week cohort or seasonal retreat.</div>
+          </div>
+          <div class="impact-stat">
+            <div class="num">100%</div>
+            <div class="label">Direct to Seekers</div>
+            <div class="desc">Every dollar given to this fund directly offsets program aid and fees.</div>
+          </div>
+        </div>
+
+        <!-- Non-Cash Giving Accordion -->
+        <h3 style="font-family: var(--bol-display); font-size: 1.35rem; margin: 36px 0 16px;">Other Ways to Give</h3>
+
+        <div class="accordion-item" id="accCheck">
+          <button type="button" class="accordion-toggle" onclick="toggleAcc('accCheck')">
+            <span>Mail a Check to Our Sacramento Sanctuary</span>
+            <span>+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Make checks payable to <strong>Bread of Life</strong> and mail to:</p>
+            <div style="background:#fff; border:1px solid #dcd4c4; padding:10px 14px; font-family:monospace; border-radius:6px;">
+              The Bread of Life Center<br>
+              Attn: Development & Scholarship Fund<br>
+              1260 Fulton Ave., Suite A<br>
+              Sacramento, CA 95825
+            </div>
+            <p style="font-size:12px; margin-top:8px; color:#7c7367;">Include a memo note if designating for the Lagerstrom Scholarship Fund.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item" id="accStock">
+          <button type="button" class="accordion-toggle" onclick="toggleAcc('accStock')">
+            <span>Donate Appreciated Stock, Securities or IRA Rollover</span>
+            <span>+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Gifting appreciated securities eliminates capital gains taxes and provides a full fair-market charitable deduction.</p>
+            <div style="background:#fff; border:1px solid #dcd4c4; padding:10px 14px; font-family:monospace; border-radius:6px; font-size:12px;">
+              Brokerage: Charles Schwab & Co.<br>
+              DTC Number: 0164, Code 40<br>
+              Account Name: Bread of Life Center<br>
+              Tax ID / EIN: 68-0428919
+            </div>
+            <button type="button" class="accordion-copy-btn" onclick="copyStockInfo()">Copy Brokerage Instructions</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Giving Card -->
+      <div class="giving-card-wrapper">
+        <div class="giving-card">
+          <div class="giving-card-head">
+            <div class="overtitle">Bread of Life Giving</div>
+            <h3>Make Your Contribution</h3>
+            <p class="tax-note">Tax-deductible 501(c)(3) donation &middot; EIN 68-0428919</p>
+          </div>
+
+          <div class="giving-card-body">
+            <!-- Frequency Switch -->
+            <div class="form-group">
+              <label class="form-label">Gift Frequency</label>
+              <div class="freq-switch">
+                <button type="button" class="freq-btn active" id="btnMonthly" onclick="setFreq('monthly')">Monthly Sustainer</button>
+                <button type="button" class="freq-btn" id="btnOneTime" onclick="setFreq('one-time')">One-Time Gift</button>
+              </div>
+            </div>
+
+            <!-- Amount Presets -->
+            <div class="form-group">
+              <label class="form-label">Select Contribution Amount</label>
+              <div class="amount-grid">
+                <button type="button" class="amt-btn" onclick="setAmt(25)">$25</button>
+                <button type="button" class="amt-btn active" onclick="setAmt(50)">$50</button>
+                <button type="button" class="amt-btn" onclick="setAmt(100)">$100</button>
+                <button type="button" class="amt-btn" onclick="setAmt(250)">$250</button>
+                <button type="button" class="amt-btn" onclick="setAmt(500)">$500</button>
+                <button type="button" class="amt-btn" onclick="setAmt(1000)">$1000</button>
+                <div class="custom-amt-wrap">
+                  <span class="cur">$</span>
+                  <input type="number" id="customInput" class="custom-amt-input" placeholder="Other custom amount" oninput="onCustomAmt(this.value)">
+                </div>
+              </div>
+            </div>
+
+            <!-- Fund Designation -->
+            <div class="form-group">
+              <label class="form-label">Direct Your Gift</label>
+              <select id="fundSelect" class="bol-select">
+                <option value="Lagerstrom Scholarship Fund">Lagerstrom Scholarship Fund (Seekers in need)</option>
+                <option value="General Operating Fund">General Operating & Center Sanctuary</option>
+                <option value="Spiritual Direction Internship">Spiritual Direction Internship Training</option>
+                <option value="Community Workshops">Community Workshops & Rest Retreats</option>
+              </select>
+            </div>
+
+            <!-- Cover 5% Processing Fee -->
+            <div class="form-group">
+              <label class="fee-box">
+                <input type="checkbox" id="feeCheckbox" checked onchange="updateTotal()">
+                <span>
+                  <strong>Add 5% (<span id="feeDisplay">+$2.50</span>)</strong> to help Bread of Life cover online card processing costs so 100% goes to the program.
+                </span>
+              </label>
+            </div>
+
+            <!-- Dedication -->
+            <div class="form-group">
+              <button type="button" class="tribute-toggle-link" onclick="toggleTribute()">+ Dedicate in honor or memory of someone</button>
+              <div class="tribute-fields" id="tributeFields">
+                <input type="text" id="tributeName" placeholder="Honoree's name (e.g. Ron Lagerstrom)">
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <button type="button" class="submit-give-btn" onclick="openCheckoutModal()">
+              Give <span id="btnTotalText">$52.50 / Month</span>
+            </button>
+            <div class="give-secure-foot">
+              🔒 Safe 256-bit Encrypted &middot; Immediate IRS Tax Receipt
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bol-footer" id="footer">
+    <div class="bol-shell">
+      <div class="bol-footer-grid">
+        <div>
+          <div class="bol-footer-mark">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlcAAADwCAYAAAAtvUH7AAEAAElEQVR42uydd5wcV5Xvf+dWVcfpyTloRqOco2XZlu0ZZzC2MTAD7LLssvBsYPex+9hll7DQ3buEJcMCBploWFK3c5AtW1a3LFkO0ijnMKMZhcm5c1Xd8/7obmksy8YGA8a+Xz62penqqurqEvXT757zO4BCoVAoFArFXzBHjqxzAgBz7P1HOh/lJyL/GyQSYGahro5CoVAoFArFq6Cra2dxVljx9M1b7xrYsPFnjzKzg5mJmUldIYVCoVAoFIpXADNroVBIY+biWKz7e48/8ZPBA4fXH2Vmb+51JawUCoVCoVAoXgmhUEjL/7qze3Pblq1385at936bmUv8fr+urpBCoVAoFIpXTCQS0d+srozf7xdtbdAAgJm9+/ev/9UTT/7kdCQSWpPfRjlWCoVCoVAoXg1vOuHAzBSJRHS//0odADzuAvQP7/nm01t/eXrHjge7hof3NuSE159NdObquwRzRI9EIso5UygUCoXiL0RkCCEETnbv/PdnnnloVv6h/kYWVcznlv8AYDx1as4TT96xsWPXr/hY55MbmbkJANauXWv8Oc6NOaRFIi9ehlTqSqFQKBSK173QCGlEZDOPLNq9I/Lf8fGBSO4lAsBvJEEFgKLRgCAiC4DNzB5g4F0bI/e/d+P6n7W4Xb6RmdOXXVZYOPe57DVhQUTmH/ecAgS0iGg0itbWoCQiCcCeso0GYNnk5ImVRw9tk0pcKRQKhULx+hcczMze3bvv/9rY+EDi6us/PAh85I30+UQ0GqCcoGIAkpl9sdjOi6NP/ui70GJzxsdGBluufNehktLF1xPRAADKCSv52p9PWESj+wkAzp1TUOb1LLN0AInl3V07L09MDsx74rFvLrUyE0tT6T5KJAaVc6VQKBQKxeuZaDSqtba2Wsz9S5OJnusMo/BHRNQVCrVpRGT/BQopAkDhcBjt7e2SiBg5Fyj3+qLdHb+87u7w5z7m8okGr6MUlaXN97S0/PP7AdhElGZmjYjs3Htfg/OJCqJWCYCnnk9uGw+Amsnxo9fv2PEENE3c9OjDwWYrE5s9OdEH057E5MQ44vEJlJQ0o7hs2oQSVwqFQqFQvI4ZHLyDhdBw/z3f/5e0Oc7vfs83vgh8AG1tIX6917fnXalwOIz9+/dPdaYAAEIYsO1MATD8ga4jOxevu+e/5o+OD15aWuWC4XCmGuuXf3PRwpsfdTicT5hmJrdPv/h9RWU+wqFi/35qDQbz4owBZF0p0sDSKgHMuae7t900PtRVvfmJb7VMTA7UgeKOifEBxGKDMDNpJBKxjK4ZjsLiCpSVNGL50gWAUf2NS9f8zf8ocaVQKBQKxetWnGw3gBXW0hWRD+7ecc+tdQ3LtgHo9vv9r/ly2B8ooHJENQCIRqOIRl9cm+RwupFOJeakEz1zR8Z6LjvTf7r17vC/Frs0mpmJT0DXXaipmT60cMmquyprL/s2EZ3MvZWYs5rslXzuc+cU1aJR4I47Wjkchmxvb7fPE3alwPj08fGTF/ecPPi2+PhA9X2/+USFy0X1ExP9sDNxjE+MwLKSsGQyA3ZqBQXFWlFpPWobqh1eb/loVWXj+vLyxgdrmy4/QES7gferZUGFQqFQKH73wzqk5WtwWluD1p/mmBGdaKXJbF53YM+GH6RSKVy08rovEpFkZi0YDP4pRBNNFTPZWX1hCoeBiooKGhy8g89zkazz9lEDoHnnvrvZTpjXC13e8MSTX100NnDcnUqOICPj8BVUYmBc61m8sKVrxpxVPy0pmX03EcWBrNPU1taG3BLgy5yrXwALKCvszjpkLzgfoTlgW6Oruo9mfoHRy7WNH7bhg3fWjE6cKzA7YQYGOiBnUlD2iZSyXgGmmTo5CThhLeoEoWFtQ6Ptzrj8hRv8XgLf71o0ZWxgoLmR4loJ" alt="Bread of Life" />
+        </div>
+        <div>
+          <h4>Contact Bread of Life</h4>
+          <div class="bol-footer-cinfo">
+            <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h3.2l1.3 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.3V17a2 2 0 0 1-2.2 2A15 15 0 0 1 3 5.2 2 2 0 0 1 5 4Z"/></svg></span>
+            <span><span class="label">Call us</span><a class="value" href="tel:19166481803">(916) 648 1803</a></span>
+          </div>
+          <div class="bol-footer-cinfo">
+            <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>
+            <span><span class="label">Visit our location</span><span class="value">Bread of Life Center<br/>1260 Fulton Avenue, Suite A<br/>Sacramento, CA 95825, USA</span></span>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#offer">Programs and Groups</a></li>
+            <li><a class="bol-footer-highlight" href="spiritual_direction.html">Spiritual Direction</a></li>
+            <li><a href="#offer">Community</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#upcoming">Workshops</a></li>
+            <li><a href="#quote-1">Our Stories</a></li>
+            <li><a href="#footer">Contact</a></li>
+            <li><a href="#">Donate</a></li>
+            <li><a href="#">The Vault</a></li>
+            <li><a href="#">Registration Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bol-colophon">
+        <span>&copy; Bread of Life. A 501(c)(3) nonprofit. &middot; <a href="#">Privacy</a></span>
+        <div class="bol-footer-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 9.5H15.5V6.5H13.2C11.1 6.5 9.7 7.9 9.7 10V12H7.5V15H9.7V21H12.7V15H14.8L15.2 12H12.7V10.3C12.7 9.8 12.9 9.5 13.5 9.5Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="7" cy="7.2" r="1.7"/><rect x="5.4" y="10.4" width="3.2" height="8.2"/><path d="M11.2 10.4H14.3V11.8C14.9 10.8 16 10.1 17.4 10.1C20 10.1 21 11.9 21 14.5V18.6H17.8V15C17.8 14 17.5 13.2 16.4 13.2C15.4 13.2 14.9 13.9 14.9 15V18.6H11.2V10.4Z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="2" width="18" height="20" rx="5"/><path d="M7 11.5A4.5 4.5 0 0 0 11.5 16 4.5 4.5 0 0 0 16 11.5 4.5 4.5 0 0 0 11.5 7 4.5 4.5 0 0 0 7 11.5Z"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (function(){
+      var btn = document.getElementById("bolSignupBtn"), input = document.getElementById("bolEmail"), note = document.getElementById("bolSignupNote");
+      if (btn && input && note) {
+        btn.addEventListener("click", function(){
+          var v = input.value.trim();
+          if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){
+            note.textContent = "Enter an email address so we can send you the dates.";
+            input.focus();
+            return;
+          }
+          note.textContent = "You are on the list. Check your inbox to confirm.";
+          input.value = "";
+        });
+      }
+    })();
+  </script>
+
+  <!-- Simulated Checkout Dialog -->
+  <div class="modal-backdrop" id="checkoutModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h4>Complete Your Contribution</h4>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalStep1">
+        <p style="margin-top:0;">You are pledging: <strong id="modalSummary" style="color:#3E5A38; font-size:16px;"></strong></p>
+        <div class="receipt-card">
+          <div><strong>Designated:</strong> <span id="modalFund"></span></div>
+          <div><strong>Processing Fee:</strong> <span id="modalFee"></span></div>
+          <div style="margin-top:6px; border-top:1px solid #eee; padding-top:6px;">
+            <strong>Total Charged:</strong> <span id="modalTotal" style="color:#30452B; font-weight:700;"></span>
+          </div>
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="display:block; font-size:12px; margin-bottom:4px;">Donor Name</label>
+          <input type="text" id="donorName" value="Sarah Jenkins" style="width:100%; padding:8px; border:1px solid #dcd4c4; border-radius:4px;">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="display:block; font-size:12px; margin-bottom:4px;">Email Address for Tax Receipt</label>
+          <input type="email" id="donorEmail" value="sarah.jenkins@example.com" style="width:100%; padding:8px; border:1px solid #dcd4c4; border-radius:4px;">
+        </div>
+        <button type="button" class="submit-give-btn" onclick="finishGift()">Authorize Contribution</button>
+      </div>
+      <div class="modal-body" id="modalStep2" style="display:none; text-align:center;">
+        <h3 style="font-family:var(--bol-display); color:#30452B; margin-top:0;">Thank You with Deep Gratitude</h3>
+        <p style="font-size:14px; color:#2a2521;">Your donation has been received. An IRS 501(c)(3) tax receipt has been generated for your records.</p>
+        <button type="button" class="bol-btn" onclick="closeModal()" style="width:100%;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentFreq = 'monthly';
+    let baseAmount = 50;
+
+    function setFreq(f) {
+      currentFreq = f;
+      document.getElementById('btnMonthly').classList.toggle('active', f === 'monthly');
+      document.getElementById('btnOneTime').classList.toggle('active', f === 'one-time');
+      updateTotal();
+    }
+
+    function setAmt(val) {
+      baseAmount = val;
+      document.getElementById('customInput').value = '';
+      document.querySelectorAll('.amt-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText === '$' + val);
+      });
+      updateTotal();
+    }
+
+    function onCustomAmt(val) {
+      const num = parseFloat(val) || 0;
+      baseAmount = num;
+      document.querySelectorAll('.amt-btn').forEach(btn => btn.classList.remove('active'));
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const cover = document.getElementById('feeCheckbox').checked;
+      const fee = cover ? (baseAmount * 0.05) : 0;
+      const total = baseAmount + fee;
+      document.getElementById('feeDisplay').innerText = '+$' + (baseAmount * 0.05).toFixed(2);
+      const suffix = currentFreq === 'monthly' ? ' / Month' : '';
+      document.getElementById('btnTotalText').innerText = '$' + total.toFixed(2) + suffix;
+    }
+
+    function toggleAcc(id) {
+      document.getElementById(id).classList.toggle('active');
+    }
+
+    function toggleTribute() {
+      const f = document.getElementById('tributeFields');
+      f.style.display = f.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function copyStockInfo() {
+      const text = "Brokerage: Charles Schwab & Co.\nDTC: 0164, Code 40\nAccount: Bread of Life Center\nTax ID: 68-0428919";
+      navigator.clipboard.writeText(text);
+      alert("Stock transfer details copied to clipboard.");
+    }
+
+    function openCheckoutModal() {
+      const cover = document.getElementById('feeCheckbox').checked;
+      const fee = cover ? (baseAmount * 0.05) : 0;
+      const total = baseAmount + fee;
+      const freqText = currentFreq === 'monthly' ? 'Monthly' : 'One-time';
+
+      document.getElementById('modalSummary').innerText = '$' + baseAmount.toFixed(2) + ' (' + freqText + ')';
+      document.getElementById('modalFund').innerText = document.getElementById('fundSelect').value;
+      document.getElementById('modalFee').innerText = cover ? '+$' + fee.toFixed(2) + ' (Covered)' : '$0.00';
+      document.getElementById('modalTotal').innerText = '$' + total.toFixed(2);
+
+      document.getElementById('modalStep1').style.display = 'block';
+      document.getElementById('modalStep2').style.display = 'none';
+      document.getElementById('checkoutModal').style.display = 'flex';
+    }
+
+    function finishGift() {
+      document.getElementById('modalStep1').style.display = 'none';
+      document.getElementById('modalStep2').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('checkoutModal').style.display = 'none';
+    }
+
+    updateTotal();
+  </script>
+  <script>
+    (function () {
+      var mast = document.getElementById("bolMasthead"),
+        toggle = document.getElementById("bolNavToggle");
+      if (mast && toggle) {
+        toggle.addEventListener("click", function () {
+          var open = mast.classList.toggle("bol-open");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        });
+        mast
+          .querySelectorAll(".bol-nav a, .bol-actions a")
+          .forEach(function (a) {
+            a.addEventListener("click", function () {
+              mast.classList.remove("bol-open");
+              toggle.setAttribute("aria-expanded", "false");
+              toggle.setAttribute("aria-label", "Open menu");
+            });
+          });
+      }
+    })();
+  </script>
+</body>
+</html>
