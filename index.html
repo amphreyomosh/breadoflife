@@ -286,7 +286,7 @@
         outline-offset: 3px;
       }
       .bol-shell {
-        max-width: 1240px;
+        max-width: 1300px;
         margin: 0 auto;
         padding: 0 var(--bol-gutter);
       }
@@ -390,14 +390,20 @@
         ); /* optical centring: ink sits low in the bounding box */
       }
       .bol-menu {
-        display: contents;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: clamp(48px, 6vw, 80px);
+        flex: 1 1 auto;
+        min-width: 0;
       }
       .bol-nav {
         display: flex;
         align-items: center;
-        gap: clamp(18px, 1.9vw, 26px);
+        justify-content: flex-start;
+        gap: clamp(14px, 2vw, 24px);
         flex-wrap: nowrap;
-        flex: 0 1 auto;
+        flex: 1 1 auto;
         min-width: 0;
       }
       .bol-nav a {
@@ -412,6 +418,50 @@
       }
       .bol-nav a:hover {
         border-color: var(--bol-loam);
+      }
+      .bol-nav-item-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .bol-nav-item-dropdown > a {
+        position: relative;
+      }
+      .bol-nav-item-dropdown > a::after {
+        content: "▼";
+        font-size: 10px;
+        margin-left: 4px;
+        display: inline-block;
+        transition: transform 0.2s ease;
+      }
+      .bol-nav-item-dropdown:hover > a::after {
+        transform: rotate(180deg);
+      }
+      .bol-dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--bol-cream);
+        border: 1px solid var(--bol-hairline);
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        min-width: 150px;
+        z-index: 50;
+        padding: 8px 0;
+      }
+      .bol-nav-item-dropdown:hover .bol-dropdown-menu {
+        display: block;
+      }
+      .bol-dropdown-menu a {
+        display: block;
+        padding: 10px 16px;
+        font-size: 14px;
+        border-bottom: none;
+        color: var(--bol-loam);
+      }
+      .bol-dropdown-menu a:hover {
+        background: var(--bol-sage);
+        color: #fff;
       }
       .bol-actions {
         display: flex;
@@ -1546,7 +1596,7 @@
       @media (max-width: 1280px) {
         /* six nav items plus two buttons: win room from spacing, never from labels */
         .bol-nav {
-          gap: 15px;
+          gap: 20px;
         }
         .bol-nav a {
           font-size: 14px;
@@ -1563,7 +1613,7 @@
       @media (max-width: 1120px) {
         /* keep both buttons; win the room from type and spacing instead */
         .bol-nav {
-          gap: 12px;
+          gap: 16px;
         }
         .bol-nav a {
           font-size: 13px;
@@ -1714,13 +1764,13 @@
         }
       }
 
-      @media (min-width: 981px) {
+      @media (min-width: 1200px) {
         .bol-signup-button-icon {
           display: none !important;
         }
       }
 
-      @media (max-width: 980px) {
+      @media (max-width: 1199px) {
         .bol-signup-button-text {
           display: none;
         }
@@ -1810,6 +1860,32 @@
         }
         .bol-masthead.bol-open .bol-nav a:last-of-type {
           border-bottom: 0;
+        }
+        .bol-masthead.bol-open .bol-nav-item-dropdown {
+          display: block;
+        }
+        .bol-masthead.bol-open .bol-nav-item-dropdown > a::after {
+          position: absolute;
+          right: 0;
+        }
+        .bol-masthead.bol-open .bol-dropdown-menu {
+          position: static;
+          display: block;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+          min-width: auto;
+          z-index: auto;
+          padding: 0;
+        }
+        .bol-masthead.bol-open .bol-dropdown-menu a {
+          padding: 12px 0 12px 20px;
+          font-size: 16px;
+          color: var(--bol-loam);
+        }
+        .bol-masthead.bol-open .bol-dropdown-menu a:hover {
+          background: transparent;
+          color: var(--bol-sage);
         }
         .bol-masthead.bol-open .bol-actions {
           display: flex;
@@ -2425,15 +2501,30 @@
         <div class="bol-menu">
           <nav class="bol-nav" aria-label="Primary">
             <a href="#top">Home</a>
+<<<<<<< Updated upstream
             <a href="about.html">About</a>
+=======
+            <div class="bol-nav-item-dropdown">
+              <a href="#guide">About</a>
+              <div class="bol-dropdown-menu">
+                <a href="#footer">Contact us</a>
+              </div>
+            </div>
+>>>>>>> Stashed changes
             <a href="#offer">Programs</a>
+            <a href="workshops.html">Workshops</a>
             <a href="spiritual_direction.html">Spiritual Direction</a>
             <a href="#offer">Community</a>
-            <a href="#footer">Contact</a>
           </nav>
+<<<<<<< Updated upstream
             <div class="bol-actions">
             <a class="bol-btn bol-btn-ghost" href="donate.html">Donate</a>
             <a class="bol-btn" href="spiritual_direction.html">Find a Spiritual Director</a>
+=======
+          <div class="bol-actions">
+            <a class="bol-btn bol-btn-ghost" href="#">Donate</a>
+            <a class="bol-btn" href="#plan">Find a spiritual director</a>
+>>>>>>> Stashed changes
           </div>
         </div>
         <button
@@ -2741,7 +2832,7 @@
             background-color: transparent;
             border: none;
             padding: 12px 18px;
-            border-radius: 0px;
+            border-radius: 4px;
             cursor: pointer;
             font-family: inherit;
             color: inherit;

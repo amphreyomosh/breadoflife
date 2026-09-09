@@ -1,0 +1,1357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workshops | Bread of Life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #faf7f0;
+        --loam: #2a2521;
+        --sage: #47653f;
+        --deep-sage: #355030;
+        --wheat: #c9a25e;
+        --hairline: #dcd4c4;
+        --cream-shade: #f1ebdd;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Karla", sans-serif;
+        background: var(--cream);
+        color: var(--loam);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        color: var(--loam);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .btn {
+        display: inline-block;
+        font-family: "Karla", sans-serif;
+        font-weight: 600;
+        font-size: 14.5px;
+        padding: 11px 20px;
+        border: 1px solid transparent;
+        cursor: pointer;
+      }
+      .btn-primary {
+        background: var(--sage);
+        color: var(--cream);
+      }
+      .btn-primary:hover {
+        background: var(--deep-sage);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--loam);
+        border-color: var(--loam);
+      }
+      .btn-outline:hover {
+        background: var(--loam);
+        color: var(--cream);
+      }
+      .btn-text {
+        font-weight: 600;
+        font-size: 14.5px;
+        border-bottom: 1px solid var(--wheat);
+        padding-bottom: 2px;
+      }
+
+      .bol-masthead {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(250, 247, 240, 0.96);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--hairline);
+      }
+      .bol-shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 22px;
+      }
+      .bol-masthead-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: clamp(18px, 2.2vw, 30px);
+        min-height: 92px;
+      }
+      .bol-wordmark {
+        display: block;
+        flex: 0 0 auto;
+        line-height: 0;
+      }
+      .bol-wordmark img {
+        display: block;
+        width: auto;
+        height: clamp(44px, 4.4vw, 58px);
+        max-width: min(50vw, 300px);
+        object-fit: contain;
+        transform: translateY(-9%);
+      }
+      .bol-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: clamp(48px, 6vw, 80px);
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      .bol-nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: clamp(14px, 2vw, 24px);
+        flex-wrap: nowrap;
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      .bol-nav a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 15px;
+        font-weight: 500;
+        white-space: nowrap;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 3px;
+        transition: border-color 0.18s ease;
+      }
+      .bol-nav a:hover {
+        border-color: var(--loam);
+      }
+      .bol-nav-item-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .bol-nav-item-dropdown > a {
+        position: relative;
+      }
+      .bol-nav-item-dropdown > a::after {
+        content: "▼";
+        font-size: 10px;
+        margin-left: 4px;
+        display: inline-block;
+        transition: transform 0.2s ease;
+      }
+      .bol-nav-item-dropdown:hover > a::after {
+        transform: rotate(180deg);
+      }
+      .bol-dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--cream);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        min-width: 150px;
+        z-index: 50;
+        padding: 8px 0;
+      }
+      .bol-nav-item-dropdown:hover .bol-dropdown-menu {
+        display: block;
+      }
+      .bol-dropdown-menu a {
+        display: block;
+        padding: 10px 16px;
+        font-size: 14px;
+        border-bottom: none;
+        color: var(--loam);
+      }
+      .bol-dropdown-menu a:hover {
+        background: var(--sage);
+        color: #fff;
+      }
+      .bol-actions {
+        display: flex;
+        align-items: center;
+        gap: clamp(8px, 0.9vw, 10px);
+        flex: 0 0 auto;
+      }
+      .bol-masthead .bol-btn {
+        padding: 11px clamp(14px, 1.5vw, 20px);
+        font-size: clamp(13px, 1vw, 14px);
+        white-space: nowrap;
+        border: 1px solid var(--sage);
+        border-radius: 4px;
+        background: var(--sage);
+        color: #fff;
+        font-weight: 600;
+        transition:
+          background 0.18s ease,
+          border-color 0.18s ease;
+      }
+      .bol-masthead .bol-btn:hover {
+        background: var(--deep-sage);
+        border-color: var(--deep-sage);
+      }
+      .bol-masthead .bol-btn-ghost {
+        border-color: var(--hairline);
+        color: var(--sage);
+        background: transparent;
+      }
+      .bol-masthead .bol-btn-ghost:hover {
+        background: var(--sage);
+        border-color: var(--sage);
+        color: #fff;
+      }
+      .bol-navtoggle {
+        display: none;
+        background: none;
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        cursor: pointer;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        place-items: center;
+        color: var(--loam);
+        transition:
+          border-color 0.18s ease,
+          background 0.18s ease;
+      }
+      .bol-navtoggle:hover {
+        border-color: var(--sage);
+        background: #fff;
+      }
+      .bol-burger {
+        display: block;
+        position: relative;
+        width: 22px;
+        height: 14px;
+      }
+      .bol-burger i {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1.5px;
+        background: currentColor;
+        transition:
+          transform 0.22s cubic-bezier(0.3, 0.7, 0.2, 1),
+          opacity 0.14s ease;
+      }
+      .bol-burger i:nth-child(1) {
+        top: 0;
+      }
+      .bol-burger i:nth-child(2) {
+        top: 6.25px;
+      }
+      .bol-burger i:nth-child(3) {
+        top: 12.5px;
+      }
+      .bol-masthead.bol-open .bol-navtoggle {
+        border-color: var(--sage);
+        background: var(--sage);
+        color: #fff;
+      }
+      .bol-masthead.bol-open .bol-burger i:nth-child(1) {
+        transform: translateY(6.25px) rotate(45deg);
+      }
+      .bol-masthead.bol-open .bol-burger i:nth-child(2) {
+        opacity: 0;
+      }
+      .bol-masthead.bol-open .bol-burger i:nth-child(3) {
+        transform: translateY(-6.25px) rotate(-45deg);
+      }
+      @media (max-width: 900px) {
+        .bol-menu {
+          gap: 12px;
+        }
+        .bol-nav {
+          display: none;
+        }
+        .bol-navtoggle {
+          display: grid;
+          order: 3;
+          flex: 0 0 auto;
+        }
+        .bol-actions {
+          order: 2;
+          margin-left: auto;
+          flex: 0 1 auto;
+          min-width: 0;
+        }
+        .bol-actions .bol-btn {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .bol-actions .bol-btn-ghost {
+          display: none;
+        }
+        .bol-masthead.bol-open .bol-masthead-inner {
+          position: relative;
+        }
+        .bol-masthead.bol-open .bol-menu {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--cream);
+          border-bottom: 1px solid var(--hairline);
+          max-height: 100vh;
+          overflow: auto;
+        }
+        .bol-masthead.bol-open .bol-nav {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          position: static;
+          padding: 8px 22px 0;
+        }
+        .bol-masthead.bol-open .bol-nav a {
+          font-size: 18px;
+          padding: 16px 0;
+          border-bottom: 1px solid var(--hairline);
+        }
+        .bol-masthead.bol-open .bol-nav a:last-of-type {
+          border-bottom: 0;
+        }
+        .bol-masthead.bol-open .bol-nav-item-dropdown {
+          display: block;
+        }
+        .bol-masthead.bol-open .bol-nav-item-dropdown > a::after {
+          position: absolute;
+          right: 0;
+        }
+        .bol-masthead.bol-open .bol-dropdown-menu {
+          position: static;
+          display: block;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+          min-width: auto;
+          z-index: auto;
+          padding: 0;
+        }
+        .bol-masthead.bol-open .bol-dropdown-menu a {
+          padding: 12px 0 12px 20px;
+          font-size: 16px;
+          color: var(--loam);
+        }
+        .bol-masthead.bol-open .bol-dropdown-menu a:hover {
+          background: transparent;
+          color: var(--sage);
+        }
+        .bol-masthead.bol-open .bol-actions {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+          position: static;
+          padding: 16px 22px 24px;
+          justify-content: center;
+        }
+        .bol-masthead.bol-open .bol-actions .bol-btn {
+          padding: 11px 14px;
+          font-size: 13px;
+        }
+        .bol-masthead.bol-open .bol-actions .bol-btn-ghost {
+          display: inline-block;
+        }
+      }
+      @media (max-width: 640px) {
+        .bol-masthead-inner {
+          min-height: 76px;
+          justify-content: space-between;
+          gap: 12px;
+        }
+        .bol-actions {
+          display: none;
+        }
+        .bol-navtoggle {
+          margin-left: auto;
+        }
+
+        .bol-masthead.bol-open .bol-menu {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--cream);
+          border-bottom: 1px solid var(--hairline);
+          max-height: 100vh;
+          overflow: auto;
+        }
+
+        .bol-masthead.bol-open .bol-nav {
+          position: static;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 8px 22px 0;
+        }
+        .bol-masthead.bol-open .bol-nav a {
+          font-size: 16px;
+          padding: 13px 0;
+          border-bottom: 1px solid var(--hairline);
+        }
+        .bol-masthead.bol-open .bol-nav a:last-of-type {
+          border-bottom: 0;
+        }
+
+        .bol-masthead.bol-open .bol-actions {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 10px;
+          position: static;
+          padding: 16px 0 24px;
+          text-align: center;
+          margin-top: 0;
+        }
+        .bol-masthead.bol-open .bol-actions .bol-btn {
+          padding: 15px 20px;
+          font-size: 16px;
+          margin: 0 22px;
+        }
+        .bol-masthead.bol-open .bol-actions .bol-btn-ghost {
+          display: inline-block;
+        }
+      }
+
+      /* ---- Page hero ---- */
+      .page-hero {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        background: var(--sage);
+        padding: clamp(56px, 7vw, 110px) 0 clamp(60px, 7vw, 96px);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 820px;
+        text-align: center;
+        margin: 0 auto;
+      }
+      .eyebrow {
+        font-size: 13px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--wheat);
+        margin: 0 0 16px;
+      }
+      .page-hero h1 {
+        font-size: clamp(2.1rem, 4.2vw, 3.1rem);
+        line-height: 1.1;
+        color: #fff;
+        margin-bottom: 18px;
+        font-weight: 400;
+      }
+      .page-hero p {
+        color: rgba(243, 239, 230, 0.9);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        max-width: 640px;
+        margin: 0 auto 30px;
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        justify-content: center;
+        align-items: center;
+      }
+      .hero-actions .btn-primary {
+        background: var(--wheat);
+        border-color: var(--wheat);
+        color: var(--loam);
+      }
+      .hero-actions .btn-primary:hover {
+        background: var(--loam);
+        border-color: var(--loam);
+        color: #fff;
+      }
+      .hero-link {
+        font-size: 15px;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
+      }
+
+      /* ---- Three-up value strip ---- */
+      .value-strip {
+        border-bottom: 1px solid var(--hairline);
+      }
+      .value-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      @media (min-width: 760px) {
+        .value-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .value-item {
+        padding: 28px 24px;
+        border-top: 1px solid var(--hairline);
+      }
+      @media (min-width: 760px) {
+        .value-item {
+          border-top: none;
+          border-left: 1px solid var(--hairline);
+        }
+        .value-item:first-child {
+          border-left: none;
+        }
+      }
+      .value-item h3 {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+      .value-item p {
+        font-size: 14.5px;
+        opacity: 0.8;
+      }
+
+      /* ---- Intro section ---- */
+      .intro-section {
+        padding: 52px 0 8px;
+      }
+      .intro-section h2 {
+        font-size: 26px;
+        margin-bottom: 10px;
+        max-width: 34ch;
+      }
+      .intro-section p {
+        font-size: 15.5px;
+        opacity: 0.85;
+        max-width: 60ch;
+      }
+
+      /* ---- Filter bar ---- */
+      .filter-bar {
+        margin: 32px 0 8px;
+        padding: 18px 22px;
+        border: 1px solid var(--hairline);
+        background: var(--cream-shade);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px;
+      }
+      .filter-field {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .filter-field label {
+        font-size: 12px;
+        font-weight: 600;
+        opacity: 0.7;
+      }
+      .filter-field select,
+      .filter-field input {
+        font-family: "Karla", sans-serif;
+        font-size: 14.5px;
+        padding: 9px 12px;
+        border: 1px solid var(--hairline);
+        background: var(--cream);
+        color: var(--loam);
+        min-width: 150px;
+      }
+      .filter-bar .reset-link {
+        margin-left: auto;
+        font-size: 14px;
+        font-weight: 600;
+        border-bottom: 1px solid var(--wheat);
+        padding-bottom: 2px;
+        align-self: center;
+      }
+      .result-count {
+        font-size: 14px;
+        opacity: 0.75;
+        margin: 16px 0 28px;
+      }
+
+      /* ---- Workshop list (event row) ---- */
+      .workshop-list {
+        border-top: 1px solid var(--hairline);
+      }
+      .workshop-row {
+        display: grid;
+        grid-template-columns: 110px 1fr auto;
+        gap: 22px;
+        align-items: center;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--hairline);
+      }
+      @media (max-width: 640px) {
+        .workshop-row {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
+      .row-date {
+        font-family: "Fraunces", serif;
+      }
+      .row-date .day {
+        font-size: 26px;
+        line-height: 1;
+        color: var(--deep-sage);
+      }
+      .row-date .month-weekday {
+        font-size: 13px;
+        font-family: "Karla", sans-serif;
+        opacity: 0.7;
+        margin-top: 4px;
+      }
+      .row-body h3 {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+      .row-body p {
+        font-size: 14.5px;
+        opacity: 0.8;
+        margin-bottom: 6px;
+      }
+      .row-meta {
+        font-size: 13px;
+        opacity: 0.65;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .row-meta .tag {
+        border: 1px solid var(--hairline);
+        padding: 2px 8px;
+        font-size: 12px;
+      }
+      .row-action {
+        white-space: nowrap;
+      }
+      @media (max-width: 640px) {
+        .row-action {
+          justify-self: start;
+        }
+      }
+
+      /* ---- Empty state ---- */
+      .empty-state {
+        display: none;
+        text-align: center;
+        padding: 64px 24px;
+        border-top: 1px solid var(--hairline);
+      }
+      .empty-state h3 {
+        font-size: 19px;
+        margin-bottom: 8px;
+      }
+      .empty-state p {
+        font-size: 14.5px;
+        opacity: 0.75;
+        margin-bottom: 16px;
+      }
+
+      /* ---- Closing CTA band ---- */
+      .cta-band {
+        background: var(--sage);
+        color: var(--cream);
+        padding: 56px 0;
+        margin-top: 64px;
+        text-align: center;
+      }
+      .cta-band h2 {
+        color: #fff;
+        font-size: 26px;
+        margin-bottom: 12px;
+      }
+      .cta-band p {
+        color: #ede7d8;
+        font-size: 15.5px;
+        max-width: 46ch;
+        margin: 0 auto 24px;
+      }
+      .cta-band .btn-primary {
+        background: var(--wheat);
+        color: var(--loam);
+      }
+
+      /* Footer (matches home page) */
+      .bol-footer {
+        background: var(--loam);
+        color: #d8d1c6;
+        padding: clamp(60px, 7vw, 90px) 0 44px;
+      }
+      .bol-footer-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1.15fr 1fr 1fr;
+        gap: clamp(30px, 3.4vw, 52px);
+        align-items: start;
+      }
+      .bol-footer h4 {
+        position: relative;
+        font-family: "Karla", sans-serif;
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #bfb5a5;
+        margin: 0 0 24px;
+        padding-bottom: 14px;
+      }
+      .bol-footer h4::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 26px;
+        height: 2px;
+        background: var(--sage);
+      }
+      .bol-footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .bol-footer li {
+        margin-bottom: 14px;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      .bol-footer a {
+        color: inherit;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.18s ease;
+      }
+      .bol-footer a:hover {
+        border-color: #d8d1c6;
+      }
+      .bol-footer-highlight {
+        color: var(--wheat);
+      }
+      .bol-footer-mark {
+        margin-bottom: 20px;
+        line-height: 0;
+      }
+      .bol-footer-mark img {
+        display: block;
+        width: auto;
+        height: clamp(62px, 6.6vw, 84px);
+        max-width: 330px;
+        object-fit: contain;
+        transform: translateY(-6%);
+      }
+      .bol-footer-mission {
+        font-size: 17px;
+        line-height: 1.65;
+        color: #c3baaa;
+        max-width: 38ch;
+        margin-bottom: 26px;
+      }
+      .bol-footer-cinfo {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+      .bol-footer-cinfo .ic {
+        flex: 0 0 auto;
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--sage);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+      .bol-footer-cinfo svg {
+        width: 16px;
+        height: 16px;
+      }
+      .bol-footer-cinfo .label {
+        display: block;
+        font-size: 13px;
+        color: #9d9488;
+        margin-bottom: 4px;
+      }
+      .bol-footer-cinfo .value {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #f3efe6;
+      }
+      .bol-signup label {
+        display: block;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #c3baaa;
+        margin-bottom: 14px;
+        max-width: 34ch;
+      }
+      .bol-signup-row {
+        display: flex;
+        border: 1px solid #4a433c;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .bol-signup input {
+        flex: 1;
+        min-width: 0;
+        background: transparent;
+        border: 0;
+        padding: 15px 22px;
+        color: #f3efe6;
+        font-family: "Karla", sans-serif;
+        font-size: 16px;
+      }
+      .bol-signup input::placeholder {
+        color: #7c7367;
+      }
+      .bol-signup button {
+        background: var(--sage);
+        border: 0;
+        border-radius: 4px;
+        margin: 3px;
+        color: #fff;
+        font-family: "Karla", sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 0 24px;
+        cursor: pointer;
+        transition: background 0.18s ease;
+      }
+      .bol-signup button:hover {
+        background: var(--deep-sage);
+      }
+      .bol-signup-note {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #9d9488;
+        margin-top: 14px;
+      }
+      .bol-colophon {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-top: clamp(44px, 5vw, 64px);
+        padding-top: 26px;
+        border-top: 1px solid #4a433c;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #bfb5a5;
+      }
+      .bol-colophon a {
+        font-size: inherit;
+        color: inherit;
+      }
+      .bol-footer-social {
+        display: flex;
+        gap: 12px;
+      }
+      .bol-footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(216, 209, 198, 0.14);
+        color: #fff;
+        border-bottom: none;
+        transition:
+          background 0.18s ease,
+          color 0.18s ease;
+      }
+      .bol-footer-social a:hover {
+        background: var(--sage);
+        color: #fff;
+      }
+      .bol-footer-social svg {
+        width: 18px;
+        height: 18px;
+      }
+      @media (max-width: 900px) {
+        .bol-footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bol-masthead" id="bolMasthead">
+      <div class="bol-shell bol-masthead-inner">
+        <a
+          class="bol-wordmark"
+          href="index.html#top"
+          aria-label="Bread of Life, home"
+        >
+          <img
+            src="https://images.squarespace-cdn.com/content/6a662e2b61e351419c14bc1c/da841121-67d7-4217-aa37-7107060eef73/bread+of+life+logo.png?content-type=image%2Fpng"
+            alt="Bread of Life"
+          />
+        </a>
+        <div class="bol-menu">
+          <nav class="bol-nav" aria-label="Primary">
+            <a href="index.html#top">Home</a>
+            <div class="bol-nav-item-dropdown">
+              <a href="index.html#guide">About</a>
+              <div class="bol-dropdown-menu">
+                <a href="index.html#footer">Contact us</a>
+              </div>
+            </div>
+            <a href="index.html#offer">Programs</a>
+            <a href="#" aria-current="page">Workshops</a>
+            <a href="spiritual_direction.html">Spiritual Direction</a>
+            <a href="index.html#offer">Community</a>
+          </nav>
+          <div class="bol-actions">
+            <a class="bol-btn bol-btn-ghost" href="#">Donate</a>
+            <a class="bol-btn" href="spiritual_direction.html#directory-section"
+              >Find a spiritual director</a
+            >
+          </div>
+        </div>
+        <button
+          class="bol-navtoggle"
+          id="bolNavToggle"
+          aria-expanded="false"
+          aria-label="Open menu"
+        >
+          <span class="bol-burger" aria-hidden="true">
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="eyebrow">WORKSHOPS · IN PERSON &amp; ONLINE</div>
+          <h1>Two hours, no background required.</h1>
+          <p>
+            Short, single-session workshops on contemplative prayer, grief,
+            discernment, and listening. Come to one and none of the others.
+          </p>
+          <div class="hero-actions">
+            <a href="#workshop-list" class="btn btn-primary"
+              >Browse Workshops (6)</a
+            >
+            <a href="index.html#upcoming" class="hero-link"
+              >See the full calendar</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="value-strip">
+      <div class="wrap value-grid">
+        <div class="value-item">
+          <h3>No prerequisites</h3>
+          <p>
+            Come to one and none of the others. Nothing to prepare in advance.
+          </p>
+        </div>
+        <div class="value-item">
+          <h3>Two hours</h3>
+          <p>Most sessions run a single two-hour block, in person or online.</p>
+        </div>
+        <div class="value-item">
+          <h3>Pay-what-you-can</h3>
+          <p>Cost is never meant to be a barrier to attending.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-section">
+      <div class="wrap">
+        <h2>Every upcoming workshop, in one place.</h2>
+        <p>
+          Filter by format, topic, or month to find one that fits. Each workshop
+          links to a full page with everything you need to know before you show
+          up.
+        </p>
+
+        <div class="filter-bar">
+          <div class="filter-field">
+            <label for="f-format">Format</label>
+            <select id="f-format">
+              <option>Any</option>
+              <option>In Person</option>
+              <option>Online</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="f-topic">Topic</label>
+            <select id="f-topic">
+              <option>Any</option>
+              <option>Contemplative Prayer</option>
+              <option>Grief</option>
+              <option>Discernment</option>
+              <option>Guided Program</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="f-month">Month</label>
+            <select id="f-month">
+              <option>Any</option>
+              <option>September</option>
+              <option>October</option>
+              <option>November</option>
+            </select>
+          </div>
+          <a href="#" class="reset-link">Reset all</a>
+        </div>
+        <div class="result-count">Showing 6 workshops</div>
+      </div>
+    </section>
+
+    <section class="wrap" id="workshop-list">
+      <div class="workshop-list">
+        <article class="workshop-row">
+          <div class="row-date">
+            <div class="day">6</div>
+            <div class="month-weekday">Sep · Sat</div>
+          </div>
+          <div class="row-body">
+            <h3>Sitting with Grief</h3>
+            <p>A half day for people carrying a loss, recent or long held.</p>
+            <div class="row-meta">
+              <span class="tag">In Person</span><span>Sacramento · 9:00am</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <a href="#" class="btn btn-outline">View details</a>
+          </div>
+        </article>
+
+        <article class="workshop-row">
+          <div class="row-date">
+            <div class="day">18</div>
+            <div class="month-weekday">Sep · Thu</div>
+          </div>
+          <div class="row-body">
+            <h3>Discernment When the Next Step Is Unclear</h3>
+            <p>Practices for a decision you have been carrying a while.</p>
+            <div class="row-meta">
+              <span class="tag">Online</span><span>7:00pm</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <a href="#" class="btn btn-outline">View details</a>
+          </div>
+        </article>
+
+        <article class="workshop-row">
+          <div class="row-date">
+            <div class="day">2</div>
+            <div class="month-weekday">Oct · Thu</div>
+          </div>
+          <div class="row-body">
+            <h3>Listen to Your Life: Autumn Cohort Opens</h3>
+            <p>
+              Six weeks, small group, facilitated. Registration closes when the
+              group fills.
+            </p>
+            <div class="row-meta">
+              <span class="tag">In Person</span><span>Sacramento · 6:00pm</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <a href="#" class="btn btn-outline">View details</a>
+          </div>
+        </article>
+
+        <article class="workshop-row">
+          <div class="row-date">
+            <div class="day">14</div>
+            <div class="month-weekday">Oct · Tue</div>
+          </div>
+          <div class="row-body">
+            <h3>Introduction to Centering Prayer</h3>
+            <p>
+              A gentle entry point into wordless, contemplative sitting
+              practice.
+            </p>
+            <div class="row-meta">
+              <span class="tag">Online</span><span>7:00pm</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <a href="#" class="btn btn-outline">View details</a>
+          </div>
+        </article>
+
+        <article class="workshop-row">
+          <div class="row-date">
+            <div class="day">8</div>
+            <div class="month-weekday">Nov · Sat</div>
+          </div>
+          <div class="row-body">
+            <h3>A Season of Letting Go</h3>
+            <p>
+              A workshop on release, for whatever season is asking you to set
+              something down.
+            </p>
+            <div class="row-meta">
+              <span class="tag">In Person</span><span>Sacramento · 9:00am</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <a href="#" class="btn btn-outline">View details</a>
+          </div>
+        </article>
+
+        <article class="workshop-row">
+          <div class="row-date">
+            <div class="day">21</div>
+            <div class="month-weekday">Nov · Fri</div>
+          </div>
+          <div class="row-body">
+            <h3>Contemplative Prayer for Beginners</h3>
+            <p>
+              Two hours on sitting quietly with attention. No background
+              assumed.
+            </p>
+            <div class="row-meta">
+              <span class="tag">In Person</span><span>Sacramento · 6:30pm</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <a href="#" class="btn btn-outline">View details</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="empty-state" id="empty-state">
+        <h3>No workshops match all selected filters.</h3>
+        <p>
+          Try clearing a filter or checking back, new workshops are added
+          throughout the season.
+        </p>
+        <a href="#" class="reset-link">Reset all filters</a>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="wrap">
+        <h2>Not sure where to start?</h2>
+        <p>
+          A single workshop is the lowest-commitment door we have. Or reach out
+          and we'll help you find your footing.
+        </p>
+        <a href="index.html#footer" class="btn btn-primary">Contact us</a>
+      </div>
+    </section>
+
+    <footer class="bol-footer" id="footer">
+      <div class="bol-shell">
+        <div class="bol-footer-grid">
+          <div>
+            <div class="bol-footer-mark">
+              <img
+                src="https://images.squarespace-cdn.com/content/6a662e2b61e351419c14bc1c/da841121-67d7-4217-aa37-7107060eef73/bread+of+life+logo.png?content-type=image%2Fpng"
+                alt="Bread of Life"
+              />
+            </div>
+            <p class="bol-footer-mission">
+              An interfaith contemplative community in the Sacramento area, here
+              so that people living with real questions do not have to sit with
+              them alone.
+            </p>
+            <div class="bol-signup">
+              <label for="bolEmailWorkshop"
+                >Subscribe to our newsletter for workshop dates and occasional
+                notes on practice.</label
+              >
+              <div class="bol-signup-row">
+                <input
+                  id="bolEmailWorkshop"
+                  type="email"
+                  placeholder="Email address"
+                  autocomplete="email"
+                />
+                <button type="button">
+                  <span>Subscribe</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4>Contact Bread of Life</h4>
+            <div class="bol-footer-cinfo">
+              <span class="ic" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                >
+                  <path
+                    d="M5 4h3.2l1.3 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.3V17a2 2 0 0 1-2.2 2A15 15 0 0 1 3 5.2 2 2 0 0 1 5 4Z"
+                  />
+                </svg>
+              </span>
+              <span>
+                <span class="label">Call us</span>
+                <a class="value" href="tel:19166481803">(916) 648 1803</a>
+              </span>
+            </div>
+            <div class="bol-footer-cinfo">
+              <span class="ic" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                >
+                  <path
+                    d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"
+                  />
+                  <circle cx="12" cy="9.5" r="2.4" />
+                </svg>
+              </span>
+              <span>
+                <span class="label">Visit our location</span>
+                <span class="value"
+                  >Bread of Life Center<br />1260 Fulton Avenue, Suite A<br />Sacramento,
+                  CA 95825, USA</span
+                >
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="index.html#top">Home</a></li>
+              <li><a href="index.html#guide">About</a></li>
+              <li><a href="index.html#offer">Programs and Groups</a></li>
+              <li>
+                <a class="bol-footer-highlight" href="spiritual_direction.html"
+                  >Spiritual Direction</a
+                >
+              </li>
+              <li><a href="index.html#offer">Community</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#workshop-list">Workshops</a></li>
+              <li><a href="index.html#quote-1">Our Stories</a></li>
+              <li><a href="index.html#footer">Contact</a></li>
+              <li><a href="#">Donate</a></li>
+              <li><a href="#">The Vault</a></li>
+              <li><a href="#">Registration Policy</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bol-colophon">
+          <span
+            >&copy; Bread of Life. A 501(c)(3) nonprofit. &middot;
+            <a href="#">Privacy</a></span
+          >
+          <div class="bol-footer-social">
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M13.5 9.5H15.5V6.5H13.2C11.1 6.5 9.7 7.9 9.7 10V12H7.5V15H9.7V21H12.7V15H14.8L15.2 12H12.7V10.3C12.7 9.8 12.9 9.5 13.5 9.5Z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <circle cx="7" cy="7.2" r="1.7" />
+                <rect x="5.4" y="10.4" width="3.2" height="8.2" />
+                <path
+                  d="M11.2 10.4H14.3V11.8C14.9 10.8 16 10.1 17.4 10.1C20 10.1 21 11.9 21 14.5V18.6H17.8V15C17.8 14 17.5 13.2 16.4 13.2C15.4 13.2 14.9 13.9 14.9 15V18.6H11.2V10.4Z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                aria-hidden="true"
+              >
+                <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.3"
+                  cy="6.7"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var mast = document.getElementById("bolMasthead"),
+          toggle = document.getElementById("bolNavToggle");
+        toggle.addEventListener("click", function () {
+          var open = mast.classList.toggle("bol-open");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        });
+        mast
+          .querySelectorAll(".bol-nav a, .bol-actions a")
+          .forEach(function (a) {
+            a.addEventListener("click", function () {
+              mast.classList.remove("bol-open");
+              toggle.setAttribute("aria-expanded", "false");
+              toggle.setAttribute("aria-label", "Open menu");
+            });
+          });
+      })();
+    </script>
+  </body>
+</html>
