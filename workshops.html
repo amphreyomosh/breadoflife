@@ -19,6 +19,9 @@
         --wheat: #c9a25e;
         --hairline: #dcd4c4;
         --cream-shade: #f1ebdd;
+        --bol-display: "Fraunces", Georgia, serif;
+        --bol-body: "Karla", system-ui, -apple-system, sans-serif;
+        --bol-rhythm: clamp(76px, 9vw, 136px);
       }
       * {
         box-sizing: border-box;
@@ -26,17 +29,20 @@
         padding: 0;
       }
       body {
-        font-family: "Karla", sans-serif;
+        font-family: var(--bol-body);
         background: var(--cream);
         color: var(--loam);
-        line-height: 1.6;
+        font-size: 17px;
+        line-height: 1.65;
         -webkit-font-smoothing: antialiased;
       }
       h1,
       h2,
       h3 {
-        font-family: "Fraunces", serif;
-        font-weight: 500;
+        font-family: var(--bol-display);
+        font-weight: 400;
+        line-height: 1.1;
+        letter-spacing: -0.015em;
         color: var(--loam);
       }
       a {
@@ -55,11 +61,12 @@
 
       .btn {
         display: inline-block;
-        font-family: "Karla", sans-serif;
+        font-family: var(--bol-body);
         font-weight: 600;
-        font-size: 14.5px;
+        font-size: 15px;
         padding: 11px 20px;
         border: 1px solid transparent;
+        border-radius: 4px;
         cursor: pointer;
       }
       .btn-primary {
@@ -80,7 +87,7 @@
       }
       .btn-text {
         font-weight: 600;
-        font-size: 14.5px;
+        font-size: 15px;
         border-bottom: 1px solid var(--wheat);
         padding-bottom: 2px;
       }
@@ -450,8 +457,8 @@
         position: relative;
         isolation: isolate;
         overflow: hidden;
-        background: var(--sage);
-        padding: clamp(56px, 7vw, 110px) 0 clamp(60px, 7vw, 96px);
+        background: var(--deep-sage);
+        padding: clamp(30px, 4vw, 68px) 0 clamp(52px, 6vw, 96px);
       }
       .hero-content {
         position: relative;
@@ -475,6 +482,10 @@
         margin-bottom: 18px;
         font-weight: 400;
       }
+      .page-hero h1 em {
+        font-style: italic;
+        color: var(--wheat);
+      }
       .page-hero p {
         color: rgba(243, 239, 230, 0.9);
         font-size: 1.05rem;
@@ -485,19 +496,19 @@
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 14px;
+        gap: 26px;
         justify-content: center;
         align-items: center;
       }
       .hero-actions .btn-primary {
-        background: var(--wheat);
-        border-color: var(--wheat);
-        color: var(--loam);
+        background: #fff;
+        border-color: #fff;
+        color: var(--deep-sage);
       }
       .hero-actions .btn-primary:hover {
-        background: var(--loam);
-        border-color: var(--loam);
-        color: #fff;
+        background: var(--cream);
+        border-color: var(--cream);
+        color: var(--deep-sage);
       }
       .hero-link {
         font-size: 15px;
@@ -510,12 +521,18 @@
 
       /* ---- Three-up value strip ---- */
       .value-strip {
+        background: #fff;
         border-bottom: 1px solid var(--hairline);
+        padding: clamp(28px, 3vw, 40px) 0;
+      }
+      .value-strip .wrap {
+        background: #fff;
       }
       .value-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: 1px;
+        background: var(--hairline);
       }
       @media (min-width: 760px) {
         .value-grid {
@@ -523,97 +540,71 @@
         }
       }
       .value-item {
-        padding: 28px 24px;
+        background: #fff;
+        padding: 26px 28px;
+      }
+      .value-item + .value-item {
         border-top: 1px solid var(--hairline);
       }
       @media (min-width: 760px) {
         .value-item {
+          border: none;
+        }
+        .value-item + .value-item {
           border-top: none;
           border-left: 1px solid var(--hairline);
         }
-        .value-item:first-child {
-          border-left: none;
-        }
       }
       .value-item h3 {
-        font-size: 16px;
-        margin-bottom: 6px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--loam);
+        margin-bottom: 8px;
       }
       .value-item p {
-        font-size: 14.5px;
-        opacity: 0.8;
+        font-size: 16px;
+        color: var(--ink-mute, #6e6459);
+        line-height: 1.6;
       }
 
       /* ---- Intro section ---- */
       .intro-section {
-        padding: 52px 0 8px;
+        background: var(--cream);
+        border-top: 1px solid var(--hairline);
+        padding: var(--bol-rhythm) 0 0;
+      }
+      .intro-section .wrap {
+        background: transparent;
       }
       .intro-section h2 {
-        font-size: 26px;
-        margin-bottom: 10px;
-        max-width: 34ch;
+        font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+        margin-bottom: 12px;
       }
       .intro-section p {
-        font-size: 15.5px;
-        opacity: 0.85;
+        font-size: 1.1rem;
+        line-height: 1.65;
+        color: #6e6459;
         max-width: 60ch;
-      }
-
-      /* ---- Filter bar ---- */
-      .filter-bar {
-        margin: 32px 0 8px;
-        padding: 18px 22px;
-        border: 1px solid var(--hairline);
-        background: var(--cream-shade);
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 14px;
-      }
-      .filter-field {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-      }
-      .filter-field label {
-        font-size: 12px;
-        font-weight: 600;
-        opacity: 0.7;
-      }
-      .filter-field select,
-      .filter-field input {
-        font-family: "Karla", sans-serif;
-        font-size: 14.5px;
-        padding: 9px 12px;
-        border: 1px solid var(--hairline);
-        background: var(--cream);
-        color: var(--loam);
-        min-width: 150px;
-      }
-      .filter-bar .reset-link {
-        margin-left: auto;
-        font-size: 14px;
-        font-weight: 600;
-        border-bottom: 1px solid var(--wheat);
-        padding-bottom: 2px;
-        align-self: center;
-      }
-      .result-count {
-        font-size: 14px;
-        opacity: 0.75;
-        margin: 16px 0 28px;
+        margin: 0;
       }
 
       /* ---- Workshop list (event row) ---- */
       .workshop-list {
         border-top: 1px solid var(--hairline);
+        max-width: 1100px;
+        margin: 16px auto 0;
       }
       .workshop-row {
         display: grid;
-        grid-template-columns: 110px 1fr auto;
-        gap: 22px;
+        grid-template-columns: 96px minmax(0, 1fr) 176px;
+        gap: clamp(18px, 2.4vw, 34px);
         align-items: center;
-        padding: 22px 0;
+        padding: 16px 0;
+        border-top: 1px solid var(--hairline);
+        text-decoration: none;
+        color: inherit;
+      }
+      .workshop-row:last-child {
         border-bottom: 1px solid var(--hairline);
       }
       @media (max-width: 640px) {
@@ -623,88 +614,252 @@
         }
       }
       .row-date {
-        font-family: "Fraunces", serif;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-family: var(--bol-display);
+        font-size: 1.15rem;
+        color: var(--loam);
+        line-height: 1.3;
       }
       .row-date .day {
-        font-size: 26px;
-        line-height: 1;
-        color: var(--deep-sage);
+        font-size: inherit;
       }
       .row-date .month-weekday {
         font-size: 13px;
-        font-family: "Karla", sans-serif;
-        opacity: 0.7;
-        margin-top: 4px;
+        font-family: var(--bol-body);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #6e6459;
+        font-weight: 600;
       }
       .row-body h3 {
-        font-size: 18px;
-        margin-bottom: 5px;
+        font-size: 1.28rem;
+        margin-bottom: 8px;
       }
       .row-body p {
-        font-size: 14.5px;
-        opacity: 0.8;
-        margin-bottom: 6px;
+        font-size: 1.1rem;
+        line-height: 1.65;
+        color: #6e6459;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin: 0;
       }
       .row-meta {
-        font-size: 13px;
-        opacity: 0.65;
+        font-size: 14px;
+        color: #6e6459;
+        line-height: 1.5;
+        margin-top: 6px;
         display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
+        gap: 8px;
       }
       .row-meta .tag {
-        border: 1px solid var(--hairline);
-        padding: 2px 8px;
-        font-size: 12px;
+        border: 0;
+        padding: 0;
+        font-size: inherit;
       }
-      .row-action {
-        white-space: nowrap;
+      .row-media {
+        width: 100%;
+        min-width: 0;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        border-radius: 2px;
+        background: #f5f0e8;
       }
-      @media (max-width: 640px) {
-        .row-action {
-          justify-self: start;
+      .row-media img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .workshop-row:hover .row-body h3 {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        text-decoration-thickness: 1px;
+      }
+      .workshop-more {
+        display: flex;
+        justify-content: center;
+        padding-top: 28px;
+      }
+      .workshop-more .btn-text {
+        color: var(--deep-sage);
+        border-bottom-color: var(--deep-sage);
+      }
+
+      /* ---- Workshop quote ---- */
+      .workshop-quote {
+        position: relative;
+        overflow: hidden;
+        background: var(--deep-sage);
+        color: #f3efe6;
+        margin-top: 40px;
+        padding: 60px 0;
+      }
+      .workshop-quote-card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 40px 64px;
+        max-width: 1100px;
+        width: min(100%, 1100px);
+        margin: 0 auto;
+      }
+      .workshop-quote-mark {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--bol-display);
+        font-size: 220px;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.18);
+        font-weight: 700;
+        user-select: none;
+        pointer-events: none;
+      }
+      .workshop-quote-mark.left {
+        left: 24px;
+      }
+      .workshop-quote-mark.right {
+        right: 24px;
+        transform: translateY(-50%) rotate(180deg);
+      }
+      .workshop-quote-content {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        margin-left: 90px;
+      }
+      .workshop-quote-content p {
+        color: inherit;
+        font-family: var(--bol-display);
+        font-style: italic;
+        font-size: clamp(1.3rem, 2.6vw, 1.85rem);
+        line-height: 1.38;
+        margin: 0 0 20px;
+      }
+      .workshop-quote-author {
+        color: #c9a25e;
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      @media (max-width: 700px) {
+        .workshop-quote-card {
+          padding: 28px 24px;
+        }
+        .workshop-quote-content {
+          margin-left: 42px;
+        }
+        .workshop-quote-mark {
+          font-size: 150px;
         }
       }
 
-      /* ---- Empty state ---- */
-      .empty-state {
-        display: none;
+      /* ---- Workshop FAQ ---- */
+      .workshop-faq {
+        background: #fff;
+        border-top: 1px solid var(--hairline);
+        padding: 56px 0 40px;
+      }
+      .workshop-faq-inner {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .workshop-faq-head {
         text-align: center;
-        padding: 64px 24px;
+        margin-bottom: 40px;
+      }
+      .workshop-faq-head h2 {
+        font-size: clamp(1.7rem, 3vw, 2.2rem);
+      }
+      details.workshop-faq-item {
+        background: transparent;
+        border: 0;
+        padding: 18px 0;
+        margin-bottom: 0;
+        cursor: pointer;
+      }
+      details.workshop-faq-item + details.workshop-faq-item {
         border-top: 1px solid var(--hairline);
       }
-      .empty-state h3 {
-        font-size: 19px;
-        margin-bottom: 8px;
+      details.workshop-faq-item summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        font-family: var(--bol-display);
+        font-weight: 500;
+        font-size: 1.02rem;
+        color: var(--loam);
       }
-      .empty-state p {
-        font-size: 14.5px;
-        opacity: 0.75;
-        margin-bottom: 16px;
+      details.workshop-faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+      details.workshop-faq-item[open] .workshop-faq-chevron::before {
+        content: "−";
+      }
+      .workshop-faq-chevron {
+        flex: 0 0 auto;
+        color: var(--sage);
+        font-family: var(--bol-body);
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 1;
+      }
+      .workshop-faq-chevron::before {
+        content: "+";
+      }
+      details.workshop-faq-item p {
+        font-size: 16px;
+        color: #4a423b;
+        margin: 12px 0 0;
+        padding-top: 12px;
+        line-height: 1.7;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition:
+          max-height 0.26s ease,
+          opacity 0.2s ease,
+          margin-top 0.26s ease,
+          padding-top 0.26s ease;
+      }
+      details.workshop-faq-item.is-open p {
+        max-height: 240px;
+        opacity: 1;
       }
 
       /* ---- Closing CTA band ---- */
       .cta-band {
-        background: var(--sage);
+        background: var(--deep-sage);
         color: var(--cream);
-        padding: 56px 0;
-        margin-top: 64px;
+        padding: calc(var(--bol-rhythm) * 1.15) 0;
+        margin-top: 0;
         text-align: center;
       }
       .cta-band h2 {
         color: #fff;
-        font-size: 26px;
+        font-size: clamp(1.9rem, 3.6vw, 2.75rem);
         margin-bottom: 12px;
       }
       .cta-band p {
         color: #ede7d8;
-        font-size: 15.5px;
+        font-size: 1.12rem;
         max-width: 46ch;
         margin: 0 auto 24px;
       }
       .cta-band .btn-primary {
         background: var(--wheat);
         color: var(--loam);
+        min-width: 180px;
+        padding-left: 36px;
+        padding-right: 36px;
       }
 
       /* Footer (matches home page) */
@@ -964,7 +1119,7 @@
       <div class="wrap">
         <div class="hero-content">
           <div class="eyebrow">WORKSHOPS · IN PERSON &amp; ONLINE</div>
-          <h1>Two hours, no background required.</h1>
+          <h1>Two hours, <em>no background required.</em></h1>
           <p>
             Short, single-session workshops on contemplative prayer, grief,
             discernment, and listening. Come to one and none of the others.
@@ -1002,50 +1157,17 @@
 
     <section class="intro-section">
       <div class="wrap">
-        <h2>Every upcoming workshop, in one place.</h2>
+        <h2>Coming up</h2>
         <p>
-          Filter by format, topic, or month to find one that fits. Each workshop
-          links to a full page with everything you need to know before you show
-          up.
+          Short, single-session workshops on contemplative prayer, grief,
+          discernment, and listening. Come to one and none of the others.
         </p>
-
-        <div class="filter-bar">
-          <div class="filter-field">
-            <label for="f-format">Format</label>
-            <select id="f-format">
-              <option>Any</option>
-              <option>In Person</option>
-              <option>Online</option>
-            </select>
-          </div>
-          <div class="filter-field">
-            <label for="f-topic">Topic</label>
-            <select id="f-topic">
-              <option>Any</option>
-              <option>Contemplative Prayer</option>
-              <option>Grief</option>
-              <option>Discernment</option>
-              <option>Guided Program</option>
-            </select>
-          </div>
-          <div class="filter-field">
-            <label for="f-month">Month</label>
-            <select id="f-month">
-              <option>Any</option>
-              <option>September</option>
-              <option>October</option>
-              <option>November</option>
-            </select>
-          </div>
-          <a href="#" class="reset-link">Reset all</a>
-        </div>
-        <div class="result-count">Showing 6 workshops</div>
       </div>
     </section>
 
     <section class="wrap" id="workshop-list">
       <div class="workshop-list">
-        <article class="workshop-row">
+        <a class="workshop-row" href="sitting-with-grief.html">
           <div class="row-date">
             <div class="day">6</div>
             <div class="month-weekday">Sep · Sat</div>
@@ -1058,11 +1180,16 @@
             </div>
           </div>
           <div class="row-action">
-            <a href="#" class="btn btn-outline">View details</a>
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80"
+                alt="Hands writing in a journal"
+              />
+            </div>
           </div>
-        </article>
+        </a>
 
-        <article class="workshop-row">
+        <a class="workshop-row" href="workshops.html#workshop-list">
           <div class="row-date">
             <div class="day">18</div>
             <div class="month-weekday">Sep · Thu</div>
@@ -1075,11 +1202,16 @@
             </div>
           </div>
           <div class="row-action">
-            <a href="#" class="btn btn-outline">View details</a>
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80"
+                alt="Quiet interior space"
+              />
+            </div>
           </div>
-        </article>
+        </a>
 
-        <article class="workshop-row">
+        <a class="workshop-row" href="workshops.html#workshop-list">
           <div class="row-date">
             <div class="day">2</div>
             <div class="month-weekday">Oct · Thu</div>
@@ -1095,11 +1227,16 @@
             </div>
           </div>
           <div class="row-action">
-            <a href="#" class="btn btn-outline">View details</a>
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80"
+                alt="Paper and pen on a table"
+              />
+            </div>
           </div>
-        </article>
+        </a>
 
-        <article class="workshop-row">
+        <a class="workshop-row" href="workshops.html#workshop-list">
           <div class="row-date">
             <div class="day">14</div>
             <div class="month-weekday">Oct · Tue</div>
@@ -1115,11 +1252,16 @@
             </div>
           </div>
           <div class="row-action">
-            <a href="#" class="btn btn-outline">View details</a>
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=400&q=80"
+                alt="Open path landscape"
+              />
+            </div>
           </div>
-        </article>
+        </a>
 
-        <article class="workshop-row">
+        <a class="workshop-row" href="workshops.html#workshop-list">
           <div class="row-date">
             <div class="day">8</div>
             <div class="month-weekday">Nov · Sat</div>
@@ -1135,11 +1277,16 @@
             </div>
           </div>
           <div class="row-action">
-            <a href="#" class="btn btn-outline">View details</a>
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=400&q=80"
+                alt="Notebook beside a cup of tea"
+              />
+            </div>
           </div>
-        </article>
+        </a>
 
-        <article class="workshop-row">
+        <a class="workshop-row" href="workshops.html#workshop-list">
           <div class="row-date">
             <div class="day">21</div>
             <div class="month-weekday">Nov · Fri</div>
@@ -1155,18 +1302,94 @@
             </div>
           </div>
           <div class="row-action">
-            <a href="#" class="btn btn-outline">View details</a>
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=400&q=80"
+                alt="A quiet room with sunlight"
+              />
+            </div>
           </div>
-        </article>
+        </a>
       </div>
+      <div class="workshop-more">
+        <a href="index.html#upcoming" class="btn btn-text"
+          >View more available workshops</a
+        >
+      </div>
+    </section>
 
-      <div class="empty-state" id="empty-state">
-        <h3>No workshops match all selected filters.</h3>
-        <p>
-          Try clearing a filter or checking back, new workshops are added
-          throughout the season.
-        </p>
-        <a href="#" class="reset-link">Reset all filters</a>
+    <section class="workshop-quote">
+      <div class="workshop-quote-card">
+        <span class="workshop-quote-mark left">&#8220;</span>
+        <span class="workshop-quote-mark right">&#8220;</span>
+        <div class="workshop-quote-content">
+          <p>
+            I came for one evening and left with a practice I could carry into
+            the rest of the week.
+          </p>
+          <div class="workshop-quote-author">A workshop participant</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workshop-faq" id="faq-section">
+      <div class="workshop-faq-inner">
+        <div class="workshop-faq-head">
+          <span class="eyebrow">Frequently Asked</span>
+          <h2>Workshop questions</h2>
+        </div>
+        <details class="workshop-faq-item">
+          <summary>
+            <span>Do I need any previous experience?</span>
+            <span class="workshop-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <p>
+            No. Our workshops are designed for beginners and experienced
+            practitioners alike. Come as you are, with no preparation required.
+          </p>
+        </details>
+        <details class="workshop-faq-item">
+          <summary>
+            <span>Do I need to be religious or Christian?</span>
+            <span class="workshop-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <p>
+            No. Bread of Life welcomes people of every faith background, as well
+            as people who are spiritual but not religious or still questioning.
+          </p>
+        </details>
+        <details class="workshop-faq-item">
+          <summary>
+            <span>Are workshops offered in person or online?</span>
+            <span class="workshop-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <p>
+            Both. Each listing includes the format and location so you can
+            choose the setting that works best for you.
+          </p>
+        </details>
+        <details class="workshop-faq-item">
+          <summary>
+            <span>What should I bring?</span>
+            <span class="workshop-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <p>
+            Just yourself and anything that helps you settle in. We provide the
+            prompts and guidance, and there is never required reading
+            beforehand.
+          </p>
+        </details>
+        <details class="workshop-faq-item">
+          <summary>
+            <span>How much does a workshop cost?</span>
+            <span class="workshop-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <p>
+            Workshops are pay-what-you-can. Cost is never meant to be a barrier
+            to attending, and you can reach out if you need help deciding what
+            to contribute.
+          </p>
+        </details>
       </div>
     </section>
 
@@ -1349,6 +1572,14 @@
               mast.classList.remove("bol-open");
               toggle.setAttribute("aria-expanded", "false");
               toggle.setAttribute("aria-label", "Open menu");
+            });
+          });
+
+        document
+          .querySelectorAll(".workshop-faq-item")
+          .forEach(function (item) {
+            item.addEventListener("toggle", function () {
+              item.classList.toggle("is-open", item.open);
             });
           });
       })();
