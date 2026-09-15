@@ -136,7 +136,7 @@
           link(
             "Upcoming Workshops",
             "Browse the full calendar of in-person and online sessions.",
-            "events.html",
+            "workshops.html",
             '<rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/>',
           ),
           link(
