@@ -245,17 +245,33 @@
   var menu = document.getElementById("bolMenuWrapper");
   var closeTimers = new WeakMap();
 
+  function syncScrolledHeader() {
+    var isScrolled = window.scrollY > 0;
+    header.classList.toggle("bol-site-scrolled", isScrolled);
+    if (isScrolled) {
+      header.style.setProperty("background", "#ffffff", "important");
+    } else if (!header.classList.contains("bol-site-mega-open")) {
+      header.style.removeProperty("background");
+    }
+  }
+
   function syncMegaHeader() {
     var isOpen = items.some(function (item) {
       return item.dataset.open === "true";
     });
-    header.classList.toggle("bol-site-mega-open", isOpen);
-    if (isOpen) {
+    var isLargeScreen = window.innerWidth > 1024;
+    header.classList.toggle("bol-site-mega-open", isOpen && isLargeScreen);
+    if (isOpen && isLargeScreen) {
+      header.style.setProperty("background", "#ffffff", "important");
+    } else if (window.scrollY > 0) {
       header.style.setProperty("background", "#ffffff", "important");
     } else {
       header.style.removeProperty("background");
     }
   }
+
+  window.addEventListener("scroll", syncScrolledHeader, { passive: true });
+  syncScrolledHeader();
 
   function closeItems() {
     items.forEach(function (item) {
@@ -272,6 +288,9 @@
   }
   function closeMenu() {
     document.body.classList.remove("bol-site-menu-open");
+    menu.style.removeProperty("transform");
+    menu.style.removeProperty("visibility");
+    menu.style.removeProperty("pointer-events");
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Open navigation menu");
     closeItems();
@@ -280,6 +299,15 @@
   toggle.addEventListener("click", function () {
     var open = !document.body.classList.contains("bol-site-menu-open");
     document.body.classList.toggle("bol-site-menu-open", open);
+    if (open && window.innerWidth <= 1024) {
+      menu.style.setProperty("transform", "translateX(0)", "important");
+      menu.style.setProperty("visibility", "visible", "important");
+      menu.style.setProperty("pointer-events", "auto", "important");
+    } else {
+      menu.style.removeProperty("transform");
+      menu.style.removeProperty("visibility");
+      menu.style.removeProperty("pointer-events");
+    }
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute(
       "aria-label",

@@ -38,6 +38,9 @@
 .bol-site-header.bol-site-mega-open {
   background: var(--bol-panel) !important;
 }
+.bol-site-header.bol-site-scrolled {
+  background: #ffffff !important;
+}
 .bol-site-header-inner {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -295,21 +298,31 @@
 }
 
 @media (max-width: 1024px) {
+  .bol-site-header {
+    z-index: 1002;
+    background: #ffffff !important;
+    box-shadow: 0 2px 12px rgba(42, 37, 33, 0.08);
+  }
   .bol-site-header-inner {
+    position: relative;
+    z-index: 1003;
     display: flex;
     justify-content: space-between;
-    min-height: 88px;
+    min-height: 72px;
+    padding-block: 12px;
   }
   .bol-site-menu {
     position: fixed;
-    top: 0;
+    display: flex;
+    flex-direction: column;
+    top: 72px;
     bottom: 0;
     right: 0;
     width: 75%;
     max-width: 420px;
-    padding: 112px 36px 40px;
+    padding: 24px 36px 40px;
     overflow-y: auto;
-    background: var(--bol-cream);
+    background: var(--bol-cream) !important;
     border-left: 1px solid var(--bol-hairline-soft);
     box-shadow: -16px 0 36px rgba(20, 18, 15, 0.16);
     transform: translateX(100%);
@@ -320,9 +333,9 @@
       visibility 0.35s ease;
   }
   body.bol-site-menu-open .bol-site-menu {
-    transform: translateX(0);
-    visibility: visible;
-    pointer-events: auto;
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
   .bol-site-nav {
     display: flex;
@@ -341,6 +354,7 @@
   }
   .bol-site-panel {
     position: static;
+    background: var(--bol-cream);
     max-height: 0;
     overflow: hidden;
     border: 0;
@@ -354,14 +368,18 @@
     max-height: 700px;
   }
   .bol-site-panel-inner {
-    padding: 5px 0 18px;
+    padding: 18px 0 18px 18px !important;
   }
   .bol-site-grid {
     display: flex;
     flex-direction: column;
     gap: 18px;
   }
+  .bol-site-links {
+    padding-left: 14px;
+  }
   .bol-site-feature {
+    display: none;
     border: 0;
     border-top: 1px solid var(--bol-hairline-soft);
     padding: 16px 0 0;
@@ -376,6 +394,9 @@
   .bol-site-actions a {
     justify-content: center;
     width: 100%;
+  }
+  .bol-site-actions .bol-site-ghost {
+    display: none;
   }
   .bol-site-toggle {
     display: inline-flex;
@@ -392,14 +413,34 @@
   body.bol-site-menu-open .bol-site-scrim {
     display: block;
   }
+  body.bol-site-menu-open .bol-site-toggle {
+    background: var(--bol-sage);
+    border-color: var(--bol-sage);
+    color: #ffffff;
+  }
 }
 @media (max-width: 480px) {
+  .bol-site-header-inner {
+    min-height: 64px;
+    padding-block: 10px;
+  }
   .bol-site-menu {
     width: 100%;
     max-width: none;
-    padding: 96px 28px 36px;
+    top: 64px;
+    padding: 24px 28px 36px;
   }
   .bol-site-logo img {
-    height: 42px;
+    height: 38px;
+  }
+  .bol-site-toggle {
+    width: 40px;
+    height: 40px;
+  }
+  .bol-site-actions {
+    display: none;
+  }
+  .bol-site-link svg {
+    display: none;
   }
 }
