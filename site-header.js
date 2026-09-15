@@ -249,7 +249,11 @@
     var isScrolled = window.scrollY > 0;
     header.classList.toggle("bol-site-scrolled", isScrolled);
     if (isScrolled) {
-      header.style.setProperty("background", "#ffffff", "important");
+      header.style.setProperty(
+        "background",
+        window.innerWidth <= 1024 ? "#faf7f0" : "#ffffff",
+        "important",
+      );
     } else if (!header.classList.contains("bol-site-mega-open")) {
       header.style.removeProperty("background");
     }
@@ -264,7 +268,11 @@
     if (isOpen && isLargeScreen) {
       header.style.setProperty("background", "#ffffff", "important");
     } else if (window.scrollY > 0) {
-      header.style.setProperty("background", "#ffffff", "important");
+      header.style.setProperty(
+        "background",
+        window.innerWidth <= 1024 ? "#faf7f0" : "#ffffff",
+        "important",
+      );
     } else {
       header.style.removeProperty("background");
     }
