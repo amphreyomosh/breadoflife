@@ -1,402 +1,109 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Events &amp; Calendar | Bread of Life</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Karla:ital,wght@0,300;0,400;0,500;0,0.600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
         --cream: #faf7f0;
         --loam: #2a2521;
-        --ink-soft: #4a423b;
-        --ink-mute: #6e6459;
-        --line: #dcd4c4;
         --sage: #47653f;
-        --sage-deep: #355030;
-        --gold: #c9a25e;
-        --display: Georgia, "Times New Roman", serif;
-        --body: "Trebuchet MS", Arial, sans-serif;
-        --gutter: clamp(20px, 5vw, 72px);
+        --deep-sage: #355030;
+        --wheat: #c9a25e;
+        --hairline: #dcd4c4;
+        --cream-shade: #f1ebdd;
+        --bol-display: "Fraunces", Georgia, serif;
+        --bol-body: "Karla", system-ui, -apple-system, sans-serif;
+        --bol-rhythm: clamp(76px, 9vw, 136px);
       }
-
-      *,
-      *::before,
-      *::after {
+      * {
         box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
+        margin: 0;
+        padding: 0;
       }
       body {
-        margin: 0;
+        font-family: var(--bol-body);
         background: var(--cream);
         color: var(--loam);
-        font-family: var(--body);
-        font-size: 16px;
+        font-size: 17px;
         line-height: 1.65;
-      }
-      a {
-        color: inherit;
-      }
-      img {
-        display: block;
-        max-width: 100%;
-      }
-      :focus-visible {
-        outline: 2px solid var(--sage);
-        outline-offset: 4px;
-      }
-      .shell {
-        width: min(1240px, calc(100% - (var(--gutter) * 2)));
-        margin: 0 auto;
-      }
-
-      .masthead {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        background: rgba(250, 247, 240, 0.97);
-        border-bottom: 1px solid var(--line);
-        backdrop-filter: blur(8px);
-      }
-      .masthead-inner {
-        min-height: 88px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 28px;
-      }
-      .wordmark {
-        color: var(--sage-deep);
-        font-family: var(--display);
-        font-size: 25px;
-        line-height: 1;
-        text-decoration: none;
-        white-space: nowrap;
-      }
-      .wordmark span {
-        display: block;
-        color: var(--gold);
-        font-family: var(--body);
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.18em;
-        margin-top: 7px;
-        text-transform: uppercase;
-      }
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: clamp(14px, 2vw, 27px);
-      }
-      .nav a {
-        color: var(--ink-soft);
-        font-size: 14px;
-        text-decoration: none;
-      }
-      .nav a:hover,
-      .nav a[aria-current="page"] {
-        color: var(--sage-deep);
-        text-decoration: underline;
-        text-underline-offset: 5px;
-      }
-      .menu-button {
-        display: none;
-        border: 1px solid var(--line);
-        background: transparent;
-        color: var(--loam);
-        padding: 10px 13px;
-        font: inherit;
-      }
-
-      .hero {
-        background: var(--sage-deep);
-        color: #fff;
-        padding: clamp(72px, 10vw, 132px) 0 clamp(68px, 9vw, 112px);
-      }
-      .eyebrow {
-        color: var(--gold);
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.17em;
-        text-transform: uppercase;
+        -webkit-font-smoothing: antialiased;
       }
       h1,
       h2,
       h3 {
-        font-family: var(--display);
+        font-family: var(--bol-display);
         font-weight: 400;
         line-height: 1.1;
+        letter-spacing: -0.015em;
+        color: var(--loam);
       }
-      h1 {
-        max-width: 760px;
-        font-size: clamp(44px, 7vw, 86px);
-        margin: 18px 0 20px;
+      a {
+        color: inherit;
+        text-decoration: none;
       }
-      .hero p {
-        max-width: 610px;
-        color: #e8e2d8;
-        font-size: 18px;
-        margin: 0;
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 24px;
       }
 
-      .calendar {
-        padding: clamp(58px, 8vw, 96px) 0;
-      }
-      .calendar-head {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 24px;
-        margin-bottom: 34px;
-      }
-      .calendar-head h2 {
-        font-size: clamp(32px, 4vw, 48px);
-        margin: 0;
-      }
-      .filters {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .filter {
-        border: 1px solid var(--line);
-        border-radius: 3px;
-        background: transparent;
-        color: var(--ink-soft);
+      .btn {
+        display: inline-block;
+        font-family: var(--bol-body);
+        font-weight: 600;
+        font-size: 15px;
+        padding: 11px 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
         cursor: pointer;
-        font: inherit;
-        font-size: 13px;
-        padding: 9px 13px;
       }
-      .filter:hover,
-      .filter[aria-pressed="true"] {
-        border-color: var(--sage);
+      .btn-primary {
         background: var(--sage);
-        color: #fff;
+        color: var(--cream);
       }
-      .event-list {
-        border-top: 1px solid var(--loam);
+      .btn-primary:hover {
+        background: var(--deep-sage);
       }
-      .event {
-        display: grid;
-        grid-template-columns: 150px minmax(0, 1fr) 150px;
-        gap: 30px;
-        align-items: center;
-        padding: 28px 0;
-        border-bottom: 1px solid var(--line);
+      .btn-outline {
+        background: transparent;
+        color: var(--loam);
+        border-color: var(--loam);
       }
-      .event-date {
-        color: var(--sage-deep);
-        font-family: var(--display);
-        font-size: 24px;
-      }
-      .event-date span {
-        display: block;
-        color: var(--ink-mute);
-        font-family: var(--body);
-        font-size: 12px;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
-      .event h3 {
-        font-size: 29px;
-        margin: 0 0 7px;
-      }
-      .event p {
-        color: var(--ink-mute);
-        margin: 0;
-        max-width: 600px;
-      }
-      .event-meta {
-        color: var(--ink-soft);
-        font-size: 13px;
-        text-align: right;
-      }
-      .event-meta strong {
-        display: block;
-        color: var(--sage);
-        font-size: 12px;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
-      .event-link {
-        display: inline-block;
-        color: var(--sage-deep);
-        font-size: 14px;
-        font-weight: 700;
-        margin-top: 12px;
-        text-decoration: none;
-      }
-      .event-link:hover {
-        text-decoration: underline;
-        text-underline-offset: 4px;
-      }
-      .empty {
-        display: none;
-        padding: 34px 0;
-        color: var(--ink-mute);
-      }
-
-      .invite {
-        background: #eee7d8;
-        padding: 54px 0;
-      }
-      .invite-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 28px;
-      }
-      .invite h2 {
-        font-size: 34px;
-        margin: 0 0 8px;
-      }
-      .invite p {
-        color: var(--ink-soft);
-        margin: 0;
-      }
-      .button {
-        display: inline-block;
-        border: 1px solid var(--sage);
-        border-radius: 3px;
-        background: var(--sage);
-        color: #fff;
-        font-weight: 700;
-        padding: 13px 20px;
-        text-decoration: none;
-        white-space: nowrap;
-      }
-      .button:hover {
-        background: var(--sage-deep);
-        border-color: var(--sage-deep);
-      }
-
-      footer {
+      .btn-outline:hover {
         background: var(--loam);
-        color: #d8d1c6;
-        padding: 54px 0 28px;
+        color: var(--cream);
       }
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr;
-        gap: 42px;
-      }
-      footer h2 {
-        color: #fff;
-        font-size: 28px;
-        margin: 0 0 14px;
-      }
-      footer h3 {
-        color: var(--gold);
-        font-family: var(--body);
-        font-size: 12px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        margin: 0 0 14px;
-      }
-      footer p {
-        color: #bfb5a5;
-        margin: 0;
-        max-width: 38ch;
-      }
-      footer ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      footer li {
-        margin-bottom: 8px;
-      }
-      footer a {
-        color: #d8d1c6;
-        text-decoration: none;
-      }
-      footer a:hover {
-        color: #fff;
-        text-decoration: underline;
-      }
-      .colophon {
-        border-top: 1px solid #4a433c;
-        color: #9d9488;
-        font-size: 13px;
-        margin-top: 42px;
-        padding-top: 20px;
+      .btn-text {
+        font-weight: 600;
+        font-size: 15px;
+        border-bottom: 1px solid var(--wheat);
+        padding-bottom: 2px;
       }
 
-      @media (max-width: 800px) {
-        .masthead-inner {
-          min-height: 74px;
-        }
-        .menu-button {
-          display: block;
-        }
-        .nav {
-          display: none;
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 74px;
-          flex-direction: column;
-          align-items: stretch;
-          gap: 0;
-          padding: 8px var(--gutter) 18px;
-          background: var(--cream);
-          border-bottom: 1px solid var(--line);
-        }
-        .masthead.is-open .nav {
-          display: flex;
-        }
-        .nav a {
-          border-bottom: 1px solid var(--line);
-          padding: 12px 0;
-        }
-        .calendar-head,
-        .invite-inner {
-          align-items: flex-start;
-          flex-direction: column;
-        }
-        .event {
-          grid-template-columns: 95px minmax(0, 1fr);
-          gap: 16px;
-        }
-        .event-meta {
-          grid-column: 2;
-          text-align: left;
-        }
-        .footer-grid {
-          grid-template-columns: 1fr;
-          gap: 30px;
-        }
-      }
-      @media (max-width: 480px) {
-        h1 {
-          font-size: 48px;
-        }
-        .event h3 {
-          font-size: 24px;
-        }
-      }
-
-      /* Homepage header and footer treatment */
-      .bol-shell {
-        max-width: 1300px;
-        width: auto;
-        padding: 0 var(--gutter);
-      }
       .bol-masthead {
         position: sticky;
         top: 0;
-        z-index: 60;
-        background: rgba(250, 247, 240, 0.97);
-        border-bottom: 1px solid #b9ac93;
-        backdrop-filter: blur(8px);
+        z-index: 20;
+        background: rgba(250, 247, 240, 0.96);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--hairline);
+      }
+      .bol-shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 22px;
       }
       .bol-masthead-inner {
         display: flex;
@@ -429,55 +136,106 @@
       .bol-nav {
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         gap: clamp(14px, 2vw, 24px);
+        flex-wrap: nowrap;
         flex: 1 1 auto;
         min-width: 0;
       }
       .bol-nav a {
+        text-decoration: none;
         color: inherit;
-        font-family: var(--body);
         font-size: 15px;
         font-weight: 500;
         white-space: nowrap;
-        text-decoration: none;
         border-bottom: 1px solid transparent;
         padding-bottom: 3px;
+        transition: border-color 0.18s ease;
       }
-      .bol-nav a:hover,
-      .bol-nav a[aria-current="page"] {
+      .bol-nav a:hover {
         border-color: var(--loam);
+      }
+      .bol-nav-item-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .bol-nav-item-dropdown > a {
+        position: relative;
+      }
+      .bol-nav-item-dropdown > a::after {
+        content: "▼";
+        font-size: 10px;
+        margin-left: 4px;
+        display: inline-block;
+        transition: transform 0.2s ease;
+      }
+      .bol-nav-item-dropdown:hover > a::after {
+        transform: rotate(180deg);
+      }
+      .bol-dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--cream);
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        min-width: 150px;
+        z-index: 50;
+        padding: 8px 0;
+      }
+      .bol-nav-item-dropdown:hover .bol-dropdown-menu {
+        display: block;
+      }
+      .bol-dropdown-menu a {
+        display: block;
+        padding: 10px 16px;
+        font-size: 14px;
+        border-bottom: none;
+        color: var(--loam);
+      }
+      .bol-dropdown-menu a:hover {
+        background: var(--sage);
+        color: #fff;
       }
       .bol-actions {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: clamp(8px, 0.9vw, 10px);
         flex: 0 0 auto;
       }
-      .bol-btn {
-        display: inline-block;
+      .bol-masthead .bol-btn {
+        padding: 11px clamp(14px, 1.5vw, 20px);
+        font-size: clamp(13px, 1vw, 14px);
+        white-space: nowrap;
         border: 1px solid var(--sage);
         border-radius: 4px;
         background: var(--sage);
         color: #fff;
-        font-family: var(--body);
-        font-size: 14px;
         font-weight: 600;
-        padding: 11px 20px;
-        text-decoration: none;
-        white-space: nowrap;
+        transition:
+          background 0.18s ease,
+          border-color 0.18s ease;
       }
-      .bol-btn:hover {
-        background: var(--sage-deep);
-        border-color: var(--sage-deep);
+      .bol-masthead .bol-btn:hover {
+        background: var(--deep-sage);
+        border-color: var(--deep-sage);
       }
-      .bol-btn-ghost {
-        background: transparent;
+      .bol-masthead .bol-btn-ghost {
+        border-color: var(--hairline);
         color: var(--sage);
+        background: transparent;
+      }
+      .bol-masthead .bol-btn-ghost:hover {
+        background: var(--sage);
+        border-color: var(--sage);
+        color: #fff;
       }
       .bol-navtoggle {
         display: none;
         background: none;
-        border: 1px solid #b9ac93;
+        border: 1px solid var(--hairline);
         border-radius: 4px;
         cursor: pointer;
         width: 48px;
@@ -485,6 +243,13 @@
         padding: 0;
         place-items: center;
         color: var(--loam);
+        transition:
+          border-color 0.18s ease,
+          background 0.18s ease;
+      }
+      .bol-navtoggle:hover {
+        border-color: var(--sage);
+        background: #fff;
       }
       .bol-burger {
         display: block;
@@ -498,6 +263,9 @@
         right: 0;
         height: 1.5px;
         background: currentColor;
+        transition:
+          transform 0.22s cubic-bezier(0.3, 0.7, 0.2, 1),
+          opacity 0.14s ease;
       }
       .bol-burger i:nth-child(1) {
         top: 0;
@@ -508,6 +276,594 @@
       .bol-burger i:nth-child(3) {
         top: 12.5px;
       }
+      .bol-masthead.bol-open .bol-navtoggle {
+        border-color: var(--sage);
+        background: var(--sage);
+        color: #fff;
+      }
+      .bol-masthead.bol-open .bol-burger i:nth-child(1) {
+        transform: translateY(6.25px) rotate(45deg);
+      }
+      .bol-masthead.bol-open .bol-burger i:nth-child(2) {
+        opacity: 0;
+      }
+      .bol-masthead.bol-open .bol-burger i:nth-child(3) {
+        transform: translateY(-6.25px) rotate(-45deg);
+      }
+      @media (max-width: 900px) {
+        .bol-menu {
+          gap: 12px;
+        }
+        .bol-nav {
+          display: none;
+        }
+        .bol-navtoggle {
+          display: grid;
+          order: 3;
+          flex: 0 0 auto;
+        }
+        .bol-actions {
+          order: 2;
+          margin-left: auto;
+          flex: 0 1 auto;
+          min-width: 0;
+        }
+        .bol-actions .bol-btn {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .bol-actions .bol-btn-ghost {
+          display: none;
+        }
+        .bol-masthead.bol-open .bol-masthead-inner {
+          position: relative;
+        }
+        .bol-masthead.bol-open .bol-menu {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--cream);
+          border-bottom: 1px solid var(--hairline);
+          max-height: 100vh;
+          overflow: auto;
+        }
+        .bol-masthead.bol-open .bol-nav {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          position: static;
+          padding: 8px 22px 0;
+        }
+        .bol-masthead.bol-open .bol-nav a {
+          font-size: 18px;
+          padding: 16px 0;
+          border-bottom: 1px solid var(--hairline);
+        }
+        .bol-masthead.bol-open .bol-nav a:last-of-type {
+          border-bottom: 0;
+        }
+        .bol-masthead.bol-open .bol-nav-item-dropdown {
+          display: block;
+        }
+        .bol-masthead.bol-open .bol-nav-item-dropdown > a::after {
+          position: absolute;
+          right: 0;
+        }
+        .bol-masthead.bol-open .bol-dropdown-menu {
+          position: static;
+          display: block;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+          min-width: auto;
+          z-index: auto;
+          padding: 0;
+        }
+        .bol-masthead.bol-open .bol-dropdown-menu a {
+          padding: 12px 0 12px 20px;
+          font-size: 16px;
+          color: var(--loam);
+        }
+        .bol-masthead.bol-open .bol-dropdown-menu a:hover {
+          background: transparent;
+          color: var(--sage);
+        }
+        .bol-masthead.bol-open .bol-actions {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+          position: static;
+          padding: 16px 22px 24px;
+          justify-content: center;
+        }
+        .bol-masthead.bol-open .bol-actions .bol-btn {
+          padding: 11px 14px;
+          font-size: 13px;
+        }
+        .bol-masthead.bol-open .bol-actions .bol-btn-ghost {
+          display: inline-block;
+        }
+      }
+      @media (max-width: 640px) {
+        .bol-masthead-inner {
+          min-height: 76px;
+          justify-content: space-between;
+          gap: 12px;
+        }
+        .bol-actions {
+          display: none;
+        }
+        .bol-navtoggle {
+          margin-left: auto;
+        }
+
+        .bol-masthead.bol-open .bol-menu {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--cream);
+          border-bottom: 1px solid var(--hairline);
+          max-height: 100vh;
+          overflow: auto;
+        }
+
+        .bol-masthead.bol-open .bol-nav {
+          position: static;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 8px 22px 0;
+        }
+        .bol-masthead.bol-open .bol-nav a {
+          font-size: 16px;
+          padding: 13px 0;
+          border-bottom: 1px solid var(--hairline);
+        }
+        .bol-masthead.bol-open .bol-nav a:last-of-type {
+          border-bottom: 0;
+        }
+
+        .bol-masthead.bol-open .bol-actions {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 10px;
+          position: static;
+          padding: 16px 0 24px;
+          text-align: center;
+          margin-top: 0;
+        }
+        .bol-masthead.bol-open .bol-actions .bol-btn {
+          padding: 15px 20px;
+          font-size: 16px;
+          margin: 0 22px;
+        }
+        .bol-masthead.bol-open .bol-actions .bol-btn-ghost {
+          display: inline-block;
+        }
+      }
+
+      /* ---- Page hero ---- */
+      .page-hero {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        background: var(--deep-sage);
+        padding: clamp(30px, 4vw, 68px) 0 clamp(52px, 6vw, 96px);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 820px;
+        text-align: center;
+        margin: 0 auto;
+      }
+      .eyebrow {
+        font-size: 13px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--wheat);
+        margin: 0 0 16px;
+      }
+      .page-hero h1 {
+        font-size: clamp(2.1rem, 4.2vw, 3.1rem);
+        line-height: 1.1;
+        color: #fff;
+        margin-bottom: 18px;
+        font-weight: 400;
+      }
+      .page-hero h1 em {
+        font-style: italic;
+        color: var(--wheat);
+      }
+      .page-hero p {
+        color: rgba(243, 239, 230, 0.9);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        max-width: 640px;
+        margin: 0 auto 30px;
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 26px;
+        justify-content: center;
+        align-items: center;
+      }
+      .hero-actions .btn-primary {
+        background: #fff;
+        border-color: #fff;
+        color: var(--deep-sage);
+      }
+      .hero-actions .btn-primary:hover {
+        background: var(--cream);
+        border-color: var(--cream);
+        color: var(--deep-sage);
+      }
+      .hero-link {
+        font-size: 15px;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
+      }
+
+      /* ---- Three-up value strip ---- */
+      .value-strip {
+        background: #fff;
+        border-bottom: 1px solid var(--hairline);
+        padding: clamp(28px, 3vw, 40px) 0;
+      }
+      .value-strip .wrap {
+        background: #fff;
+      }
+      .value-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1px;
+        background: var(--hairline);
+      }
+      @media (min-width: 760px) {
+        .value-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .value-item {
+        background: #fff;
+        padding: 26px 28px;
+      }
+      .value-item + .value-item {
+        border-top: 1px solid var(--hairline);
+      }
+      @media (min-width: 760px) {
+        .value-item {
+          border: none;
+        }
+        .value-item + .value-item {
+          border-top: none;
+          border-left: 1px solid var(--hairline);
+        }
+      }
+      .value-item h3 {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--loam);
+        margin-bottom: 8px;
+      }
+      .value-item p {
+        font-size: 16px;
+        color: var(--ink-mute, #6e6459);
+        line-height: 1.6;
+      }
+
+      /* ---- Intro section ---- */
+      .intro-section {
+        background: var(--cream);
+        border-top: 1px solid var(--hairline);
+        padding: var(--bol-rhythm) 0 0;
+      }
+      .intro-section .wrap {
+        background: transparent;
+      }
+      .intro-section h2 {
+        font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+        margin-bottom: 12px;
+      }
+      .intro-section p {
+        font-size: 1.1rem;
+        line-height: 1.65;
+        color: #6e6459;
+        max-width: 60ch;
+        margin: 0;
+      }
+
+      /* ---- Workshop list (event row) ---- */
+      .workshop-list {
+        border-top: 1px solid var(--hairline);
+        max-width: 1100px;
+        margin: 16px auto 0;
+      }
+      .workshop-row {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr) 176px;
+        gap: clamp(18px, 2.4vw, 34px);
+        align-items: center;
+        padding: 16px 0;
+        border-top: 1px solid var(--hairline);
+        text-decoration: none;
+        color: inherit;
+      }
+      .workshop-row:last-child {
+        border-bottom: 1px solid var(--hairline);
+      }
+      @media (max-width: 640px) {
+        .workshop-row {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
+      .row-date {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-family: var(--bol-display);
+        font-size: 1.15rem;
+        color: var(--loam);
+        line-height: 1.3;
+      }
+      .row-date .day {
+        font-size: inherit;
+      }
+      .row-date .month-weekday {
+        font-size: 13px;
+        font-family: var(--bol-body);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #6e6459;
+        font-weight: 600;
+      }
+      .row-body h3 {
+        font-size: 1.28rem;
+        margin-bottom: 8px;
+      }
+      .row-body p {
+        font-size: 1.1rem;
+        line-height: 1.65;
+        color: #6e6459;
+        display: -webkit-box;
+        line-clamp: 2;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin: 0;
+      }
+      .row-meta {
+        font-size: 14px;
+        color: #6e6459;
+        line-height: 1.5;
+        margin-top: 6px;
+        display: flex;
+        gap: 8px;
+      }
+      .row-meta .tag {
+        border: 0;
+        padding: 0;
+        font-size: inherit;
+      }
+      .row-media {
+        width: 100%;
+        min-width: 0;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        border-radius: 2px;
+        background: #f5f0e8;
+      }
+      .row-media img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .workshop-row:hover .row-body h3 {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        text-decoration-thickness: 1px;
+      }
+      .workshop-more {
+        display: flex;
+        justify-content: center;
+        padding-top: 28px;
+      }
+      .workshop-more .btn-text {
+        color: var(--deep-sage);
+        border-bottom-color: var(--deep-sage);
+      }
+
+      /* ---- Workshop quote ---- */
+      .workshop-quote {
+        position: relative;
+        overflow: hidden;
+        background: var(--deep-sage);
+        color: #f3efe6;
+        margin-top: 40px;
+        padding: 60px 0;
+      }
+      .workshop-quote-card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 40px 64px;
+        max-width: 1100px;
+        width: min(100%, 1100px);
+        margin: 0 auto;
+      }
+      .workshop-quote-mark {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--bol-display);
+        font-size: 220px;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.18);
+        font-weight: 700;
+        user-select: none;
+        pointer-events: none;
+      }
+      .workshop-quote-mark.left {
+        left: 24px;
+      }
+      .workshop-quote-mark.right {
+        right: 24px;
+        transform: translateY(-50%) rotate(180deg);
+      }
+      .workshop-quote-content {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        margin-left: 90px;
+      }
+      .workshop-quote-content p {
+        color: inherit;
+        font-family: var(--bol-display);
+        font-style: italic;
+        font-size: clamp(1.3rem, 2.6vw, 1.85rem);
+        line-height: 1.38;
+        margin: 0 0 20px;
+      }
+      .workshop-quote-author {
+        color: #c9a25e;
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      @media (max-width: 700px) {
+        .workshop-quote-card {
+          padding: 28px 24px;
+        }
+        .workshop-quote-content {
+          margin-left: 42px;
+        }
+        .workshop-quote-mark {
+          font-size: 150px;
+        }
+      }
+
+      /* ---- Workshop FAQ ---- */
+      .workshop-faq {
+        background: #fff;
+        border-top: 1px solid var(--hairline);
+        padding: 56px 0 40px;
+      }
+      .workshop-faq-inner {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .workshop-faq-head {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .workshop-faq-head h2 {
+        font-size: clamp(1.7rem, 3vw, 2.2rem);
+      }
+      details.workshop-faq-item {
+        background: transparent;
+        border: 0;
+        padding: 18px 0;
+        margin-bottom: 0;
+        cursor: pointer;
+      }
+      details.workshop-faq-item + details.workshop-faq-item {
+        border-top: 1px solid var(--hairline);
+      }
+      details.workshop-faq-item summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        font-family: var(--bol-display);
+        font-weight: 500;
+        font-size: 1.02rem;
+        color: var(--loam);
+      }
+      details.workshop-faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+      details.workshop-faq-item[open] .workshop-faq-chevron::before {
+        content: "−";
+      }
+      .workshop-faq-chevron {
+        flex: 0 0 auto;
+        color: var(--sage);
+        font-family: var(--bol-body);
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 1;
+      }
+      .workshop-faq-chevron::before {
+        content: "+";
+      }
+      details.workshop-faq-item p {
+        font-size: 16px;
+        color: #4a423b;
+        margin: 12px 0 0;
+        padding-top: 12px;
+        line-height: 1.7;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition:
+          max-height 0.26s ease,
+          opacity 0.2s ease,
+          margin-top 0.26s ease,
+          padding-top 0.26s ease;
+      }
+      details.workshop-faq-item.is-open p {
+        max-height: 240px;
+        opacity: 1;
+      }
+
+      /* ---- Closing CTA band ---- */
+      .cta-band {
+        background: var(--deep-sage);
+        color: var(--cream);
+        padding: calc(var(--bol-rhythm) * 1.15) 0;
+        margin-top: 0;
+        text-align: center;
+      }
+      .cta-band h2 {
+        color: #fff;
+        font-size: clamp(1.9rem, 3.6vw, 2.75rem);
+        margin-bottom: 12px;
+      }
+      .cta-band p {
+        color: #ede7d8;
+        font-size: 1.12rem;
+        max-width: 46ch;
+        margin: 0 auto 24px;
+      }
+      .cta-band .btn-primary {
+        background: var(--wheat);
+        color: var(--loam);
+        min-width: 180px;
+        padding-left: 36px;
+        padding-right: 36px;
+      }
+
+      /* Footer (matches home page) */
       .bol-footer {
         background: var(--loam);
         color: #d8d1c6;
@@ -521,11 +877,12 @@
       }
       .bol-footer h4 {
         position: relative;
-        color: #bfb5a5;
-        font-family: var(--body);
+        font-family: "Karla", sans-serif;
         font-size: 13px;
         letter-spacing: 0.14em;
         text-transform: uppercase;
+        font-weight: 700;
+        color: #bfb5a5;
         margin: 0 0 24px;
         padding-bottom: 14px;
       }
@@ -546,32 +903,39 @@
       .bol-footer li {
         margin-bottom: 14px;
         font-size: 17px;
+        line-height: 1.6;
       }
       .bol-footer a {
         color: inherit;
-        font-size: 17px;
         text-decoration: none;
+        font-size: 17px;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.18s ease;
       }
       .bol-footer a:hover {
-        color: #fff;
-        text-decoration: underline;
+        border-color: #d8d1c6;
+      }
+      .bol-footer-highlight {
+        color: var(--wheat);
       }
       .bol-footer-mark {
         margin-bottom: 20px;
         line-height: 0;
       }
       .bol-footer-mark img {
+        display: block;
         width: auto;
         height: clamp(62px, 6.6vw, 84px);
         max-width: 330px;
         object-fit: contain;
+        transform: translateY(-6%);
       }
       .bol-footer-mission {
-        max-width: 38ch;
-        color: #c3baaa;
         font-size: 17px;
         line-height: 1.65;
-        margin: 0 0 26px;
+        color: #c3baaa;
+        max-width: 38ch;
+        margin-bottom: 26px;
       }
       .bol-footer-cinfo {
         display: flex;
@@ -595,21 +959,22 @@
       }
       .bol-footer-cinfo .label {
         display: block;
-        color: #9d9488;
         font-size: 13px;
+        color: #9d9488;
         margin-bottom: 4px;
       }
       .bol-footer-cinfo .value {
-        color: #f3efe6;
         font-size: 16px;
         line-height: 1.5;
+        color: #f3efe6;
       }
       .bol-signup label {
         display: block;
-        max-width: 34ch;
-        color: #c3baaa;
         font-size: 15px;
+        line-height: 1.6;
+        color: #c3baaa;
         margin-bottom: 14px;
+        max-width: 34ch;
       }
       .bol-signup-row {
         display: flex;
@@ -624,7 +989,11 @@
         border: 0;
         padding: 15px 22px;
         color: #f3efe6;
-        font: 16px var(--body);
+        font-family: "Karla", sans-serif;
+        font-size: 16px;
+      }
+      .bol-signup input::placeholder {
+        color: #7c7367;
       }
       .bol-signup button {
         background: var(--sage);
@@ -632,25 +1001,38 @@
         border-radius: 4px;
         margin: 3px;
         color: #fff;
-        cursor: pointer;
-        font: 600 15px var(--body);
+        font-family: "Karla", sans-serif;
+        font-weight: 600;
+        font-size: 15px;
         padding: 0 24px;
+        cursor: pointer;
+        transition: background 0.18s ease;
+      }
+      .bol-signup button:hover {
+        background: var(--deep-sage);
       }
       .bol-signup-note {
-        color: #9d9488;
         font-size: 14px;
+        line-height: 1.6;
+        color: #9d9488;
         margin-top: 14px;
       }
       .bol-colophon {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
         gap: 16px;
         margin-top: clamp(44px, 5vw, 64px);
         padding-top: 26px;
         border-top: 1px solid #4a433c;
-        color: #bfb5a5;
         font-size: 14px;
+        line-height: 1.6;
+        color: #bfb5a5;
+      }
+      .bol-colophon a {
+        font-size: inherit;
+        color: inherit;
       }
       .bol-footer-social {
         display: flex;
@@ -664,53 +1046,23 @@
         height: 40px;
         border-radius: 50%;
         background: rgba(216, 209, 198, 0.14);
+        color: #fff;
+        border-bottom: none;
+        transition:
+          background 0.18s ease,
+          color 0.18s ease;
+      }
+      .bol-footer-social a:hover {
+        background: var(--sage);
+        color: #fff;
       }
       .bol-footer-social svg {
         width: 18px;
         height: 18px;
       }
-      @media (max-width: 980px) {
-        .bol-nav {
-          display: none;
-        }
-        .bol-navtoggle {
-          display: grid;
-          margin-left: auto;
-        }
-        .bol-masthead.bol-open .bol-menu {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 0;
-          background: var(--cream);
-          border-bottom: 1px solid #b9ac93;
-        }
-        .bol-masthead.bol-open .bol-nav {
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
-          gap: 0;
-          padding: 8px var(--gutter) 0;
-        }
-        .bol-masthead.bol-open .bol-nav a {
-          padding: 14px 0;
-          border-bottom: 1px solid #dcd4c4;
-        }
-        .bol-masthead.bol-open .bol-actions {
-          padding: 16px var(--gutter) 24px;
-          justify-content: center;
-        }
-      }
-      @media (max-width: 700px) {
+      @media (max-width: 900px) {
         .bol-footer-grid {
           grid-template-columns: 1fr;
-        }
-        .bol-colophon {
-          align-items: flex-start;
-          flex-direction: column;
         }
       }
     </style>
@@ -734,16 +1086,21 @@
         <div class="bol-menu">
           <nav class="bol-nav" aria-label="Primary">
             <a href="index.html#top">Home</a>
-            <a href="about.html">About</a>
+            <div class="bol-nav-item-dropdown">
+              <a href="index.html#guide">About</a>
+              <div class="bol-dropdown-menu">
+                <a href="index.html#footer">Contact us</a>
+              </div>
+            </div>
             <a href="index.html#offer">Programs</a>
             <a href="events.html" aria-current="page">Events</a>
             <a href="spiritual_direction.html">Spiritual Direction</a>
             <a href="index.html#offer">Community</a>
           </nav>
           <div class="bol-actions">
-            <a class="bol-btn bol-btn-ghost" href="donate.html">Donate</a>
-            <a class="bol-btn" href="spiritual_direction.html"
-              >Find a Spiritual Director</a
+            <a class="bol-btn bol-btn-ghost" href="#">Donate</a>
+            <a class="bol-btn" href="spiritual_direction.html#directory-section"
+              >Find a spiritual director</a
             >
           </div>
         </div>
@@ -752,173 +1109,304 @@
           id="bolNavToggle"
           aria-expanded="false"
           aria-label="Open menu"
-          type="button"
         >
-          <span class="bol-burger" aria-hidden="true"
-            ><i></i><i></i><i></i
-          ></span>
+          <span class="bol-burger" aria-hidden="true">
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
         </button>
       </div>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="shell">
-          <div class="eyebrow">
-            Bread of Life &middot; Sacramento and online
-          </div>
-          <h1>Make room for what is asking your attention.</h1>
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="eyebrow">EVENTS · IN PERSON &amp; ONLINE</div>
+          <h1>Make room for what is <em>asking your attention.</em></h1>
           <p>
             Gatherings for prayer, discernment, grief, and the ordinary work of
             listening. Come as you are; no background is required.
           </p>
+          <div class="hero-actions">
+            <a href="#event-list" class="btn btn-primary"
+              >View Upcoming Events</a
+            >
+            <a href="workshops.html" class="hero-link">View workshops</a>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="calendar" id="calendar">
-        <div class="shell">
-          <div class="calendar-head">
-            <h2>Upcoming events</h2>
-            <div class="filters" aria-label="Filter events by month">
-              <button
-                class="filter"
-                type="button"
-                data-filter="all"
-                aria-pressed="true"
-              >
-                All dates
-              </button>
-              <button
-                class="filter"
-                type="button"
-                data-filter="august"
-                aria-pressed="false"
-              >
-                August
-              </button>
-              <button
-                class="filter"
-                type="button"
-                data-filter="september"
-                aria-pressed="false"
-              >
-                September
-              </button>
-              <button
-                class="filter"
-                type="button"
-                data-filter="october"
-                aria-pressed="false"
-              >
-                October
-              </button>
-              <button
-                class="filter"
-                type="button"
-                data-filter="november"
-                aria-pressed="false"
-              >
-                November
-              </button>
-            </div>
-          </div>
-
-          <div class="event-list">
-            <article class="event" data-month="august">
-              <div class="event-date">14 Aug<span>Thursday</span></div>
-              <div>
-                <h3>Contemplative Prayer for Beginners</h3>
-                <p>
-                  Two hours on sitting quietly with attention. No background
-                  assumed.
-                </p>
-                <a class="event-link" href="discernment-next-step.html"
-                  >View event details &rarr;</a
-                >
-              </div>
-              <div class="event-meta">
-                <strong>In person</strong>Sacramento &middot; 6:30pm
-              </div>
-            </article>
-            <article class="event" data-month="september">
-              <div class="event-date">18 Sep<span>Thursday</span></div>
-              <div>
-                <h3>Discernment When the Next Step Is Unclear</h3>
-                <p>
-                  Practices for a decision you have been carrying for a while.
-                </p>
-                <a class="event-link" href="discernment-next-step.html"
-                  >View event details &rarr;</a
-                >
-              </div>
-              <div class="event-meta"><strong>Online</strong>6:30pm</div>
-            </article>
-            <article class="event" data-month="october">
-              <div class="event-date">14 Oct<span>Tuesday</span></div>
-              <div>
-                <h3>Introduction to Centering Prayer</h3>
-                <p>
-                  A gentle entry point into wordless, contemplative sitting
-                  practice.
-                </p>
-                <a class="event-link" href="workshops.html#workshop-list"
-                  >View event details &rarr;</a
-                >
-              </div>
-              <div class="event-meta"><strong>Online</strong>6:30pm</div>
-            </article>
-            <article class="event" data-month="november">
-              <div class="event-date">8 Nov<span>Saturday</span></div>
-              <div>
-                <h3>A Season of Letting Go</h3>
-                <p>
-                  A workshop on release, for whatever season is asking you to
-                  set something down.
-                </p>
-                <a class="event-link" href="workshops.html#workshop-list"
-                  >View event details &rarr;</a
-                >
-              </div>
-              <div class="event-meta">
-                <strong>In person</strong>Sacramento &middot; 9:00am
-              </div>
-            </article>
-            <article class="event" data-month="november">
-              <div class="event-date">21 Nov<span>Friday</span></div>
-              <div>
-                <h3>Contemplative Prayer for Beginners</h3>
-                <p>
-                  Two hours on sitting quietly with attention. No background
-                  assumed.
-                </p>
-                <a class="event-link" href="workshops.html#workshop-list"
-                  >View event details &rarr;</a
-                >
-              </div>
-              <div class="event-meta">
-                <strong>In person</strong>Sacramento &middot; 6:30pm
-              </div>
-            </article>
-          </div>
-          <p class="empty" aria-live="polite">
-            There are no events listed for this month yet. Check back soon.
+    <section class="value-strip">
+      <div class="wrap value-grid">
+        <div class="value-item">
+          <h3>Open to everyone</h3>
+          <p>
+            Come as you are. No religious background or prior experience is
+            required.
           </p>
         </div>
-      </section>
-
-      <section class="invite">
-        <div class="shell invite-inner">
-          <div>
-            <h2>Not sure where to begin?</h2>
-            <p>
-              Send us a note and we will help you find a gathering that fits
-              your season.
-            </p>
-          </div>
-          <a class="button" href="contact.html">Contact Bread of Life</a>
+        <div class="value-item">
+          <h3>In person or online</h3>
+          <p>
+            Choose the setting that works best for you, from Sacramento to home.
+          </p>
         </div>
-      </section>
-    </main>
+        <div class="value-item">
+          <h3>Many ways to gather</h3>
+          <p>
+            Find prayer, discernment, grief, and listening events throughout the
+            season.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-section">
+      <div class="wrap">
+        <h2>Upcoming events</h2>
+        <p>
+          Explore the next opportunities to gather with the Bread of Life
+          community. Each listing includes the date, format, location, and time.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap" id="event-list">
+      <div class="workshop-list">
+        <a class="workshop-row" href="sitting-with-grief.html">
+          <div class="row-date">
+            <div class="day">6</div>
+            <div class="month-weekday">Sep · Sat</div>
+          </div>
+          <div class="row-body">
+            <h3>Sitting with Grief</h3>
+            <p>A half day for people carrying a loss, recent or long held.</p>
+            <div class="row-meta">
+              <span class="tag">In Person</span><span>Sacramento · 9:00am</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80"
+                alt="Hands writing in a journal"
+              />
+            </div>
+          </div>
+        </a>
+
+        <a class="workshop-row" href="discernment-next-step.html">
+          <div class="row-date">
+            <div class="day">18</div>
+            <div class="month-weekday">Sep · Thu</div>
+          </div>
+          <div class="row-body">
+            <h3>Discernment When the Next Step Is Unclear</h3>
+            <p>Practices for a decision you have been carrying a while.</p>
+            <div class="row-meta">
+              <span class="tag">Online</span><span>7:00pm</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80"
+                alt="Quiet interior space"
+              />
+            </div>
+          </div>
+        </a>
+
+        <a class="workshop-row" href="workshops.html#workshop-list">
+          <div class="row-date">
+            <div class="day">2</div>
+            <div class="month-weekday">Oct · Thu</div>
+          </div>
+          <div class="row-body">
+            <h3>Listen to Your Life: Autumn Cohort Opens</h3>
+            <p>
+              Six weeks, small group, facilitated. Registration closes when the
+              group fills.
+            </p>
+            <div class="row-meta">
+              <span class="tag">In Person</span><span>Sacramento · 6:00pm</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80"
+                alt="Paper and pen on a table"
+              />
+            </div>
+          </div>
+        </a>
+
+        <a class="workshop-row" href="workshops.html#workshop-list">
+          <div class="row-date">
+            <div class="day">14</div>
+            <div class="month-weekday">Oct · Tue</div>
+          </div>
+          <div class="row-body">
+            <h3>Introduction to Centering Prayer</h3>
+            <p>
+              A gentle entry point into wordless, contemplative sitting
+              practice.
+            </p>
+            <div class="row-meta">
+              <span class="tag">Online</span><span>7:00pm</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=400&q=80"
+                alt="Open path landscape"
+              />
+            </div>
+          </div>
+        </a>
+
+        <a class="workshop-row" href="workshops.html#workshop-list">
+          <div class="row-date">
+            <div class="day">8</div>
+            <div class="month-weekday">Nov · Sat</div>
+          </div>
+          <div class="row-body">
+            <h3>A Season of Letting Go</h3>
+            <p>
+              An event on release, for whatever season is asking you to set
+              something down.
+            </p>
+            <div class="row-meta">
+              <span class="tag">In Person</span><span>Sacramento · 9:00am</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=400&q=80"
+                alt="Notebook beside a cup of tea"
+              />
+            </div>
+          </div>
+        </a>
+
+        <a class="workshop-row" href="workshops.html#workshop-list">
+          <div class="row-date">
+            <div class="day">21</div>
+            <div class="month-weekday">Nov · Fri</div>
+          </div>
+          <div class="row-body">
+            <h3>Contemplative Prayer for Beginners</h3>
+            <p>
+              Two hours on sitting quietly with attention. No background
+              assumed.
+            </p>
+            <div class="row-meta">
+              <span class="tag">In Person</span><span>Sacramento · 6:30pm</span>
+            </div>
+          </div>
+          <div class="row-action">
+            <div class="row-media">
+              <img
+                src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=400&q=80"
+                alt="A quiet room with sunlight"
+              />
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="workshop-more">
+        <a href="events.html" class="btn btn-text">View all upcoming events</a>
+      </div>
+    </section>
+
+    <section class="workshop-quote">
+      <div class="workshop-quote-card">
+        <span class="workshop-quote-mark left">&#8220;</span>
+        <span class="workshop-quote-mark right">&#8220;</span>
+        <div class="workshop-quote-content">
+          <p>
+            I came for one evening and left with a practice I could carry into
+            the rest of the week.
+          </p>
+          <div class="workshop-quote-author">A Bread of Life participant</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workshop-faq" id="faq-section">
+      <div class="workshop-faq-inner">
+        <div class="workshop-faq-head">
+          <span class="eyebrow">Frequently Asked</span>
+          <h2>Event questions</h2>
+        </div>
+        <details class="workshop-faq-item">
+          <summary>
+            <span>Do I need any previous experience?</span>
+            <span class="workshop-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <p>
+            No. Our events are designed for beginners and experienced
+            practitioners alike. Come as you are, with no preparation required.
+          </p>
+        </details>
+        <details class="workshop-faq-item">
+          <summary>
+            <span>Do I need to be religious or Christian?</span>
+            <span class="workshop-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <p>
+            No. Bread of Life welcomes people of every faith background, as well
+            as people who are spiritual but not religious or still questioning.
+          </p>
+        </details>
+        <details class="workshop-faq-item">
+          <summary>
+            <span>Are events offered in person or online?</span>
+            <span class="workshop-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <p>
+            Both. Each listing includes the format and location so you can
+            choose the setting that works best for you.
+          </p>
+        </details>
+        <details class="workshop-faq-item">
+          <summary>
+            <span>What should I bring to an event?</span>
+            <span class="workshop-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <p>
+            Just yourself and anything that helps you settle in. Event details
+            will tell you whether anything else is needed beforehand.
+          </p>
+        </details>
+        <details class="workshop-faq-item">
+          <summary>
+            <span>How much does an event cost?</span>
+            <span class="workshop-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <p>
+            Cost varies by event. Reach out if you need help deciding what to
+            contribute; cost is never meant to be a barrier to attending.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="wrap">
+        <h2>Not sure which event is right for you?</h2>
+        <p>
+          Reach out and we'll help you find a gathering that fits your season
+          and the questions you are carrying.
+        </p>
+        <a href="index.html#footer" class="btn btn-primary">Contact us</a>
+      </div>
+    </section>
 
     <footer class="bol-footer" id="footer">
       <div class="bol-shell">
@@ -937,7 +1425,7 @@
             </p>
             <div class="bol-signup">
               <label for="bolEmail"
-                >Subscribe to our newsletter for workshop dates and occasional
+                >Subscribe to our newsletter for event dates and occasional
                 notes on practice.</label
               >
               <div class="bol-signup-row">
@@ -1019,7 +1507,7 @@
           <div>
             <h4>Resources</h4>
             <ul>
-              <li><a href="#upcoming">Workshops</a></li>
+              <li><a href="workshops.html">Workshops</a></li>
               <li><a href="#quote-1">Our Stories</a></li>
               <li><a href="#footer">Contact</a></li>
               <li><a href="#">Donate</a></li>
@@ -1072,60 +1560,32 @@
     </footer>
 
     <script>
-      const masthead = document.getElementById("bolMasthead");
-      const menuButton = document.getElementById("bolNavToggle");
-      menuButton.addEventListener("click", function () {
-        const isOpen = masthead.classList.toggle("bol-open");
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-        menuButton.setAttribute(
-          "aria-label",
-          isOpen ? "Close menu" : "Open menu",
-        );
-      });
-      masthead
-        .querySelectorAll(".bol-nav a, .bol-actions a")
-        .forEach(function (link) {
-          link.addEventListener("click", function () {
-            masthead.classList.remove("bol-open");
-            menuButton.setAttribute("aria-expanded", "false");
-            menuButton.setAttribute("aria-label", "Open menu");
-          });
+      (function () {
+        var mast = document.getElementById("bolMasthead"),
+          toggle = document.getElementById("bolNavToggle");
+        toggle.addEventListener("click", function () {
+          var open = mast.classList.toggle("bol-open");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
         });
+        mast
+          .querySelectorAll(".bol-nav a, .bol-actions a")
+          .forEach(function (a) {
+            a.addEventListener("click", function () {
+              mast.classList.remove("bol-open");
+              toggle.setAttribute("aria-expanded", "false");
+              toggle.setAttribute("aria-label", "Open menu");
+            });
+          });
 
-      document
-        .getElementById("bolSignupBtn")
-        .addEventListener("click", function () {
-          const input = document.getElementById("bolEmail");
-          const note = document.getElementById("bolSignupNote");
-          if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.value.trim())) {
-            note.textContent =
-              "Enter an email address so we can send you the dates.";
-            input.focus();
-            return;
-          }
-          note.textContent =
-            "You are on the list. Check your inbox to confirm.";
-          input.value = "";
-        });
-
-      const filters = document.querySelectorAll(".filter");
-      const events = document.querySelectorAll(".event");
-      const empty = document.querySelector(".empty");
-      filters.forEach(function (filter) {
-        filter.addEventListener("click", function () {
-          const month = filter.dataset.filter;
-          let visibleCount = 0;
-          filters.forEach(function (item) {
-            item.setAttribute("aria-pressed", String(item === filter));
+        document
+          .querySelectorAll(".workshop-faq-item")
+          .forEach(function (item) {
+            item.addEventListener("toggle", function () {
+              item.classList.toggle("is-open", item.open);
+            });
           });
-          events.forEach(function (event) {
-            const visible = month === "all" || event.dataset.month === month;
-            event.hidden = !visible;
-            if (visible) visibleCount += 1;
-          });
-          empty.style.display = visibleCount ? "none" : "block";
-        });
-      });
+      })();
     </script>
   </body>
 </html>
