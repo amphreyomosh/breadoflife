@@ -269,19 +269,27 @@
       .donor-card-img-wrap {
         width: 100%;
         height: 280px;
-        background: #ece7db;
+        background: #f4efe6;
         position: relative;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px;
       }
       .donor-card-img-wrap img {
-        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         display: block;
+        border-radius: 4px;
+        box-shadow: 0 4px 14px rgba(42, 37, 33, 0.08);
         transition: transform 0.35s ease;
       }
       .donor-card:hover .donor-card-img-wrap img {
-        transform: scale(1.03);
+        transform: scale(1.02);
       }
       .donor-card-badge {
         position: absolute;
@@ -296,6 +304,7 @@
         padding: 4px 10px;
         border-radius: 3px;
         backdrop-filter: blur(4px);
+        z-index: 2;
       }
       .donor-card-body {
         padding: 24px;
@@ -396,17 +405,25 @@
       }
       .memoriam-portrait-wrap {
         width: 100%;
-        aspect-ratio: 4 / 5;
-        border-radius: 3px;
+        height: 220px;
+        border-radius: 4px;
         overflow: hidden;
-        background: #ede6d8;
+        background: #f4efe6;
         border: 1px solid var(--bol-hairline-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
       }
       .memoriam-portrait-wrap img {
-        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         display: block;
+        border-radius: 3px;
+        box-shadow: 0 3px 10px rgba(42, 37, 33, 0.08);
       }
       .memoriam-body h3 {
         font-family: var(--bol-display);
@@ -594,11 +611,17 @@
         margin-bottom: 20px;
       }
       .bol-modal-img {
-        width: 100%;
-        max-height: 360px;
-        object-fit: cover;
+        max-width: 100%;
+        max-height: 380px;
+        width: auto;
+        height: auto;
+        margin: 0 auto 24px;
+        object-fit: contain;
+        display: block;
         border-radius: 4px;
-        margin-bottom: 24px;
+        background: #f4efe6;
+        padding: 10px;
+        box-shadow: 0 4px 16px rgba(42, 37, 33, 0.08);
       }
       .bol-modal-quote {
         background: #faf7f0;
@@ -821,7 +844,7 @@
               <div class="donor-card-img-wrap">
                 <span class="donor-card-badge">Board &amp; Leadership</span>
                 <img
-                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509753772-ZJD8EK8DER2NPN109TCS/Chris%2BMotley%2Band%2BTrudy%2BBaltz.jpg?format=300w"
+                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509753772-ZJD8EK8DER2NPN109TCS/Chris%2BMotley%2Band%2BTrudy%2BBaltz.jpg"
                   alt="Chris Motley and Trudy Baltz"
                   loading="lazy"
                   referrerpolicy="no-referrer"
@@ -1296,7 +1319,7 @@
         'baltz-motley': {
           title: "Trudy Baltz & Chris Motley",
           subtitle: "Board Leadership & Contemplative Companions",
-          img: "https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509753772-ZJD8EK8DER2NPN109TCS/Chris%2BMotley%2Band%2BTrudy%2BBaltz.jpg?format=300w",
+          img: "https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509753772-ZJD8EK8DER2NPN109TCS/Chris%2BMotley%2Band%2BTrudy%2BBaltz.jpg",
           quote: "Stewardship of the soul and stewardship of the organization walking hand in hand.",
           prose: `
             <p>Trudy Baltz and Chris Motley represent the deep synergy between communal spiritual practice and faithful organizational leadership. Chris serves as the Secretary of the Board of Directors for Bread of Life, investing countless volunteer hours to guide the governance and fiscal integrity of our community.</p>
