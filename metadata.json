@@ -1,0 +1,7 @@
+{
+  "name": "Bread of Life",
+  "description": "Bread of Life community and contemplative spiritual direction website",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
