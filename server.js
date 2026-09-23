@@ -17,6 +17,16 @@ app.get(['/spiritual-direction', '/spiritual-direction.html'], (req, res) => {
   res.sendFile(path.join(__dirname, 'spiritual_direction.html'));
 });
 
+// Route alias for our-donors
+app.get(['/our-donors', '/our-donors.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'our-donors.html'));
+});
+
+// Route alias for ways-to-give / donate
+app.get(['/ways-to-give', '/ways-to-give.html', '/donate', '/donate.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'donate.html'));
+});
+
 // Serve index.html on root path
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));

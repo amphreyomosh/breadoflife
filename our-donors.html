@@ -1,0 +1,1440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Donors &mdash; Bread of Life Center</title>
+    <meta
+      name="description"
+      content="Meet the individual donors, faithful companions, and memorial honorees whose love and generosity sustain the Bread of Life community."
+    />
+    <meta property="og:title" content="Our Donors — Bread of Life Center" />
+    <meta
+      property="og:description"
+      content="Meet the people involved who support Bread of Life, and explore our memorial legacies of love and friendship."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="site-header.css" />
+    <link rel="stylesheet" href="footer.css" />
+
+    <style>
+      :root {
+        --bol-cream: #faf7f0;
+        --bol-loam: #2a2521;
+        --bol-panel: #ffffff;
+        --bol-ink-soft: #4a423b;
+        --bol-ink-mute: #6e6459;
+        --bol-sage: #3e5a38;
+        --bol-sage-deep: #30452b;
+        --bol-forest-night: #243520;
+        --bol-accent: #b8935a;
+        --bol-accent-ink: #8a6726;
+        --bol-hairline: #dcd4c4;
+        --bol-hairline-soft: #ede6d8;
+        --bol-display: "Fraunces", Georgia, serif;
+        --bol-body: "Karla", system-ui, -apple-system, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: var(--bol-body);
+        margin: 0;
+        background: var(--bol-cream);
+        color: var(--bol-loam);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .bol-shell {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 clamp(20px, 5vw, 72px);
+      }
+
+      /* HERO */
+      .donor-hero {
+        position: relative;
+        background: var(--bol-forest-night);
+        color: #ffffff;
+        padding: clamp(90px, 12vw, 150px) 0 clamp(60px, 8vw, 90px);
+        overflow: hidden;
+      }
+      .donor-hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        opacity: 0.28;
+      }
+      .donor-hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .donor-hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+          180deg,
+          rgba(36, 53, 32, 0.82) 0%,
+          rgba(36, 53, 32, 0.94) 100%
+        );
+      }
+      .donor-hero-content {
+        position: relative;
+        z-index: 3;
+        max-width: 820px;
+      }
+      .donor-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--bol-accent);
+        margin-bottom: 16px;
+      }
+      .donor-eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 1px;
+        background: var(--bol-accent);
+      }
+      .donor-hero-title {
+        font-family: var(--bol-display);
+        font-size: clamp(2.8rem, 6vw, 4.4rem);
+        line-height: 1.1;
+        font-weight: 400;
+        margin: 0 0 20px;
+        color: #ffffff;
+      }
+      .donor-hero-title em {
+        font-style: italic;
+        color: #e5cb9b;
+      }
+      .donor-hero-sub {
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        color: #d8decb;
+        max-width: 720px;
+        margin: 0 0 32px;
+        line-height: 1.6;
+      }
+
+      /* Distinct distinction banner */
+      .distinction-note {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(220, 212, 196, 0.25);
+        border-radius: 6px;
+        padding: 16px 22px;
+        margin-top: 10px;
+        backdrop-filter: blur(4px);
+      }
+      .distinction-text {
+        font-size: 14.5px;
+        color: #f1ebd8;
+      }
+      .distinction-text strong {
+        color: #ffffff;
+      }
+      .distinction-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--bol-accent);
+        color: #1f1b18 !important;
+        font-weight: 700;
+        font-size: 13.5px;
+        padding: 8px 16px;
+        border-radius: 4px;
+        white-space: nowrap;
+        transition: background 0.2s ease, transform 0.15s ease;
+      }
+      .distinction-link:hover {
+        background: #d8bc82;
+        transform: translateY(-1px);
+      }
+
+      /* TABS / SECTIONS */
+      .donor-nav-anchor {
+        background: #ffffff;
+        border-bottom: 1px solid var(--bol-hairline);
+        position: sticky;
+        top: 0;
+        z-index: 40;
+      }
+      .donor-nav-tabs {
+        display: flex;
+        gap: 32px;
+        overflow-x: auto;
+        padding: 14px 0;
+        font-size: 14.5px;
+        font-weight: 600;
+      }
+      .donor-nav-tabs a {
+        color: var(--bol-ink-mute);
+        position: relative;
+        padding: 6px 0;
+        white-space: nowrap;
+        transition: color 0.2s ease;
+      }
+      .donor-nav-tabs a:hover,
+      .donor-nav-tabs a.active {
+        color: var(--bol-sage-deep);
+      }
+      .donor-nav-tabs a.active::after {
+        content: "";
+        position: absolute;
+        bottom: -14px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--bol-sage-deep);
+      }
+
+      /* SECTION HEADERS */
+      .section-wrap {
+        padding: clamp(60px, 8vw, 90px) 0;
+      }
+      .section-wrap.alt-surface {
+        background: #ffffff;
+        border-top: 1px solid var(--bol-hairline-soft);
+        border-bottom: 1px solid var(--bol-hairline-soft);
+      }
+      .section-header {
+        max-width: 720px;
+        margin-bottom: 48px;
+      }
+      .section-header .section-tag {
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--bol-accent-ink);
+        display: block;
+        margin-bottom: 8px;
+      }
+      .section-header h2 {
+        font-family: var(--bol-display);
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        line-height: 1.15;
+        font-weight: 400;
+        color: var(--bol-loam);
+        margin: 0 0 14px;
+      }
+      .section-header p {
+        font-size: 1.08rem;
+        color: var(--bol-ink-soft);
+        margin: 0;
+      }
+
+      /* INDIVIDUAL DONORS GRID */
+      .donor-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 28px;
+      }
+      .donor-card {
+        background: #ffffff;
+        border: 1px solid var(--bol-hairline);
+        border-radius: 4px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+      .donor-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(42, 37, 33, 0.08);
+        border-color: #b5a995;
+      }
+      .donor-card-img-wrap {
+        width: 100%;
+        height: 280px;
+        background: #ece7db;
+        position: relative;
+        overflow: hidden;
+      }
+      .donor-card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.35s ease;
+      }
+      .donor-card:hover .donor-card-img-wrap img {
+        transform: scale(1.03);
+      }
+      .donor-card-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: rgba(42, 37, 33, 0.85);
+        color: #ffffff;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 3px;
+        backdrop-filter: blur(4px);
+      }
+      .donor-card-body {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .donor-card-name {
+        font-family: var(--bol-display);
+        font-size: 1.55rem;
+        font-weight: 600;
+        color: var(--bol-loam);
+        margin: 0 0 6px;
+      }
+      .donor-card-role {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--bol-sage);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 12px;
+      }
+      .donor-card-desc {
+        font-size: 14.5px;
+        color: var(--bol-ink-soft);
+        margin: 0 0 18px;
+        line-height: 1.6;
+        flex: 1;
+      }
+      .donor-card-action {
+        border-top: 1px solid var(--bol-hairline-soft);
+        padding-top: 16px;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .btn-read-story {
+        background: transparent;
+        border: none;
+        color: var(--bol-accent-ink);
+        font-family: var(--bol-body);
+        font-size: 13.5px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0;
+        transition: color 0.18s ease;
+      }
+      .btn-read-story:hover {
+        color: var(--bol-sage-deep);
+      }
+
+      /* IN MEMORIAM SECTION */
+      .memoriam-lead-quote {
+        background: #f4efe4;
+        border-left: 3px solid var(--bol-accent);
+        padding: 24px 28px;
+        font-family: var(--bol-display);
+        font-size: 1.25rem;
+        line-height: 1.55;
+        font-style: italic;
+        color: var(--bol-loam);
+        margin-bottom: 44px;
+        border-radius: 0 4px 4px 0;
+      }
+      .memoriam-lead-quote span {
+        display: block;
+        font-family: var(--bol-body);
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--bol-ink-mute);
+        margin-top: 10px;
+      }
+
+      .memoriam-list {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      .memoriam-row {
+        background: #ffffff;
+        border: 1px solid var(--bol-hairline);
+        border-radius: 4px;
+        padding: clamp(24px, 4vw, 36px);
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: clamp(24px, 4vw, 44px);
+        align-items: start;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .memoriam-row:hover {
+        border-color: #b5a995;
+        box-shadow: 0 8px 24px rgba(42, 37, 33, 0.06);
+      }
+      .memoriam-portrait-wrap {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        border-radius: 3px;
+        overflow: hidden;
+        background: #ede6d8;
+        border: 1px solid var(--bol-hairline-soft);
+      }
+      .memoriam-portrait-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .memoriam-body h3 {
+        font-family: var(--bol-display);
+        font-size: clamp(1.6rem, 3vw, 2.1rem);
+        font-weight: 600;
+        color: var(--bol-loam);
+        margin: 0 0 4px;
+      }
+      .memoriam-dates {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--bol-accent-ink);
+        margin-bottom: 14px;
+      }
+      .memoriam-role-tag {
+        display: inline-block;
+        background: #f1ede3;
+        color: var(--bol-sage-deep);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 9px;
+        border-radius: 3px;
+        margin-bottom: 16px;
+      }
+      .memoriam-text {
+        font-size: 15.5px;
+        color: var(--bol-ink-soft);
+        line-height: 1.7;
+        margin: 0 0 20px;
+      }
+      .memoriam-actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .btn-memoriam-open {
+        background: var(--bol-sage);
+        color: #ffffff;
+        font-family: var(--bol-body);
+        font-size: 13.5px;
+        font-weight: 600;
+        padding: 9px 18px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        transition: background 0.18s ease;
+      }
+      .btn-memoriam-open:hover {
+        background: var(--bol-sage-deep);
+      }
+      .btn-memoriam-link {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--bol-accent-ink);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn-memoriam-link:hover {
+        color: var(--bol-sage-deep);
+        text-decoration: underline;
+      }
+
+      /* INVITATION TO DONATE BANNER */
+      .donor-to-give-banner {
+        background: linear-gradient(135deg, #30452b 0%, #20311d 100%);
+        color: #ffffff;
+        border-radius: 6px;
+        padding: clamp(36px, 6vw, 64px);
+        margin: clamp(40px, 6vw, 70px) 0;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 36px;
+        align-items: center;
+      }
+      .donor-to-give-banner h3 {
+        font-family: var(--bol-display);
+        font-size: clamp(2rem, 3.5vw, 2.7rem);
+        line-height: 1.2;
+        margin: 0 0 12px;
+        font-weight: 400;
+      }
+      .donor-to-give-banner h3 em {
+        color: #e5cb9b;
+        font-style: italic;
+      }
+      .donor-to-give-banner p {
+        font-size: 1.05rem;
+        color: #d1d8c5;
+        margin: 0;
+        line-height: 1.6;
+      }
+      .donor-to-give-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .btn-give-primary {
+        background: var(--bol-accent);
+        color: #1f1b18;
+        font-size: 15px;
+        font-weight: 700;
+        padding: 14px 26px;
+        border-radius: 4px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background 0.18s ease, transform 0.15s ease;
+      }
+      .btn-give-primary:hover {
+        background: #d4b67b;
+        transform: translateY(-2px);
+      }
+      .btn-give-secondary {
+        color: #d8decb;
+        font-size: 13.5px;
+        text-decoration: underline;
+      }
+      .btn-give-secondary:hover {
+        color: #ffffff;
+      }
+
+      /* STORY MODAL */
+      .bol-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(30, 26, 23, 0.7);
+        backdrop-filter: blur(5px);
+        z-index: 999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .bol-modal-backdrop.open {
+        display: flex;
+        opacity: 1;
+      }
+      .bol-modal-dialog {
+        background: #ffffff;
+        border-radius: 6px;
+        max-width: 760px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--bol-hairline);
+        position: relative;
+        padding: clamp(28px, 5vw, 44px);
+      }
+      .bol-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #f4efe4;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: var(--bol-ink-mute);
+        transition: background 0.18s, color 0.18s;
+      }
+      .bol-modal-close:hover {
+        background: #e5decb;
+        color: var(--bol-loam);
+      }
+      .bol-modal-content h3 {
+        font-family: var(--bol-display);
+        font-size: 2.2rem;
+        margin: 0 0 6px;
+        color: var(--bol-loam);
+      }
+      .bol-modal-subtitle {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--bol-accent-ink);
+        margin-bottom: 20px;
+      }
+      .bol-modal-img {
+        width: 100%;
+        max-height: 360px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 24px;
+      }
+      .bol-modal-quote {
+        background: #faf7f0;
+        border-left: 3px solid var(--bol-sage);
+        padding: 16px 20px;
+        font-family: var(--bol-display);
+        font-style: italic;
+        font-size: 1.15rem;
+        color: var(--bol-sage-deep);
+        margin: 20px 0;
+      }
+      .bol-modal-prose {
+        font-size: 15.5px;
+        line-height: 1.75;
+        color: var(--bol-ink-soft);
+      }
+      .bol-modal-prose p {
+        margin: 0 0 16px;
+      }
+      .bol-modal-footer {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--bol-hairline-soft);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      @media (max-width: 820px) {
+        .memoriam-row {
+          grid-template-columns: 1fr;
+        }
+        .memoriam-portrait-wrap {
+          max-width: 180px;
+        }
+        .donor-to-give-banner {
+          grid-template-columns: 1fr;
+        }
+        .distinction-note {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Masthead Navigation -->
+    <link rel="stylesheet" href="site-header.css" />
+    <script src="site-header.js" defer></script>
+    <header class="bol-masthead" id="bolMasthead">
+      <div class="bol-shell bol-masthead-inner">
+        <a class="bol-wordmark" href="index.html" aria-label="Bread of Life">
+          <img
+            src="https://images.squarespace-cdn.com/content/6a662e2b61e351419c14bc1c/da841121-67d7-4217-aa37-7107060eef73/bread+of+life+logo.png?content-type=image%2Fpng"
+            alt="Bread of Life"
+          />
+        </a>
+        <div class="bol-menu">
+          <nav class="bol-nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+
+            <div class="bol-nav-item">
+              <a href="about.html">About</a>
+              <div class="bol-dropdown">
+                <a href="our-vision.html">Our Vision</a>
+                <a href="#">Our Equity Statement</a>
+                <a href="our-leadership.html">Our Leadership</a>
+                <a href="#">Work at Bread of Life</a>
+                <a href="our-donors.html" style="color: var(--bol-sage); font-weight: 700;">Our Donors</a>
+                <a href="#">Our Stories</a>
+                <a href="#">Podcast</a>
+              </div>
+            </div>
+
+            <div class="bol-nav-item">
+              <a href="index.html#offer">Programs</a>
+              <div class="bol-dropdown">
+                <a href="#">Listen to Your Life</a>
+                <a href="#">Internship in the Art of Spiritual Direction</a>
+                <a href="#">Group Spiritual Direction</a>
+                <a href="spiritual_direction.html">Spiritual Direction</a>
+                <a href="#">Online Courses</a>
+              </div>
+            </div>
+
+            <a href="spiritual_direction.html">Spiritual Direction</a>
+
+            <div class="bol-nav-item">
+              <a href="index.html#offer">Community</a>
+              <div class="bol-dropdown">
+                <a href="#">A Community of Practice</a>
+                <a href="#">An Invitation</a>
+                <a href="#">Vision Statement</a>
+                <a href="#">Our Agreements</a>
+              </div>
+            </div>
+
+            <a href="contact.html">Contact</a>
+          </nav>
+          <div class="bol-actions">
+            <a class="bol-btn bol-btn-ghost" href="donate.html">Ways to Give</a>
+            <a class="bol-btn" href="find-a-spiritual-director.html">Find a Spiritual Director</a>
+          </div>
+        </div>
+        <button
+          class="bol-navtoggle"
+          id="bolNavToggle"
+          aria-expanded="false"
+          aria-label="Open menu"
+        >
+          <span class="bol-burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="site-content">
+      <!-- 1 · HERO -->
+      <section class="donor-hero">
+        <div class="donor-hero-bg" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=2000&q=80"
+            alt="Sunlight filtering through trees in a quiet woodland"
+            referrerpolicy="no-referrer"
+          />
+        </div>
+        <div class="donor-hero-overlay" aria-hidden="true"></div>
+
+        <div class="bol-shell">
+          <div class="donor-hero-content">
+            <span class="donor-eyebrow">Community &amp; Benefactors</span>
+            <h1 class="donor-hero-title">
+              Meet <em>Our Donors</em>
+            </h1>
+            <p class="donor-hero-sub">
+              Over the years, the Bread of Life community has had the great
+              blessing of working with some remarkable people. These are the
+              friends, directees, and memorial companions who have shaped our
+              sanctuary through a lasting legacy of love, faith, and friendship.
+            </p>
+
+            <div class="distinction-note">
+              <div class="distinction-text">
+                <strong>Looking to make a financial contribution today?</strong>
+                Our Donors page honors the people involved, while
+                <em>Ways to Give</em> is where you can make a gift or support our
+                scholarship funds.
+              </div>
+              <a href="donate.html" class="distinction-link">
+                Ways to Give &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 · STICKY NAVIGATION TABS -->
+      <div class="donor-nav-anchor">
+        <div class="bol-shell">
+          <nav class="donor-nav-tabs" aria-label="Donor Page Sections">
+            <a href="#individual-donors" class="active">Individual Donors</a>
+            <a href="#in-memoriam">In Memoriam &amp; Legacies</a>
+            <a href="#ways-to-give-bridge">How to Give</a>
+            <a href="donate.html" style="color: var(--bol-accent-ink); margin-left: auto;">
+              Go to Donation Form (Ways to Give) &rarr;
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- 3 · INDIVIDUAL DONORS -->
+      <section class="section-wrap" id="individual-donors">
+        <div class="bol-shell">
+          <div class="section-header">
+            <span class="section-tag">Friends &amp; Supporters</span>
+            <h2>Individual Donors</h2>
+            <p>
+              We celebrate each person and couple whose faithful contributions,
+              board guidance, and personal companionship foster deep roots for
+              contemplative life across Sacramento, Davis, Auburn, and beyond.
+            </p>
+          </div>
+
+          <div class="donor-grid">
+            <!-- Julie & Pat Garvey -->
+            <article class="donor-card">
+              <div class="donor-card-img-wrap">
+                <span class="donor-card-badge">Sustaining Donors</span>
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509710185-B13MGOX8IGBGV0VMO2U0/Julie%2Band%2BPat%2BGarvey%2Bfrom%2Byelp.jpg"
+                  alt="Julie and Pat Garvey"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <div class="donor-card-body">
+                <h3 class="donor-card-name">Julie &amp; Pat Garvey</h3>
+                <div class="donor-card-role">Longtime Supporters</div>
+                <p class="donor-card-desc">
+                  Long-time friends and sustaining benefactors of Bread of Life.
+                  Julie and Pat’s ongoing commitment allows our programs,
+                  silent retreats, and community gatherings to flourish year
+                  after year.
+                </p>
+                <div class="donor-card-action">
+                  <button
+                    type="button"
+                    class="btn-read-story"
+                    onclick="openDonorModal('garvey')"
+                  >
+                    View Details &rarr;
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Trudy Baltz & Chris Motley -->
+            <article class="donor-card">
+              <div class="donor-card-img-wrap">
+                <span class="donor-card-badge">Board &amp; Leadership</span>
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509753772-ZJD8EK8DER2NPN109TCS/Chris%2BMotley%2Band%2BTrudy%2BBaltz.jpg?format=300w"
+                  alt="Chris Motley and Trudy Baltz"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <div class="donor-card-body">
+                <h3 class="donor-card-name">Trudy Baltz &amp; Chris Motley</h3>
+                <div class="donor-card-role">Leadership &amp; Companionship</div>
+                <p class="donor-card-desc">
+                  Faithful companions within the contemplative circle. Chris
+                  Motley serves as Secretary of our Board of Directors, lending
+                  visionary governance alongside Trudy’s dedicated participation
+                  and heartfelt financial stewardship.
+                </p>
+                <div class="donor-card-action">
+                  <button
+                    type="button"
+                    class="btn-read-story"
+                    onclick="openDonorModal('baltz-motley')"
+                  >
+                    View Details &rarr;
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Velma & Ron Lagerstrom -->
+            <article class="donor-card">
+              <div class="donor-card-img-wrap">
+                <span class="donor-card-badge">Founding Partners</span>
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509769724-GUWC1F1FUMDYL6YE2RB3/Ron%2Band%2BVelm%2BLagerstrom.jpg"
+                  alt="Ron and Velma Lagerstrom"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <div class="donor-card-body">
+                <h3 class="donor-card-name">Velma &amp; Ron Lagerstrom</h3>
+                <div class="donor-card-role">Scholarship Endowment Sponsors</div>
+                <p class="donor-card-desc">
+                  Key supporters and founding partners who helped establish the
+                  <strong>Lagerstrom Scholarship Fund</strong>, ensuring that
+                  financial hardship never bars someone from receiving
+                  spiritual direction and accompaniment.
+                </p>
+                <div class="donor-card-action">
+                  <button
+                    type="button"
+                    class="btn-read-story"
+                    onclick="openDonorModal('lagerstrom-family')"
+                  >
+                    View Details &rarr;
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Albert Koyama -->
+            <article class="donor-card">
+              <div class="donor-card-img-wrap">
+                <span class="donor-card-badge">Foundational Benefactor</span>
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509783564-WSK3UC0KEYO8YEXYEORZ/Albert%2BKuyoma.jpg"
+                  alt="Albert Toshio Koyama"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <div class="donor-card-body">
+                <h3 class="donor-card-name">Albert Koyama</h3>
+                <div class="donor-card-role">Lifetime &amp; Estate Benefactor</div>
+                <p class="donor-card-desc">
+                  Donated nearly $50,000 to the mission of Bread of Life during
+                  his lifetime. His niece Laura Sugano continued the family
+                  legacy with an estate gift honoring Albert’s sacred journey
+                  and deep wisdom.
+                </p>
+                <div class="donor-card-action">
+                  <button
+                    type="button"
+                    class="btn-read-story"
+                    onclick="openDonorModal('koyama')"
+                  >
+                    View Sacred Story &rarr;
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Brother Don Bisson -->
+            <article class="donor-card">
+              <div class="donor-card-img-wrap">
+                <span class="donor-card-badge">Teacher &amp; Mentor</span>
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509800316-V3FC0HG24M5SEH8Z3BHA/DonBisson.jpg"
+                  alt="Brother Don Bisson"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <div class="donor-card-body">
+                <h3 class="donor-card-name">Brother Don Bisson</h3>
+                <div class="donor-card-role">Spiritual Director &amp; Scholar</div>
+                <p class="donor-card-desc">
+                  Internationally recognized spiritual director, Marist Brother,
+                  and Jungian scholar. Don has been an invaluable mentor,
+                  faculty contributor, and beloved partner to our directees and
+                  facilitators.
+                </p>
+                <div class="donor-card-action">
+                  <button
+                    type="button"
+                    class="btn-read-story"
+                    onclick="openDonorModal('bisson')"
+                  >
+                    View Details &rarr;
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 · IN MEMORIAM -->
+      <section class="section-wrap alt-surface" id="in-memoriam">
+        <div class="bol-shell">
+          <div class="section-header">
+            <span class="section-tag">Remembrance</span>
+            <h2>In Memoriam</h2>
+            <p>
+              Holding sacred memory of those who served as spiritual directors,
+              board stewards, and community leaders, leaving behind an enduring
+              lineage of wisdom and love.
+            </p>
+          </div>
+
+          <div class="memoriam-lead-quote">
+            &ldquo;Over the years, the Bread of Life community has had the great
+            blessing of working with some remarkable people. There are many who
+            have served as spiritual directors, program faculty, or who have
+            been active supporters and participants. These are a few of them that
+            have left behind a legacy of love and friendship.&rdquo;
+            <span>&mdash; Bread of Life Center Remembrance Archive</span>
+          </div>
+
+          <div class="memoriam-list">
+            <!-- Rena Grant -->
+            <article class="memoriam-row">
+              <div class="memoriam-portrait-wrap">
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1630424996697-DYH1E8BVOV330K08MVBA/Rena-Grant.jpg"
+                  alt="Rena Grant portrait"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <div class="memoriam-body">
+                <h3>Rena Grant</h3>
+                <div class="memoriam-dates">June 12, 1945 &ndash; June 13, 2021</div>
+                <span class="memoriam-role-tag">Spiritual Director (13 Years)</span>
+                <p class="memoriam-text">
+                  Rena was a spiritual director with Bread of Life for 13 years,
+                  driving monthly from the Bay Area with devotion to souls
+                  &ldquo;at the edge.&rdquo; Always ready to take the next step
+                  herself, she explored grief, aging, creative processes, and
+                  contemplative photography. She met her approaching death with
+                  acceptance, peace, and a gentle smile the day after her 76th
+                  birthday.
+                </p>
+                <div class="memoriam-actions">
+                  <button
+                    type="button"
+                    class="btn-memoriam-open"
+                    onclick="openDonorModal('rena')"
+                  >
+                    Read Full Tribute &amp; Story &rarr;
+                  </button>
+                  <a href="donate.html" class="btn-memoriam-link">
+                    Honor with a Gift in Ways to Give &rarr;
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Margo & Gill Hayes -->
+            <article class="memoriam-row">
+              <div class="memoriam-portrait-wrap">
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1614297912569-B8D1D88B83URDCQR3JIB/Margo+%26+Gil.jpg"
+                  alt="Margo and Gill Hayes"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <div class="memoriam-body">
+                <h3>Margo &amp; Gill Hayes</h3>
+                <div class="memoriam-dates">
+                  Margo (1939 &ndash; 2020) &bull; Gill (1935 &ndash; 2019)
+                </div>
+                <span class="memoriam-role-tag">The Margo &amp; Gill Hayes Fund</span>
+                <p class="memoriam-text">
+                  Long-time friends and supporters of Bread of Life since our
+                  beginning. Margo served on the Board of Directors during our
+                  transition to an independent 501(c)(3) and co-shaped the
+                  Spirit in the Arts program. Several times a year, Gill would
+                  slide into the office with a wide smile to make a surprise
+                  donation honoring Margo. In 2018, they established the
+                  <strong>Margo and Gill Hayes Fund</strong> to support emerging
+                  community needs.
+                </p>
+                <div class="memoriam-actions">
+                  <button
+                    type="button"
+                    class="btn-memoriam-open"
+                    onclick="openDonorModal('hayes')"
+                  >
+                    Read Full Tribute &amp; Story &rarr;
+                  </button>
+                  <a href="donate.html" class="btn-memoriam-link">
+                    Donate to the Hayes Fund in Ways to Give &rarr;
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Ron Lagerstrom -->
+            <article class="memoriam-row">
+              <div class="memoriam-portrait-wrap">
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1614364913786-7MQNGJK3DQ3EDD6C9EMN/Ron.jpg"
+                  alt="Ron Lagerstrom"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <div class="memoriam-body">
+                <h3>Ron Lagerstrom</h3>
+                <div class="memoriam-dates">1932 &ndash; January 14, 2021</div>
+                <span class="memoriam-role-tag">Spiritual Director (15 Years) &bull; Scholarship Namesake</span>
+                <p class="memoriam-text">
+                  Ron served as a pastor for 50 years and joined Bread of Life as
+                  a spiritual director at age 67 for almost 15 years. An ongoing
+                  theme for him revolved around the inclusions of and contrasts
+                  between &ldquo;beauty and brokenness.&rdquo; He taught that
+                  spiritual direction is a sacred sanctuary where seekers are
+                  loved, affirmed, and met by God’s presence.
+                </p>
+                <div class="memoriam-actions">
+                  <button
+                    type="button"
+                    class="btn-memoriam-open"
+                    onclick="openDonorModal('ron')"
+                  >
+                    Read Interview &amp; Tribute &rarr;
+                  </button>
+                  <a href="donate.html" class="btn-memoriam-link">
+                    Support the Lagerstrom Scholarship Fund &rarr;
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Albert Toshio Koyama -->
+            <article class="memoriam-row">
+              <div class="memoriam-portrait-wrap">
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509783564-WSK3UC0KEYO8YEXYEORZ/Albert%2BKuyoma.jpg"
+                  alt="Albert Toshio Koyama"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+              <div class="memoriam-body">
+                <h3>Albert Toshio Koyama</h3>
+                <div class="memoriam-dates">1919 &ndash; 2010</div>
+                <span class="memoriam-role-tag">Foundational Benefactor</span>
+                <p class="memoriam-text">
+                  Born in Pasadena, California, to Japanese immigrants, Albert
+                  survived relocation to the Gila River internment camp during
+                  college. Finding deep meaning in life’s trials as
+                  &ldquo;sacred story,&rdquo; Albert became a foundational
+                  benefactor contributing nearly $50,000 during his lifetime,
+                  continued by his niece Laura Sugano’s estate gift.
+                </p>
+                <div class="memoriam-actions">
+                  <button
+                    type="button"
+                    class="btn-memoriam-open"
+                    onclick="openDonorModal('koyama')"
+                  >
+                    Read Sacred Story &rarr;
+                  </button>
+                  <a href="donate.html" class="btn-memoriam-link">
+                    Ways to Give &rarr;
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 · BRIDGE TO WAYS TO GIVE (DONATE) -->
+      <section class="section-wrap" id="ways-to-give-bridge">
+        <div class="bol-shell">
+          <div class="donor-to-give-banner">
+            <div>
+              <h3>Inspired by Their Generosity? <em>Explore Ways to Give</em></h3>
+              <p>
+                Our Donors page celebrates the people whose lives have enriched
+                our community. When you are ready to support our ongoing
+                work, provide scholarship aid, or make a monthly gift, visit
+                our dedicated <strong>Ways to Give</strong> page.
+              </p>
+            </div>
+            <div class="donor-to-give-actions">
+              <a href="donate.html" class="btn-give-primary">
+                Make a Contribution (Ways to Give) &rarr;
+              </a>
+              <a href="donate.html#lagerstrom-fund" class="btn-give-secondary">
+                Learn about the Lagerstrom Scholarship Fund
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- STORY MODAL DIALOG -->
+    <div class="bol-modal-backdrop" id="donorModalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="bol-modal-dialog">
+        <button
+          type="button"
+          class="bol-modal-close"
+          id="btnModalClose"
+          aria-label="Close story dialog"
+        >
+          &times;
+        </button>
+        <div class="bol-modal-content" id="donorModalContent">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+
+    <!-- UNIVERSAL FOOTER -->
+    <footer class="bol-footer" id="footer">
+      <div class="bol-shell">
+        <div class="bol-footer-grid">
+          <div>
+            <div class="bol-footer-mark">
+              <img src="bol-logo.png" alt="Bread of Life" />
+            </div>
+            <p class="bol-footer-mission">
+              An interfaith contemplative community in the Sacramento area, here so
+              that people living with real questions do not have to sit with them
+              alone.
+            </p>
+            <div class="bol-signup">
+              <label for="bolEmail"
+                >Subscribe to our newsletter for workshop dates and occasional notes
+                on practice.</label
+              >
+              <div class="bol-signup-row">
+                <input
+                  id="bolEmail"
+                  type="email"
+                  placeholder="Email address"
+                  autocomplete="email"
+                />
+                <button type="button" id="bolSignupBtn">
+                  <span class="bol-signup-button-text">Subscribe</span>
+                  <span class="bol-signup-button-icon" aria-hidden="true">&gt;</span>
+                </button>
+              </div>
+              <p class="bol-signup-note" id="bolSignupNote" aria-live="polite"></p>
+            </div>
+          </div>
+          <div>
+            <h4>Contact Bread of Life</h4>
+            <div class="bol-footer-cinfo">
+              <span class="ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                  <path d="M5 4h3.2l1.3 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.3V17a2 2 0 0 1-2.2 2A15 15 0 0 1 3 5.2 2 2 0 0 1 5 4Z" />
+                </svg>
+              </span>
+              <span>
+                <span class="label">Call us</span>
+                <a class="value" href="tel:19166481803">(916) 648 1803</a>
+              </span>
+            </div>
+            <div class="bol-footer-cinfo">
+              <span class="ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                  <path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z" />
+                  <circle cx="12" cy="9.5" r="2.4" />
+                </svg>
+              </span>
+              <span>
+                <span class="label">Visit our location</span>
+                <span class="value">Bread of Life Center<br />1260 Fulton Avenue, Suite A<br />Sacramento, CA 95825, USA</span>
+              </span>
+            </div>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="index.html#top">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="events.html">Programs and Groups</a></li>
+              <li>
+                <a class="bol-footer-highlight" href="spiritual_direction.html">Spiritual Direction</a>
+              </li>
+              <li><a href="index.html#offer">Community</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="workshops.html">Workshops</a></li>
+              <li><a href="our-donors.html" style="color: #ffffff; font-weight: bold;">Our Donors</a></li>
+              <li><a href="donate.html">Ways to Give</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="#">The Vault</a></li>
+              <li><a href="#">Registration Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bol-colophon">
+          <span>&copy; Bread of Life. A 501(c)(3) nonprofit. &middot; <a href="#">Privacy</a></span>
+          <div class="bol-footer-social">
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M13.5 9.5H15.5V6.5H13.2C11.1 6.5 9.7 7.9 9.7 10V12H7.5V15H9.7V21H12.7V15H14.8L15.2 12H12.7V10.3C12.7 9.8 12.9 9.5 13.5 9.5Z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <circle cx="7" cy="7.2" r="1.7" />
+                <rect x="5.4" y="10.4" width="3.2" height="8.2" />
+                <path d="M11.2 10.4H14.3V11.8C14.9 10.8 16 10.1 17.4 10.1C20 10.1 21 11.9 21 14.5V18.6H17.8V15C17.8 14 17.5 13.2 16.4 13.2C15.4 13.2 14.9 13.9 14.9 15V18.6H11.2V10.4Z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="site-header.js" defer></script>
+    <script>
+      // Story content dictionary
+      const donorStories = {
+        garvey: {
+          title: "Julie & Pat Garvey",
+          subtitle: "Longtime Benefactors & Companions",
+          img: "https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509710185-B13MGOX8IGBGV0VMO2U0/Julie%2Band%2BPat%2BGarvey%2Bfrom%2Byelp.jpg",
+          quote: "A steady presence whose generosity quietly enables the sanctuary doors to stay open.",
+          prose: `
+            <p>Julie and Pat Garvey have been cherished members and supporters of Bread of Life for many years. Their faithful gifts have provided essential sustaining support for our ongoing quiet days, contemplative group series, and director formation.</p>
+            <p>Through their quiet commitment, Julie and Pat model what it means to companion an organization with steady presence and openhearted encouragement.</p>
+          `
+        },
+        'baltz-motley': {
+          title: "Trudy Baltz & Chris Motley",
+          subtitle: "Board Leadership & Contemplative Companions",
+          img: "https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509753772-ZJD8EK8DER2NPN109TCS/Chris%2BMotley%2Band%2BTrudy%2BBaltz.jpg?format=300w",
+          quote: "Stewardship of the soul and stewardship of the organization walking hand in hand.",
+          prose: `
+            <p>Trudy Baltz and Chris Motley represent the deep synergy between communal spiritual practice and faithful organizational leadership. Chris serves as the Secretary of the Board of Directors for Bread of Life, investing countless volunteer hours to guide the governance and fiscal integrity of our community.</p>
+            <p>Together, Trudy and Chris have championed our scholarship initiatives, supported staff and directors, and actively fostered an inclusive, contemplative haven in the greater Sacramento region.</p>
+          `
+        },
+        'lagerstrom-family': {
+          title: "Velma & Ron Lagerstrom",
+          subtitle: "Founding Directorship & The Scholarship Fund",
+          img: "https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509769724-GUWC1F1FUMDYL6YE2RB3/Ron%2Band%2BVelm%2BLagerstrom.jpg",
+          quote: "“Spiritual direction is like a sanctuary where I can be who I am and be loved, affirmed, and guided in the Spirit.”",
+          prose: `
+            <p>Ron and Velma Lagerstrom have been central pillars of Bread of Life from our early years. Ron joined our spiritual direction team in 1999 following five decades of pastoral and conference leadership. With Velma’s steadfast partnership, they envisioned a community where no one would ever be turned away due to financial inability.</p>
+            <p>Their vision birthed the <strong>Lagerstrom Scholarship Fund</strong>, which continues to provide financial aid for individuals seeking one-on-one spiritual direction, group cohorts, and discernment workshops.</p>
+          `
+        },
+        koyama: {
+          title: "Albert Toshio Koyama",
+          subtitle: "1919 – 2010 · Foundational Benefactor",
+          img: "https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509783564-WSK3UC0KEYO8YEXYEORZ/Albert%2BKuyoma.jpg",
+          quote: "“The human mind plans the way, but the Lord directs the steps.” — Proverbs 16:9",
+          prose: `
+            <p>Albert Toshio Koyama (1919–2010) was born in Pasadena, California, the son of Japanese immigrants. While a young college student at Cal-Aggie (UC Davis), he and his family were relocated to the Gila River internment camp in Arizona during World War II.</p>
+            <p>Making sense of his life experiences as “sacred story” first drew Al to Bread of Life, where he became a foundational supporter donating nearly $50,000 to the mission during his lifetime. His niece Laura Sugano continued the family legacy with a significant gift from his estate following Albert’s death.</p>
+            <p>Albert felt his sacred calling was to stay open and humble: <em>“God guides the way,”</em> he shared. His legacy remains an indelible foundation stone for all who walk through our doors.</p>
+          `
+        },
+        bisson: {
+          title: "Brother Don Bisson",
+          subtitle: "Spiritual Director, Jungian Scholar & Faculty Companion",
+          img: "https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1602509800316-V3FC0HG24M5SEH8Z3BHA/DonBisson.jpg",
+          quote: "Bridging psychological depth with deep contemplative prayer.",
+          prose: `
+            <p>Brother Don Bisson, FMS, D.Min., is an internationally recognized retreat leader, spiritual director, and author known for his groundbreaking integration of Jungian psychology and Christian mysticism.</p>
+            <p>As a longtime friend, guest faculty member, and benefactor of Bread of Life, Brother Don has mentored countless spiritual directors in our community and inspired our ongoing commitment to holding trustworthy space for the unfolding soul.</p>
+          `
+        },
+        rena: {
+          title: "Rena Grant",
+          subtitle: "June 12, 1945 – June 13, 2021 · In Memoriam",
+          img: "https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1630424996697-DYH1E8BVOV330K08MVBA/Rena-Grant.jpg",
+          quote: "“Well done, good and faithful friend. It is our privilege to have known you and to have your companionship on our mutual journey.”",
+          prose: `
+            <p>We were enormously fortunate to have Rena Grant join the Bread of Life spiritual direction team in 2004. She so loved listening to unfolding soul stories that she drove from the Bay Area monthly for 13 years to take part in our mutual work. She had a particular love for people “at the edge” and accompanied many as a gift of her hands and heart.</p>
+            <p>Always ready to take the next step herself, she shared her rich interior journey with others as she explored the dynamics of grief and aging, the movements of Grace through our Quadratos program, and how creative processes transform our self-understanding.</p>
+            <p>Rena took up photography as a way of looking with contemplative eyes at the world around; several of her nature photographs continue to grace our center walls. Rena survived a glioblastoma for 4 years with serene courage, passing away peacefully with a smile on her face the day after her 76th birthday.</p>
+          `
+        },
+        hayes: {
+          title: "Margo & Gill Hayes",
+          subtitle: "Margo (1939–2020) · Gill (1935–2019) · The Margo & Gill Hayes Fund",
+          img: "https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1614297912569-B8D1D88B83URDCQR3JIB/Margo+%26+Gil.jpg",
+          quote: "“Aligning what we do with who we say we are was a core value for her.”",
+          prose: `
+            <p>Both Margo and Gill Hayes were enthusiastic supporters of Bread of Life from our earliest days. They dedicated themselves to cultivating the spiritual life, knowing it was not an optional extra, but an essential anchor for health and wholeness.</p>
+            <p>Several times a year before his death in 2019, Gill Hayes would slide into the Bread of Life offices with a wide smile and bright light in his eyes to make a surprise donation in honor of his wife Margo—for Christmas, birthdays, and special occasions. She in turn made regular donations to the Sacramento Food Bank, his charity of choice.</p>
+            <p>Together in 2018 they established the <strong>Margo and Gill Hayes Fund</strong> at Bread of Life to gather support for whatever community needs might arise. Margo also joined the Board at a pivotal passage in 2005 when Bread of Life became an independent nonprofit, bringing her discerning heart as a therapist of 22 years and champion of sand-tray and creative arts.</p>
+          `
+        },
+        ron: {
+          title: "Ron Lagerstrom",
+          subtitle: "1932 – January 14, 2021 · In Memoriam & Tribute",
+          img: "https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/1614364913786-7MQNGJK3DQ3EDD6C9EMN/Ron.jpg",
+          quote: "“Ron, there is beauty in your brokenness... therefore I can use your brokenness to be an instrument of beauty for others.”",
+          prose: `
+            <p>Ron Lagerstrom was a Bread of Life spiritual director and dear friend who served on our team for nearly 15 years after 50 fruitful years as a pastor. As Sandra Lommasson recalled, at age 67 a new door opened for Ron, and a family out of which he could minister in significant new ways emerged.</p>
+            <p>In his beloved interview on <em>Spiritual Direction as Sanctuary</em>, Ron shared: <em>“Spiritual direction is like a sanctuary where I can be who I am and be loved, affirmed, and guided in my own life of the Spirit. The two of us become a small family in that encounter... and what a special pleasure it is to know that the fullness of God is present in that room with the two of us.”</em></p>
+            <p>Reflecting on his signature theme of <strong>Beauty in Brokenness</strong>, Ron noted how his daily nature walks revealed God's artistry: <em>“There is so much color and life in the mess of sticks and stones on the path that there is an intrinsic beauty. Everything is connected—the twigs and waves bring up broken pieces of sea glass, and in these unplanned happenings I see the artistry of God creating with us in life.”</em></p>
+          `
+        }
+      };
+
+      const modalBackdrop = document.getElementById('donorModalBackdrop');
+      const modalContent = document.getElementById('donorModalContent');
+      const btnModalClose = document.getElementById('btnModalClose');
+
+      function openDonorModal(key) {
+        const item = donorStories[key];
+        if (!item) return;
+
+        modalContent.innerHTML = `
+          <div class="bol-modal-header">
+            <h3>${item.title}</h3>
+            <div class="bol-modal-subtitle">${item.subtitle}</div>
+          </div>
+          <img class="bol-modal-img" src="${item.img}" alt="${item.title}" />
+          ${item.quote ? `<div class="bol-modal-quote">${item.quote}</div>` : ''}
+          <div class="bol-modal-prose">
+            ${item.prose}
+          </div>
+          <div class="bol-modal-footer">
+            <span style="font-size: 13.5px; color: var(--bol-ink-mute);">Bread of Life Remembrance &amp; Donor Archive</span>
+            <a href="donate.html" class="btn-give-primary" style="font-size: 13.5px; padding: 10px 18px;">
+              Make a Gift in Ways to Give &rarr;
+            </a>
+          </div>
+        `;
+
+        modalBackdrop.classList.add('open');
+        modalBackdrop.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDonorModal() {
+        modalBackdrop.classList.remove('open');
+        modalBackdrop.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      btnModalClose.addEventListener('click', closeDonorModal);
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) closeDonorModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) {
+          closeDonorModal();
+        }
+      });
+
+      // Newsletter signup
+      (function () {
+        var btn = document.getElementById("bolSignupBtn"),
+          input = document.getElementById("bolEmail"),
+          note = document.getElementById("bolSignupNote");
+        if (btn && input && note) {
+          btn.addEventListener("click", function () {
+            var v = input.value.trim();
+            if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) {
+              note.textContent = "Please enter a valid email address.";
+              note.style.color = "#d9822b";
+            } else {
+              note.textContent = "Thank you for subscribing!";
+              note.style.color = "#7da274";
+              input.value = "";
+            }
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
