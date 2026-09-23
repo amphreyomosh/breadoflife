@@ -640,7 +640,7 @@
         -webkit-font-smoothing: antialiased;
       }
       .bol-hero-body {
-        font-size: clamp(1.05rem, 1.3vw, 1.18rem);
+        font-size: clamp(0.95rem, 1.1vw, 1.05rem);
         font-weight: 400;
         line-height: 1.68;
         max-width: 56ch;
@@ -1438,7 +1438,7 @@
       }
       .bol-closing-desc {
         font-family: var(--bol-body);
-        font-size: clamp(16px, 1.2vw, 18px);
+        font-size: clamp(14px, 1.1vw, 16px);
         line-height: 1.68;
         color: rgba(243, 239, 230, 0.92);
         margin: 0;
@@ -2485,6 +2485,225 @@
         </div>
       </section>
 
+      <!-- Doorways into a larger journey (moved up) -->
+      <section class="bol-offer-section" id="offer" aria-label="What we offer">
+        <style>
+          .bol-offer-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: clamp(64px, 8vw, 108px) var(--bol-gutter);
+            font-family: var(--bol-body);
+            color: var(--bol-loam);
+            background: #ffffff;
+            box-sizing: border-box;
+          }
+          .bol-offer-header-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 32px;
+            flex-wrap: wrap;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--bol-hairline-soft);
+            margin-bottom: 48px;
+          }
+          .bol-offer-title {
+            font-family: var(--bol-display);
+            font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+            font-weight: 400;
+            color: var(--bol-loam);
+            margin: 0;
+            line-height: 1.2;
+          }
+          .bol-offer-intro {
+            font-size: clamp(1rem, 1.3vw, 1.1rem);
+            line-height: 1.6;
+            color: var(--bol-ink-soft);
+            max-width: 480px;
+            margin: 0;
+          }
+          .bol-offer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(24px, 3vw, 40px);
+          }
+          .bol-offer-col {
+            display: flex;
+            flex-direction: column;
+          }
+          .bol-offer-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bol-cream);
+            border: 1px solid var(--bol-hairline);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--bol-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--bol-sage);
+            margin-bottom: 24px;
+            flex-shrink: 0;
+          }
+          .bol-offer-tag-slot {
+            min-height: 24px;
+            margin-bottom: 12px;
+          }
+          .bol-offer-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--bol-wheat-ink);
+            background: rgba(201, 162, 94, 0.12);
+            padding: 4px 12px;
+            border-radius: 100px;
+          }
+          .bol-offer-card-title {
+            font-family: var(--bol-display);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--bol-loam);
+            margin: 0 0 12px;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
+          }
+          .bol-offer-card-desc {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--bol-ink-soft);
+            margin: 0 0 20px;
+            flex-grow: 1;
+          }
+          .bol-offer-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--bol-sage);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+            transition: border-color 0.18s ease;
+          }
+          .bol-offer-link:hover {
+            border-color: currentColor;
+          }
+          @media (max-width: 1100px) {
+            .bol-offer-grid {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 32px;
+            }
+            .bol-offer-circle {
+              margin-bottom: 24px;
+            }
+          }
+          @media (max-width: 700px) {
+            .bol-offer-header-wrap {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 16px;
+            }
+            .bol-offer-grid {
+              grid-template-columns: 1fr;
+              gap: 36px;
+            }
+            .bol-offer-tag-slot {
+              min-height: auto;
+              margin-bottom: 8px;
+            }
+            .bol-offer-card-desc {
+              margin-bottom: 18px;
+            }
+          }
+        </style>
+
+        <div class="bol-offer-header-wrap">
+          <h2 class="bol-offer-title">Doorways into a larger journey</h2>
+          <p class="bol-offer-intro">
+            Explore &rarr; Go Deeper &rarr; Receive Direction &rarr; Find
+            Community &rarr; Grow in Practice. Our programs are doorways into an
+            unfolding spiritual journey.
+          </p>
+        </div>
+
+        <div class="bol-offer-grid">
+          <!-- Column 1 -->
+          <div class="bol-offer-col">
+            <div class="bol-offer-circle">1</div>
+            <div class="bol-offer-tag-slot">
+              <span class="bol-offer-tag">Explore & Begin</span>
+            </div>
+            <h3 class="bol-offer-card-title">Workshops & Quiet Days</h3>
+            <p class="bol-offer-card-desc">
+              Short, accessible gatherings to slow down, cultivate silence, and
+              learn contemplative practices that bring stillness and focus to
+              daily life.
+            </p>
+            <div>
+              <a class="bol-offer-link" href="workshops.html">Learn more</a>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="bol-offer-col">
+            <div class="bol-offer-circle">2</div>
+            <div class="bol-offer-tag-slot">
+              <span class="bol-offer-tag">Receive Direction</span>
+            </div>
+            <h3 class="bol-offer-card-title">Spiritual Direction</h3>
+            <p class="bol-offer-card-desc">
+              Unhurried, confidential monthly conversations with a trained
+              director to discern where the Sacred is moving in your
+              relationships and decisions.
+            </p>
+            <div>
+              <a class="bol-offer-link" href="find-a-spiritual-director.html"
+                >Learn more</a
+              >
+            </div>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="bol-offer-col">
+            <div class="bol-offer-circle">3</div>
+            <div class="bol-offer-tag-slot">
+              <span class="bol-offer-tag">Go Deeper</span>
+            </div>
+            <h3 class="bol-offer-card-title">Listen to Your Life</h3>
+            <p class="bol-offer-card-desc">
+              Small contemplative circles and group spiritual direction
+              exploring your personal story, life transitions, and shared sacred
+              presence.
+            </p>
+            <div>
+              <a class="bol-offer-link" href="workshops.html">Learn more</a>
+            </div>
+          </div>
+
+          <!-- Column 4 -->
+          <div class="bol-offer-col">
+            <div class="bol-offer-circle">4</div>
+            <div class="bol-offer-tag-slot">
+              <span class="bol-offer-tag">Community & Formation</span>
+            </div>
+            <h3 class="bol-offer-card-title">Community of Practice</h3>
+            <p class="bol-offer-card-desc">
+              Grounded resilience for leaders, caregivers, and activists,
+              alongside multi-year formation for those called to become
+              spiritual directors.
+            </p>
+            <div>
+              <a class="bol-offer-link" href="about.html">Learn more</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- QUOTE 1 · the Seeker, vouching for the Guide -->
       <section class="bol-quote" id="quote-1">
         <div class="testimonial-card">
@@ -2566,251 +2785,6 @@
               <a href="about.html" class="bol-card-link"
                 >Learn more about our vision</a
               >
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5 · WHAT WE OFFER -->
-      <section class="bol-offer-section" id="offer" aria-label="What we offer">
-        <style>
-          .bol-offer-section {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: clamp(64px, 8vw, 108px) var(--bol-gutter);
-            font-family: var(--bol-body);
-            color: var(--bol-loam);
-            background: #ffffff;
-            box-sizing: border-box;
-          }
-          .bol-offer-header-wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 32px;
-            flex-wrap: wrap;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--bol-hairline-soft);
-            margin-bottom: 48px;
-          }
-          .bol-offer-title {
-            font-family: var(--bol-display);
-            font-weight: 500;
-            font-size: clamp(2.4rem, 4vw, 3.25rem);
-            line-height: 1.1;
-            letter-spacing: -0.01em;
-            margin: 0;
-            color: var(--bol-loam);
-          }
-          .bol-offer-intro {
-            font-size: 1.18rem;
-            line-height: 1.6;
-            color: var(--bol-loam);
-            margin: 0;
-            max-width: 58ch;
-          }
-          .bol-offer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            position: relative;
-            width: 100%;
-          }
-          /* Horizontal track line through circles */
-          .bol-offer-grid::before {
-            content: "";
-            position: absolute;
-            top: 22px;
-            left: 22px;
-            right: 0;
-            height: 1px;
-            background: var(--bol-hairline-soft);
-            z-index: 1;
-          }
-          .bol-offer-col {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            padding: 0 32px;
-          }
-          .bol-offer-col:first-child {
-            padding-left: 0;
-            padding-right: 32px;
-          }
-          .bol-offer-col:last-child {
-            padding-left: 32px;
-            padding-right: 0;
-          }
-          .bol-offer-col:not(:first-child) {
-            border-left: 1px solid var(--bol-hairline-soft);
-          }
-          .bol-offer-circle {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid var(--bol-hairline-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--bol-display);
-            font-size: 1.15rem;
-            color: #ab853a;
-            position: relative;
-            z-index: 2;
-            margin-bottom: 34px;
-          }
-          .bol-offer-tag-slot {
-            min-height: 24px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-          }
-          .bol-offer-tag {
-            font-family: var(--bol-body);
-            font-size: 14.5px;
-            font-weight: 700;
-            color: #284c20;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-          }
-          .bol-offer-card-title {
-            font-family: var(--bol-display);
-            font-weight: 600;
-            font-size: clamp(1.45rem, 1.85vw, 1.75rem);
-            line-height: 1.22;
-            color: var(--bol-loam);
-            margin: 0 0 16px;
-          }
-          .bol-offer-card-desc {
-            font-family: var(--bol-body);
-            font-size: 16px;
-            line-height: 1.65;
-            color: #2e352c;
-            margin: 0 0 28px;
-            flex-grow: 1;
-          }
-          .bol-offer-link {
-            font-family: var(--bol-body);
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--bol-loam);
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            display: inline-flex;
-            align-items: center;
-            transition: color 0.15s ease;
-          }
-          .bol-offer-link:hover {
-            color: var(--bol-sage);
-          }
-          @media (max-width: 960px) {
-            .bol-offer-grid {
-              grid-template-columns: repeat(2, 1fr);
-              gap: 40px 24px;
-            }
-            .bol-offer-grid::before {
-              display: none;
-            }
-            .bol-offer-col {
-              padding: 0 !important;
-              border-left: none !important;
-            }
-            .bol-offer-circle {
-              margin-bottom: 24px;
-            }
-          }
-          @media (max-width: 600px) {
-            .bol-offer-grid {
-              grid-template-columns: 1fr;
-              gap: 36px;
-            }
-            .bol-offer-tag-slot {
-              min-height: auto;
-              margin-bottom: 8px;
-            }
-            .bol-offer-card-desc {
-              margin-bottom: 18px;
-            }
-          }
-        </style>
-
-        <div class="bol-offer-header-wrap">
-          <h2 class="bol-offer-title">Doorways into a larger journey</h2>
-          <p class="bol-offer-intro">
-            Explore &rarr; Go Deeper &rarr; Receive Direction &rarr; Find
-            Community &rarr; Grow in Practice. Our programs are doorways into an
-            unfolding spiritual journey.
-          </p>
-        </div>
-
-        <div class="bol-offer-grid">
-          <!-- Column 1 -->
-          <div class="bol-offer-col">
-            <div class="bol-offer-circle">1</div>
-            <div class="bol-offer-tag-slot">
-              <span class="bol-offer-tag">Explore &amp; Begin</span>
-            </div>
-            <h3 class="bol-offer-card-title">Workshops &amp; Quiet Days</h3>
-            <p class="bol-offer-card-desc">
-              Short, accessible gatherings to slow down, cultivate silence, and
-              learn contemplative practices that bring stillness and focus to
-              daily life.
-            </p>
-            <div>
-              <a class="bol-offer-link" href="workshops.html">Learn more</a>
-            </div>
-          </div>
-
-          <!-- Column 2 -->
-          <div class="bol-offer-col">
-            <div class="bol-offer-circle">2</div>
-            <div class="bol-offer-tag-slot">
-              <span class="bol-offer-tag">Receive Direction</span>
-            </div>
-            <h3 class="bol-offer-card-title">Spiritual Direction</h3>
-            <p class="bol-offer-card-desc">
-              Unhurried, confidential monthly conversations with a trained
-              director to discern where the Sacred is moving in your
-              relationships and decisions.
-            </p>
-            <div>
-              <a class="bol-offer-link" href="find-a-spiritual-director.html"
-                >Learn more</a
-              >
-            </div>
-          </div>
-
-          <!-- Column 3 -->
-          <div class="bol-offer-col">
-            <div class="bol-offer-circle">3</div>
-            <div class="bol-offer-tag-slot">
-              <span class="bol-offer-tag">Go Deeper</span>
-            </div>
-            <h3 class="bol-offer-card-title">Listen to Your Life</h3>
-            <p class="bol-offer-card-desc">
-              Small contemplative circles and group spiritual direction
-              exploring your personal story, life transitions, and shared sacred
-              presence.
-            </p>
-            <div>
-              <a class="bol-offer-link" href="workshops.html">Learn more</a>
-            </div>
-          </div>
-
-          <!-- Column 4 -->
-          <div class="bol-offer-col">
-            <div class="bol-offer-circle">4</div>
-            <div class="bol-offer-tag-slot">
-              <span class="bol-offer-tag">Community &amp; Formation</span>
-            </div>
-            <h3 class="bol-offer-card-title">Community of Practice</h3>
-            <p class="bol-offer-card-desc">
-              Grounded resilience for leaders, caregivers, and activists,
-              alongside multi-year formation for those called to become
-              spiritual directors.
-            </p>
-            <div>
-              <a class="bol-offer-link" href="about.html">Learn more</a>
             </div>
           </div>
         </div>
@@ -2922,34 +2896,6 @@
               />
             </div>
           </a>
-        </div>
-      </section>
-
-      <!-- QUOTE 3 · no religious background, vouching for the workshops -->
-      <section class="bol-quote bol-quote-c">
-        <div class="testimonial-card">
-          <span class="quote-mark left">&#8220;</span>
-          <span class="quote-mark right">&#8220;</span>
-          <div class="testimonial-content">
-            <p>
-              I do not belong to a religion and I was fairly sure I would not
-              fit. I was wrong. I walked in with no vocabulary for any of this
-              and left with a practice I actually keep.
-            </p>
-            <div class="author">Claire K.</div>
-            <div class="author-role">
-              Hospice nurse &middot; Listen to Your Life cohort
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7 · MOTTO / TAGLINE -->
-      <section class="bol-motto" aria-label="Our Core Invitation">
-        <div class="bol-shell">
-          <h2 class="bol-motto-text">
-            Slow down. Listen deeply. <em>Live courageously.</em>
-          </h2>
         </div>
       </section>
 
