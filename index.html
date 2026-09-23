@@ -51,7 +51,7 @@
         --s-plan: var(--bol-panel);
         --s-offer: var(--bol-cream);
         --s-upcoming: var(--bol-panel);
-        --s-closing: var(--bol-cream);
+        --s-closing: var(--bol-sage-deep);
       }
 
       /* ---- PALETTE AXIS: greens ---- */
@@ -309,8 +309,8 @@
         padding: 0 var(--bol-gutter);
       }
       .bol-eyebrow {
-        font-size: 13px;
-        letter-spacing: 0.16em;
+        font-size: 14.5px;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
         font-weight: 600;
         color: var(--bol-sage);
@@ -358,22 +358,18 @@
         display: inline-flex;
         align-items: center;
         gap: 9px;
-        text-decoration: none;
+        text-decoration: underline;
+        text-underline-offset: 4px;
         font-weight: 600;
-        font-size: 15px;
+        font-size: 15.5px;
         color: var(--bol-sage);
-        border-bottom: 1px solid transparent;
-        padding-bottom: 2px;
-        transition: border-color 0.18s ease;
+        transition: color 0.18s ease;
       }
       .bol-textlink:hover {
-        border-color: currentColor;
+        color: var(--bol-sage-deep);
       }
       .bol-arrow {
-        transition: transform 0.18s ease;
-      }
-      .bol-textlink:hover .bol-arrow {
-        transform: translateX(5px);
+        display: none !important;
       }
 
       /* masthead — 5 items, one CTA */
@@ -428,7 +424,7 @@
       .bol-nav a {
         text-decoration: none;
         color: inherit;
-        font-size: 15px;
+        font-size: 15.5px;
         font-weight: 500;
         white-space: nowrap;
         border-bottom: 1px solid transparent;
@@ -447,8 +443,8 @@
       }
       .bol-nav-item-dropdown > a::after {
         content: "▼";
-        font-size: 10px;
-        margin-left: 4px;
+        font-size: 11px;
+        margin-left: 5px;
         display: inline-block;
         transition: transform 0.2s ease;
       }
@@ -474,7 +470,7 @@
       .bol-dropdown-menu a {
         display: block;
         padding: 10px 16px;
-        font-size: 14px;
+        font-size: 15px;
         border-bottom: none;
         color: var(--bol-loam);
       }
@@ -490,7 +486,7 @@
       }
       .bol-masthead .bol-btn {
         padding: 11px clamp(14px, 1.5vw, 20px);
-        font-size: clamp(13px, 1vw, 14px);
+        font-size: 14.5px;
         white-space: nowrap;
       }
       .bol-masthead .bol-btn-ghost {
@@ -628,22 +624,22 @@
         color: var(--bol-accent);
       }
       .bol-hero-sub {
-        font-size: clamp(1.18rem, 1.7vw, 1.38rem);
-        font-weight: 600;
+        font-size: clamp(1.25rem, 1.85vw, 1.5rem);
+        font-weight: 500;
         line-height: 1.45;
-        max-width: 50ch;
-        margin: 22px 0 16px;
+        max-width: 54ch;
+        margin: 22px 0 18px;
         color: #ffffff;
         letter-spacing: -0.005em;
         -webkit-font-smoothing: antialiased;
       }
       .bol-hero-body {
-        font-size: clamp(0.95rem, 1.22vw, 1.05rem);
+        font-size: clamp(1.05rem, 1.3vw, 1.18rem);
         font-weight: 400;
-        line-height: 1.6;
-        max-width: 52ch;
-        margin: 0 0 32px;
-        color: rgba(245, 242, 235, 0.88);
+        line-height: 1.68;
+        max-width: 56ch;
+        margin: 0 0 34px;
+        color: rgba(255, 255, 255, 0.94);
         letter-spacing: 0.005em;
         -webkit-font-smoothing: antialiased;
       }
@@ -747,11 +743,11 @@
       }
       .bol-mirror-lead {
         font-family: var(--bol-display);
-        font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+        font-size: clamp(1.6rem, 3.2vw, 2.35rem);
         color: #fff;
-        max-width: 26ch;
+        max-width: 48ch;
         margin: 0 0 clamp(40px, 5vw, 64px);
-        line-height: 1.2;
+        line-height: 1.25;
       }
       .bol-mirror-grid {
         display: grid;
@@ -762,15 +758,15 @@
       .bol-mirror-head {
         font-family: var(--bol-display);
         font-style: italic;
-        font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+        font-size: clamp(1.4rem, 2.4vw, 1.8rem);
         margin-bottom: 18px;
         color: #fff;
       }
       .bol-mirror-col p {
-        color: rgba(243, 239, 230, 0.9);
-        max-width: 44ch;
-        font-size: 1.06rem;
-        line-height: 1.7;
+        color: rgba(243, 239, 230, 0.95);
+        max-width: 50ch;
+        font-size: 1.15rem;
+        line-height: 1.75;
       }
       .bol-mirror-land {
         margin-top: clamp(46px, 6vw, 74px);
@@ -830,17 +826,17 @@
         border-top: 1px solid var(--bol-hairline);
       }
       .bol-guide-facts dt {
-        font-size: 12px;
-        letter-spacing: 0.14em;
+        font-size: 14px;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--bol-ink-mute);
+        color: var(--bol-loam);
         font-weight: 600;
         line-height: 1.4;
       }
       .bol-guide-facts dd {
         margin: 10px 0 0;
         font-family: var(--bol-display);
-        font-size: 1.45rem;
+        font-size: 1.55rem;
         color: var(--bol-wheat-ink);
       }
       .bol-signoff {
@@ -849,19 +845,19 @@
         border-top: 1px solid var(--bol-hairline);
         font-family: var(--bol-display);
         font-style: italic;
-        font-size: 1.16rem;
+        font-size: 1.22rem;
         line-height: 1.6;
-        color: var(--bol-ink-soft);
-        max-width: 52ch;
+        color: var(--bol-loam);
+        max-width: 54ch;
       }
       .bol-signoff span {
         display: block;
         font-family: var(--bol-body);
         font-style: normal;
-        font-size: 14px;
+        font-size: 15px;
         letter-spacing: 0.09em;
         text-transform: uppercase;
-        color: var(--bol-ink-mute);
+        color: var(--bol-loam);
         font-weight: 600;
         margin-top: 12px;
       }
@@ -915,11 +911,11 @@
         padding-left: clamp(22px, 3vw, 40px);
       }
       .bol-quote-head {
-        font-size: 13px;
-        letter-spacing: 0.15em;
+        font-size: 15px;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        font-weight: 600;
-        color: var(--bol-ink-mute);
+        font-weight: 700;
+        color: #a9d9b3;
         margin: 0 0 18px;
       }
       .bol-quote blockquote {
@@ -932,7 +928,7 @@
       }
       .bol-quote-who {
         margin-top: 26px;
-        font-size: 15px;
+        font-size: 16px;
         line-height: 1.55;
       }
       .bol-quote-name {
@@ -940,7 +936,8 @@
         letter-spacing: 0.02em;
       }
       .bol-quote-role {
-        color: var(--bol-ink-mute);
+        color: rgba(243, 239, 230, 0.9);
+        font-size: 15px;
       }
 
       /* Custom testimonial card layout across quote sections */
@@ -1005,16 +1002,16 @@
       }
       .bol-quote .author {
         color: #a9d9b3;
-        font-size: 13px;
+        font-size: 15.5px;
         letter-spacing: 1.5px;
         text-transform: uppercase;
         font-weight: 600;
       }
       .bol-quote .author-role {
         color: inherit;
-        opacity: 0.85;
-        font-size: 13px;
-        margin-top: 4px;
+        opacity: 0.95;
+        font-size: 15px;
+        margin-top: 6px;
       }
       @media (max-width: 640px) {
         .bol-quote {
@@ -1056,18 +1053,18 @@
       }
       .bol-ways-heading {
         font-family: "Fraunces", serif;
-        font-weight: 400;
-        font-size: 40px;
+        font-weight: 500;
+        font-size: clamp(2.2rem, 3.4vw, 2.9rem);
         line-height: 1.15;
         color: #1f2a1c;
         margin: 0 0 16px;
-        max-width: 640px;
+        max-width: 780px;
       }
       .bol-ways-subhead {
-        font-size: 16px;
-        line-height: 1.6;
-        color: #5b5f55;
-        max-width: 560px;
+        font-size: 1.18rem;
+        line-height: 1.65;
+        color: #2b3027;
+        max-width: 780px;
         margin: 0 0 40px;
       }
       .bol-ways-grid {
@@ -1136,23 +1133,24 @@
       }
       .bol-card-title {
         font-family: "Fraunces", serif;
-        font-weight: 500;
-        font-size: 18px;
+        font-weight: 600;
+        font-size: 21px;
         color: inherit;
-        margin: 8px 0 8px;
+        margin: 8px 0 10px;
       }
       .bol-card-body {
-        font-size: 16px;
-        line-height: 1.75;
+        font-size: 16.5px;
+        line-height: 1.65;
         color: inherit;
-        margin: 0 0 10px;
-        max-width: 440px;
+        margin: 0 0 14px;
+        max-width: 100%;
       }
       .bol-card-link {
-        font-size: 14px;
+        font-size: 15.5px;
         color: inherit;
-        font-weight: 500;
+        font-weight: 600;
         text-decoration: underline;
+        text-underline-offset: 4px;
       }
       .bol-card-link:hover {
         text-decoration: underline;
@@ -1226,11 +1224,11 @@
         transform: scale(1.08);
       }
       .bol-offer-tags {
-        font-size: 12px;
-        letter-spacing: 0.13em;
+        font-size: 14px;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
-        font-weight: 600;
-        color: var(--bol-sage);
+        font-weight: 700;
+        color: var(--bol-sage-deep);
         margin: 0 0 12px;
       }
       .bol-offer-row h3 {
@@ -1238,16 +1236,16 @@
         margin-bottom: 12px;
       }
       .bol-offer-row p {
-        color: var(--bol-ink-soft);
-        max-width: 52ch;
+        color: #2b2520;
+        max-width: 54ch;
         margin: 0;
-        font-size: 1.12rem;
-        line-height: 1.8;
+        font-size: 1.15rem;
+        line-height: 1.75;
       }
       .bol-offer-go {
-        font-size: 14px;
+        font-size: 15.5px;
         font-weight: 600;
-        color: var(--bol-ink-mute);
+        color: var(--bol-loam);
         white-space: nowrap;
         display: inline-flex;
         align-items: center;
@@ -1307,15 +1305,15 @@
       .bol-event-date span {
         display: block;
         font-family: var(--bol-body);
-        font-size: 12px;
-        letter-spacing: 0.12em;
+        font-size: 13.5px;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--bol-ink-mute);
-        font-weight: 600;
+        color: #3e3832;
+        font-weight: 700;
       }
       .bol-event-meta {
-        font-size: 14px;
-        color: var(--bol-ink-mute);
+        font-size: 15.5px;
+        color: #3e3832;
         white-space: normal;
         line-height: 1.5;
       }
@@ -1337,14 +1335,15 @@
         border-bottom: 1px solid var(--bol-hairline);
       }
       .bol-event h3 {
-        font-size: 1.28rem;
+        font-size: 1.45rem;
         margin-bottom: 8px;
+        color: var(--bol-loam);
       }
       .bol-event p {
         margin: 0;
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         line-height: 1.65;
-        color: var(--bol-ink-mute);
+        color: #3b3530;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -1403,48 +1402,102 @@
         }
       }
 
-      /* 8 — CLOSING */
-      .bol-closing {
-        background: var(--s-closing);
-        padding: calc(var(--bol-rhythm) * 1.15) 0;
+      /* 7c — STANDALONE MOTTO / TAGLINE */
+      .bol-motto {
+        background: #ffffff;
+        padding: clamp(100px, 14vh, 160px) 24px;
         text-align: center;
+        border-top: 1px solid var(--bol-hairline-soft);
       }
-      .bol-closing-word {
+      .bol-motto-text {
         font-family: var(--bol-display);
-        font-size: clamp(3.4rem, 9vw, 7rem);
-        line-height: 0.95;
-        margin: 0 0 18px;
+        font-size: clamp(3rem, 6.5vw, 4.8rem);
+        font-weight: 500;
+        line-height: 1.16;
+        letter-spacing: -0.015em;
         color: var(--bol-loam);
-        letter-spacing: -0.035em;
-        white-space: nowrap;
+        margin: 0 auto;
+        max-width: 17ch;
       }
-      @media (max-width: 640px) {
-        .bol-closing-word {
-          white-space: normal;
-        }
-      }
-      .bol-closing-word em {
+      .bol-motto-text em {
         display: inline;
         font-style: italic;
-        color: var(--bol-wheat-ink);
+        color: #a47834;
+        font-weight: 400;
+      }
+
+      /* 8 — CLOSING CTA */
+      .bol-closing {
+        background: var(--bol-sage-deep, #355030);
+        padding: clamp(68px, 8.5vw, 104px) 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        color: #f3efe6;
+      }
+      .bol-closing-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: clamp(32px, 5vw, 64px);
+      }
+      .bol-closing-content {
+        max-width: 680px;
+        text-align: left;
       }
       .bol-closing-title {
-        font-size: clamp(1.75rem, 3.4vw, 2.5rem);
-        max-width: 22ch;
-        margin: 0 auto 22px;
+        font-family: var(--bol-display);
+        font-size: clamp(2rem, 3.8vw, 2.75rem);
+        font-weight: 500;
+        line-height: 1.22;
+        letter-spacing: -0.015em;
+        color: #ffffff;
+        margin: 0 0 16px;
       }
-      .bol-closing p:not(.bol-closing-word) {
-        max-width: 46ch;
-        margin: 0 auto 36px;
-        color: var(--bol-ink-soft);
-        font-size: 1.1rem;
-        line-height: 1.65;
+      .bol-closing-desc {
+        font-family: var(--bol-body);
+        font-size: clamp(16px, 1.2vw, 18px);
+        line-height: 1.68;
+        color: rgba(243, 239, 230, 0.92);
+        margin: 0;
       }
-      .bol-closing-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        justify-content: center;
+      .bol-closing-action {
+        flex-shrink: 0;
+      }
+      .bol-closing .bol-closing-btn {
+        background: #ffffff;
+        border-color: #ffffff;
+        color: var(--bol-sage-deep, #355030);
+        padding: 16px 36px;
+        font-size: 16px;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          color 0.2s ease,
+          transform 0.15s ease,
+          box-shadow 0.2s ease;
+      }
+      .bol-closing .bol-closing-btn:hover {
+        background: var(--bol-cream, #faf5ee);
+        border-color: var(--bol-cream, #faf5ee);
+        color: var(--bol-sage-deep, #355030);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+        transform: translateY(-1px);
+      }
+      @media (max-width: 860px) {
+        .bol-closing-wrap {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 28px;
+        }
+        .bol-closing-action {
+          width: 100%;
+        }
+        .bol-closing-btn {
+          width: 100%;
+          text-align: center;
+        }
       }
 
       /* FOOTER */
@@ -1462,11 +1515,11 @@
       .bol-footer h4 {
         position: relative;
         font-family: var(--bol-body);
-        font-size: 13px;
-        letter-spacing: 0.14em;
+        font-size: 15px;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
         font-weight: 700;
-        color: #bfb5a5;
+        color: #e5ded2;
         margin: 0 0 24px;
         padding-bottom: 14px;
       }
@@ -1549,12 +1602,13 @@
       }
       .bol-footer-cinfo .label {
         display: block;
-        font-size: 13px;
-        color: #9d9488;
+        font-size: 14.5px;
+        color: #b8af9f;
         margin-bottom: 4px;
+        font-weight: 500;
       }
       .bol-footer-cinfo .value {
-        font-size: 16px;
+        font-size: 16.5px;
         line-height: 1.5;
         color: #f3efe6;
       }
@@ -1607,9 +1661,9 @@
         background: var(--bol-sage-deep);
       }
       .bol-signup-note {
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.6;
-        color: #9d9488;
+        color: #b5ac9f;
         margin-top: 14px;
       }
 
@@ -1623,9 +1677,9 @@
         margin-top: clamp(44px, 5vw, 64px);
         padding-top: 26px;
         border-top: 1px solid #4a433c;
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.6;
-        color: #bfb5a5;
+        color: #d0c8ba;
       }
       .bol-colophon a {
         font-size: inherit;
@@ -2066,10 +2120,10 @@
         letter-spacing: -0.01em;
       }
       .steps-lead {
-        font-size: clamp(0.95rem, 1.15vw, 1.05rem);
-        line-height: 1.6;
-        color: #635d56;
-        max-width: 58ch;
+        font-size: clamp(1.1rem, 1.35vw, 1.25rem);
+        line-height: 1.65;
+        color: #2e352c;
+        max-width: 65ch;
         margin: 0;
       }
 
@@ -2079,13 +2133,13 @@
         border-left: 3px solid #d4a753;
         padding: 24px 28px;
         margin: 0 0 48px;
-        max-width: 660px;
+        max-width: 680px;
       }
       .steps-quote-box p {
         margin: 0;
-        font-size: 15px;
-        line-height: 1.65;
-        color: #3e3731;
+        font-size: 16.5px;
+        line-height: 1.7;
+        color: #2b2520;
         font-style: italic;
       }
 
@@ -2123,30 +2177,31 @@
         padding-left: 28px;
       }
       .step-num {
-        width: 34px;
-        height: 34px;
+        width: 38px;
+        height: 38px;
         border-radius: 50%;
         border: 1px solid #dcd4c6;
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: var(--bol-display);
-        font-size: 15px;
-        color: #b08d4b;
+        font-size: 16px;
+        font-weight: 600;
+        color: #9d7528;
         margin-bottom: 22px;
       }
       .step-title {
         font-family: var(--bol-display);
-        font-size: 1.35rem;
+        font-size: 1.45rem;
         font-weight: 600;
         color: #2b2520;
         margin: 0 0 14px;
         line-height: 1.25;
       }
       .step-desc {
-        font-size: 14.5px;
-        line-height: 1.6;
-        color: #635d56;
+        font-size: 16px;
+        line-height: 1.65;
+        color: #38312b;
         margin: 0 0 24px;
         flex-grow: 1;
       }
@@ -2154,10 +2209,11 @@
         align-self: flex-start;
         display: inline-flex;
         align-items: center;
-        font-size: 13.5px;
-        font-weight: 500;
-        color: #3b342e;
-        text-decoration: none;
+        font-size: 15.5px;
+        font-weight: 600;
+        color: #2b2520;
+        text-decoration: underline;
+        text-underline-offset: 4px;
         transition: color 0.18s ease;
       }
       .step-link:hover {
@@ -2175,8 +2231,8 @@
         flex-wrap: wrap;
       }
       .steps-bar-note {
-        font-size: 15px;
-        color: #59524b;
+        font-size: 16px;
+        color: #3e3832;
         margin: 0;
       }
       .steps-bar-note strong {
@@ -2187,12 +2243,12 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 13px 26px;
+        padding: 14px 28px;
         border-radius: 2px;
         background: #344833;
         color: #ffffff;
         font-weight: 600;
-        font-size: 14.5px;
+        font-size: 15.5px;
         text-decoration: none;
         letter-spacing: 0.01em;
         transition: background 0.18s ease;
@@ -2372,7 +2428,7 @@
               <p class="step-desc">
                 A little space to breathe, reflect, and reconnect with what matters.
               </p>
-              <a class="step-link" href="workshops.html">Explore workshops &rarr;</a>
+              <a class="step-link" href="workshops.html">Explore workshops</a>
             </div>
 
             <div class="step-col">
@@ -2381,7 +2437,7 @@
               <p class="step-desc">
                 One-to-one companionship for listening more deeply to your life and the Sacred.
               </p>
-              <a class="step-link" href="find-a-spiritual-director.html">Find a director &rarr;</a>
+              <a class="step-link" href="find-a-spiritual-director.html">Find a director</a>
             </div>
 
             <div class="step-col">
@@ -2390,7 +2446,7 @@
               <p class="step-desc">
                 Gather with others who are seeking a more intentional, meaningful way of living.
               </p>
-              <a class="step-link" href="about.html">Connect in community &rarr;</a>
+              <a class="step-link" href="about.html">Connect in community</a>
             </div>
 
             <div class="step-col">
@@ -2399,7 +2455,7 @@
               <p class="step-desc">
                 Explore meditation, contemplative prayer, creativity, movement, and other practices that help you become present.
               </p>
-              <a class="step-link" href="workshops.html">Explore programs &rarr;</a>
+              <a class="step-link" href="workshops.html">Explore programs</a>
             </div>
           </div>
 
@@ -2456,7 +2512,7 @@
               <p class="bol-card-body">
                 Bread of Life is rooted in the contemplative Christian tradition while remaining open to people from diverse traditions, spiritual backgrounds, and places of questioning. Contemplation isn't an escape from reality—it is finding the ground upon which our lives stand.
               </p>
-              <a href="about.html" class="bol-card-link">Our spiritual roots &rarr;</a>
+              <a href="about.html" class="bol-card-link">Our spiritual roots</a>
             </div>
 
             <div class="bol-card bol-card-amber">
@@ -2464,7 +2520,7 @@
               <p class="bol-card-body">
                 Contemplation connects to real life. It directly affects how we love and relate to others, parent and care for people, navigate suffering and uncertainty, make decisions, repair relationships, engage our communities, and respond to the needs of the world.
               </p>
-              <a href="about.html" class="bol-card-link">Contemplation in real life &rarr;</a>
+              <a href="about.html" class="bol-card-link">Contemplation in real life</a>
             </div>
 
             <div class="bol-card bol-card-wide bol-card-dark">
@@ -2472,7 +2528,7 @@
               <p class="bol-card-body">
                 <strong>Rooted in contemplation &middot; Open across traditions &middot; Transformed for compassionate engagement with the world.</strong> Our openness is not the absence of spiritual identity; it grows out of deep contemplative roots and the conviction that the Sacred meets people in profound, transformative ways across all human experience.
               </p>
-              <a href="about.html" class="bol-card-link">Learn more about our vision &rarr;</a>
+              <a href="about.html" class="bol-card-link">Learn more about our vision</a>
             </div>
           </div>
         </div>
@@ -2510,11 +2566,11 @@
             color: var(--bol-loam);
           }
           .bol-offer-intro {
-            font-size: 1.05rem;
-            line-height: 1.45;
-            color: var(--bol-ink-mute);
+            font-size: 1.18rem;
+            line-height: 1.6;
+            color: var(--bol-loam);
             margin: 0;
-            max-width: 38ch;
+            max-width: 58ch;
           }
           .bol-offer-grid {
             display: grid;
@@ -2574,47 +2630,41 @@
           }
           .bol-offer-tag {
             font-family: var(--bol-body);
-            font-size: 13.5px;
-            font-weight: 600;
-            color: #3b5a35;
-            letter-spacing: 0.01em;
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #284c20;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
           }
           .bol-offer-card-title {
             font-family: var(--bol-display);
-            font-weight: 500;
-            font-size: clamp(1.4rem, 1.8vw, 1.7rem);
+            font-weight: 600;
+            font-size: clamp(1.45rem, 1.85vw, 1.75rem);
             line-height: 1.22;
             color: var(--bol-loam);
             margin: 0 0 16px;
           }
           .bol-offer-card-desc {
             font-family: var(--bol-body);
-            font-size: 15px;
-            line-height: 1.55;
-            color: var(--bol-ink-soft);
+            font-size: 16px;
+            line-height: 1.65;
+            color: #2e352c;
             margin: 0 0 28px;
             flex-grow: 1;
           }
           .bol-offer-link {
             font-family: var(--bol-body);
-            font-size: 14.5px;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: 600;
             color: var(--bol-loam);
-            text-decoration: none;
+            text-decoration: underline;
+            text-underline-offset: 4px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            transition: color 0.15s ease, transform 0.15s ease;
+            transition: color 0.15s ease;
           }
           .bol-offer-link:hover {
             color: var(--bol-sage);
-          }
-          .bol-offer-link:hover .bol-arrow {
-            transform: translateX(4px);
-          }
-          .bol-offer-link .bol-arrow {
-            display: inline-block;
-            transition: transform 0.2s ease;
           }
           @media (max-width: 960px) {
             .bol-offer-grid {
@@ -2666,9 +2716,7 @@
               Short, accessible gatherings to slow down, cultivate silence, and learn contemplative practices that bring stillness and focus to daily life.
             </p>
             <div>
-              <a class="bol-offer-link" href="workshops.html"
-                >Learn more <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
-              >
+              <a class="bol-offer-link" href="workshops.html">Learn more</a>
             </div>
           </div>
 
@@ -2683,9 +2731,7 @@
               Unhurried, confidential monthly conversations with a trained director to discern where the Sacred is moving in your relationships and decisions.
             </p>
             <div>
-              <a class="bol-offer-link" href="find-a-spiritual-director.html"
-                >Learn more <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
-              >
+              <a class="bol-offer-link" href="find-a-spiritual-director.html">Learn more</a>
             </div>
           </div>
 
@@ -2700,9 +2746,7 @@
               Small contemplative circles and group spiritual direction exploring your personal story, life transitions, and shared sacred presence.
             </p>
             <div>
-              <a class="bol-offer-link" href="workshops.html"
-                >Learn more <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
-              >
+              <a class="bol-offer-link" href="workshops.html">Learn more</a>
             </div>
           </div>
 
@@ -2717,9 +2761,7 @@
               Grounded resilience for leaders, caregivers, and activists, alongside multi-year formation for those called to become spiritual directors.
             </p>
             <div>
-              <a class="bol-offer-link" href="about.html"
-                >Learn more <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
-              >
+              <a class="bol-offer-link" href="about.html">Learn more</a>
             </div>
           </div>
         </div>
@@ -2750,10 +2792,7 @@
         <div class="bol-shell">
           <div class="bol-upcoming-head">
             <h2 class="bol-upcoming-title">Coming up</h2>
-            <a class="bol-textlink" href="events.html"
-              >See the full calendar
-              <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
-            >
+            <a class="bol-textlink" href="events.html">See the full calendar</a>
           </div>
 
           <a class="bol-event" href="discernment-next-step.html">
@@ -2866,19 +2905,30 @@
         </p>
       </section>
 
-      <!-- 8 · CLOSING -->
-      <section class="bol-closing">
+      <!-- 8 · MOTTO / TAGLINE -->
+      <section class="bol-motto" aria-label="Our Core Invitation">
         <div class="bol-shell">
-          <p class="bol-closing-word">Slow down. Listen deeply.<em> Live courageously.</em></p>
-          <h2 class="bol-closing-title">
-            A deeper life changes how we live.
+          <h2 class="bol-motto-text">
+            Slow down. Listen deeply. <em>Live courageously.</em>
           </h2>
-          <p>
-            We invite you to slow down, listen deeply, and courageously embody the Sacred in everyday life. You don't have to arrive with the right answers, or even the right language. Start with one conversation or one quiet practice, and see what opens up.
-          </p>
-          <div class="bol-closing-actions">
-            <a class="bol-btn" href="find-a-spiritual-director.html">Find a Spiritual Director</a>
-            <a class="bol-btn bol-btn-ghost" href="workshops.html">Explore Programs</a>
+        </div>
+      </section>
+
+      <!-- 9 · CLOSING CTA -->
+      <section class="bol-closing" aria-label="Connect with Bread of Life">
+        <div class="bol-shell">
+          <div class="bol-closing-wrap">
+            <div class="bol-closing-content">
+              <h2 class="bol-closing-title">
+                A deeper life changes how we live.
+              </h2>
+              <p class="bol-closing-desc">
+                We invite you to slow down, listen deeply, and courageously embody the Sacred in everyday life. You don't have to arrive with the right answers, or even the right language. Start with one conversation or one quiet practice, and see what opens up.
+              </p>
+            </div>
+            <div class="bol-closing-action">
+              <a class="bol-btn bol-closing-btn" href="contact.html">Connect with us</a>
+            </div>
           </div>
         </div>
       </section>
