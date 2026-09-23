@@ -177,14 +177,26 @@
       body.hero-cream .bol-hero-actions .bol-textlink {
         color: var(--bol-sage);
       }
-      body.hero-cream .bol-hero-actions .bol-btn {
+      body.hero-cream .bol-hero-actions .bol-btn,
+      body.hero-cream .bol-hero-actions .bol-btn-primary {
         background: var(--bol-sage);
         border-color: var(--bol-sage);
         color: #fff;
       }
-      body.hero-cream .bol-hero-actions .bol-btn:hover {
+      body.hero-cream .bol-hero-actions .bol-btn:hover,
+      body.hero-cream .bol-hero-actions .bol-btn-primary:hover {
         background: var(--bol-sage-deep);
         border-color: var(--bol-sage-deep);
+        color: #fff;
+      }
+      body.hero-cream .bol-hero-actions .bol-btn-secondary {
+        background: transparent;
+        border-color: var(--bol-sage);
+        color: var(--bol-sage);
+      }
+      body.hero-cream .bol-hero-actions .bol-btn-secondary:hover {
+        background: var(--bol-sage);
+        border-color: var(--bol-sage);
         color: #fff;
       }
       @media (max-width: 1000px) {
@@ -639,23 +651,54 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 26px;
+        gap: 16px;
+      }
+      .bol-hero-actions .bol-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          color 0.2s ease,
+          transform 0.15s ease,
+          box-shadow 0.2s ease;
+      }
+      .bol-hero-actions .bol-btn:active {
+        transform: translateY(1px);
+      }
+      .bol-hero-actions .bol-btn,
+      .bol-hero-actions .bol-btn-primary {
+        background: #fff;
+        border-color: #fff;
+        color: var(--bol-sage-deep);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+      }
+      .bol-hero-actions .bol-btn:hover,
+      .bol-hero-actions .bol-btn-primary:hover {
+        background: var(--bol-cream);
+        border-color: var(--bol-cream);
+        color: var(--bol-sage-deep);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      }
+      .bol-hero-actions .bol-btn-secondary {
+        background: transparent;
+        border-color: #ffffff;
+        color: #ffffff;
+        box-shadow: none;
+      }
+      .bol-hero-actions .bol-btn-secondary:hover {
+        background: #ffffff;
+        border-color: #ffffff;
+        color: var(--bol-sage-deep);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
       }
       .bol-hero-actions .bol-textlink {
         color: #fff;
       }
       .bol-hero-actions .bol-textlink:hover {
         border-color: currentColor;
-      }
-      .bol-hero-actions .bol-btn {
-        background: #fff;
-        border-color: #fff;
-        color: var(--bol-sage-deep);
-      }
-      .bol-hero-actions .bol-btn:hover {
-        background: var(--bol-cream);
-        border-color: var(--bol-cream);
-        color: var(--bol-sage-deep);
       }
       @keyframes bol-settle {
         0% {
@@ -915,10 +958,11 @@
         position: relative;
         display: flex;
         align-items: center;
-        padding: 40px 64px;
-        max-width: 1100px;
-        width: min(100%, 1100px);
+        padding: 40px var(--bol-gutter);
+        max-width: 1300px;
+        width: 100%;
         margin: 0 auto;
+        box-sizing: border-box;
       }
       .bol-quote .quote-mark {
         position: absolute;
@@ -934,16 +978,16 @@
         z-index: 0;
       }
       .bol-quote .quote-mark.left {
-        left: 24px;
+        left: var(--bol-gutter);
       }
       .bol-quote .quote-mark.right {
-        right: 24px;
+        right: var(--bol-gutter);
         transform: translateY(-50%) rotate(180deg);
       }
       .bol-quote .testimonial-content {
         position: relative;
         z-index: 1;
-        max-width: 680px;
+        max-width: 720px;
         margin-left: 90px;
       }
       .bol-quote .testimonial-content p {
@@ -974,24 +1018,24 @@
       }
       @media (max-width: 640px) {
         .bol-quote {
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 0;
+          padding-right: 0;
         }
         .bol-quote .testimonial-card {
-          padding: 90px 32px 100px;
+          padding: 90px var(--bol-gutter) 100px;
         }
         .bol-quote .quote-mark {
           font-size: 90px;
         }
         .bol-quote .quote-mark.left {
           top: 0;
-          left: 0;
+          left: var(--bol-gutter);
           transform: none;
         }
         .bol-quote .quote-mark.right {
           top: auto;
           bottom: 0;
-          right: 0;
+          right: var(--bol-gutter);
           transform: rotate(180deg);
         }
         .bol-quote .testimonial-content {
@@ -1005,9 +1049,10 @@
 
       .bol-ways-section {
         font-family: "Karla", sans-serif;
-        max-width: 1150px;
+        max-width: 1300px;
         margin: 0 auto;
-        padding: 60px 20px;
+        padding: 60px var(--bol-gutter);
+        box-sizing: border-box;
       }
       .bol-ways-heading {
         font-family: "Fraunces", serif;
@@ -1245,8 +1290,8 @@
         align-items: center;
         padding: 22px 0;
         border-top: 1px solid var(--bol-hairline);
-        max-width: 1100px;
-        margin: 0 auto;
+        max-width: 100%;
+        margin: 0;
         text-decoration: none;
         color: inherit;
       }
@@ -2003,7 +2048,7 @@
         border-bottom: 1px solid var(--bol-hairline);
       }
       .steps-shell {
-        max-width: 1180px;
+        max-width: 1300px;
         margin: 0 auto;
         padding: 0 var(--bol-gutter);
       }
@@ -2274,11 +2319,8 @@
               Life moves quickly. Bread of Life offers space to slow down, pay attention, and explore what gives your life meaning. Through community, reflection, spiritual practice, and conversation, we create room for people to become more fully themselves and more fully present to the world around them.
             </p>
             <div class="bol-hero-actions">
-              <a class="bol-btn" href="workshops.html">View Our Workshops</a>
-              <a class="bol-textlink" href="#offer"
-                >See what we offer
-                <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
-              >
+              <a class="bol-btn bol-btn-primary" href="workshops.html">Explore Upcoming Workshops</a>
+              <a class="bol-btn bol-btn-secondary" href="find-a-spiritual-director.html">Find a Spiritual Director</a>
             </div>
           </div>
         </div>
@@ -2315,15 +2357,9 @@
       <section class="steps" id="guide">
         <div class="steps-shell">
           <div class="steps-head">
-            <h2>Not sure where to start? Here's the whole path.</h2>
+            <h2>Here is the whole path.</h2>
             <p class="steps-lead">
               Spiritual direction isn't something you apply for or qualify for. It's a conversation you ease into. Here's exactly how that happens, from your first note to us onward.
-            </p>
-          </div>
-
-          <div class="steps-quote-box">
-            <p>
-              <em>Spiritual direction is an ongoing, one-on-one conversation with someone trained to help you notice where meaning, the Sacred, or God is already showing up in your life. It isn't therapy and it isn't mentorship, just steady, attentive company as you pay closer attention to your own.</em>
             </p>
           </div>
 
@@ -2452,12 +2488,13 @@
       <section class="bol-offer-section" id="offer" aria-label="What we offer">
         <style>
           .bol-offer-section {
-            max-width: 1180px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: clamp(64px, 8vw, 108px) var(--bol-gutter, 24px);
+            padding: clamp(64px, 8vw, 108px) var(--bol-gutter);
             font-family: var(--bol-body);
             color: var(--bol-loam);
             background: #ffffff;
+            box-sizing: border-box;
           }
           .bol-offer-header-wrap {
             display: flex;
@@ -2710,7 +2747,8 @@
         </div>
       </section>
 
-      <!-- 6 · COMING UP -->
+      <!-- 6 · COMING UP / WORKSHOPS -->
+      <div id="workshops" style="scroll-margin-top: 100px;"></div>
       <section class="bol-upcoming" id="upcoming">
         <div class="bol-shell">
           <div class="bol-upcoming-head">
