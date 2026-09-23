@@ -613,19 +613,24 @@
         color: var(--bol-accent);
       }
       .bol-hero-sub {
-        font-size: clamp(1.15rem, 1.7vw, 1.28rem);
-        font-weight: 500;
-        line-height: 1.55;
-        max-width: 52ch;
-        margin: 24px 0 16px;
-        color: rgba(243, 239, 230, 0.95);
+        font-size: clamp(1.18rem, 1.7vw, 1.38rem);
+        font-weight: 600;
+        line-height: 1.45;
+        max-width: 50ch;
+        margin: 22px 0 16px;
+        color: #ffffff;
+        letter-spacing: -0.005em;
+        -webkit-font-smoothing: antialiased;
       }
       .bol-hero-body {
-        font-size: clamp(1.02rem, 1.4vw, 1.12rem);
-        line-height: 1.7;
-        max-width: 54ch;
-        margin: 0 0 36px;
-        color: rgba(243, 239, 230, 0.85);
+        font-size: clamp(0.95rem, 1.22vw, 1.05rem);
+        font-weight: 400;
+        line-height: 1.6;
+        max-width: 52ch;
+        margin: 0 0 32px;
+        color: rgba(245, 242, 235, 0.88);
+        letter-spacing: 0.005em;
+        -webkit-font-smoothing: antialiased;
       }
       .bol-hero-actions {
         display: flex;
@@ -1988,6 +1993,212 @@
         }
       }
 
+      /* 3 · GUIDE / STEPS — "Starting with a Spiritual Director" (No Images Editorial Design) */
+      .steps {
+        padding: clamp(60px, 7vw, 90px) 0 clamp(60px, 7vw, 90px);
+        background: #ffffff;
+        border-bottom: 1px solid var(--bol-hairline);
+      }
+      .steps-shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 var(--bol-gutter);
+      }
+      .steps-head {
+        text-align: left;
+        margin: 0 0 32px;
+      }
+      .steps-head h2 {
+        font-family: var(--bol-display);
+        font-size: clamp(2.2rem, 3.4vw, 2.9rem);
+        line-height: 1.15;
+        font-weight: 500;
+        color: var(--bol-loam);
+        margin: 0 0 14px;
+        letter-spacing: -0.01em;
+      }
+      .steps-lead {
+        font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+        line-height: 1.6;
+        color: #635d56;
+        max-width: 58ch;
+        margin: 0;
+      }
+
+      /* Callout quote box with gold left border and soft cream background */
+      .steps-quote-box {
+        background: #fbf7ee;
+        border-left: 3px solid #d4a753;
+        padding: 24px 28px;
+        margin: 0 0 48px;
+        max-width: 660px;
+      }
+      .steps-quote-box p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.65;
+        color: #3e3731;
+        font-style: italic;
+      }
+
+      /* Top horizontal hairline with warm accent segment */
+      .steps-divider-top {
+        position: relative;
+        height: 1px;
+        background: #e2ddd5;
+        margin: 0 0 40px;
+      }
+      .steps-divider-top::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 25%;
+        height: 2px;
+        background: #d4a753;
+      }
+
+      /* 4-column layout separated by thin vertical dividers */
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        margin: 0 0 48px;
+      }
+      .step-col {
+        padding: 0 28px 0 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .step-col + .step-col {
+        border-left: 1px solid #e5e0d8;
+        padding-left: 28px;
+      }
+      .step-num {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 1px solid #dcd4c6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--bol-display);
+        font-size: 15px;
+        color: #b08d4b;
+        margin-bottom: 22px;
+      }
+      .step-title {
+        font-family: var(--bol-display);
+        font-size: 1.35rem;
+        font-weight: 600;
+        color: #2b2520;
+        margin: 0 0 14px;
+        line-height: 1.25;
+      }
+      .step-desc {
+        font-size: 14.5px;
+        line-height: 1.6;
+        color: #635d56;
+        margin: 0 0 24px;
+        flex-grow: 1;
+      }
+      .step-link {
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #3b342e;
+        text-decoration: none;
+        transition: color 0.18s ease;
+      }
+      .step-link:hover {
+        color: var(--bol-sage-deep);
+      }
+
+      /* Bottom matching bar */
+      .steps-bar {
+        border-top: 1px solid #e5e0d8;
+        padding-top: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .steps-bar-note {
+        font-size: 15px;
+        color: #59524b;
+        margin: 0;
+      }
+      .steps-bar-note strong {
+        color: #2b2520;
+        font-weight: 600;
+      }
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 13px 26px;
+        border-radius: 2px;
+        background: #344833;
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 14.5px;
+        text-decoration: none;
+        letter-spacing: 0.01em;
+        transition: background 0.18s ease;
+      }
+      .cta-button:hover {
+        background: #253424;
+      }
+
+      @media (max-width: 991px) {
+        .steps-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 36px 0;
+        }
+        .step-col {
+          padding-right: 20px;
+        }
+        .step-col:nth-child(2n+1) {
+          border-left: 0;
+          padding-left: 0;
+        }
+        .step-col:nth-child(2n) {
+          padding-left: 24px;
+        }
+        .steps-quote-box {
+          max-width: 100%;
+        }
+      }
+      @media (max-width: 600px) {
+        .steps-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .step-col {
+          border-left: 0 !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+          border-bottom: 1px solid #eee9e0;
+          padding-bottom: 24px;
+        }
+        .step-col:last-child {
+          border-bottom: 0;
+          padding-bottom: 0;
+        }
+        .steps-bar {
+          flex-direction: column;
+          align-items: stretch;
+          text-align: left;
+        }
+        .cta-button {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         * {
           animation: none !important;
@@ -2099,105 +2310,68 @@
 
       <!-- 3 · GUIDE -->
       <section class="steps" id="guide">
-        <div class="steps-head">
-          <h2>Starting with a Spiritual Director</h2>
-          <div class="rule"></div>
-          <p>
-            There is no application to fill out and no test to pass. Just a few
-            steps between where you are now and your first conversation.
-          </p>
-        </div>
+        <div class="steps-shell">
+          <div class="steps-head">
+            <h2>Not sure where to start? Here's the whole path.</h2>
+            <p class="steps-lead">
+              Spiritual direction isn't something you apply for or qualify for. It's a conversation you ease into. Here's exactly how that happens, from your first note to us onward.
+            </p>
+          </div>
 
-        <div class="steps-grid">
-          <div class="step-card">
-            <div
-              class="step-card-bg"
-              style="
-                background-image: url(&quot;https://images.unsplash.com/photo-1762770651108-3acd8c3c6845?fm=jpg&q=60&w=3000&auto=format&fit=crop&quot;);
-              "
-            ></div>
-            <div class="step-card-overlay"></div>
-            <div class="step-card-inner">
-              <h3 class="step-title">Reach Out</h3>
-               <p class="step-desc">
-                 Send us a note through our contact page. Tell us as much or as
-                 little as you'd like about what brought you here.
-               </p>
-               <a class="step-link" href="#">Contact us</a>
+          <div class="steps-quote-box">
+            <p>
+              <em>Spiritual direction is an ongoing, one-on-one conversation with someone trained to help you notice where meaning, the Sacred, or God is already showing up in your life. It isn't therapy and it isn't mentorship, just steady, attentive company as you pay closer attention to your own.</em>
+            </p>
+          </div>
+
+          <div class="steps-divider-top"></div>
+
+          <div class="steps-grid">
+            <div class="step-col">
+              <div class="step-num">1</div>
+              <h3 class="step-title">Reach out</h3>
+              <p class="step-desc">
+                Send us a note through our contact page. Tell us as much or as little as you'd like about what brought you here. There's no wrong way to start.
+              </p>
+              <a class="step-link" href="#">Contact us &rarr;</a>
+            </div>
+
+            <div class="step-col">
+              <div class="step-num">2</div>
+              <h3 class="step-title">Have a conversation</h3>
+              <p class="step-desc">
+                We'll set up a short call. Not an interview, just a chance for us to listen and help you find a director whose way of listening feels right for you.
+              </p>
+              <a class="step-link" href="#plan">Find a director &rarr;</a>
+            </div>
+
+            <div class="step-col">
+              <div class="step-num">3</div>
+              <h3 class="step-title">Meet together</h3>
+              <p class="step-desc">
+                You and your director begin meeting monthly, in person or by video, at a pace that stays yours to set from the very first session.
+              </p>
+              <a class="step-link" href="events.html">See the calendar &rarr;</a>
+            </div>
+
+            <div class="step-col">
+              <div class="step-num">4</div>
+              <h3 class="step-title">Keep returning</h3>
+              <p class="step-desc">
+                Spiritual direction isn't a program with an end date. Many people stay with the same director for years, returning as their life keeps changing.
+              </p>
+              <a class="step-link" href="#offer">Community of practice &rarr;</a>
             </div>
           </div>
-          <div class="step-card">
-            <div
-              class="step-card-bg"
-              style="
-                background-image: url(&quot;https://images.unsplash.com/photo-1772471754740-6e1e6dfd17e5?fm=jpg&q=60&w=3000&auto=format&fit=crop&quot;);
-              "
-            ></div>
-            <div class="step-card-overlay"></div>
-            <div class="step-card-inner">
-              <h3 class="step-title">Have a Conversation</h3>
-               <p class="step-desc">
-                 We'll set up a short call to listen and help you find a director
-                 whose way of listening feels right for you.
-               </p>
-               <a class="step-link" href="#plan">Find a director</a>
-             </div>
-           </div>
-           <div class="step-card">
-             <div
-               class="step-card-bg"
-               style="
-                 background-image: url(&quot;https://images.unsplash.com/photo-1550177977-ad69e8f3cae0?fm=jpg&q=60&w=3000&auto=format&fit=crop&quot;);
-               "
-             ></div>
-             <div class="step-card-overlay"></div>
-             <div class="step-card-inner">
-               <h3 class="step-title">Meet Together</h3>
-               <p class="step-desc">
-                 You and your director begin meeting monthly, in person or by
-                 video, at a pace that stays yours to set.
-               </p>
-               <a class="step-link" href="events.html">See the calendar</a>
-             </div>
-           </div>
-           <div class="step-card">
-             <div
-               class="step-card-bg"
-               style="
-                 background-image: url(&quot;https://images.unsplash.com/photo-1770029967512-d3105259ce1d?fm=jpg&q=60&w=3000&auto=format&fit=crop&quot;);
-               "
-             ></div>
-             <div class="step-card-overlay"></div>
-             <div class="step-card-inner">
-               <h3 class="step-title">Keep Returning</h3>
-               <p class="step-desc">
-                 Spiritual direction isn't a program with an end date. Many
-                 people meet with their director for years.
-               </p>
-               <a class="step-link" href="#offer">Community of practice</a>
-             </div>
-           </div>
-        </div>
 
-        <div class="steps-bar">
-          <p class="steps-bar-note">
-            Most people are matched with a director within
-            <strong>two weeks</strong> of reaching out.
-          </p>
-          <a href="#" class="cta-button">
-            Begin Your Own Path
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
+          <div class="steps-bar">
+            <p class="steps-bar-note">
+              Most people are matched with a director within <strong>two weeks</strong> of reaching out.
+            </p>
+            <a href="#" class="cta-button">
+              Begin Your Own Path
+            </a>
+          </div>
         </div>
       </section>
 
