@@ -238,7 +238,7 @@
     trigger("Programs", programsPanel) +
     '<a href="spiritual_direction.html">Spiritual Direction</a>' +
     trigger("Community", communityPanel) +
-    '<a href="contact.html">Contact</a></nav><div class="bol-site-actions"><a class="bol-site-ghost" href="donate.html">Donate</a><a href="find-a-spiritual-director.html">Find a Spiritual Director</a></div></div><button class="bol-site-toggle" id="bolNavToggle" type="button" aria-expanded="false" aria-controls="bolMenuWrapper" aria-label="Open navigation menu"><span class="bol-site-burger" aria-hidden="true"><i></i><i></i><i></i></span></button></div><div class="bol-site-scrim" id="bolScrim"></div>';
+    '<a href="contact.html">Contact</a></nav><div class="bol-site-actions"><a class="bol-site-ghost" href="donate.html">Ways to Give</a><a href="find-a-spiritual-director.html">Find a Spiritual Director</a></div></div><button class="bol-site-toggle" id="bolNavToggle" type="button" aria-expanded="false" aria-controls="bolMenuWrapper" aria-label="Open navigation menu"><span class="bol-site-burger" aria-hidden="true"><i></i><i></i><i></i></span></button></div><div class="bol-site-scrim" id="bolScrim"></div>';
 
   var toggle = document.getElementById("bolNavToggle");
   var items = Array.from(header.querySelectorAll(".bol-site-item"));
@@ -251,7 +251,7 @@
     if (isScrolled) {
       header.style.setProperty(
         "background",
-        window.innerWidth <= 1024 ? "#faf7f0" : "#ffffff",
+        "#ffffff",
         "important",
       );
     } else if (!header.classList.contains("bol-site-mega-open")) {
@@ -270,7 +270,7 @@
     } else if (window.scrollY > 0) {
       header.style.setProperty(
         "background",
-        window.innerWidth <= 1024 ? "#faf7f0" : "#ffffff",
+        "#ffffff",
         "important",
       );
     } else {

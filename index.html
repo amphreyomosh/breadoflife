@@ -13,7 +13,7 @@
     <style>
       :root {
         /* fixed across all palettes */
-        --bol-cream: #faf7f0;
+        --bol-cream: #ffffff;
         --bol-loam: #2a2521;
         --bol-panel: #ffffff;
         --bol-ink-soft: #4a423b;
@@ -166,6 +166,9 @@
         color: var(--bol-sage);
       }
       body.hero-cream .bol-hero-sub {
+        color: var(--bol-loam);
+      }
+      body.hero-cream .bol-hero-body {
         color: var(--bol-ink-soft);
       }
       body.hero-cream .bol-hero-actions .bol-textlink {
@@ -363,7 +366,7 @@
         position: sticky;
         top: 0;
         z-index: 60;
-        background: rgba(250, 247, 240, 0.97);
+        background: #ffffff;
         border-bottom: 1px solid var(--bol-hairline);
         backdrop-filter: blur(8px);
       }
@@ -382,12 +385,13 @@
       .bol-wordmark img {
         display: block;
         width: auto;
-        height: clamp(44px, 4.4vw, 58px);
-        max-width: min(50vw, 300px);
+        height: clamp(52px, 5.5vw, 72px);
+        max-width: min(55vw, 340px);
         object-fit: contain;
         transform: translateY(
           -9%
         ); /* optical centring: ink sits low in the bounding box */
+        filter: contrast(1.18) brightness(0.9);
       }
       .bol-menu {
         display: flex;
@@ -600,8 +604,8 @@
       }
       .bol-hero-title {
         font-size: clamp(2.6rem, 5.4vw, 4.25rem);
-        line-height: 1.03;
-        max-width: 15ch;
+        line-height: 1.08;
+        max-width: 20ch;
         color: #fff;
       }
       .bol-hero-title em {
@@ -609,11 +613,19 @@
         color: var(--bol-accent);
       }
       .bol-hero-sub {
-        font-size: clamp(1.15rem, 1.75vw, 1.28rem);
+        font-size: clamp(1.15rem, 1.7vw, 1.28rem);
+        font-weight: 500;
+        line-height: 1.55;
+        max-width: 52ch;
+        margin: 24px 0 16px;
+        color: rgba(243, 239, 230, 0.95);
+      }
+      .bol-hero-body {
+        font-size: clamp(1.02rem, 1.4vw, 1.12rem);
         line-height: 1.7;
-        max-width: 48ch;
-        margin: 28px 0 36px;
-        color: rgba(243, 239, 230, 0.9);
+        max-width: 54ch;
+        margin: 0 0 36px;
+        color: rgba(243, 239, 230, 0.85);
       }
       .bol-hero-actions {
         display: flex;
@@ -2511,7 +2523,7 @@
             <a href="#offer">Community</a>
           </nav>
             <div class="bol-actions">
-            <a class="bol-btn bol-btn-ghost" href="donate.html">Donate</a>
+            <a class="bol-btn bol-btn-ghost" href="donate.html">Ways to Give</a>
             <a class="bol-btn" href="find-a-spiritual-director.html">Find a Spiritual Director</a>
           </div>
         </div>
@@ -2540,13 +2552,13 @@
         <div class="bol-shell bol-hero-grid">
           <div class="bol-hero-copy">
             <h1 class="bol-hero-title">
-              The inner life and the active life <em>need each other.</em>
+              Listen deeply. Live courageously.
             </h1>
             <p class="bol-hero-sub">
-              Whether you are carrying questions you cannot put down, or doing
-              work that has quietly worn you thin, Bread of Life is a place to
-              slow down, listen, and find your footing again. Interfaith. Three
-              decades in the Sacramento area. Open to anyone.
+              A place to explore the sacred, deepen your life, and belong &mdash; whatever your tradition, background, or starting point.
+            </p>
+            <p class="bol-hero-body">
+              Life moves quickly. Bread of Life offers space to slow down, pay attention, and explore what gives your life meaning. Through community, reflection, spiritual practice, and conversation, we create room for people to become more fully themselves and more fully present to the world around them.
             </p>
             <div class="bol-hero-actions">
               <a class="bol-btn" href="workshops.html">View Our Workshops</a>
@@ -2564,27 +2576,19 @@
         <div class="bol-mirror-bg" aria-hidden="true"></div>
         <div class="bol-shell">
           <p class="bol-mirror-lead">
-            Whatever brought you here, you are not the first person to arrive
-            with it.
+            There is room here for your questions, your wonder, and your unfolding journey.
           </p>
           <div class="bol-mirror-grid">
             <div class="bol-mirror-col">
               <h2 class="bol-mirror-head">If you are searching</h2>
               <p>
-                Maybe you left a tradition, or never had one. Maybe you still
-                find yourself asking what your life is for, and you have stopped
-                expecting an institution to tell you. You are not looking for a
-                belief system. You are looking for company, a little quiet, and
-                practice that goes somewhere.
+                You don't have to arrive with a particular set of beliefs or a clear answer. Come curious. Whether you're seeking meaning, asking questions, or simply wanting to explore a deeper way of living, Bread of Life offers space and companionship as you discover what matters to you.
               </p>
             </div>
             <div class="bol-mirror-col">
-              <h2 class="bol-mirror-head">If you are already in the work</h2>
+              <h2 class="bol-mirror-head">If you are already on the journey</h2>
               <p>
-                You teach, you care for someone, you organize, you show up. And
-                somewhere along the way the thread between what you do and why
-                you started doing it went thin. You do not need to escape the
-                work. You need something underneath it that holds.
+                Spiritual growth is not a destination. Wherever you are on your journey, Bread of Life offers companionship, community, and practices that help you go deeper. Come to explore, discern, question, practice, and grow alongside others who are seeking to live more fully and compassionately.
               </p>
             </div>
           </div>
@@ -2769,349 +2773,245 @@
       </section>
 
       <!-- 5 · WHAT WE OFFER -->
-      <section class="wwo-selector" aria-label="What we offer">
+      <section class="bol-offer-section" id="offer" aria-label="What we offer">
         <style>
-          .wwo-selector {
-            max-width: 1150px;
+          .bol-offer-section {
+            max-width: 1180px;
             margin: 0 auto;
-            padding: 48px 24px;
-            font-family: "Karla", sans-serif;
-            color: #2e2a1f;
+            padding: clamp(64px, 8vw, 108px) var(--bol-gutter, 24px);
+            font-family: var(--bol-body);
+            color: var(--bol-loam);
+            background: #ffffff;
           }
-          .wwo-selector__header {
+          .bol-offer-header-wrap {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            gap: 24px;
-            border-bottom: 1px solid #d8d2be;
-            padding-bottom: 20px;
-            margin-bottom: 32px;
+            gap: 32px;
             flex-wrap: wrap;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--bol-hairline-soft);
+            margin-bottom: 48px;
           }
-          .wwo-selector__title {
-            font-family: "Fraunces", serif;
+          .bol-offer-title {
+            font-family: var(--bol-display);
             font-weight: 500;
-            font-size: 30px;
+            font-size: clamp(2.4rem, 4vw, 3.25rem);
+            line-height: 1.1;
+            letter-spacing: -0.01em;
             margin: 0;
+            color: var(--bol-loam);
           }
-          .wwo-selector__intro {
-            font-size: 16px;
-            color: #6b6551;
-            max-width: 280px;
+          .bol-offer-intro {
+            font-size: 1.05rem;
+            line-height: 1.45;
+            color: var(--bol-ink-mute);
             margin: 0;
-            line-height: 1.5;
+            max-width: 38ch;
           }
-          .wwo-selector__body {
-            display: flex;
-            gap: 40px;
-          }
-          .wwo-selector__list {
-            width: 260px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+          .bol-offer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             position: relative;
-          }
-          .wwo-selector__item {
-            display: block;
             width: 100%;
-            text-align: left;
-            background-color: transparent;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: inherit;
-            color: inherit;
-            position: relative;
           }
-          .wwo-selector__item::before {
+          /* Horizontal track line through circles */
+          .bol-offer-grid::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 22px;
+            left: 22px;
             right: 0;
-            bottom: 0;
-            background-color: #f5f0e8;
-            z-index: -2;
-            transition: background-color 0.25s ease;
+            height: 1px;
+            background: var(--bol-hairline-soft);
+            z-index: 1;
           }
-          .wwo-selector__item[aria-current="true"]::before {
-            background-color: transparent;
+          .bol-offer-col {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 0 32px;
           }
-          .wwo-selector__item[aria-current="true"] .wwo-selector__item-name {
-            color: #3f4a34;
+          .bol-offer-col:first-child {
+            padding-left: 0;
+            padding-right: 32px;
           }
-          .wwo-selector__item:hover::before {
-            background-color: #eae3d2;
+          .bol-offer-col:last-child {
+            padding-left: 32px;
+            padding-right: 0;
           }
-          .wwo-selector__item:hover .wwo-selector__item-name {
-            color: #2e2a1f;
+          .bol-offer-col:not(:first-child) {
+            border-left: 1px solid var(--bol-hairline-soft);
           }
-          .wwo-selector__item[aria-current="true"]:hover::before {
-            background-color: transparent;
-          }
-          .wwo-selector__item-label {
-            font-size: 14px;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: #000;
-            margin: 0 0 2px;
+          .bol-offer-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid var(--bol-hairline-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--bol-display);
+            font-size: 1.15rem;
+            color: #ab853a;
             position: relative;
             z-index: 2;
+            margin-bottom: 34px;
           }
-          .wwo-selector__item-name {
-            font-family: "Fraunces", serif;
+          .bol-offer-tag-slot {
+            min-height: 24px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+          }
+          .bol-offer-tag {
+            font-family: var(--bol-body);
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #3b5a35;
+            letter-spacing: 0.01em;
+          }
+          .bol-offer-card-title {
+            font-family: var(--bol-display);
             font-weight: 500;
-            font-size: 18px;
-            margin: 0;
-            transition: color 0.2s ease;
-            position: relative;
-            z-index: 2;
-          }
-          .wwo-selector__item[aria-current="false"] .wwo-selector__item-name {
-            color: #6b6551;
-          }
-          .wwo-selector__indicator {
-            position: absolute;
-            background-color: #c9a25e;
-            z-index: -1;
-            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-            pointer-events: none;
-          }
-          .wwo-selector__panel {
-            flex: 1;
-            min-width: 0;
-          }
-          .wwo-selector__image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 0%;
-            background: #ddd6c0;
-            margin-bottom: 20px;
-            display: block;
-          }
-          .wwo-selector__desc {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #5c5642;
+            font-size: clamp(1.4rem, 1.8vw, 1.7rem);
+            line-height: 1.22;
+            color: var(--bol-loam);
             margin: 0 0 16px;
-            max-width: 520px;
           }
-          .wwo-selector__link {
-            font-size: 16px;
-            color: #3f4a34;
+          .bol-offer-card-desc {
+            font-family: var(--bol-body);
+            font-size: 15px;
+            line-height: 1.55;
+            color: var(--bol-ink-soft);
+            margin: 0 0 28px;
+            flex-grow: 1;
+          }
+          .bol-offer-link {
+            font-family: var(--bol-body);
+            font-size: 14.5px;
+            font-weight: 500;
+            color: var(--bol-loam);
             text-decoration: none;
-            border-bottom: 1px solid #3f4a34;
-            padding-bottom: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.15s ease, transform 0.15s ease;
           }
-          .wwo-selector__link:hover {
-            opacity: 0.7;
+          .bol-offer-link:hover {
+            color: var(--bol-sage);
           }
-          @media (max-width: 700px) {
-            .wwo-selector__body {
-              flex-direction: column;
-              gap: 24px;
+          .bol-offer-link:hover .bol-arrow {
+            transform: translateX(4px);
+          }
+          .bol-offer-link .bol-arrow {
+            display: inline-block;
+            transition: transform 0.2s ease;
+          }
+          @media (max-width: 960px) {
+            .bol-offer-grid {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 40px 24px;
             }
-            .wwo-selector__list {
-              width: 100%;
-              display: flex;
-              flex-direction: row;
-              overflow-x: auto;
-              gap: 8px;
+            .bol-offer-grid::before {
+              display: none;
             }
-            .wwo-selector__item {
-              width: auto;
-              white-space: nowrap;
-              border-left: none;
-              border-bottom: none;
-              padding: 8px 16px;
+            .bol-offer-col {
+              padding: 0 !important;
+              border-left: none !important;
             }
-            .wwo-selector__item[aria-current="true"] {
-              border-left-color: transparent;
-              border-bottom-color: transparent;
+            .bol-offer-circle {
+              margin-bottom: 24px;
             }
-            .wwo-selector__image {
-              height: 200px;
+          }
+          @media (max-width: 600px) {
+            .bol-offer-grid {
+              grid-template-columns: 1fr;
+              gap: 36px;
+            }
+            .bol-offer-tag-slot {
+              min-height: auto;
+              margin-bottom: 8px;
+            }
+            .bol-offer-card-desc {
+              margin-bottom: 18px;
             }
           }
         </style>
-<div class="wwo-selector__header">
-          <h2 class="wwo-selector__title">What we offer</h2>
-          <p class="wwo-selector__intro">
-            Four ways to practice with us. Two of them are good places to start.
+
+        <div class="bol-offer-header-wrap">
+          <h2 class="bol-offer-title">What we offer</h2>
+          <p class="bol-offer-intro">
+            Four ways to practice with us. Two of them<br />are good places to start.
           </p>
         </div>
 
-        <div class="wwo-selector__body">
-          <div
-            class="wwo-selector__list"
-            role="tablist"
-            aria-label="What we offer options"
-          >
-            <div class="wwo-selector__indicator"></div>
-            <button
-              class="wwo-selector__item"
-              role="tab"
-              aria-current="true"
-              data-image="https://images.unsplash.com/photo-1468303874811-ad95ebe4454b?q=80&w=1157&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              data-desc="Two-hour sessions on contemplative prayer, grief, discernment, and listening. Come to one and none of the others. No prerequisites and no expectation that you will return."
-              data-link="events.html"
-              data-link-text="See the calendar"
-            >
-              <p class="wwo-selector__item-label">Good first step</p>
-              <p class="wwo-selector__item-name">Short workshops</p>
-            </button>
-            <button
-              class="wwo-selector__item"
-              role="tab"
-              aria-current="false"
-              data-image="https://cdn.pixabay.com/photo/2019/10/06/10/03/team-4529717_1280.jpg"
-              data-desc="Our flagship program. A guided sequence of sessions for paying attention to your own life closely enough to notice what it has been telling you. Small groups, facilitated, over several weeks."
-              data-link="#offer"
-              data-link-text="Learn more"
-            >
-              <p class="wwo-selector__item-label">
-                Good first step · Guided program
-              </p>
-              <p class="wwo-selector__item-name">Listen to your life</p>
-            </button>
-            <button
-              class="wwo-selector__item"
-              role="tab"
-              aria-current="false"
-              data-image="https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              data-desc="Someone who comes alongside you and listens closely, month after month, while you work out what is actually going on in your life. Not advice. Not therapy. Not tied to any one tradition. For most people this is the reason they found us."
-              data-link="#plan"
-              data-link-text="Find a director"
-            >
-              <p class="wwo-selector__item-label">One-on-one</p>
-              <p class="wwo-selector__item-name">Spiritual direction</p>
-            </button>
-            <button
-              class="wwo-selector__item"
-              role="tab"
-              aria-current="false"
-              data-image="https://images.unsplash.com/photo-1558921201-86ceead5e62a?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              data-desc="People on the same inward road, meeting regularly to practice together and talk honestly about how it is going. Membership is ongoing, and you can visit before you decide."
-              data-link="#offer"
-              data-link-text="How it works"
-            >
-              <p class="wwo-selector__item-label">Ongoing community</p>
-              <p class="wwo-selector__item-name">Community of practice</p>
-            </button>
-            <button
-              class="wwo-selector__item"
-              role="tab"
-              aria-current="false"
-              data-image="https://images.unsplash.com/photo-1658227412301-75d89b92aae0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              data-desc="A few days away from your ordinary life, with space for silence, direction, and rest. Held a few times a year, in community and alone."
-              data-link="#offer"
-              data-link-text="See upcoming dates"
-            >
-              <p class="wwo-selector__item-label">Multi-day</p>
-              <p class="wwo-selector__item-name">Retreats</p>
-            </button>
-            <button
-              class="wwo-selector__item"
-              role="tab"
-              aria-current="false"
-              data-image="https://images.squarespace-cdn.com/content/v1/5b197e89b98a785c90f20184/e494ecd9-658c-437c-8b55-236eaaf7a20e/LTYL+class+of+2022-1.jpg?format=1000w"
-              data-desc="For those discerning a call to accompany others. A multi-year formation program combining supervised practice, peer feedback, and study."
-              data-link="#offer"
-              data-link-text="Read about the program"
-            >
-              <p class="wwo-selector__item-label">For directors</p>
-              <p class="wwo-selector__item-name">Training program</p>
-            </button>
+        <div class="bol-offer-grid">
+          <!-- Column 1 -->
+          <div class="bol-offer-col">
+            <div class="bol-offer-circle">1</div>
+            <div class="bol-offer-tag-slot">
+              <span class="bol-offer-tag">Good first step</span>
+            </div>
+            <h3 class="bol-offer-card-title">Pause</h3>
+            <p class="bol-offer-card-desc">
+              A little space to breathe, reflect, and reconnect with what matters.
+            </p>
+            <div>
+              <a class="bol-offer-link" href="workshops.html"
+                >Learn more <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
+              >
+            </div>
           </div>
 
-          <div class="wwo-selector__panel">
-            <img
-              class="wwo-selector__image"
-              id="wwo-sel-image"
-              src="https://images.unsplash.com/photo-1468303874811-ad95ebe4454b?q=80&w=1157&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Short workshops"
-            />
-            <p class="wwo-selector__desc" id="wwo-sel-desc">
-              Two-hour sessions on contemplative prayer, grief, discernment, and
-              listening. Come to one and none of the others. No prerequisites
-              and no expectation that you will return.
+          <!-- Column 2 -->
+          <div class="bol-offer-col">
+            <div class="bol-offer-circle">2</div>
+            <div class="bol-offer-tag-slot" aria-hidden="true"></div>
+            <h3 class="bol-offer-card-title">Spiritual Direction</h3>
+            <p class="bol-offer-card-desc">
+              One-to-one companionship for listening more deeply to your life and the Sacred.
             </p>
-            <a class="wwo-selector__link" id="wwo-sel-link" href="events.html"
-              >See the calendar</a
-            >
+            <div>
+              <a class="bol-offer-link" href="spiritual_direction.html"
+                >Learn more <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
+              >
+            </div>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="bol-offer-col">
+            <div class="bol-offer-circle">3</div>
+            <div class="bol-offer-tag-slot">
+              <span class="bol-offer-tag">Good first step</span>
+            </div>
+            <h3 class="bol-offer-card-title">Community</h3>
+            <p class="bol-offer-card-desc">
+              Gather with others seeking a more intentional, meaningful way of living.
+            </p>
+            <div>
+              <a class="bol-offer-link" href="about.html"
+                >Learn more <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
+              >
+            </div>
+          </div>
+
+          <!-- Column 4 -->
+          <div class="bol-offer-col">
+            <div class="bol-offer-circle">4</div>
+            <div class="bol-offer-tag-slot" aria-hidden="true"></div>
+            <h3 class="bol-offer-card-title">Practice</h3>
+            <p class="bol-offer-card-desc">
+              Meditation, contemplative prayer, creativity, and movement toward presence.
+            </p>
+            <div>
+              <a class="bol-offer-link" href="workshops.html"
+                >Learn more <span class="bol-arrow" aria-hidden="true">&rarr;</span></a
+              >
+            </div>
           </div>
         </div>
-
-        <script>
-          function updateWwoIndicator(instantly) {
-            const list = document.querySelector(".wwo-selector__list");
-            if (!list) return;
-            const activeBtn = list.querySelector(
-              ".wwo-selector__item[aria-current='true']",
-            );
-            const indicator = list.querySelector(".wwo-selector__indicator");
-            if (activeBtn && indicator) {
-              if (instantly) {
-                indicator.style.transition = "none";
-              }
-              indicator.style.left = activeBtn.offsetLeft + "px";
-              indicator.style.top = activeBtn.offsetTop + "px";
-              indicator.style.width = activeBtn.offsetWidth + "px";
-              indicator.style.height = activeBtn.offsetHeight + "px";
-              if (instantly) {
-                // force repaint
-                indicator.offsetHeight;
-                indicator.style.transition = "";
-              }
-            }
-          }
-
-          function setWwoPanelFromButton(btn) {
-            const nameEl = btn.querySelector(".wwo-selector__item-name");
-            document.getElementById("wwo-sel-image").src =
-              btn.getAttribute("data-image");
-            document.getElementById("wwo-sel-image").alt = nameEl
-              ? nameEl.textContent
-              : "";
-            document.getElementById("wwo-sel-desc").textContent =
-              btn.getAttribute("data-desc");
-            var link = document.getElementById("wwo-sel-link");
-            link.href = btn.getAttribute("data-link");
-            link.textContent = btn.getAttribute("data-link-text");
-          }
-
-          document
-            .querySelectorAll(".wwo-selector__item")
-            .forEach(function (btn) {
-              btn.addEventListener("click", function () {
-                document
-                  .querySelectorAll(".wwo-selector__item")
-                  .forEach(function (b) {
-                    b.setAttribute("aria-current", "false");
-                  });
-                btn.setAttribute("aria-current", "true");
-                setWwoPanelFromButton(btn);
-                updateWwoIndicator(false);
-              });
-            });
-
-          window.addEventListener("resize", function () {
-            updateWwoIndicator(true);
-          });
-          window.addEventListener("load", function () {
-            const activeBtn = document.querySelector(
-              ".wwo-selector__item[aria-current='true']",
-            );
-            if (activeBtn) setWwoPanelFromButton(activeBtn);
-            updateWwoIndicator(true);
-          });
-          // Run immediately
-          updateWwoIndicator(true);
-        </script>
       </section>
 
       <!-- QUOTE 2 · the Activist, vouching for the programs -->

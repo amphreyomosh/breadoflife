@@ -1,5 +1,5 @@
 :root {
-  --bol-cream: #faf7f0;
+  --bol-cream: #ffffff;
   --bol-loam: #2a2521;
   --bol-panel: #ffffff;
   --bol-ink-soft: #4a423b;
@@ -24,7 +24,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(250, 247, 240, 0.98);
+  background: #ffffff;
   border-bottom: 1px solid var(--bol-hairline-soft);
   font-family: var(--bol-body);
   color: var(--bol-loam);
@@ -57,9 +57,14 @@
 .bol-site-logo img {
   display: block;
   width: auto;
-  height: clamp(42px, 4.4vw, 58px);
-  max-width: min(50vw, 300px);
+  height: clamp(52px, 5.5vw, 72px);
+  max-width: min(55vw, 340px);
   object-fit: contain;
+  filter: contrast(1.18) brightness(0.9);
+  transition: filter 0.2s ease;
+}
+.bol-site-logo:hover img {
+  filter: contrast(1.25) brightness(0.85);
 }
 .bol-site-menu {
   display: contents;
@@ -300,9 +305,9 @@
 @media (max-width: 1024px) {
   .bol-site-header {
     z-index: 1002;
-    background: var(--bol-cream) !important;
+    background: #ffffff !important;
     box-shadow: 0 2px 12px rgba(42, 37, 33, 0.08);
-    background: var(--bol-cream);
+    background: #ffffff;
   }
   .bol-site-header-inner {
     position: relative;
@@ -323,7 +328,7 @@
     max-width: 420px;
     padding: 24px 36px 40px;
     overflow-y: auto;
-    background: var(--bol-cream) !important;
+    background: #ffffff !important;
     border-left: 1px solid var(--bol-hairline-soft);
     box-shadow: -16px 0 36px rgba(20, 18, 15, 0.16);
     transform: translateX(100%);
@@ -355,7 +360,7 @@
   }
   .bol-site-panel {
     position: static;
-    background: var(--bol-cream);
+    background: #ffffff;
     max-height: 0;
     overflow: hidden;
     border: 0;
@@ -426,7 +431,7 @@
   .bol-site-header-inner {
     min-height: 64px;
     padding-block: 10px;
-    background: var(--bol-cream) !important;
+    background: #ffffff !important;
   }
   .bol-site-menu {
     width: 100%;
@@ -435,7 +440,7 @@
     padding: 24px 28px 36px;
   }
   .bol-site-logo img {
-    height: 38px;
+    height: 46px;
   }
   .bol-site-toggle {
     width: 40px;
