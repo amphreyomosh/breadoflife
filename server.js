@@ -9,8 +9,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 
-// Serve static files from root directory
-app.use(express.static(__dirname));
+// Serve static files from root directory with .html extension support
+app.use(express.static(__dirname, { extensions: ['html'] }));
+
+// Route alias for spiritual-direction (with hyphen or underscore)
+app.get(['/spiritual-direction', '/spiritual-direction.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'spiritual_direction.html'));
+});
 
 // Serve index.html on root path
 app.get('/', (req, res) => {
