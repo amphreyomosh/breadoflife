@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Bread of Life</title>
     <meta
       name="description"
@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -629,6 +629,9 @@
         font-style: italic;
         color: var(--bol-accent);
       }
+      .bol-hero-br-mobile {
+        display: none;
+      }
       .bol-hero-sub {
         font-size: clamp(1.25rem, 1.85vw, 1.5rem);
         font-weight: 500;
@@ -669,6 +672,15 @@
       }
       .bol-hero-actions .bol-btn:active {
         transform: translateY(1px);
+      }
+      .bol-hero-actions .bol-btn svg {
+        flex: none;
+        display: inline-block;
+        vertical-align: middle;
+        transition: transform 0.2s ease;
+      }
+      .bol-hero-actions .bol-btn:hover svg {
+        transform: translateX(2px);
       }
       .bol-hero-actions .bol-btn,
       .bol-hero-actions .bol-btn-primary {
@@ -2298,6 +2310,181 @@
           animation: none;
         }
       }
+
+      /* HERO — MOBILE RESPONSIVE (bottom-anchored, 100svh, vertical CTAs) */
+      @media (max-width: 768px) {
+        .bol-hero,
+        .hero {
+          position: relative;
+          min-height: calc(100svh - 72px);
+          min-height: calc(100dvh - 72px);
+          display: flex !important;
+          align-items: flex-end !important;
+          justify-content: flex-start !important;
+          padding: 0 !important;
+          overflow: hidden;
+        }
+        .bol-hero-bg {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+        }
+        .bol-hero-bg img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 25%;
+          transform: none !important;
+          animation: none !important;
+        }
+        .bol-hero-bg::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(
+              180deg,
+              rgba(20, 26, 16, 0.15) 0%,
+              rgba(20, 26, 16, 0.35) 45%,
+              rgba(16, 20, 13, 0.85) 100%
+            ),
+            radial-gradient(
+              120% 90% at 15% 0%,
+              rgba(79, 107, 69, 0.25) 0%,
+              rgba(51, 69, 44, 0.2) 45%,
+              rgba(29, 38, 24, 0.6) 100%
+            ) !important;
+        }
+        .bol-hero .bol-shell {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          max-width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        .bol-hero-grid {
+          width: 100%;
+          display: block;
+        }
+        .bol-hero-copy,
+        .hero-content {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          max-width: 100%;
+          padding: 32px 20px calc(28px + env(safe-area-inset-bottom, 0px)) !important;
+          box-sizing: border-box;
+        }
+        .bol-hero-br-mobile {
+          display: inline !important;
+        }
+        .bol-hero-title,
+        .hero h1 {
+          font-family: 'Fraunces', Georgia, serif !important;
+          font-weight: 600 !important;
+          font-size: clamp(30px, 8vw, 38px) !important;
+          line-height: 1.12 !important;
+          color: #FAF7F0 !important;
+          margin: 0 0 18px !important;
+          letter-spacing: -0.01em !important;
+          max-width: none !important;
+        }
+        .bol-hero-title em,
+        .hero h1 em {
+          font-style: italic !important;
+          font-weight: 500 !important;
+          color: #C9A25E !important;
+        }
+        .bol-hero-sub,
+        .lede {
+          font-family: 'Karla', sans-serif !important;
+          font-weight: 700 !important;
+          font-size: 16px !important;
+          line-height: 1.5 !important;
+          color: #FAF7F0 !important;
+          margin: 0 0 14px !important;
+          max-width: 34ch !important;
+          letter-spacing: normal !important;
+        }
+        .bol-hero-body,
+        .support {
+          font-family: 'Karla', sans-serif !important;
+          font-weight: 400 !important;
+          font-size: 14px !important;
+          line-height: 1.6 !important;
+          color: rgba(250, 247, 240, 0.82) !important;
+          margin: 0 0 28px !important;
+          max-width: 38ch !important;
+          letter-spacing: normal !important;
+        }
+        .bol-hero-actions,
+        .cta-group {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 12px !important;
+          width: 100% !important;
+          max-width: 440px;
+          margin: 0 !important;
+        }
+        .bol-hero-actions .bol-btn,
+        .btn {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 8px !important;
+          width: 100% !important;
+          min-height: 50px !important;
+          padding: 14px 20px !important;
+          border-radius: 0 !important;
+          font-family: 'Karla', sans-serif !important;
+          font-weight: 700 !important;
+          font-size: 15px !important;
+          text-decoration: none !important;
+          border: 1px solid transparent !important;
+          box-sizing: border-box !important;
+          box-shadow: none !important;
+        }
+        .bol-hero-actions .bol-btn-primary,
+        .btn-primary {
+          background: #47653F !important;
+          color: #FAF7F0 !important;
+          border-color: #47653F !important;
+        }
+        .bol-hero-actions .bol-btn-primary:active,
+        .bol-hero-actions .bol-btn-primary:hover,
+        .btn-primary:active {
+          background: #355030 !important;
+          border-color: #355030 !important;
+          color: #FAF7F0 !important;
+        }
+        .bol-hero-actions .bol-btn-secondary,
+        .btn-secondary {
+          background: transparent !important;
+          color: #FAF7F0 !important;
+          border-color: #DCD4C4 !important;
+        }
+        .bol-hero-actions .bol-btn-secondary:active,
+        .bol-hero-actions .bol-btn-secondary:hover,
+        .btn-secondary:active {
+          background: rgba(250, 247, 240, 0.08) !important;
+          border-color: #FAF7F0 !important;
+          color: #FAF7F0 !important;
+        }
+        .bol-hero-actions .bol-btn svg,
+        .btn svg {
+          flex: none;
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+
+      @media (min-width: 480px) and (max-width: 768px) {
+        .bol-hero-copy,
+        .hero-content {
+          padding: 40px 28px calc(36px + env(safe-area-inset-bottom, 0px)) !important;
+        }
+      }
     </style>
     <link rel="stylesheet" href="footer.css" />
   </head>
@@ -2342,7 +2529,7 @@
 
     <main id="top">
       <!-- 1 · HERO -->
-      <section class="bol-hero">
+      <section class="bol-hero hero">
         <div class="bol-hero-bg" aria-hidden="true">
           <img
             src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=80"
@@ -2351,30 +2538,47 @@
           />
         </div>
         <div class="bol-shell bol-hero-grid">
-          <div class="bol-hero-copy">
+          <div class="bol-hero-copy hero-content">
             <h1 class="bol-hero-title">
-              Listen deeply. <em>Live courageously.</em>
+              Listen deeply.<br class="bol-hero-br-mobile" /><em>Live courageously.</em>
             </h1>
-            <p class="bol-hero-sub">
-              A place to explore the sacred, deepen your life, and
-              belong&mdash;whatever your tradition, background, or starting
-              point.
+            <p class="bol-hero-sub lede">
+              A place to explore the sacred, deepen your life, and belong,
+              whatever your tradition, background, or starting point.
             </p>
-            <p class="bol-hero-body">
+            <p class="bol-hero-body support">
               Life moves quickly. Bread of Life offers space to slow down, pay
               attention, and explore what gives your life meaning. Through
               community, reflection, spiritual practice, and conversation, we
               create room for people to become more fully themselves and more
               fully present to the world around them.
             </p>
-            <div class="bol-hero-actions">
-              <a class="bol-btn bol-btn-primary" href="workshops.html"
-                >Explore Upcoming Workshops</a
-              >
+            <div class="bol-hero-actions cta-group">
               <a
-                class="bol-btn bol-btn-secondary"
+                class="bol-btn bol-btn-primary btn btn-primary"
                 href="find-a-spiritual-director.html"
-                >Find a Spiritual Director</a
+              >
+                Find a Spiritual Director
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8H13M13 8L9 4M13 8L9 12"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+              <a
+                class="bol-btn bol-btn-secondary btn btn-secondary"
+                href="workshops.html"
+                >Explore Upcoming Workshops</a
               >
             </div>
           </div>
