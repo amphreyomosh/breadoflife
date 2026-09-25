@@ -47,7 +47,7 @@
         --bol-gutter: clamp(20px, 5vw, 72px);
         --bol-rhythm: clamp(76px, 9vw, 136px);
 
-        --s-hero: var(--bol-sage-deep);
+        --s-hero: var(--bol-loam);
         --s-mirror: var(--bol-sage-deep);
         --s-mirror-ink: #f3efe6;
         --s-guide: var(--bol-panel);
@@ -593,21 +593,13 @@
         content: "";
         position: absolute;
         inset: 0;
-        background:
-          linear-gradient(
-            100deg,
-            rgba(53, 80, 48, 0.9) 0%,
-            rgba(53, 80, 48, 0.72) 30%,
-            rgba(53, 80, 48, 0.48) 52%,
-            rgba(53, 80, 48, 0.1) 100%
-          ),
-          linear-gradient(
-            to bottom,
-            rgba(53, 80, 48, 0.38) 0%,
-            rgba(53, 80, 48, 0) 26%,
-            rgba(53, 80, 48, 0) 68%,
-            rgba(53, 80, 48, 0.58) 100%
-          );
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.4) 0%,
+          rgba(0, 0, 0, 0.7) 40%,
+          rgba(0, 0, 0, 0.92) 85%,
+          rgba(0, 0, 0, 0.96) 100%
+        );
       }
       .bol-hero .bol-shell {
         position: relative;
@@ -624,6 +616,7 @@
         line-height: 1.08;
         max-width: 20ch;
         color: #fff;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
       }
       .bol-hero-title em {
         font-style: italic;
@@ -641,6 +634,7 @@
         color: #ffffff;
         letter-spacing: -0.005em;
         -webkit-font-smoothing: antialiased;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
       }
       .bol-hero-body {
         font-size: clamp(0.95rem, 1.1vw, 1.05rem);
@@ -651,6 +645,7 @@
         color: rgba(255, 255, 255, 0.94);
         letter-spacing: 0.005em;
         -webkit-font-smoothing: antialiased;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
       }
       .bol-hero-actions {
         display: flex;
@@ -1761,14 +1756,6 @@
         .bol-hero-bg img {
           object-position: 58% 50%;
         }
-        .bol-hero-bg::after {
-          background: linear-gradient(
-            to bottom,
-            rgba(53, 80, 48, 0.88) 0%,
-            rgba(53, 80, 48, 0.7) 52%,
-            rgba(53, 80, 48, 0.3) 100%
-          );
-        }
         .bol-guide-figure {
           aspect-ratio: 16/10;
           max-height: 340px;
@@ -2341,19 +2328,13 @@
           content: "";
           position: absolute;
           inset: 0;
-          background:
-            linear-gradient(
-              180deg,
-              rgba(20, 26, 16, 0.15) 0%,
-              rgba(20, 26, 16, 0.35) 45%,
-              rgba(16, 20, 13, 0.85) 100%
-            ),
-            radial-gradient(
-              120% 90% at 15% 0%,
-              rgba(79, 107, 69, 0.25) 0%,
-              rgba(51, 69, 44, 0.2) 45%,
-              rgba(29, 38, 24, 0.6) 100%
-            ) !important;
+          background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(0, 0, 0, 0.7) 40%,
+            rgba(0, 0, 0, 0.92) 85%,
+            rgba(0, 0, 0, 0.96) 100%
+          ) !important;
         }
         .bol-hero .bol-shell {
           position: relative;
@@ -2389,6 +2370,7 @@
           margin: 0 0 18px !important;
           letter-spacing: -0.01em !important;
           max-width: none !important;
+          text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5) !important;
         }
         .bol-hero-title em,
         .hero h1 em {
@@ -2406,6 +2388,7 @@
           margin: 0 0 14px !important;
           max-width: 34ch !important;
           letter-spacing: normal !important;
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45) !important;
         }
         .bol-hero-body,
         .support {
@@ -2413,10 +2396,11 @@
           font-weight: 400 !important;
           font-size: 14px !important;
           line-height: 1.6 !important;
-          color: rgba(250, 247, 240, 0.82) !important;
+          color: rgba(250, 247, 240, 0.88) !important;
           margin: 0 0 28px !important;
           max-width: 38ch !important;
           letter-spacing: normal !important;
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45) !important;
         }
         .bol-hero-actions,
         .cta-group {
