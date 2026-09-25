@@ -49,134 +49,6 @@
         padding: 0 var(--bol-gutter, 24px);
       }
 
-      /* masthead */
-      .bol-masthead {
-        position: sticky;
-        top: 0;
-        z-index: 60;
-        background: rgba(250, 247, 240, 0.97);
-        border-bottom: 1px solid var(--bol-hairline);
-        backdrop-filter: blur(8px);
-      }
-      .bol-masthead-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: clamp(18px, 2.2vw, 30px);
-        min-height: 92px;
-      }
-      .bol-wordmark {
-        display: block;
-        flex: 0 0 auto;
-        line-height: 0;
-      }
-      .bol-wordmark img {
-        display: block;
-        width: auto;
-        height: clamp(44px, 4.4vw, 58px);
-        max-width: min(50vw, 300px);
-        object-fit: contain;
-        transform: translateY(-9%);
-      }
-      .bol-menu {
-        display: contents;
-      }
-      .bol-nav {
-        display: flex;
-        gap: clamp(18px, 2.2vw, 24px);
-        align-items: center;
-      }
-      .bol-nav a {
-        text-decoration: none;
-        font-size: 14.5px;
-        font-weight: 500;
-        transition: color 0.18s ease;
-      }
-      .bol-nav a:hover {
-        color: var(--bol-sage);
-      }
-      .bol-nav-item {
-        position: relative;
-      }
-      .bol-dropdown {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: -12px;
-        background: #fff;
-        border: 1px solid var(--bol-hairline-soft);
-        box-shadow: 0 12px 28px rgba(42, 37, 33, 0.08);
-        min-width: 260px;
-        padding: 8px 0;
-        border-radius: 4px;
-        z-index: 100;
-      }
-      .bol-nav-item:hover .bol-dropdown,
-      .bol-nav-item:focus-within .bol-dropdown {
-        display: block;
-      }
-      .bol-dropdown a {
-        display: block;
-        padding: 8px 18px;
-        font-size: 14px;
-        line-height: 1.4;
-      }
-      .bol-dropdown a:hover {
-        background: #fbf9f4;
-        color: var(--bol-sage);
-      }
-      .bol-actions {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .bol-btn {
-        display: inline-block;
-        font-family: var(--bol-body);
-        font-size: 13.5px;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 10px 18px;
-        border-radius: 999px;
-        background: var(--bol-sage);
-        color: #fff;
-        border: 1px solid var(--bol-sage);
-        transition: all 0.2s ease;
-      }
-      .bol-btn:hover {
-        background: var(--bol-sage-deep);
-        border-color: var(--bol-sage-deep);
-        color: #fff;
-      }
-      .bol-btn-ghost {
-        background: transparent;
-        color: var(--bol-loam);
-        border-color: var(--bol-hairline);
-      }
-      .bol-btn-ghost:hover {
-        background: rgba(62, 90, 56, 0.08);
-        color: var(--bol-sage-deep);
-      }
-      .bol-navtoggle {
-        display: none;
-        background: none;
-        border: 0;
-        padding: 8px;
-        cursor: pointer;
-      }
-      .bol-burger {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        width: 24px;
-      }
-      .bol-burger i {
-        display: block;
-        height: 2px;
-        background: var(--bol-loam);
-        border-radius: 1px;
-      }
-
       /* Hero */
       .contact-hero {
         position: relative;
@@ -377,39 +249,16 @@
           padding: 16px 24px 24px;
           gap: 16px;
         }
-        .bol-masthead.bol-open .bol-nav {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 12px;
-          width: 100%;
-        }
-        .bol-masthead.bol-open .bol-nav a {
-          font-size: 16px;
-          padding: 6px 0;
-        }
-        .bol-masthead.bol-open .bol-dropdown {
-          position: static;
-          box-shadow: none;
-          border: none;
-          padding-left: 12px;
-          background: transparent;
-        }
-        .bol-masthead.bol-open .bol-actions {
-          flex-direction: column;
-          align-items: stretch;
-          width: 100%;
-        }
-        .bol-masthead.bol-open .bol-actions .bol-btn {
-          text-align: center;
-        }
       }
     </style>
   </head>
   <body>
-    <!-- Masthead -->
+    <!-- Masthead Navigation -->
+    <link rel="stylesheet" href="site-header.css" />
+    <script src="site-header.js" defer></script>
     <header class="bol-masthead" id="bolMasthead">
       <div class="bol-shell bol-masthead-inner">
-        <a class="bol-wordmark" href="index.html" aria-label="Bread of Life, home">
+        <a class="bol-wordmark" href="index.html#top" aria-label="Bread of Life, home">
           <img
             src="https://images.squarespace-cdn.com/content/6a662e2b61e351419c14bc1c/da841121-67d7-4217-aa37-7107060eef73/bread+of+life+logo.png?content-type=image%2Fpng"
             alt="Bread of Life"
@@ -418,42 +267,20 @@
 
         <div class="bol-menu">
           <nav class="bol-nav" aria-label="Primary">
-            <div class="bol-nav-item">
-              <a href="about.html">About</a>
-              <div class="bol-dropdown">
-                <a href="about.html">About Bread of Life</a>
-                <a href="our-vision.html">Our Vision</a>
-                <a href="our-leadership.html">Our Leadership</a>
-                <a href="our-donors.html">Our Donors</a>
-              </div>
-            </div>
-
-            <div class="bol-nav-item">
-              <a href="events.html">Programs</a>
-              <div class="bol-dropdown">
-                <a href="workshops.html">All Workshops</a>
-                <a href="events.html">Events Calendar</a>
-                <a href="spiritual_direction.html">Spiritual Direction</a>
-                <a href="discernment-next-step.html">Discernment Series</a>
-              </div>
-            </div>
-
+            <a href="index.html#top">Home</a>
+            <a href="about.html">About</a>
+            <a href="index.html#offer">Programs</a>
+            <a href="workshops.html">Workshops</a>
             <a href="spiritual_direction.html">Spiritual Direction</a>
-
-            <div class="bol-nav-item">
-              <a href="index.html#offer">Community</a>
-              <div class="bol-dropdown">
-                <a href="our-vision.html">Vision Statement</a>
-                <a href="our-donors.html">Our Benefactors</a>
-              </div>
-            </div>
-
+            <a href="index.html#offer">Community</a>
             <a href="contact.html">Contact</a>
           </nav>
 
           <div class="bol-actions">
             <a class="bol-btn bol-btn-ghost" href="donate.html">Ways to Give</a>
-            <a class="bol-btn" href="find-a-spiritual-director.html">Find a Spiritual Director</a>
+            <a class="bol-btn" href="find-a-spiritual-director.html"
+              >Find a Spiritual Director</a
+            >
           </div>
         </div>
 
@@ -463,7 +290,9 @@
           aria-expanded="false"
           aria-label="Open menu"
         >
-          <span class="bol-burger" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="bol-burger" aria-hidden="true"
+            ><i></i><i></i><i></i
+          ></span>
         </button>
       </div>
     </header>
@@ -699,16 +528,6 @@
     </footer>
 
     <script>
-      // Mobile menu toggle
-      const toggle = document.getElementById("bolNavToggle");
-      const masthead = document.getElementById("bolMasthead");
-      if (toggle && masthead) {
-        toggle.addEventListener("click", () => {
-          const isOpen = masthead.classList.toggle("bol-open");
-          toggle.setAttribute("aria-expanded", String(isOpen));
-        });
-      }
-
       // Contact form submit
       function handleContactSubmit(e) {
         e.preventDefault();

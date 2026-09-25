@@ -246,6 +246,16 @@
     trigger("Community", communityPanel) +
     '<a href="contact.html">Contact</a></nav><div class="bol-site-actions"><a class="bol-site-ghost" href="donate.html">Ways to Give</a><a href="find-a-spiritual-director.html">Find a Spiritual Director</a></div></div><button class="bol-site-toggle" id="bolNavToggle" type="button" aria-expanded="false" aria-controls="bolMenuWrapper" aria-label="Open navigation menu"><span class="bol-site-burger" aria-hidden="true"><i></i><i></i><i></i></span></button></div><div class="bol-site-scrim" id="bolScrim"></div>';
 
+  header.querySelectorAll(".bol-site-nav > a").forEach(function (anchor) {
+    var href = anchor.getAttribute("href");
+    if (
+      href === currentPage ||
+      (href === "index.html#top" && (currentPage === "" || currentPage === "index.html"))
+    ) {
+      anchor.setAttribute("aria-current", "page");
+    }
+  });
+
   var toggle = document.getElementById("bolNavToggle");
   var items = Array.from(header.querySelectorAll(".bol-site-item"));
   var menu = document.getElementById("bolMenuWrapper");
