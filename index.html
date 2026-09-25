@@ -2296,22 +2296,37 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 0;
-        margin: 0 0 48px;
+        margin: 0 -20px 48px;
       }
       .step-col {
-        padding: 0 28px 0 0;
+        position: relative;
+        padding: 22px 24px 26px;
         display: flex;
         flex-direction: column;
+        border-radius: 8px;
+        background: transparent;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    background-color 0.25s ease,
+                    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .step-col + .step-col {
         border-left: 1px solid #e5e0d8;
-        padding-left: 28px;
+      }
+      .step-col:hover {
+        transform: translateY(-6px);
+        background: #ffffff;
+        border-color: transparent;
+        box-shadow: 0 16px 36px -8px rgba(43, 37, 32, 0.12),
+                    0 4px 12px -2px rgba(43, 37, 32, 0.04);
+        z-index: 5;
       }
       .step-num {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        border: 1px solid #dcd4c6;
+        border: 1.5px solid #dcd4c6;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2319,7 +2334,20 @@
         font-size: 16px;
         font-weight: 600;
         color: #9d7528;
+        background: transparent;
         margin-bottom: 22px;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                    background-color 0.25s ease,
+                    color 0.25s ease,
+                    border-color 0.25s ease,
+                    box-shadow 0.25s ease;
+      }
+      .step-col:hover .step-num {
+        background: #d4a753;
+        color: #ffffff;
+        border-color: #d4a753;
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(212, 167, 83, 0.35);
       }
       .step-title {
         font-family: var(--bol-display);
@@ -2328,6 +2356,11 @@
         color: #2b2520;
         margin: 0 0 14px;
         line-height: 1.25;
+        letter-spacing: 0.01em;
+        transition: color 0.25s ease;
+      }
+      .step-col:hover .step-title {
+        color: var(--bol-sage-deep, #253424);
       }
       .step-desc {
         font-size: 16px;
@@ -2340,15 +2373,25 @@
         align-self: flex-start;
         display: inline-flex;
         align-items: center;
+        gap: 6px;
         font-size: 15.5px;
         font-weight: 600;
         color: #2b2520;
         text-decoration: underline;
         text-underline-offset: 4px;
-        transition: color 0.18s ease;
+        transition: color 0.2s ease, text-decoration-color 0.2s ease;
       }
-      .step-link:hover {
-        color: var(--bol-sage-deep);
+      .step-link-arrow {
+        display: inline-flex;
+        align-items: center;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .step-col:hover .step-link {
+        color: var(--bol-sage-deep, #253424);
+        text-decoration-color: #d4a753;
+      }
+      .step-col:hover .step-link-arrow {
+        transform: translateX(4px);
       }
 
       /* Bottom matching bar */
@@ -2391,17 +2434,17 @@
       @media (max-width: 991px) {
         .steps-grid {
           grid-template-columns: repeat(2, 1fr);
-          gap: 36px 0;
+          gap: 24px 0;
+          margin: 0 -12px 40px;
         }
         .step-col {
-          padding-right: 20px;
+          padding: 20px 16px 22px;
         }
         .step-col:nth-child(2n + 1) {
           border-left: 0;
-          padding-left: 0;
         }
         .step-col:nth-child(2n) {
-          padding-left: 24px;
+          border-left: 1px solid #e5e0d8;
         }
         .steps-quote-box {
           max-width: 100%;
@@ -2410,18 +2453,16 @@
       @media (max-width: 600px) {
         .steps-grid {
           grid-template-columns: 1fr;
-          gap: 32px;
+          gap: 16px;
+          margin: 0 0 36px;
         }
         .step-col {
           border-left: 0 !important;
-          padding-left: 0 !important;
-          padding-right: 0 !important;
           border-bottom: 1px solid #eee9e0;
-          padding-bottom: 24px;
+          padding: 16px 14px 22px !important;
         }
         .step-col:last-child {
           border-bottom: 0;
-          padding-bottom: 0;
         }
         .steps-bar {
           flex-direction: column;
@@ -2962,46 +3003,64 @@
           <div class="steps-divider-top"></div>
 
           <div class="steps-grid">
-            <div class="step-col">
+            <div class="step-col" data-href="workshops.html">
               <div class="step-num">1</div>
               <h3 class="step-title">PAUSE</h3>
               <p class="step-desc">
                 A little space to breathe, reflect, and reconnect with what
                 matters.
               </p>
-              <a class="step-link" href="workshops.html">Explore workshops</a>
+              <a class="step-link" href="workshops.html">
+                <span>Explore workshops</span>
+                <svg class="step-link-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
             </div>
 
-            <div class="step-col">
+            <div class="step-col" data-href="find-a-spiritual-director.html">
               <div class="step-num">2</div>
               <h3 class="step-title">SPIRITUAL DIRECTION</h3>
               <p class="step-desc">
                 One-to-one companionship for listening more deeply to your life
                 and the Sacred.
               </p>
-              <a class="step-link" href="find-a-spiritual-director.html"
-                >Find a director</a
-              >
+              <a class="step-link" href="find-a-spiritual-director.html">
+                <span>Find a director</span>
+                <svg class="step-link-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
             </div>
 
-            <div class="step-col">
+            <div class="step-col" data-href="about.html">
               <div class="step-num">3</div>
               <h3 class="step-title">COMMUNITY</h3>
               <p class="step-desc">
                 Gather with others who are seeking a more intentional,
                 meaningful way of living.
               </p>
-              <a class="step-link" href="about.html">Connect in community</a>
+              <a class="step-link" href="about.html">
+                <span>Connect in community</span>
+                <svg class="step-link-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
             </div>
 
-            <div class="step-col">
+            <div class="step-col" data-href="workshops.html">
               <div class="step-num">4</div>
               <h3 class="step-title">PRACTICE</h3>
               <p class="step-desc">
                 Explore meditation, contemplative prayer, creativity, movement,
                 and other practices that help you become present.
               </p>
-              <a class="step-link" href="workshops.html">Explore programs</a>
+              <a class="step-link" href="workshops.html">
+                <span>Explore programs</span>
+                <svg class="step-link-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
             </div>
           </div>
 
@@ -3666,6 +3725,18 @@
           note.textContent =
             "You are on the list. Check your inbox to confirm.";
           input.value = "";
+        });
+
+        // Step cards interactive click navigation
+        document.querySelectorAll(".step-col").forEach(function (col) {
+          col.addEventListener("click", function (e) {
+            if (!e.target.closest("a")) {
+              var link = col.querySelector(".step-link");
+              if (link && link.href) {
+                window.location.href = link.href;
+              }
+            }
+          });
         });
       })();
     </script>
