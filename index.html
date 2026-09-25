@@ -1057,7 +1057,14 @@
           margin-left: 0;
         }
         .bol-quote .testimonial-content p {
-          font-size: 20px;
+          font-size: 16px;
+          line-height: 1.55;
+        }
+        .bol-quote .author {
+          font-size: 14px;
+        }
+        .bol-quote .author-role {
+          font-size: 12.5px;
         }
       }
 
@@ -1188,7 +1195,27 @@
           grid-column: 1;
         }
         .bol-ways-heading {
-          font-size: 30px;
+          font-size: clamp(24px, 6.5vw, 30px);
+          line-height: 1.2;
+          margin-bottom: 12px;
+        }
+        .bol-ways-subhead {
+          font-size: 15px;
+          line-height: 1.55;
+          margin-bottom: 24px;
+        }
+        .bol-card-title {
+          font-size: 18px;
+          line-height: 1.3;
+          margin: 6px 0 8px;
+        }
+        .bol-card-body {
+          font-size: 14px;
+          line-height: 1.6;
+          margin-bottom: 12px;
+        }
+        .bol-card-link {
+          font-size: 14px;
         }
       }
 
@@ -1752,6 +1779,61 @@
         }
         .bol-mirror-col:last-child {
           padding-top: 0;
+        }
+        .bol-mirror-lead {
+          font-size: clamp(1.35rem, 2.8vw, 1.8rem);
+        }
+        .bol-mirror-head {
+          font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+        }
+        .bol-mirror-col p {
+          font-size: 15px;
+          line-height: 1.65;
+        }
+        .steps-head h2 {
+          font-size: clamp(26px, 3.2vw, 34px);
+        }
+        .steps-lead {
+          font-size: 16px;
+        }
+        .steps-quote-box p {
+          font-size: 15px;
+        }
+        .step-title {
+          font-size: 1.25rem;
+        }
+        .step-desc {
+          font-size: 15px;
+        }
+        .bol-offer-title {
+          font-size: clamp(1.5rem, 2.8vw, 2rem);
+        }
+        .bol-offer-intro {
+          font-size: 15px;
+        }
+        .bol-ways-heading {
+          font-size: clamp(26px, 3.2vw, 32px);
+        }
+        .bol-ways-subhead {
+          font-size: 16px;
+        }
+        .bol-card-title {
+          font-size: 19px;
+        }
+        .bol-card-body {
+          font-size: 15px;
+        }
+        .bol-event h3 {
+          font-size: 1.25rem;
+        }
+        .bol-event p {
+          font-size: 15px;
+        }
+        .bol-closing-title {
+          font-size: clamp(26px, 3.2vw, 34px);
+        }
+        .bol-closing-desc {
+          font-size: 15px;
         }
         .bol-hero-copy {
           max-width: min(56ch, 64%);
@@ -2476,6 +2558,163 @@
           display: inline-block;
           vertical-align: middle;
         }
+
+        /* Reduced typography for sections on smaller screens, matching hero section scale */
+        .bol-mirror-lead {
+          font-size: clamp(20px, 5.5vw, 24px) !important;
+          line-height: 1.3 !important;
+          margin-bottom: 24px !important;
+        }
+        .bol-mirror-head {
+          font-size: clamp(18px, 4.8vw, 21px) !important;
+          margin-bottom: 12px !important;
+        }
+        .bol-mirror-col p {
+          font-size: 14px !important;
+          line-height: 1.6 !important;
+        }
+        .steps-head h2 {
+          font-size: clamp(24px, 6.5vw, 30px) !important;
+          line-height: 1.2 !important;
+          margin-bottom: 12px !important;
+        }
+        .steps-lead {
+          font-size: 15px !important;
+          line-height: 1.55 !important;
+        }
+        .steps-quote-box {
+          padding: 16px 20px !important;
+          margin: 0 0 32px !important;
+        }
+        .steps-quote-box p {
+          font-size: 14px !important;
+          line-height: 1.6 !important;
+        }
+        .step-num {
+          width: 32px !important;
+          height: 32px !important;
+          font-size: 14px !important;
+          margin-bottom: 14px !important;
+        }
+        .step-title {
+          font-size: 17px !important;
+          line-height: 1.3 !important;
+          margin-bottom: 8px !important;
+        }
+        .step-desc {
+          font-size: 14px !important;
+          line-height: 1.6 !important;
+          margin-bottom: 16px !important;
+        }
+        .step-link {
+          font-size: 14px !important;
+        }
+        .steps-bar-note {
+          font-size: 14px !important;
+        }
+        .bol-offer-title {
+          font-size: clamp(22px, 6vw, 28px) !important;
+          line-height: 1.2 !important;
+        }
+        .bol-offer-intro {
+          font-size: 14.5px !important;
+          line-height: 1.55 !important;
+        }
+        .bol-offer-circle {
+          width: 38px !important;
+          height: 38px !important;
+          font-size: 1.1rem !important;
+          margin-bottom: 16px !important;
+        }
+        .bol-offer-card-title {
+          font-size: 16px !important;
+          line-height: 1.35 !important;
+          margin-bottom: 8px !important;
+        }
+        .bol-offer-card-desc {
+          font-size: 14px !important;
+          line-height: 1.6 !important;
+          margin-bottom: 14px !important;
+        }
+        .bol-offer-link {
+          font-size: 13.5px !important;
+        }
+        .bol-ways-heading {
+          font-size: clamp(24px, 6.5vw, 30px) !important;
+          line-height: 1.2 !important;
+          margin-bottom: 12px !important;
+        }
+        .bol-ways-subhead {
+          font-size: 15px !important;
+          line-height: 1.55 !important;
+          margin-bottom: 24px !important;
+        }
+        .bol-card {
+          padding: 18px 20px !important;
+        }
+        .bol-card-title {
+          font-size: 18px !important;
+          line-height: 1.3 !important;
+          margin: 6px 0 8px !important;
+        }
+        .bol-card-body {
+          font-size: 14px !important;
+          line-height: 1.6 !important;
+          margin-bottom: 12px !important;
+        }
+        .bol-card-link {
+          font-size: 14px !important;
+        }
+        .bol-quote .testimonial-content p {
+          font-size: 16px !important;
+          line-height: 1.55 !important;
+        }
+        .bol-quote .author {
+          font-size: 14px !important;
+        }
+        .bol-quote .author-role {
+          font-size: 12.5px !important;
+        }
+        .bol-upcoming-title {
+          font-size: clamp(22px, 6vw, 28px) !important;
+        }
+        .bol-event h3 {
+          font-size: 17px !important;
+          line-height: 1.35 !important;
+        }
+        .bol-event p {
+          font-size: 14px !important;
+          line-height: 1.6 !important;
+        }
+        .bol-event-meta {
+          font-size: 13.5px !important;
+        }
+        .bol-event-date {
+          font-size: 15px !important;
+        }
+        .bol-event-date span {
+          font-size: 12px !important;
+        }
+        .bol-closing-title {
+          font-size: clamp(24px, 6.5vw, 30px) !important;
+          line-height: 1.2 !important;
+        }
+        .bol-closing-desc {
+          font-size: 14px !important;
+          line-height: 1.6 !important;
+        }
+        .bol-closing .bol-closing-btn {
+          font-size: 15px !important;
+          padding: 14px 24px !important;
+        }
+        .bol-motto-text {
+          font-size: clamp(22px, 6vw, 28px) !important;
+        }
+        .bol-footer li,
+        .bol-footer a,
+        .bol-footer-addr {
+          font-size: 14.5px !important;
+        }
       }
 
       @media (min-width: 480px) and (max-width: 768px) {
@@ -2799,6 +3038,12 @@
             border-color: currentColor;
           }
           @media (max-width: 1100px) {
+            .bol-offer-title {
+              font-size: clamp(1.5rem, 2.8vw, 2rem);
+            }
+            .bol-offer-intro {
+              font-size: 15px;
+            }
             .bol-offer-grid {
               grid-template-columns: repeat(2, 1fr);
               gap: 32px;
@@ -2813,16 +3058,38 @@
               align-items: flex-start;
               gap: 16px;
             }
+            .bol-offer-title {
+              font-size: clamp(22px, 6vw, 28px);
+            }
+            .bol-offer-intro {
+              font-size: 14.5px;
+              line-height: 1.55;
+            }
             .bol-offer-grid {
               grid-template-columns: 1fr;
               gap: 36px;
+            }
+            .bol-offer-circle {
+              width: 38px;
+              height: 38px;
+              font-size: 1.1rem;
+              margin-bottom: 16px;
             }
             .bol-offer-tag-slot {
               min-height: auto;
               margin-bottom: 8px;
             }
+            .bol-offer-card-title {
+              font-size: 16px;
+              margin-bottom: 8px;
+            }
             .bol-offer-card-desc {
-              margin-bottom: 18px;
+              font-size: 14px;
+              line-height: 1.6;
+              margin-bottom: 14px;
+            }
+            .bol-offer-link {
+              font-size: 13.5px;
             }
           }
         </style>
