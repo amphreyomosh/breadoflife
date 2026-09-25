@@ -146,11 +146,17 @@
         border-bottom: 1px solid var(--bol-hairline);
       }
 
-      /* HERO VEIL — default is the dark-green veil (current). .hero-cream restores
-   the original light veil for side-by-side review; remove with the review drawer. */
+      /* HERO VEIL — default is the dark-green veil (Option A). .hero-cream / .bol-hero-cream
+         provides the warm light/cream veil (Option B) for side-by-side testing and review. */
+      .bol-hero-cream,
       body.hero-cream {
         --s-hero: var(--bol-cream);
       }
+      .bol-hero-cream {
+        background: var(--bol-cream);
+        border-top: 1px solid var(--bol-hairline-soft);
+      }
+      .bol-hero-cream .bol-hero-bg::after,
       body.hero-cream .bol-hero-bg::after {
         background:
           linear-gradient(
@@ -168,44 +174,61 @@
             rgba(250, 247, 240, 0.8) 100%
           );
       }
+      .bol-hero-cream .bol-hero-title,
       body.hero-cream .bol-hero-title {
         color: var(--bol-loam);
+        text-shadow: none;
       }
+      .bol-hero-cream .bol-hero-title em,
       body.hero-cream .bol-hero-title em {
         color: var(--bol-sage);
       }
+      .bol-hero-cream .bol-hero-sub,
       body.hero-cream .bol-hero-sub {
         color: var(--bol-loam);
+        text-shadow: none;
       }
+      .bol-hero-cream .bol-hero-body,
       body.hero-cream .bol-hero-body {
         color: var(--bol-ink-soft);
+        text-shadow: none;
       }
+      .bol-hero-cream .bol-hero-actions .bol-textlink,
       body.hero-cream .bol-hero-actions .bol-textlink {
         color: var(--bol-sage);
       }
+      .bol-hero-cream .bol-hero-actions .bol-btn,
+      .bol-hero-cream .bol-hero-actions .bol-btn-primary,
       body.hero-cream .bol-hero-actions .bol-btn,
       body.hero-cream .bol-hero-actions .bol-btn-primary {
         background: var(--bol-sage);
         border-color: var(--bol-sage);
         color: #fff;
+        box-shadow: 0 4px 14px rgba(71, 101, 63, 0.2);
       }
+      .bol-hero-cream .bol-hero-actions .bol-btn:hover,
+      .bol-hero-cream .bol-hero-actions .bol-btn-primary:hover,
       body.hero-cream .bol-hero-actions .bol-btn:hover,
       body.hero-cream .bol-hero-actions .bol-btn-primary:hover {
         background: var(--bol-sage-deep);
         border-color: var(--bol-sage-deep);
         color: #fff;
       }
+      .bol-hero-cream .bol-hero-actions .bol-btn-secondary,
       body.hero-cream .bol-hero-actions .bol-btn-secondary {
         background: transparent;
         border-color: var(--bol-sage);
         color: var(--bol-sage);
+        box-shadow: none;
       }
+      .bol-hero-cream .bol-hero-actions .bol-btn-secondary:hover,
       body.hero-cream .bol-hero-actions .bol-btn-secondary:hover {
         background: var(--bol-sage);
         border-color: var(--bol-sage);
         color: #fff;
       }
       @media (max-width: 1000px) {
+        .bol-hero-cream .bol-hero-bg::after,
         body.hero-cream .bol-hero-bg::after {
           background: linear-gradient(
             to bottom,
@@ -213,6 +236,33 @@
             rgba(250, 247, 240, 0.9) 52%,
             rgba(250, 247, 240, 0.45) 100%
           );
+        }
+      }
+
+      /* 1 · PRIMARY HERO CUSTOMIZATIONS */
+      .bol-hero-primary {
+        padding-top: clamp(60px, 7vw, 116px);
+        padding-bottom: clamp(42px, 5.2vw, 76px);
+      }
+      .bol-hero-primary .bol-hero-copy {
+        max-width: min(68ch, 90%);
+      }
+      .bol-hero-primary .bol-hero-title {
+        font-size: clamp(2.15rem, 4.2vw, 3.4rem);
+        line-height: 1.12;
+      }
+      .bol-hero-primary .bol-hero-sub {
+        max-width: 60ch;
+      }
+      .bol-hero-primary .bol-hero-body {
+        max-width: 64ch;
+      }
+      .bol-hero-desktop-br {
+        display: block;
+      }
+      @media (max-width: 900px) {
+        .bol-hero-desktop-br {
+          display: none;
         }
       }
 
@@ -574,7 +624,7 @@
         isolation: isolate;
         overflow: hidden;
         background: var(--s-hero);
-        padding: clamp(40px, 5vw, 90px) 0 clamp(68px, 8vw, 124px);
+        padding: clamp(60px, 7vw, 116px) 0 clamp(42px, 5.2vw, 76px);
       }
       .bol-hero-bg {
         position: absolute;
@@ -1408,7 +1458,7 @@
         overflow: hidden;
       }
       .bol-motto .bol-shell {
-        max-width: 1440px;
+        max-width: 1300px;
         padding: 0 clamp(16px, 3.5vw, 48px);
       }
       .bol-motto-text {
@@ -2559,6 +2609,63 @@
           vertical-align: middle;
         }
 
+        /* Mobile overrides for Cream Hero (Option B) */
+        .bol-hero-cream .bol-hero-bg::after,
+        body.hero-cream .bol-hero-bg::after {
+          background: linear-gradient(
+            180deg,
+            rgba(250, 247, 240, 0.45) 0%,
+            rgba(250, 247, 240, 0.88) 45%,
+            rgba(250, 247, 240, 0.98) 85%,
+            rgba(250, 247, 240, 1) 100%
+          ) !important;
+        }
+        .bol-hero-cream .bol-hero-title,
+        .bol-hero-cream .hero h1,
+        body.hero-cream .bol-hero-title,
+        body.hero-cream .hero h1 {
+          color: var(--bol-loam) !important;
+          text-shadow: none !important;
+        }
+        .bol-hero-cream .bol-hero-title em,
+        .bol-hero-cream .hero h1 em,
+        body.hero-cream .bol-hero-title em,
+        body.hero-cream .hero h1 em {
+          color: var(--bol-sage) !important;
+        }
+        .bol-hero-cream .bol-hero-sub,
+        .bol-hero-cream .lede,
+        body.hero-cream .bol-hero-sub,
+        body.hero-cream .lede {
+          color: var(--bol-loam) !important;
+          text-shadow: none !important;
+        }
+        .bol-hero-cream .bol-hero-body,
+        .bol-hero-cream .support,
+        body.hero-cream .bol-hero-body,
+        body.hero-cream .support {
+          color: var(--bol-ink-soft) !important;
+          text-shadow: none !important;
+        }
+        .bol-hero-cream .bol-hero-actions .bol-btn-secondary,
+        .bol-hero-cream .btn-secondary,
+        body.hero-cream .bol-hero-actions .bol-btn-secondary,
+        body.hero-cream .btn-secondary {
+          background: transparent !important;
+          border-color: var(--bol-sage) !important;
+          color: var(--bol-sage) !important;
+        }
+        .bol-hero-cream .bol-hero-actions .bol-btn-secondary:active,
+        .bol-hero-cream .bol-hero-actions .bol-btn-secondary:hover,
+        .bol-hero-cream .btn-secondary:active,
+        body.hero-cream .bol-hero-actions .bol-btn-secondary:active,
+        body.hero-cream .bol-hero-actions .bol-btn-secondary:hover,
+        body.hero-cream .btn-secondary:active {
+          background: var(--bol-sage) !important;
+          border-color: var(--bol-sage) !important;
+          color: #fff !important;
+        }
+
         /* Reduced typography for sections on smaller screens, matching hero section scale */
         .bol-mirror-lead {
           font-size: clamp(20px, 5.5vw, 24px) !important;
@@ -2767,7 +2874,7 @@
 
     <main id="top">
       <!-- 1 · HERO -->
-      <section class="bol-hero hero">
+      <section class="bol-hero hero bol-hero-primary" id="hero-primary">
         <div class="bol-hero-bg" aria-hidden="true">
           <img
             src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=80"
@@ -2778,41 +2885,20 @@
         <div class="bol-shell bol-hero-grid">
           <div class="bol-hero-copy hero-content">
             <h1 class="bol-hero-title">
-              Listen deeply.<br class="bol-hero-br-mobile" /><em>Live courageously.</em>
+              Listen deeply.<br /><em>Live courageously.</em>
             </h1>
             <p class="bol-hero-sub lede">
-              A place to explore the sacred, deepen your life, and belong,
-              whatever your tradition, background, or starting point.
+              A place to explore the sacred, deepen your life, and belong, <br class="bol-hero-desktop-br" />whatever your tradition, background, or starting point.
             </p>
             <p class="bol-hero-body support">
-              Life moves quickly. Bread of Life offers space to slow down, pay
-              attention, and explore what gives your life meaning. Through
-              community, reflection, spiritual practice, and conversation, we
-              create room for people to become more fully themselves and more
-              fully present to the world around them.
+              Life moves quickly. Bread of Life offers space to slow down, pay attention, <br class="bol-hero-desktop-br" />and explore what gives your life meaning. Through community, reflection, <br class="bol-hero-desktop-br" />spiritual practice, and conversation, we create room for people to become <br class="bol-hero-desktop-br" />more fully themselves and more fully present to the world around them.
             </p>
             <div class="bol-hero-actions cta-group">
               <a
                 class="bol-btn bol-btn-primary btn btn-primary"
                 href="find-a-spiritual-director.html"
+                >Find a Spiritual Director</a
               >
-                Find a Spiritual Director
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M3 8H13M13 8L9 4M13 8L9 12"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
               <a
                 class="bol-btn bol-btn-secondary btn btn-secondary"
                 href="workshops.html"
@@ -2866,7 +2952,7 @@
       <section class="steps" id="guide">
         <div class="steps-shell">
           <div class="steps-head">
-            <h2>There are many ways to begin.</h2>
+            <h2>Here is the whole path.</h2>
             <p class="steps-lead">
               You don’t have to know exactly what you’re looking for. Come with
               curiosity, and see what opens up.
