@@ -22,6 +22,12 @@
         --bol-display: "Fraunces", Georgia, serif;
         --bol-body: "Karla", system-ui, -apple-system, sans-serif;
         --bol-rhythm: clamp(76px, 9vw, 136px);
+        --bg: #ffffff;
+        --gold: #c9a25e;
+        --ink: #2c2a29;
+        --border: #e2ded6;
+        --card: #ffffff;
+        --muted: #7a7570;
       }
       * {
         box-sizing: border-box;
@@ -54,7 +60,7 @@
         display: block;
       }
       .wrap {
-        max-width: 1120px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 0 24px;
       }
@@ -96,12 +102,12 @@
         position: sticky;
         top: 0;
         z-index: 20;
-        background: rgba(250, 247, 240, 0.96);
+        background: #ffffff;
         backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--hairline);
       }
       .bol-shell {
-        max-width: 1180px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 0 22px;
       }
@@ -491,7 +497,7 @@
         font-size: 1.05rem;
         line-height: 1.7;
         max-width: 640px;
-        margin: 0 auto 30px;
+        margin: 0 auto;
       }
       .hero-actions {
         display: flex;
@@ -567,126 +573,549 @@
         line-height: 1.6;
       }
 
-      /* ---- Intro section ---- */
-      .intro-section {
-        background: var(--cream);
+      /* ---- Interactive Workshop Index & Listing ---- */
+      .workshop-index-section {
+        background: var(--bg);
         border-top: 1px solid var(--hairline);
-        padding: var(--bol-rhythm) 0 0;
+        padding: clamp(48px, 6vw, 88px) 0 clamp(64px, 8vw, 112px);
       }
-      .intro-section .wrap {
-        background: transparent;
+      .workshop-index-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
       }
-      .intro-section h2 {
-        font-size: clamp(1.7rem, 3.2vw, 2.3rem);
-        margin-bottom: 12px;
+      header.page {
+        margin-bottom: 1.75rem;
       }
-      .intro-section p {
-        font-size: 1.1rem;
-        line-height: 1.65;
-        color: #6e6459;
-        max-width: 60ch;
-        margin: 0;
+      header.page h2 {
+        font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+        font-weight: 500;
+        line-height: 1.15;
+        max-width: 28ch;
+        color: var(--ink);
+      }
+      header.page p {
+        color: var(--muted);
+        max-width: 56ch;
+        margin: 0.65rem 0 0;
+        font-size: 1.02rem;
+        line-height: 1.6;
+      }
+      .counter {
+        display: inline-block;
+        margin-top: 1.1rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+      }
+      .counter b {
+        color: var(--gold);
       }
 
-      /* ---- Workshop list (event row) ---- */
-      .workshop-list {
-        border-top: 1px solid var(--hairline);
-        max-width: 1100px;
-        margin: 16px auto 0;
-      }
-      .workshop-row {
-        display: grid;
-        grid-template-columns: 96px minmax(0, 1fr) 176px;
-        gap: clamp(18px, 2.4vw, 34px);
+      /* Underline Tab Bar (All / For you / Today / This weekend) */
+      .scope-tabs {
+        display: flex;
         align-items: center;
-        padding: 16px 0;
-        border-top: 1px solid var(--hairline);
-        text-decoration: none;
-        color: inherit;
+        gap: 1.75rem;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 1.5rem;
+        overflow-x: auto;
       }
-      .workshop-row:last-child {
-        border-bottom: 1px solid var(--hairline);
+      .scope-tab {
+        position: relative;
+        border: none;
+        background: transparent;
+        padding: 0.65rem 0 0.8rem;
+        font-family: inherit;
+        font-size: 0.96rem;
+        font-weight: 600;
+        color: var(--muted);
+        cursor: pointer;
+        white-space: nowrap;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        transition:
+          color 0.16s ease,
+          border-color 0.16s ease;
       }
-      @media (max-width: 640px) {
-        .workshop-row {
-          grid-template-columns: 1fr;
-          gap: 10px;
-        }
+      .scope-tab:hover {
+        color: var(--ink);
       }
-      .row-date {
+      .scope-tab.active {
+        color: var(--sage);
+        border-bottom-color: var(--sage);
+      }
+      .scope-tab:focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      .controls {
+        margin-top: 1.25rem;
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        font-family: var(--bol-display);
-        font-size: 1.15rem;
-        color: var(--loam);
-        line-height: 1.3;
+        gap: 0.85rem;
       }
-      .row-date .day {
-        font-size: inherit;
-      }
-      .row-date .month-weekday {
-        font-size: 13px;
-        font-family: var(--bol-body);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #6e6459;
-        font-weight: 600;
-      }
-      .row-body h3 {
-        font-size: 1.28rem;
-        margin-bottom: 8px;
-      }
-      .row-body p {
-        font-size: 1.1rem;
-        line-height: 1.65;
-        color: #6e6459;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        margin: 0;
-      }
-      .row-meta {
-        font-size: 14px;
-        color: #6e6459;
-        line-height: 1.5;
-        margin-top: 6px;
+      .search-row {
         display: flex;
-        gap: 8px;
+        gap: 0.6rem;
+        flex-wrap: wrap;
       }
-      .row-meta .tag {
-        border: 0;
-        padding: 0;
-        font-size: inherit;
+      .controls input[type="search"] {
+        flex: 1;
+        min-width: 220px;
+        padding: 0.7rem 0.95rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: var(--card);
+        font-family: inherit;
+        font-size: 0.95rem;
+        color: var(--ink);
       }
-      .row-media {
-        width: 100%;
-        min-width: 0;
-        aspect-ratio: 1 / 1;
+      .controls input[type="search"]:focus {
+        outline: 2px solid var(--gold);
+        outline-offset: 1px;
+      }
+      .controls select {
+        padding: 0.7rem 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: var(--card);
+        font-family: inherit;
+        font-size: 0.92rem;
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .controls select:focus {
+        outline: 2px solid var(--gold);
+        outline-offset: 1px;
+      }
+
+      .pill-row {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .pill {
+        padding: 0.45rem 1rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        font-family: inherit;
+        font-size: 0.86rem;
+        font-weight: 500;
+        cursor: pointer;
+        color: var(--ink);
+        white-space: nowrap;
+        transition:
+          background 0.16s ease,
+          color 0.16s ease,
+          border-color 0.16s ease;
+      }
+      .pill:hover {
+        border-color: var(--ink);
+      }
+      .pill.active {
+        background: var(--ink);
+        color: var(--bg);
+        border-color: var(--ink);
+      }
+      .pill:focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 2px;
+      }
+
+      .view-toggle {
+        margin-left: auto;
+        display: flex;
+        border: 1px solid var(--border);
+        border-radius: 4px;
         overflow: hidden;
-        border-radius: 2px;
-        background: #f5f0e8;
       }
-      .row-media img {
-        display: block;
+      .view-toggle button {
+        border: none;
+        background: var(--card);
+        padding: 0.5rem 1rem;
+        font-family: inherit;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        color: var(--muted);
+        white-space: nowrap;
+        transition:
+          background 0.16s ease,
+          color 0.16s ease;
+      }
+      .view-toggle button.active {
+        background: var(--gold);
+        color: #fff;
+      }
+
+      /* grid view */
+      #grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 1.75rem;
+        margin-top: 2rem;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 6px 22px rgba(44, 42, 41, 0.05);
+        transition:
+          transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(44, 42, 41, 0.09);
+      }
+      .card-media {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        min-height: 215px;
+        background: #f4eee2;
+        overflow: hidden;
+        position: relative;
+      }
+      .card-media img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        display: block;
       }
-      .workshop-row:hover .row-body h3 {
-        text-decoration: underline;
-        text-underline-offset: 5px;
-        text-decoration-thickness: 1px;
-      }
-      .workshop-more {
+      .card-body {
+        padding: 1.4rem 1.5rem 1.55rem;
         display: flex;
-        justify-content: center;
-        padding-top: 28px;
+        flex-direction: column;
+        gap: 0.65rem;
+        flex: 1;
       }
-      .workshop-more .btn-text {
-        color: var(--deep-sage);
-        border-bottom-color: var(--deep-sage);
+      .tag-row {
+        display: flex;
+        gap: 0.45rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 0.28rem 0.72rem;
+        border-radius: 4px;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+      }
+      .status-badge.opened {
+        background: #eaf2e8;
+        color: #2f4b2a;
+      }
+      .status-badge.full {
+        background: #fbeee9;
+        color: #9e4229;
+      }
+      .status-badge.closed {
+        background: #f1efeb;
+        color: #635c54;
+      }
+      .tag {
+        font-size: 0.76rem;
+        padding: 0.24rem 0.6rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .tag.cat {
+        background: #f4eee2;
+        border-color: #ebdfc6;
+        color: #8a6b2e;
+      }
+      .card h3 {
+        font-size: 1.32rem;
+        font-weight: 600;
+        line-height: 1.28;
+        color: var(--ink);
+        margin-top: 0.15rem;
+      }
+      .card .excerpt {
+        color: var(--muted);
+        font-size: 0.96rem;
+        line-height: 1.6;
+      }
+      .meta {
+        font-size: 0.92rem;
+        color: var(--ink);
+        display: flex;
+        flex-direction: column;
+        gap: 0.28rem;
+        margin-top: 0.25rem;
+        font-variant-numeric: tabular-nums;
+      }
+      .meta-date {
+        font-weight: 600;
+        color: var(--ink);
+        font-size: 0.95rem;
+      }
+      .meta-location {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .meta-facilitator {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      .meta-cost {
+        font-weight: 700;
+        color: var(--ink);
+        font-size: 0.98rem;
+        margin-top: 0.15rem;
+      }
+      .card-actions {
+        display: flex;
+        gap: 0.7rem;
+        margin-top: auto;
+        padding-top: 0.85rem;
+      }
+      .card-actions .btn,
+      .row-actions .btn,
+      .modal-actions .btn {
+        font-family: inherit;
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 0.58rem 0.95rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        background: transparent;
+        cursor: pointer;
+        color: var(--ink);
+        text-decoration: none;
+        text-align: center;
+        white-space: nowrap;
+        transition:
+          background 0.16s ease,
+          border-color 0.16s ease,
+          color 0.16s ease;
+      }
+      .card-actions .btn:hover,
+      .row-actions .btn:hover,
+      .modal-actions .btn:hover {
+        border-color: var(--ink);
+      }
+      .btn.primary {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: #fff;
+        flex: 1;
+      }
+      .btn.primary:hover {
+        background: #b58d47;
+        border-color: #b58d47;
+        color: #fff;
+      }
+      .btn.ghost {
+        flex: 1;
+        background: var(--card);
+      }
+      .btn.disabled {
+        background: var(--border);
+        border-color: var(--border);
+        color: var(--muted);
+        flex: 1;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      /* calendar/list view */
+      #calendar {
+        margin-top: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0 1.25rem;
+      }
+      .row {
+        display: flex;
+        gap: 1.1rem;
+        align-items: center;
+        padding: 1.1rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .row:last-child {
+        border-bottom: none;
+      }
+      .date-badge {
+        flex: 0 0 64px;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+      }
+      .date-badge .mon {
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .date-badge .day {
+        font-family: "Fraunces", serif;
+        font-size: 1.65rem;
+        line-height: 1.1;
+        color: var(--gold);
+      }
+      .row-main {
+        flex: 1;
+        min-width: 0;
+      }
+      .row-main h3 {
+        font-size: 1.08rem;
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .row-sub {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 0.25rem;
+      }
+      .row-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex: 0 0 auto;
+      }
+      .row-actions .btn {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.82rem;
+        flex: 0 0 auto;
+      }
+
+      .empty {
+        color: var(--muted);
+        text-align: center;
+        padding: 3rem 1rem;
+        font-size: 0.95rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        margin-top: 1.75rem;
+      }
+
+      /* modal */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(44, 42, 41, 0.52);
+        display: none;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 6vh 1rem;
+        overflow-y: auto;
+        z-index: 2000;
+      }
+      .modal-backdrop.open {
+        display: flex;
+      }
+      .modal {
+        background: var(--card);
+        border-radius: 4px;
+        max-width: 560px;
+        width: 100%;
+        padding: 1.75rem;
+        margin-top: env(safe-area-inset-top, 0px);
+        box-shadow: 0 24px 48px rgba(20, 18, 15, 0.2);
+      }
+      .modal-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      .modal h2 {
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 1.22;
+        color: var(--ink);
+      }
+      .modal-close {
+        border: none;
+        background: transparent;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--muted);
+        padding: 0.2rem 0.45rem;
+        border-radius: 4px;
+      }
+      .modal-close:hover {
+        color: var(--ink);
+        background: var(--bg);
+      }
+      .modal-section {
+        margin-top: 1.1rem;
+      }
+      .modal-section h4 {
+        font-size: 0.75rem;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+        margin: 0 0 0.3rem;
+        font-family: "Karla", sans-serif;
+        font-weight: 600;
+      }
+      .modal-section p {
+        margin: 0;
+        font-size: 0.93rem;
+        line-height: 1.55;
+        color: var(--ink);
+      }
+      .modal-facilitator {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        margin-top: 0.35rem;
+      }
+      .avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 4px;
+        background: var(--gold);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Fraunces", serif;
+        font-size: 1.05rem;
+        flex-shrink: 0;
+      }
+      .modal-actions {
+        margin-top: 1.4rem;
+        display: flex;
+        gap: 0.7rem;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 560px) {
+        .row {
+          flex-wrap: wrap;
+        }
+        .row-actions {
+          width: 100%;
+          justify-content: flex-start;
+          margin-top: 0.4rem;
+        }
+        .view-toggle {
+          margin-left: 0;
+        }
       }
 
       /* ---- Workshop quote ---- */
@@ -1122,277 +1551,114 @@
       <div class="wrap">
         <div class="hero-content">
           <div class="eyebrow">WORKSHOPS · IN PERSON &amp; ONLINE</div>
-          <h1>Two hours, <em>no background required.</em></h1>
+          <h1>Workshops &amp; <em>Gatherings</em></h1>
           <p>
-            Short, single-session workshops on contemplative prayer, grief,
-            discernment, and listening. Come to one and none of the others.
+            Paths for contemplative practice, spiritual direction, and community
+            formation — gathered in one place so you can find what fits your
+            season.
           </p>
-          <div class="hero-actions">
-            <a href="#workshop-list" class="btn btn-primary"
-              >Browse Workshops (6)</a
-            >
-            <a href="events.html" class="hero-link">See the full calendar</a>
-          </div>
         </div>
       </div>
     </section>
 
-    <section class="value-strip">
-      <div class="wrap value-grid">
-        <div class="value-item">
-          <h3>No prerequisites</h3>
-          <p>
-            Come to one and none of the others. Nothing to prepare in advance.
-          </p>
+    <section class="workshop-index-section" id="workshop-list">
+      <div class="workshop-index-wrap">
+        <nav class="scope-tabs" id="scopeTabs" aria-label="Workshop time and curation tabs">
+          <button class="scope-tab active" data-scope="All">All</button>
+          <button class="scope-tab" data-scope="For you">For you</button>
+          <button class="scope-tab" data-scope="Today">Today</button>
+          <button class="scope-tab" data-scope="This weekend">This weekend</button>
+        </nav>
+
+        <header class="page">
+          <h2 id="scopeHeading">All Gatherings</h2>
+          <span class="counter"
+            ><b id="counterNum">0</b> Upcoming Gatherings</span
+          >
+        </header>
+
+        <div class="controls">
+          <div class="search-row">
+            <input
+              type="search"
+              id="search"
+              placeholder="Search by title, facilitator, or location"
+              aria-label="Search workshops"
+            />
+            <select id="formatFilter" aria-label="Filter by format">
+              <option value="All">All Formats</option>
+              <option value="In-Person">In-Person</option>
+              <option value="Online (Zoom)">Online (Zoom)</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+          <div class="pill-row" id="pillRow">
+            <button class="pill active" data-cat="All">All</button>
+            <button class="pill" data-cat="Retreats">Retreats</button>
+            <button class="pill" data-cat="Spiritual Direction">
+              Spiritual Direction
+            </button>
+            <button class="pill" data-cat="Weekly Groups">Weekly Groups</button>
+            <button class="pill" data-cat="Leadership">Leadership</button>
+            <div class="view-toggle">
+              <button id="gridBtn" class="active">Grid</button>
+              <button id="calBtn">Calendar</button>
+            </div>
+          </div>
         </div>
-        <div class="value-item">
-          <h3>Two hours</h3>
-          <p>Most sessions run a single two-hour block, in person or online.</p>
-        </div>
-        <div class="value-item">
-          <h3>Pay-what-you-can</h3>
-          <p>Cost is never meant to be a barrier to attending.</p>
-        </div>
-      </div>
-    </section>
 
-    <section class="intro-section">
-      <div class="wrap">
-        <h2>Coming up</h2>
-        <p>
-          Short, single-session workshops on contemplative prayer, grief,
-          discernment, and listening. Come to one and none of the others.
-        </p>
-      </div>
-    </section>
-
-    <section class="wrap" id="workshop-list">
-      <div class="workshop-list">
-        <a class="workshop-row" href="sitting-with-grief.html">
-          <div class="row-date">
-            <div class="day">6</div>
-            <div class="month-weekday">Sep · Sat</div>
-          </div>
-          <div class="row-body">
-            <h3>Sitting with Grief</h3>
-            <p>A half day for people carrying a loss, recent or long held.</p>
-            <div class="row-meta">
-              <span class="tag">In Person</span><span>Sacramento · 9:00am</span>
-            </div>
-          </div>
-          <div class="row-action">
-            <div class="row-media">
-              <img
-                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80"
-                alt="Hands writing in a journal"
-              />
-            </div>
-          </div>
-        </a>
-
-        <a class="workshop-row" href="discernment-next-step.html">
-          <div class="row-date">
-            <div class="day">18</div>
-            <div class="month-weekday">Sep · Thu</div>
-          </div>
-          <div class="row-body">
-            <h3>Discernment When the Next Step Is Unclear</h3>
-            <p>Practices for a decision you have been carrying a while.</p>
-            <div class="row-meta">
-              <span class="tag">Online</span><span>7:00pm</span>
-            </div>
-          </div>
-          <div class="row-action">
-            <div class="row-media">
-              <img
-                src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=400&q=80"
-                alt="Desert landscape trail in warm morning light"
-              />
-            </div>
-          </div>
-        </a>
-
-        <a class="workshop-row" href="workshops.html#workshop-list">
-          <div class="row-date">
-            <div class="day">2</div>
-            <div class="month-weekday">Oct · Thu</div>
-          </div>
-          <div class="row-body">
-            <h3>Listen to Your Life: Autumn Cohort Opens</h3>
-            <p>
-              Six weeks, small group, facilitated. Registration closes when the
-              group fills.
-            </p>
-            <div class="row-meta">
-              <span class="tag">In Person</span><span>Sacramento · 6:00pm</span>
-            </div>
-          </div>
-          <div class="row-action">
-            <div class="row-media">
-              <img
-                src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=400&q=80"
-                alt="Wildflowers blooming along a sunny woodland meadow"
-              />
-            </div>
-          </div>
-        </a>
-
-        <a class="workshop-row" href="workshops.html#workshop-list">
-          <div class="row-date">
-            <div class="day">14</div>
-            <div class="month-weekday">Oct · Tue</div>
-          </div>
-          <div class="row-body">
-            <h3>Introduction to Centering Prayer</h3>
-            <p>
-              A gentle entry point into wordless, contemplative sitting
-              practice.
-            </p>
-            <div class="row-meta">
-              <span class="tag">Online</span><span>7:00pm</span>
-            </div>
-          </div>
-          <div class="row-action">
-            <div class="row-media">
-              <img
-                src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=400&q=80"
-                alt="Trail winding through open nature landscape"
-              />
-            </div>
-          </div>
-        </a>
-
-        <a class="workshop-row" href="workshops.html#workshop-list">
-          <div class="row-date">
-            <div class="day">8</div>
-            <div class="month-weekday">Nov · Sat</div>
-          </div>
-          <div class="row-body">
-            <h3>A Season of Letting Go</h3>
-            <p>
-              A workshop on release, for whatever season is asking you to set
-              something down.
-            </p>
-            <div class="row-meta">
-              <span class="tag">In Person</span><span>Sacramento · 9:00am</span>
-            </div>
-          </div>
-          <div class="row-action">
-            <div class="row-media">
-              <img
-                src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80"
-                alt="Sunlight filtering through tall forest trees and roots"
-              />
-            </div>
-          </div>
-        </a>
-
-        <a class="workshop-row" href="workshops.html#workshop-list">
-          <div class="row-date">
-            <div class="day">21</div>
-            <div class="month-weekday">Nov · Fri</div>
-          </div>
-          <div class="row-body">
-            <h3>Contemplative Prayer for Beginners</h3>
-            <p>
-              Two hours on sitting quietly with attention. No background
-              assumed.
-            </p>
-            <div class="row-meta">
-              <span class="tag">In Person</span><span>Sacramento · 6:30pm</span>
-            </div>
-          </div>
-          <div class="row-action">
-            <div class="row-media">
-              <img
-                src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=400&q=80"
-                alt="A quiet room with sunlight"
-              />
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="workshop-more">
-        <a href="events.html" class="btn btn-text"
-          >View more available workshops</a
-        >
-      </div>
-    </section>
-
-    <section class="workshop-quote">
-      <div class="workshop-quote-card">
-        <span class="workshop-quote-mark left">&#8220;</span>
-        <span class="workshop-quote-mark right">&#8220;</span>
-        <div class="workshop-quote-content">
-          <p>
-            I came for one evening and left with a practice I could carry into
-            the rest of the week.
-          </p>
-          <div class="workshop-quote-author">A workshop participant</div>
+        <div id="grid"></div>
+        <div id="calendar" style="display: none"></div>
+        <div id="emptyState" class="empty" style="display: none">
+          No workshops match your search — try a different category or clear
+          your filters.
         </div>
       </div>
     </section>
 
-    <section class="workshop-faq" id="faq-section">
-      <div class="workshop-faq-inner">
-        <div class="workshop-faq-head">
-          <span class="eyebrow">Frequently Asked</span>
-          <h2>Workshop questions</h2>
+    <div class="modal-backdrop" id="modalBackdrop">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+        <div class="modal-top">
+          <h2 id="mTitle"></h2>
+          <button class="modal-close" id="mClose" aria-label="Close">×</button>
         </div>
-        <details class="workshop-faq-item">
-          <summary>
-            <span>Do I need any previous experience?</span>
-            <span class="workshop-faq-chevron" aria-hidden="true"></span>
-          </summary>
-          <p>
-            No. Our workshops are designed for beginners and experienced
-            practitioners alike. Come as you are, with no preparation required.
-          </p>
-        </details>
-        <details class="workshop-faq-item">
-          <summary>
-            <span>Do I need to be religious or Christian?</span>
-            <span class="workshop-faq-chevron" aria-hidden="true"></span>
-          </summary>
-          <p>
-            No. Bread of Life welcomes people of every faith background, as well
-            as people who are spiritual but not religious or still questioning.
-          </p>
-        </details>
-        <details class="workshop-faq-item">
-          <summary>
-            <span>Are workshops offered in person or online?</span>
-            <span class="workshop-faq-chevron" aria-hidden="true"></span>
-          </summary>
-          <p>
-            Both. Each listing includes the format and location so you can
-            choose the setting that works best for you.
-          </p>
-        </details>
-        <details class="workshop-faq-item">
-          <summary>
-            <span>What should I bring?</span>
-            <span class="workshop-faq-chevron" aria-hidden="true"></span>
-          </summary>
-          <p>
-            Just yourself and anything that helps you settle in. We provide the
-            prompts and guidance, and there is never required reading
-            beforehand.
-          </p>
-        </details>
-        <details class="workshop-faq-item">
-          <summary>
-            <span>How much does a workshop cost?</span>
-            <span class="workshop-faq-chevron" aria-hidden="true"></span>
-          </summary>
-          <p>
-            Workshops are pay-what-you-can. Cost is never meant to be a barrier
-            to attending, and you can reach out if you need help deciding what
-            to contribute.
-          </p>
-        </details>
+        <div class="modal-section"><p id="mExcerpt"></p></div>
+        <div class="modal-section">
+          <h4>Facilitator</h4>
+          <div class="modal-facilitator">
+            <div class="avatar" id="mAvatar"></div>
+            <div>
+              <div id="mFacilitator" style="font-weight: 600"></div>
+              <div id="mBio" style="font-size: 0.85rem; color: var(--muted)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-section">
+          <h4>Details</h4>
+          <p id="mDate"></p>
+          <p id="mLocation"></p>
+          <p id="mCost"></p>
+        </div>
+        <div class="modal-actions">
+          <a
+            class="btn primary"
+            id="mRegister"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            >Register</a
+          >
+          <a
+            class="btn ghost"
+            id="mCal"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            >Add to Google Calendar</a
+          >
+        </div>
       </div>
-    </section>
+    </div>
 
     <section class="cta-band">
       <div class="wrap">
@@ -1583,6 +1849,427 @@
             });
           });
       })();
+
+      const workshops = [
+        {
+          id: "workshop-1",
+          title: "Cultivating Inner Quiet: A Contemplative Retreat",
+          category: "Retreats",
+          format: "In-Person",
+          date: "Oct 14 – 16, 2026",
+          startDate: "2026-10-14T09:00:00",
+          endDate: "2026-10-16T16:00:00",
+          time: "9:00 AM – 4:00 PM PST",
+          facilitator: "Sr. Clare Joseph",
+          facilitatorBio:
+            "Sr. Clare has walked alongside spiritual seekers for over 25 years, guiding silent retreats and contemplative prayer circles.",
+          location: "Sacramento Center — Main Sanctuary",
+          cost: "$150 (Sliding Scale Available)",
+          status: "Opened",
+          seatsLeft: 4,
+          scopes: ["All", "For you", "This weekend"],
+          image: "/src/assets/images/workshop_retreat_sanctuary_1790374222602.jpg",
+          excerpt:
+            "A weekend dedicated to silence, guided reflection, and restoring spiritual clarity through ancient contemplative practices.",
+          registrationUrl:
+            "https://www.breadoflife.org/register/cultivating-inner-quiet",
+        },
+        {
+          id: "workshop-2",
+          title: "Spiritual Direction Foundations",
+          category: "Spiritual Direction",
+          format: "Online (Zoom)",
+          date: "Nov 2, 2026",
+          startDate: "2026-11-02T18:30:00",
+          endDate: "2026-11-02T20:00:00",
+          time: "6:30 PM – 8:00 PM PST",
+          facilitator: "David Sterling, M.Div",
+          facilitatorBio:
+            "Author and master spiritual director specializing in contemplative listening and community formation.",
+          location: "Virtual Zoom Room",
+          cost: "$45",
+          status: "Opened",
+          seatsLeft: 12,
+          scopes: ["All", "For you", "Today"],
+          image: "/src/assets/images/workshop_spiritual_direction_1790374234054.jpg",
+          excerpt:
+            "Learn the core principles of deep listening and walking alongside others in their personal faith journey.",
+          registrationUrl:
+            "https://www.breadoflife.org/register/spiritual-direction",
+        },
+        {
+          id: "workshop-3",
+          title: "Weekly Morning Prayer Circle",
+          category: "Weekly Groups",
+          format: "Hybrid",
+          date: "Every Tuesday",
+          startDate: "2026-10-06T07:00:00",
+          endDate: "2026-10-06T08:00:00",
+          time: "7:00 AM – 8:00 AM PST",
+          facilitator: "Deacon Marcus Reyes",
+          facilitatorBio:
+            "Deacon Marcus has led the Tuesday prayer circle since its founding in 2019, drawing on Ignatian and centering-prayer traditions.",
+          location: "Sacramento Center Chapel + Zoom",
+          cost: "Free",
+          status: "Opened",
+          seatsLeft: 20,
+          scopes: ["All", "For you", "Today"],
+          image: "/src/assets/images/workshop_morning_prayer_1790374245871.jpg",
+          excerpt:
+            "Begin the week grounded — a quiet half hour of shared scripture and silence, open to newcomers any Tuesday.",
+          registrationUrl: "https://www.breadoflife.org/register/morning-prayer",
+        },
+        {
+          id: "workshop-4",
+          title: "Leading with Presence: A Workshop for Ministry Leaders",
+          category: "Leadership",
+          format: "In-Person",
+          date: "Nov 18, 2026",
+          startDate: "2026-11-18T10:00:00",
+          endDate: "2026-11-18T15:00:00",
+          time: "10:00 AM – 3:00 PM PST",
+          facilitator: "Rev. Dr. Amara Okonkwo",
+          facilitatorBio:
+            "Rev. Dr. Okonkwo trains ministry leaders across the diocese in contemplative approaches to pastoral care.",
+          location: "Sacramento Center — Fellowship Hall",
+          cost: "$85",
+          status: "Opened",
+          seatsLeft: 2,
+          scopes: ["All", "For you", "This weekend"],
+          image: "/src/assets/images/workshop_leadership_presence_1790374255392.jpg",
+          excerpt:
+            "A day for those who lead others to slow down, reflect on their own formation, and return to their communities renewed.",
+          registrationUrl:
+            "https://www.breadoflife.org/register/leading-with-presence",
+        },
+        {
+          id: "workshop-5",
+          title: "Centering Prayer Intensive",
+          category: "Retreats",
+          format: "In-Person",
+          date: "Oct 3, 2026",
+          startDate: "2026-10-03T09:00:00",
+          endDate: "2026-10-03T16:00:00",
+          time: "9:00 AM – 4:00 PM PST",
+          facilitator: "Sr. Clare Joseph",
+          facilitatorBio:
+            "Sr. Clare has walked alongside spiritual seekers for over 25 years, guiding silent retreats and contemplative prayer circles.",
+          location: "Sacramento Center — Main Sanctuary",
+          cost: "$60",
+          status: "Full",
+          seatsLeft: 0,
+          scopes: ["All", "This weekend"],
+          image: "/src/assets/images/workshop_centering_prayer_1790374264644.jpg",
+          excerpt:
+            "A one-day deep dive into the practice of centering prayer, with extended silence and guided instruction.",
+          registrationUrl:
+            "https://www.breadoflife.org/register/centering-prayer-intensive",
+        },
+        {
+          id: "workshop-6",
+          title: "Advent Reflection Evening",
+          category: "Weekly Groups",
+          format: "Online (Zoom)",
+          date: "Aug 12, 2026",
+          startDate: "2026-08-12T18:00:00",
+          endDate: "2026-08-12T19:30:00",
+          time: "6:00 PM – 7:30 PM PST",
+          facilitator: "Deacon Marcus Reyes",
+          facilitatorBio:
+            "Deacon Marcus has led the Tuesday prayer circle since its founding in 2019, drawing on Ignatian and centering-prayer traditions.",
+          location: "Virtual Zoom Room",
+          cost: "Free",
+          status: "Closed",
+          seatsLeft: 0,
+          scopes: ["All", "Today"],
+          image: "/bread-grain-burlap.webp",
+          excerpt:
+            "An evening of shared reflection to open the Advent season together, online.",
+          registrationUrl:
+            "https://www.breadoflife.org/register/advent-reflection",
+        },
+      ];
+
+      let activeScope = "All",
+        activeCat = "All",
+        activeFormat = "All",
+        query = "",
+        viewMode = "grid";
+
+      function initials(name) {
+        return name
+          .replace(/^(Sr\.|Rev\.|Dr\.|Deacon)\s+/i, "")
+          .split(" ")
+          .slice(0, 2)
+          .map((w) => w[0])
+          .join("")
+          .toUpperCase();
+      }
+
+      function formatMonthDay(startDate) {
+        const d = new Date(startDate);
+        return {
+          mon: d.toLocaleString("en-US", { month: "short" }).toUpperCase(),
+          day: d.getDate(),
+        };
+      }
+
+      function getStatus(w) {
+        if (w.status) return w.status;
+        if (new Date(w.endDate) < new Date()) return "Closed";
+        if (w.seatsLeft === 0) return "Full";
+        return "Opened";
+      }
+
+      function filtered() {
+        return workshops.filter((w) => {
+          if (
+            activeScope !== "All" &&
+            (!w.scopes || !w.scopes.includes(activeScope))
+          )
+            return false;
+          if (activeCat !== "All" && w.category !== activeCat) return false;
+          if (activeFormat !== "All" && w.format !== activeFormat) return false;
+          if (query) {
+            const q = query.toLowerCase();
+            const hay = (
+              w.title +
+              " " +
+              w.facilitator +
+              " " +
+              w.location +
+              " " +
+              w.excerpt
+            ).toLowerCase();
+            if (!hay.includes(q)) return false;
+          }
+          return true;
+        });
+      }
+
+      function render() {
+        const list = filtered();
+        document.getElementById("counterNum").textContent = list.length;
+        document.getElementById("emptyState").style.display = list.length
+          ? "none"
+          : "block";
+        document.getElementById("grid").style.display =
+          viewMode === "grid" && list.length ? "grid" : "none";
+        document.getElementById("calendar").style.display =
+          viewMode === "cal" && list.length ? "flex" : "none";
+
+        document.getElementById("grid").innerHTML = list
+          .map((w) => {
+            const status = getStatus(w);
+            const statusClass = status.toLowerCase();
+            const isOpen = status === "Opened";
+            return `
+    <div class="card" id="card-${w.id}">
+      <div class="card-media">
+        <img src="${w.image}" alt="${w.title}" referrerpolicy="no-referrer" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <div class="tag-row">
+          <span class="status-badge ${statusClass}">${status}</span>
+          <span class="tag cat">${w.category}</span>
+          <span class="tag">${w.format}</span>
+        </div>
+        <h3>${w.title}</h3>
+        <p class="excerpt">${w.excerpt}</p>
+        <div class="meta">
+          <span class="meta-date">${w.date} • ${w.time}</span>
+          <span class="meta-location">${w.location}</span>
+          <span class="meta-facilitator">Facilitated by ${w.facilitator}</span>
+          <span class="meta-cost">${w.cost}</span>
+        </div>
+        <div class="card-actions">
+          <button class="btn ghost" onclick="openModal('${w.id}')">Quick View</button>
+          ${
+            isOpen
+              ? `<a class="btn primary" href="${w.registrationUrl}" target="_blank" rel="noopener">Register</a>`
+              : `<a class="btn disabled" aria-disabled="true">${status}</a>`
+          }
+        </div>
+      </div>
+    </div>
+  `;
+          })
+          .join("");
+
+        document.getElementById("calendar").innerHTML = list
+          .map((w) => {
+            const md = formatMonthDay(w.startDate);
+            const status = getStatus(w);
+            const isOpen = status === "Opened";
+            return `
+    <div class="row" id="card-${w.id}">
+      <div class="date-badge"><div class="mon">${md.mon}</div><div class="day">${md.day}</div></div>
+      <div class="row-main">
+        <h3>${w.title}</h3>
+        <div class="row-sub">${w.category} · ${w.format} · ${w.time} · ${w.facilitator} · <strong>${status}</strong></div>
+      </div>
+      <div class="row-actions">
+        <button class="btn ghost" onclick="openModal('${w.id}')">Quick View</button>
+        ${
+          isOpen
+            ? `<a class="btn primary" href="${w.registrationUrl}" target="_blank" rel="noopener">Register</a>`
+            : `<a class="btn disabled" aria-disabled="true">${status}</a>`
+        }
+      </div>
+    </div>`;
+          })
+          .join("");
+      }
+
+      function generateGoogleCalendarUrl(w) {
+        const formatTime = (dateStr) =>
+          new Date(dateStr).toISOString().replace(/-|:|\.\d\d\d/g, "");
+        const startTime = formatTime(w.startDate);
+        const endTime = formatTime(w.endDate);
+        const baseUrl = "https://calendar.google.com/calendar/render";
+        const params = new URLSearchParams({
+          action: "TEMPLATE",
+          text: w.title,
+          dates: `${startTime}/${endTime}`,
+          details: `${w.excerpt}\n\nFacilitator: ${w.facilitator}\nCost: ${w.cost}`,
+          location: w.location,
+        });
+        return `${baseUrl}?${params.toString()}`;
+      }
+
+      let lastFocused = null;
+
+      function openModal(id) {
+        const w = workshops.find((x) => x.id === id);
+        if (!w) return;
+        const status = getStatus(w);
+        document.getElementById("mTitle").textContent = w.title;
+        document.getElementById("mExcerpt").textContent = w.excerpt;
+        document.getElementById("mAvatar").textContent = initials(
+          w.facilitator
+        );
+        document.getElementById("mFacilitator").textContent = w.facilitator;
+        document.getElementById("mBio").textContent = w.facilitatorBio;
+        document.getElementById("mDate").textContent = `${w.date} · ${w.time}`;
+        document.getElementById("mLocation").textContent = w.location;
+        document.getElementById("mCost").textContent = `${w.cost} · ${status}`;
+        const registerBtn = document.getElementById("mRegister");
+        if (status === "Full") {
+          registerBtn.textContent = "Join Waitlist";
+          registerBtn.href = w.registrationUrl;
+          registerBtn.classList.remove("disabled");
+        } else if (status === "Closed") {
+          registerBtn.textContent = "Closed";
+          registerBtn.removeAttribute("href");
+          registerBtn.classList.add("disabled");
+        } else {
+          registerBtn.textContent = "Register";
+          registerBtn.href = w.registrationUrl;
+          registerBtn.classList.remove("disabled");
+        }
+        document.getElementById("mCal").href = generateGoogleCalendarUrl(w);
+
+        lastFocused = document.activeElement;
+        history.replaceState(null, "", "#" + w.id);
+        document.getElementById("modalBackdrop").classList.add("open");
+        document.getElementById("mClose").focus();
+      }
+
+      function closeModal() {
+        document.getElementById("modalBackdrop").classList.remove("open");
+        history.replaceState(null, "", location.pathname + location.search);
+        if (lastFocused) lastFocused.focus();
+      }
+
+      document.getElementById("mClose").addEventListener("click", closeModal);
+      document
+        .getElementById("modalBackdrop")
+        .addEventListener("click", (e) => {
+          if (e.target === e.currentTarget) closeModal();
+        });
+
+      document.addEventListener("keydown", (e) => {
+        const backdrop = document.getElementById("modalBackdrop");
+        if (!backdrop.classList.contains("open")) return;
+        if (e.key === "Escape") {
+          closeModal();
+          return;
+        }
+        if (e.key === "Tab") {
+          const focusable = backdrop.querySelectorAll("button, a[href]");
+          const list = Array.from(focusable).filter(
+            (el) => el.offsetParent !== null
+          );
+          if (!list.length) return;
+          const first = list[0],
+            last = list[list.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
+      document.getElementById("search").addEventListener("input", (e) => {
+        query = e.target.value;
+        render();
+      });
+      document
+        .getElementById("formatFilter")
+        .addEventListener("change", (e) => {
+          activeFormat = e.target.value;
+          render();
+        });
+      document.querySelectorAll("#scopeTabs .scope-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document
+            .querySelectorAll("#scopeTabs .scope-tab")
+            .forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+          activeScope = tab.dataset.scope;
+          const heading = document.getElementById("scopeHeading");
+          if (heading) {
+            heading.innerHTML =
+              activeScope === "All"
+                ? "All Gatherings"
+                : activeScope;
+          }
+          render();
+        });
+      });
+
+      document.querySelectorAll("#pillRow .pill").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll("#pillRow .pill")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeCat = btn.dataset.cat;
+          render();
+        });
+      });
+      document.getElementById("gridBtn").addEventListener("click", () => {
+        viewMode = "grid";
+        document.getElementById("gridBtn").classList.add("active");
+        document.getElementById("calBtn").classList.remove("active");
+        render();
+      });
+      document.getElementById("calBtn").addEventListener("click", () => {
+        viewMode = "cal";
+        document.getElementById("calBtn").classList.add("active");
+        document.getElementById("gridBtn").classList.remove("active");
+        render();
+      });
+
+      render();
+
+      const initialId = location.hash.replace("#", "");
+      if (initialId && workshops.some((w) => w.id === initialId)) {
+        openModal(initialId);
+      }
     </script>
   </body>
 </html>
