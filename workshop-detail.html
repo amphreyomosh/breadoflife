@@ -1,0 +1,1422 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Workshop Details — Bread of Life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="site-header.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <script src="site-header.js" defer></script>
+    <script src="workshops-data.js"></script>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --cream: #ffffff;
+        --gold: #c9a25e;
+        --wheat: #c9a25e;
+        --sage: #47653f;
+        --deep-sage: #355030;
+        --loam: #2a2521;
+        --ink: #2c2a29;
+        --muted: #6e675f;
+        --border: #e2ded6;
+        --hairline: #e2ded6;
+        --card: #ffffff;
+        --bol-display: "Cormorant Garamond", Georgia, serif;
+        --bol-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        color: var(--ink);
+        font-family: "Karla", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 500;
+        margin: 0;
+        color: var(--ink);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .bol-shell {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Full-Width Hero Image */
+      .workshop-hero-banner {
+        width: 100%;
+        height: clamp(300px, 44vw, 500px);
+        background: #f4eee2;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .workshop-hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .workshop-hero-banner::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(20, 18, 15, 0.12) 0%,
+          rgba(20, 18, 15, 0.02) 50%,
+          rgba(20, 18, 15, 0.22) 100%
+        );
+        pointer-events: none;
+      }
+
+      /* Page Container (1200px) */
+      .detail-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 24px 5.5rem;
+      }
+
+      .back-nav {
+        margin-bottom: 1.5rem;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--sage);
+        padding: 0.4rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #ffffff;
+        transition:
+          border-color 0.16s ease,
+          background 0.16s ease;
+      }
+
+      .back-link:hover {
+        border-color: var(--sage);
+        background: #f8faf7;
+      }
+
+      /* Two-Column Asymmetric Grid */
+      .detail-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 370px;
+        gap: 3.5rem;
+        align-items: start;
+      }
+
+      /* Left Column */
+      .detail-main {
+        min-width: 0;
+      }
+
+      .event-header-block {
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .event-tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.9rem;
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 0.28rem 0.72rem;
+        border-radius: 4px;
+        letter-spacing: 0.01em;
+      }
+
+      .status-badge.opened {
+        background: #eaf2e8;
+        color: #2f4b2a;
+      }
+
+      .status-badge.full {
+        background: #fbeee9;
+        color: #9e4229;
+      }
+
+      .status-badge.closed {
+        background: #f1efeb;
+        color: #635c54;
+      }
+
+      .meta-tag {
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0.25rem 0.65rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      .meta-tag.cat {
+        background: #f4eee2;
+        border-color: #ebdfc6;
+        color: #8a6b2e;
+      }
+
+      .event-header-block h1 {
+        font-size: clamp(2rem, 3.6vw, 2.75rem);
+        line-height: 1.15;
+        color: var(--ink);
+        margin-bottom: 1rem;
+        text-wrap: balance;
+      }
+
+      .header-meta-lines {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 1.02rem;
+      }
+
+      .header-venue {
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .header-region {
+        color: var(--muted);
+      }
+
+      .header-datetime {
+        margin-top: 0.45rem;
+        font-weight: 600;
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Content Sections */
+      .detail-section {
+        padding: 2.25rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .detail-section:last-child {
+        border-bottom: none;
+      }
+
+      .detail-section h2 {
+        font-size: 1.5rem;
+        line-height: 1.25;
+        margin-bottom: 1.1rem;
+        color: var(--ink);
+      }
+
+      .overview-lead {
+        font-size: 1.12rem;
+        font-weight: 600;
+        line-height: 1.65;
+        color: var(--ink);
+        margin: 0 0 1.25rem;
+      }
+
+      .overview-sub {
+        font-size: 1.15rem;
+        font-family: "Karla", sans-serif;
+        font-weight: 700;
+        color: var(--ink);
+        margin: 0 0 0.65rem;
+      }
+
+      .overview-body p {
+        margin: 0 0 1rem;
+        font-size: 1.02rem;
+        line-height: 1.72;
+        color: #3d3935;
+      }
+
+      .overview-extra.collapsed {
+        display: none;
+      }
+
+      .read-toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 0.35rem;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: var(--sage);
+        font-family: inherit;
+        font-size: 0.96rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .read-toggle-btn:hover {
+        color: var(--deep-sage);
+      }
+
+      /* Facilitator Block */
+      .facilitator-card {
+        display: flex;
+        gap: 1.15rem;
+        align-items: flex-start;
+        padding: 1.35rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #fbfaf8;
+      }
+
+      .facilitator-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 4px;
+        background: var(--gold);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Fraunces", serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+
+      .facilitator-info h3 {
+        font-size: 1.18rem;
+        margin-bottom: 0.15rem;
+      }
+
+      .facilitator-role {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--sage);
+        margin-bottom: 0.55rem;
+      }
+
+      .facilitator-bio {
+        font-size: 0.96rem;
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      /* Good to Know / Highlights */
+      .good-to-know-sub {
+        font-family: "Karla", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.9rem;
+      }
+
+      .highlights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.9rem;
+      }
+
+      .highlight-box {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.95rem 1.1rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #ffffff;
+      }
+
+      .highlight-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        background: #f4eee2;
+        color: #8a6b2e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .highlight-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .highlight-text {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      /* Location & Getting There */
+      .location-address-block {
+        margin-bottom: 1.4rem;
+      }
+
+      .location-venue-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.2rem;
+      }
+
+      .location-street,
+      .location-city {
+        font-size: 0.98rem;
+        color: var(--muted);
+      }
+
+      .map-frame-wrap {
+        width: 100%;
+        height: 320px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        background: #f4eee2;
+      }
+
+      .map-frame-wrap iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+
+      .transport-heading {
+        font-family: "Karla", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.85rem;
+      }
+
+      .transport-modes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+        gap: 0.65rem;
+      }
+
+      .transport-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.72rem 0.95rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #ffffff;
+        color: var(--ink);
+        font-family: inherit;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          border-color 0.16s ease,
+          background 0.16s ease,
+          color 0.16s ease;
+      }
+
+      .transport-btn svg {
+        width: 18px;
+        height: 18px;
+        color: var(--muted);
+        flex-shrink: 0;
+      }
+
+      .transport-btn:hover {
+        border-color: var(--ink);
+      }
+
+      .transport-btn.active {
+        border-color: var(--sage);
+        background: #f4f8f3;
+        color: var(--sage);
+      }
+
+      .transport-btn.active svg {
+        color: var(--sage);
+      }
+
+      .transport-helper-box {
+        margin-top: 0.95rem;
+        padding: 0.95rem 1.1rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #fbfaf8;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      .transport-directions-link {
+        font-weight: 700;
+        color: var(--sage);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        white-space: nowrap;
+      }
+
+      /* Right Sticky Sidebar */
+      .detail-sidebar {
+        position: sticky;
+        top: 108px;
+      }
+
+      .sticky-action-card {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1.6rem;
+        box-shadow: 0 10px 28px rgba(44, 42, 41, 0.07);
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+      }
+
+      .sidebar-top-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .sidebar-price {
+        font-family: "Fraunces", serif;
+        font-size: 1.35rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .sidebar-summary {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .sidebar-summary strong {
+        color: var(--ink);
+      }
+
+      .sidebar-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        margin-top: 0.2rem;
+      }
+
+      .action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        width: 100%;
+        padding: 0.82rem 1.1rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        background: #ffffff;
+        color: var(--ink);
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: center;
+        transition:
+          background 0.16s ease,
+          border-color 0.16s ease,
+          color 0.16s ease;
+      }
+
+      .action-btn svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+
+      .action-btn:hover {
+        border-color: var(--ink);
+        background: #faf8f5;
+      }
+
+      .action-btn.primary {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .action-btn.primary:hover {
+        background: #b58d47;
+        border-color: #b58d47;
+        color: #ffffff;
+      }
+
+      .action-btn.disabled {
+        background: #f1efeb;
+        border-color: var(--border);
+        color: var(--muted);
+        cursor: not-allowed;
+      }
+
+      .sidebar-feedback {
+        font-size: 0.85rem;
+        color: var(--sage);
+        font-weight: 600;
+        text-align: center;
+        min-height: 1.2rem;
+      }
+
+      /* Registration Modal inside Detail Page */
+      .reg-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(44, 42, 41, 0.55);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+        z-index: 2000;
+      }
+
+      .reg-modal-backdrop.open {
+        display: flex;
+      }
+
+      .reg-modal {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        max-width: 480px;
+        width: 100%;
+        padding: 1.75rem;
+        box-shadow: 0 24px 48px rgba(20, 18, 15, 0.2);
+      }
+
+      .reg-modal-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .reg-modal-close {
+        border: none;
+        background: transparent;
+        font-size: 1.5rem;
+        line-height: 1;
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      .reg-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+
+      .reg-form label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .reg-form input,
+      .reg-form textarea {
+        padding: 0.68rem 0.85rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 0.95rem;
+        color: var(--ink);
+      }
+
+      .reg-form input:focus,
+      .reg-form textarea:focus {
+        outline: 2px solid var(--gold);
+        outline-offset: 1px;
+      }
+
+      @media (max-width: 920px) {
+        .detail-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        .detail-sidebar {
+          position: static;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bol-masthead" id="bolMasthead"></header>
+
+    <!-- Full-Width Hero Image from the Card -->
+    <section class="workshop-hero-banner" aria-label="Workshop cover image">
+      <img
+        id="heroImage"
+        src="/src/assets/images/workshop_retreat_sanctuary_1790374222602.jpg"
+        alt="Workshop cover"
+        referrerpolicy="no-referrer"
+      />
+    </section>
+
+    <div class="detail-container">
+      <div class="back-nav">
+        <a href="workshops.html" class="back-link">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          Back to Workshops
+        </a>
+      </div>
+
+      <div class="detail-grid">
+        <!-- Left Side: Workshop Descriptions, Facilitator, Good to Know, Location & Map -->
+        <main class="detail-main">
+          <div class="event-header-block">
+            <div class="event-tag-row">
+              <span class="status-badge opened" id="dStatusBadge">Opened</span>
+              <span class="meta-tag cat" id="dCategoryTag">Retreats</span>
+              <span class="meta-tag" id="dFormatTag">In-Person</span>
+            </div>
+            <h1 id="dTitle">Cultivating Inner Quiet: A Contemplative Retreat</h1>
+            <div class="header-meta-lines">
+              <div class="header-venue" id="dVenue">
+                Bread of Life Center — Main Sanctuary
+              </div>
+              <div class="header-region" id="dRegion">
+                Sacramento, Sacramento County
+              </div>
+              <div class="header-datetime" id="dDateTime">
+                Friday, October 14  •  9:00 AM - 4:00 PM PST
+              </div>
+            </div>
+          </div>
+
+          <!-- Overview Section -->
+          <section class="detail-section" aria-labelledby="overviewHeading">
+            <h2 id="overviewHeading">Overview</h2>
+            <p class="overview-lead" id="dOverviewLead"></p>
+            <h3 class="overview-sub" id="dOverviewSub"></h3>
+            <div class="overview-body">
+              <p id="dOverviewP1"></p>
+              <div class="overview-extra" id="dOverviewExtra">
+                <p id="dOverviewP2"></p>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="read-toggle-btn"
+              id="readToggleBtn"
+              aria-expanded="true"
+            >
+              Read less
+            </button>
+          </section>
+
+          <!-- Facilitator Section -->
+          <section class="detail-section" aria-labelledby="facilitatorHeading">
+            <h2 id="facilitatorHeading">Facilitator</h2>
+            <div class="facilitator-card">
+              <div class="facilitator-avatar" id="dAvatar">CJ</div>
+              <div class="facilitator-info">
+                <h3 id="dFacilitatorName">Sr. Clare Joseph</h3>
+                <div class="facilitator-role" id="dFacilitatorRole">
+                  Contemplative Retreat Director &amp; Spiritual Guide
+                </div>
+                <p class="facilitator-bio" id="dFacilitatorBio"></p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Good to Know / Highlights Section -->
+          <section class="detail-section" aria-labelledby="goodToKnowHeading">
+            <h2 id="goodToKnowHeading">Good to know</h2>
+            <div class="good-to-know-sub">Highlights</div>
+            <div class="highlights-grid">
+              <div class="highlight-box">
+                <div class="highlight-icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 3" />
+                  </svg>
+                </div>
+                <div class="highlight-text" id="dDuration">3 days (Weekend)</div>
+              </div>
+              <div class="highlight-box">
+                <div class="highlight-icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"
+                    />
+                    <circle cx="12" cy="9.5" r="2.5" />
+                  </svg>
+                </div>
+                <div class="highlight-text" id="dAttendanceType">In person</div>
+              </div>
+              <div class="highlight-box">
+                <div class="highlight-icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4" />
+                    <path d="M4 6v12c0 1.1.9 2 2 2h14v-4" />
+                    <path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4Z" />
+                  </svg>
+                </div>
+                <div class="highlight-text" id="dCostHighlight">$150</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Location & Map Section -->
+          <section class="detail-section" aria-labelledby="locationHeading">
+            <h2 id="locationHeading">Location</h2>
+            <div class="location-address-block">
+              <div class="location-venue-name" id="dLocVenue">
+                Bread of Life Center — Main Sanctuary
+              </div>
+              <div class="location-street" id="dLocAddress">
+                1260 Fulton Avenue, Suite A
+              </div>
+              <div class="location-city" id="dLocCityZip">
+                Sacramento, CA 95825
+              </div>
+            </div>
+
+            <div class="map-frame-wrap" id="mapContainer">
+              <iframe
+                id="dMapIframe"
+                title="Workshop Venue Map"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=1260+Fulton+Avenue,+Sacramento,+CA+95825&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              ></iframe>
+            </div>
+
+            <div id="gettingThereSection">
+              <div class="transport-heading">How do you want to get there?</div>
+              <div
+                class="transport-modes"
+                role="group"
+                aria-label="Transportation options"
+              >
+                <button
+                  type="button"
+                  class="transport-btn active"
+                  data-mode="driving"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.9"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 17h14v-5l-2-6H7L5 12v5Zm0 0v2m14-2v2M7.5 14.5h.01M16.5 14.5h.01"
+                    />
+                  </svg>
+                  Driving
+                </button>
+                <button
+                  type="button"
+                  class="transport-btn"
+                  data-mode="transit"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.9"
+                    aria-hidden="true"
+                  >
+                    <rect x="5" y="3" width="14" height="15" rx="2" />
+                    <path d="M5 11h14M8 18l-2 3m10-3 2 3M8.5 15h.01M15.5 15h.01" />
+                  </svg>
+                  Public transport
+                </button>
+                <button
+                  type="button"
+                  class="transport-btn"
+                  data-mode="bicycling"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.9"
+                    aria-hidden="true"
+                  >
+                    <circle cx="5.5" cy="17.5" r="3.5" />
+                    <circle cx="18.5" cy="17.5" r="3.5" />
+                    <path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-3 11.5V14l-3-3 4-3 2 3h2" />
+                  </svg>
+                  Biking
+                </button>
+                <button
+                  type="button"
+                  class="transport-btn"
+                  data-mode="walking"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.9"
+                    aria-hidden="true"
+                  >
+                    <circle cx="13" cy="4.5" r="2" />
+                    <path d="m9 21 3-6 2 3v3M10 14l2-5 3 2 2 1M12 9 9 11l-1 3" />
+                  </svg>
+                  Walking
+                </button>
+              </div>
+              <div class="transport-helper-box">
+                <span id="transportAdviceText">
+                  Free on-site courtyard parking available at 1260 Fulton Avenue,
+                  Suite A (just north of Fair Oaks Blvd).
+                </span>
+                <a
+                  id="transportDirectionsLink"
+                  class="transport-directions-link"
+                  href="https://www.google.com/maps/dir/?api=1&destination=1260+Fulton+Avenue+Sacramento+CA+95825&travelmode=driving"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Open Driving Route &rarr;
+                </a>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <!-- Right Side: Sticky Registration, Share Event, Add to Calendar -->
+        <aside class="detail-sidebar" aria-label="Workshop registration and actions">
+          <div class="sticky-action-card">
+            <div class="sidebar-top-row">
+              <span class="sidebar-price" id="sidebarPrice">$150</span>
+              <span class="status-badge opened" id="sidebarStatus">Opened</span>
+            </div>
+
+            <div class="sidebar-summary">
+              <div>
+                <strong>Date:</strong> <span id="sidebarDate">Oct 14 – 16, 2026</span>
+              </div>
+              <div>
+                <strong>Time:</strong> <span id="sidebarTime">9:00 AM – 4:00 PM PST</span>
+              </div>
+              <div>
+                <strong>Location:</strong>
+                <span id="sidebarLocation">Sacramento Center — Main Sanctuary</span>
+              </div>
+              <div>
+                <strong>Facilitator:</strong>
+                <span id="sidebarFacilitator">Sr. Clare Joseph</span>
+              </div>
+            </div>
+
+            <div class="sidebar-actions">
+              <button
+                type="button"
+                class="action-btn primary"
+                id="sidebarRegisterBtn"
+              >
+                Register
+              </button>
+
+              <button type="button" class="action-btn" id="sidebarShareBtn">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98" />
+                </svg>
+                Share event
+              </button>
+
+              <a
+                class="action-btn"
+                id="sidebarCalendarBtn"
+                href="#"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4" />
+                </svg>
+                Add to calendar
+              </a>
+            </div>
+
+            <div
+              class="sidebar-feedback"
+              id="sidebarFeedback"
+              aria-live="polite"
+            ></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- In-Page Registration Modal -->
+    <div class="reg-modal-backdrop" id="regModalBackdrop">
+      <div
+        class="reg-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="regModalTitle"
+      >
+        <div class="reg-modal-top">
+          <div>
+            <h2 id="regModalTitle" style="font-size: 1.35rem">
+              Register for Workshop
+            </h2>
+            <p
+              id="regModalSub"
+              style="margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--muted)"
+            ></p>
+          </div>
+          <button
+            type="button"
+            class="reg-modal-close"
+            id="regModalClose"
+            aria-label="Close registration form"
+          >
+            &times;
+          </button>
+        </div>
+
+        <form class="reg-form" id="regForm">
+          <label>
+            Full Name
+            <input
+              type="text"
+              name="fullName"
+              required
+              placeholder="Your name"
+            />
+          </label>
+          <label>
+            Email Address
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+            />
+          </label>
+          <label>
+            Notes or Accessibility Requests (Optional)
+            <textarea
+              name="notes"
+              rows="3"
+              placeholder="Let us know if you are requesting a sliding-scale scholarship or have accessibility needs."
+            ></textarea>
+          </label>
+          <button type="submit" class="action-btn primary">
+            Confirm Registration
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Site Footer -->
+    <footer class="bol-footer" id="footer">
+      <div class="bol-shell">
+        <div class="bol-footer-grid">
+          <div>
+            <div class="bol-footer-mark">
+              <img src="bol-logo.png" alt="Bread of Life" />
+            </div>
+            <p class="bol-footer-mission">
+              An interfaith contemplative community in the Sacramento area, here
+              so that people living with real questions do not have to sit with
+              them alone.
+            </p>
+          </div>
+          <div>
+            <h4>Contact Bread of Life</h4>
+            <div class="bol-footer-cinfo">
+              <span>
+                <span class="label">Call us</span>
+                <a class="value" href="tel:19166481803">(916) 648 1803</a>
+              </span>
+            </div>
+            <div class="bol-footer-cinfo">
+              <span>
+                <span class="label">Visit our location</span>
+                <span class="value"
+                  >Bread of Life Center<br />1260 Fulton Avenue, Suite A<br />Sacramento,
+                  CA 95825, USA</span
+                >
+              </span>
+            </div>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="workshops.html">Workshops</a></li>
+              <li>
+                <a class="bol-footer-highlight" href="spiritual_direction.html"
+                  >Spiritual Direction</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="workshops.html">Workshops</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="donate.html">Donate</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bol-colophon">
+          <span>&copy; Bread of Life. A 501(c)(3) nonprofit.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        const workshops = window.BOL_WORKSHOPS || [];
+        const params = new URLSearchParams(window.location.search);
+        const requestedId =
+          params.get("id") ||
+          window.location.hash.replace("#", "") ||
+          "workshop-1";
+        const workshop =
+          workshops.find((w) => w.id === requestedId) || workshops[0];
+
+        if (!workshop) return;
+
+        function initials(name) {
+          return name
+            .replace(/^(Sr\.|Rev\.|Dr\.|Deacon)\s+/gi, "")
+            .split(" ")
+            .slice(0, 2)
+            .map((part) => part[0])
+            .join("")
+            .toUpperCase();
+        }
+
+        function generateGoogleCalendarUrl(w) {
+          const formatTime = (dateStr) =>
+            new Date(dateStr).toISOString().replace(/-|:|\.\d\d\d/g, "");
+          const startTime = formatTime(w.startDate);
+          const endTime = formatTime(w.endDate);
+          const baseUrl = "https://calendar.google.com/calendar/render";
+          const q = new URLSearchParams({
+            action: "TEMPLATE",
+            text: w.title,
+            dates: `${startTime}/${endTime}`,
+            details: `${w.excerpt}\n\nFacilitator: ${w.facilitator}\nCost: ${w.cost}`,
+            location: `${w.venueName}, ${w.addressLine1}, ${w.cityStateZip}`,
+          });
+          return `${baseUrl}?${q.toString()}`;
+        }
+
+        // Populate Document Title & Full-Width Hero Image
+        document.title = `${workshop.title} — Bread of Life`;
+        const heroImg = document.getElementById("heroImage");
+        heroImg.src = workshop.image;
+        heroImg.alt = workshop.title;
+
+        // Populate Status & Header
+        const status = workshop.status || "Opened";
+        const statusClass = status.toLowerCase();
+
+        const badgeEl = document.getElementById("dStatusBadge");
+        badgeEl.textContent = status;
+        badgeEl.className = `status-badge ${statusClass}`;
+
+        document.getElementById("dCategoryTag").textContent = workshop.category;
+        document.getElementById("dFormatTag").textContent = workshop.format;
+        document.getElementById("dTitle").textContent = workshop.title;
+        document.getElementById("dVenue").textContent = workshop.venueName;
+        document.getElementById("dRegion").textContent = workshop.cityRegion;
+        document.getElementById("dDateTime").textContent =
+          workshop.fullDateLine || `${workshop.date}  •  ${workshop.time}`;
+
+        // Populate Overview
+        document.getElementById("dOverviewLead").textContent =
+          workshop.overviewLead || workshop.excerpt;
+        document.getElementById("dOverviewSub").textContent = workshop.title;
+        const bodyParagraphs = workshop.overviewBody || [workshop.excerpt];
+        document.getElementById("dOverviewP1").textContent =
+          bodyParagraphs[0] || workshop.excerpt;
+        document.getElementById("dOverviewP2").textContent =
+          bodyParagraphs[1] ||
+          "All sessions include time for quiet personal reflection, optional small-group conversation, and practical takeaways for your spiritual rhythm.";
+
+        // Read less / Read more toggle
+        const readToggleBtn = document.getElementById("readToggleBtn");
+        const overviewExtra = document.getElementById("dOverviewExtra");
+        readToggleBtn.addEventListener("click", () => {
+          const isCollapsed = overviewExtra.classList.toggle("collapsed");
+          readToggleBtn.textContent = isCollapsed ? "Read more" : "Read less";
+          readToggleBtn.setAttribute("aria-expanded", String(!isCollapsed));
+        });
+
+        // Populate Facilitator
+        document.getElementById("dAvatar").textContent = initials(
+          workshop.facilitator
+        );
+        document.getElementById("dFacilitatorName").textContent =
+          workshop.facilitator;
+        document.getElementById("dFacilitatorRole").textContent =
+          workshop.facilitatorRole || "Workshop Facilitator";
+        document.getElementById("dFacilitatorBio").textContent =
+          workshop.facilitatorBio;
+
+        // Populate Good to Know Highlights
+        document.getElementById("dDuration").textContent =
+          workshop.duration || "2 hours";
+        document.getElementById("dAttendanceType").textContent =
+          workshop.attendanceType || workshop.format;
+        document.getElementById("dCostHighlight").textContent = workshop.cost;
+
+        // Populate Location & Map
+        document.getElementById("dLocVenue").textContent = workshop.venueName;
+        document.getElementById("dLocAddress").textContent =
+          workshop.addressLine1;
+        document.getElementById("dLocCityZip").textContent =
+          workshop.cityStateZip;
+
+        const mapContainer = document.getElementById("mapContainer");
+        const mapIframe = document.getElementById("dMapIframe");
+        const encodedQuery = encodeURIComponent(
+          workshop.mapQuery || "1260 Fulton Avenue, Sacramento, CA 95825"
+        );
+        mapIframe.src = `https://maps.google.com/maps?q=${encodedQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+
+        if (!workshop.isPhysical) {
+          // For online events, still provide map reference or note
+          document.getElementById("transportAdviceText").textContent =
+            "This gathering meets live online via Zoom. Your personal Zoom link is emailed immediately upon registration.";
+        }
+
+        // Transport Mode Buttons ("How do you want to get there?")
+        const transportAdvice = {
+          driving:
+            "Free on-site courtyard parking is available at 1260 Fulton Avenue, Suite A (just north of Fair Oaks Blvd).",
+          transit:
+            "Served by Sacramento Regional Transit Bus Route 23 & 25 along Fulton Ave & Fair Oaks Blvd (3-minute walk).",
+          bicycling:
+            "Protected bike access via the American River Bike Trail (Watt Ave / Northrop access) with courtyard bike racks.",
+          walking:
+            "Pedestrian entrance through the shaded front courtyard along Fulton Avenue, Suite A.",
+        };
+
+        const transportLabels = {
+          driving: "Open Driving Route →",
+          transit: "Open Public Transport Route →",
+          bicycling: "Open Biking Route →",
+          walking: "Open Walking Route →",
+        };
+
+        document.querySelectorAll(".transport-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".transport-btn")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            const mode = btn.dataset.mode;
+            document.getElementById("transportAdviceText").textContent =
+              transportAdvice[mode];
+            const dirLink = document.getElementById("transportDirectionsLink");
+            dirLink.textContent = transportLabels[mode];
+            dirLink.href = `https://www.google.com/maps/dir/?api=1&destination=${encodedQuery}&travelmode=${mode}`;
+          });
+        });
+
+        // Populate Sticky Right Sidebar
+        document.getElementById("sidebarPrice").textContent = workshop.cost;
+        const sidebarStatus = document.getElementById("sidebarStatus");
+        sidebarStatus.textContent = status;
+        sidebarStatus.className = `status-badge ${statusClass}`;
+
+        document.getElementById("sidebarDate").textContent = workshop.date;
+        document.getElementById("sidebarTime").textContent = workshop.time;
+        document.getElementById("sidebarLocation").textContent =
+          workshop.location;
+        document.getElementById("sidebarFacilitator").textContent =
+          workshop.facilitator;
+
+        const registerBtn = document.getElementById("sidebarRegisterBtn");
+        if (status === "Closed") {
+          registerBtn.textContent = "Registration Closed";
+          registerBtn.classList.remove("primary");
+          registerBtn.classList.add("disabled");
+          registerBtn.disabled = true;
+        } else if (status === "Full") {
+          registerBtn.textContent = "Join Waitlist (Full)";
+        } else {
+          registerBtn.textContent = "Register";
+        }
+
+        // Registration Modal Handler
+        const regModalBackdrop = document.getElementById("regModalBackdrop");
+        const regModalSub = document.getElementById("regModalSub");
+        const regForm = document.getElementById("regForm");
+        const sidebarFeedback = document.getElementById("sidebarFeedback");
+
+        registerBtn.addEventListener("click", () => {
+          if (status === "Closed") return;
+          regModalSub.textContent = `${workshop.title} • ${workshop.date}`;
+          regModalBackdrop.classList.add("open");
+        });
+
+        document
+          .getElementById("regModalClose")
+          .addEventListener("click", () => {
+            regModalBackdrop.classList.remove("open");
+          });
+
+        regModalBackdrop.addEventListener("click", (e) => {
+          if (e.target === regModalBackdrop) {
+            regModalBackdrop.classList.remove("open");
+          }
+        });
+
+        regForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          regModalBackdrop.classList.remove("open");
+          sidebarFeedback.textContent =
+            status === "Full"
+              ? "You have been added to the waitlist! Check your email for confirmation."
+              : "Registration confirmed! We have sent details to your email.";
+          regForm.reset();
+        });
+
+        // Share Event Button
+        document
+          .getElementById("sidebarShareBtn")
+          .addEventListener("click", async () => {
+            const shareUrl = window.location.href;
+            if (navigator.share) {
+              try {
+                await navigator.share({
+                  title: workshop.title,
+                  text: workshop.excerpt,
+                  url: shareUrl,
+                });
+                return;
+              } catch (_) {
+                // fallback to clipboard
+              }
+            }
+            try {
+              await navigator.clipboard.writeText(shareUrl);
+              sidebarFeedback.textContent =
+                "Event link copied to your clipboard!";
+            } catch (_) {
+              sidebarFeedback.textContent = `Share link: ${shareUrl}`;
+            }
+          });
+
+        // Add to Calendar Button
+        document.getElementById("sidebarCalendarBtn").href =
+          generateGoogleCalendarUrl(workshop);
+
+        // Auto-open registration modal if navigated via Register button
+        if (params.get("register") === "1" && status !== "Closed") {
+          regModalSub.textContent = `${workshop.title} • ${workshop.date}`;
+          regModalBackdrop.classList.add("open");
+        }
+      })();
+    </script>
+  </body>
+</html>

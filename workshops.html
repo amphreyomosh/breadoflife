@@ -1499,6 +1499,7 @@
   <body>
     <link rel="stylesheet" href="site-header.css" />
     <script src="site-header.js" defer></script>
+    <script src="workshops-data.js"></script>
     <header class="bol-masthead" id="bolMasthead">
       <div class="bol-shell bol-masthead-inner">
         <a
@@ -1615,50 +1616,6 @@
         </div>
       </div>
     </section>
-
-    <div class="modal-backdrop" id="modalBackdrop">
-      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
-        <div class="modal-top">
-          <h2 id="mTitle"></h2>
-          <button class="modal-close" id="mClose" aria-label="Close">×</button>
-        </div>
-        <div class="modal-section"><p id="mExcerpt"></p></div>
-        <div class="modal-section">
-          <h4>Facilitator</h4>
-          <div class="modal-facilitator">
-            <div class="avatar" id="mAvatar"></div>
-            <div>
-              <div id="mFacilitator" style="font-weight: 600"></div>
-              <div id="mBio" style="font-size: 0.85rem; color: var(--muted)"></div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-section">
-          <h4>Details</h4>
-          <p id="mDate"></p>
-          <p id="mLocation"></p>
-          <p id="mCost"></p>
-        </div>
-        <div class="modal-actions">
-          <a
-            class="btn primary"
-            id="mRegister"
-            href="#"
-            target="_blank"
-            rel="noopener"
-            >Register</a
-          >
-          <a
-            class="btn ghost"
-            id="mCal"
-            href="#"
-            target="_blank"
-            rel="noopener"
-            >Add to Google Calendar</a
-          >
-        </div>
-      </div>
-    </div>
 
     <section class="cta-band">
       <div class="wrap">
@@ -2245,18 +2202,20 @@
             const status = getStatus(w);
             const statusClass = status.toLowerCase();
             const isOpen = status === "Opened";
+            const detailUrl = `workshop-detail.html?id=${encodeURIComponent(w.id)}`;
+            const registerHref = `workshop-detail.html?id=${encodeURIComponent(w.id)}&register=1`;
             return `
     <div class="card" id="card-${w.id}">
-      <div class="card-media">
+      <a class="card-media" href="${detailUrl}" aria-label="View ${w.title}">
         <img src="${w.image}" alt="${w.title}" referrerpolicy="no-referrer" loading="lazy" />
-      </div>
+      </a>
       <div class="card-body">
         <div class="tag-row">
           <span class="status-badge ${statusClass}">${status}</span>
           <span class="tag cat">${w.category}</span>
           <span class="tag">${w.format}</span>
         </div>
-        <h3>${w.title}</h3>
+        <h3><a href="${detailUrl}" style="color: inherit; text-decoration: none;">${w.title}</a></h3>
         <p class="excerpt">${w.excerpt}</p>
         <div class="meta">
           <span class="meta-date">${w.date} • ${w.time}</span>
@@ -2265,10 +2224,10 @@
           <span class="meta-cost">${w.cost}</span>
         </div>
         <div class="card-actions">
-          <button class="btn ghost" onclick="openModal('${w.id}')">Quick View</button>
+          <a class="btn ghost" href="${detailUrl}">View</a>
           ${
             isOpen
-              ? `<a class="btn primary" href="${w.registrationUrl}" target="_blank" rel="noopener">Register</a>`
+              ? `<a class="btn primary" href="${registerHref}">Register</a>`
               : `<a class="btn disabled" aria-disabled="true">${status}</a>`
           }
         </div>
@@ -2283,18 +2242,20 @@
             const md = formatMonthDay(w.startDate);
             const status = getStatus(w);
             const isOpen = status === "Opened";
+            const detailUrl = `workshop-detail.html?id=${encodeURIComponent(w.id)}`;
+            const registerHref = `workshop-detail.html?id=${encodeURIComponent(w.id)}&register=1`;
             return `
     <div class="row" id="card-${w.id}">
       <div class="date-badge"><div class="mon">${md.mon}</div><div class="day">${md.day}</div></div>
       <div class="row-main">
-        <h3>${w.title}</h3>
+        <h3><a href="${detailUrl}" style="color: inherit; text-decoration: none;">${w.title}</a></h3>
         <div class="row-sub">${w.category} · ${w.format} · ${w.time} · ${w.facilitator} · <strong>${status}</strong></div>
       </div>
       <div class="row-actions">
-        <button class="btn ghost" onclick="openModal('${w.id}')">Quick View</button>
+        <a class="btn ghost" href="${detailUrl}">View</a>
         ${
           isOpen
-            ? `<a class="btn primary" href="${w.registrationUrl}" target="_blank" rel="noopener">Register</a>`
+            ? `<a class="btn primary" href="${registerHref}">Register</a>`
             : `<a class="btn disabled" aria-disabled="true">${status}</a>`
         }
       </div>
@@ -2302,98 +2263,6 @@
           })
           .join("");
       }
-
-      function generateGoogleCalendarUrl(w) {
-        const formatTime = (dateStr) =>
-          new Date(dateStr).toISOString().replace(/-|:|\.\d\d\d/g, "");
-        const startTime = formatTime(w.startDate);
-        const endTime = formatTime(w.endDate);
-        const baseUrl = "https://calendar.google.com/calendar/render";
-        const params = new URLSearchParams({
-          action: "TEMPLATE",
-          text: w.title,
-          dates: `${startTime}/${endTime}`,
-          details: `${w.excerpt}\n\nFacilitator: ${w.facilitator}\nCost: ${w.cost}`,
-          location: w.location,
-        });
-        return `${baseUrl}?${params.toString()}`;
-      }
-
-      let lastFocused = null;
-
-      function openModal(id) {
-        const w = workshops.find((x) => x.id === id);
-        if (!w) return;
-        const status = getStatus(w);
-        document.getElementById("mTitle").textContent = w.title;
-        document.getElementById("mExcerpt").textContent = w.excerpt;
-        document.getElementById("mAvatar").textContent = initials(
-          w.facilitator
-        );
-        document.getElementById("mFacilitator").textContent = w.facilitator;
-        document.getElementById("mBio").textContent = w.facilitatorBio;
-        document.getElementById("mDate").textContent = `${w.date} · ${w.time}`;
-        document.getElementById("mLocation").textContent = w.location;
-        document.getElementById("mCost").textContent = `${w.cost} · ${status}`;
-        const registerBtn = document.getElementById("mRegister");
-        if (status === "Full") {
-          registerBtn.textContent = "Join Waitlist";
-          registerBtn.href = w.registrationUrl;
-          registerBtn.classList.remove("disabled");
-        } else if (status === "Closed") {
-          registerBtn.textContent = "Closed";
-          registerBtn.removeAttribute("href");
-          registerBtn.classList.add("disabled");
-        } else {
-          registerBtn.textContent = "Register";
-          registerBtn.href = w.registrationUrl;
-          registerBtn.classList.remove("disabled");
-        }
-        document.getElementById("mCal").href = generateGoogleCalendarUrl(w);
-
-        lastFocused = document.activeElement;
-        history.replaceState(null, "", "#" + w.id);
-        document.getElementById("modalBackdrop").classList.add("open");
-        document.getElementById("mClose").focus();
-      }
-
-      function closeModal() {
-        document.getElementById("modalBackdrop").classList.remove("open");
-        history.replaceState(null, "", location.pathname + location.search);
-        if (lastFocused) lastFocused.focus();
-      }
-
-      document.getElementById("mClose").addEventListener("click", closeModal);
-      document
-        .getElementById("modalBackdrop")
-        .addEventListener("click", (e) => {
-          if (e.target === e.currentTarget) closeModal();
-        });
-
-      document.addEventListener("keydown", (e) => {
-        const backdrop = document.getElementById("modalBackdrop");
-        if (!backdrop.classList.contains("open")) return;
-        if (e.key === "Escape") {
-          closeModal();
-          return;
-        }
-        if (e.key === "Tab") {
-          const focusable = backdrop.querySelectorAll("button, a[href]");
-          const list = Array.from(focusable).filter(
-            (el) => el.offsetParent !== null
-          );
-          if (!list.length) return;
-          const first = list[0],
-            last = list[list.length - 1];
-          if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault();
-            last.focus();
-          } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault();
-            first.focus();
-          }
-        }
-      });
 
       document.getElementById("search").addEventListener("input", (e) => {
         query = e.target.value;
@@ -2450,7 +2319,7 @@
 
       const initialId = location.hash.replace("#", "");
       if (initialId && workshops.some((w) => w.id === initialId)) {
-        openModal(initialId);
+        window.location.href = `workshop-detail.html?id=${encodeURIComponent(initialId)}`;
       }
     </script>
   </body>
