@@ -26,7 +26,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 4,
     scopes: ["All", "For you", "This weekend"],
-    image: "/src/assets/images/workshop_retreat_sanctuary_1790374222602.jpg",
+    image: "/src/assets/images/nature_meadow_journaling_reflection_1790449443945.jpg",
     excerpt:
       "A weekend dedicated to silence, guided reflection, and restoring spiritual clarity through ancient contemplative practices.",
     overviewLead:
@@ -64,7 +64,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 12,
     scopes: ["All", "For you", "Today"],
-    image: "/src/assets/images/workshop_spiritual_direction_1790374234054.jpg",
+    image: "/src/assets/images/nature_sunlit_conversation_veranda_1790449455567.jpg",
     excerpt:
       "Learn the core principles of deep listening and walking alongside others in their personal faith journey.",
     overviewLead:
@@ -102,7 +102,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 20,
     scopes: ["All", "For you", "Today"],
-    image: "/src/assets/images/workshop_morning_prayer_1790374245871.jpg",
+    image: "/src/assets/images/nature_garden_circle_listening_1790449431149.jpg",
     excerpt:
       "Begin the week grounded — a quiet half hour of shared scripture and silence, open to newcomers any Tuesday.",
     overviewLead:
@@ -140,7 +140,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 2,
     scopes: ["All", "For you", "This weekend"],
-    image: "/src/assets/images/workshop_leadership_presence_1790374255392.jpg",
+    image: "/src/assets/images/nature_courtyard_table_gathering_1790449477315.jpg",
     excerpt:
       "A day for those who lead others to slow down, reflect on their own formation, and return to their communities renewed.",
     overviewLead:
@@ -178,7 +178,7 @@ window.BOL_WORKSHOPS = [
     status: "Full",
     seatsLeft: 0,
     scopes: ["All", "This weekend"],
-    image: "/src/assets/images/workshop_centering_prayer_1790374264644.jpg",
+    image: "/src/assets/images/nature_riverbank_stillness_trees_1790449467034.jpg",
     excerpt:
       "A one-day deep dive into the practice of centering prayer, with extended silence and guided instruction.",
     overviewLead:
@@ -216,7 +216,7 @@ window.BOL_WORKSHOPS = [
     status: "Closed",
     seatsLeft: 0,
     scopes: ["All", "Today"],
-    image: "/bread-grain-burlap.webp",
+    image: "/src/assets/images/nature_guided_walk_oaks_1790449419333.jpg",
     excerpt:
       "An evening of shared reflection to open the season together, online.",
     overviewLead:
@@ -254,7 +254,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 6,
     scopes: ["All", "For you", "This weekend"],
-    image: "/src/assets/images/workshop_retreat_sanctuary_1790374222602.jpg",
+    image: "/src/assets/images/nature_garden_circle_listening_1790449431149.jpg",
     excerpt:
       "A gentle half day of companionship, guided reflection, and quiet space for people carrying a loss, recent or long held.",
     overviewLead:
@@ -292,7 +292,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 8,
     scopes: ["All", "For you", "Today"],
-    image: "/src/assets/images/workshop_spiritual_direction_1790374234054.jpg",
+    image: "/src/assets/images/nature_guided_walk_oaks_1790449419333.jpg",
     excerpt:
       "Grounded contemplative practices for a crossroads or decision you have been carrying for a while without forcing quick answers.",
     overviewLead:
@@ -330,7 +330,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 5,
     scopes: ["All", "For you"],
-    image: "/src/assets/images/workshop_morning_prayer_1790374245871.jpg",
+    image: "/src/assets/images/nature_courtyard_table_gathering_1790449477315.jpg",
     excerpt:
       "Six weeks in a small, facilitated circle exploring your personal story, life transitions, and shared sacred presence.",
     overviewLead:
@@ -368,7 +368,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 9,
     scopes: ["All", "This weekend"],
-    image: "/src/assets/images/workshop_centering_prayer_1790374264644.jpg",
+    image: "/src/assets/images/nature_riverbank_stillness_trees_1790449467034.jpg",
     excerpt:
       "A morning workshop on release and unburdening, for whatever season of life is asking you to set something down.",
     overviewLead:
@@ -406,7 +406,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 14,
     scopes: ["All", "For you", "This weekend"],
-    image: "/src/assets/images/workshop_morning_prayer_1790374245871.jpg",
+    image: "/src/assets/images/nature_meadow_journaling_reflection_1790449443945.jpg",
     excerpt:
       "Two unhurried hours on sitting quietly with attention and openness. No prior contemplative background assumed.",
     overviewLead:
@@ -444,7 +444,7 @@ window.BOL_WORKSHOPS = [
     status: "Full",
     seatsLeft: 0,
     scopes: ["All", "This weekend"],
-    image: "/src/assets/images/workshop_leadership_presence_1790374255392.jpg",
+    image: "/src/assets/images/nature_sunlit_conversation_veranda_1790449455567.jpg",
     excerpt:
       "Restorative practices and honest conversation for those who spend their weeks holding space for others in healthcare, education, or ministry.",
     overviewLead:
@@ -482,7 +482,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 18,
     scopes: ["All", "Today"],
-    image: "/src/assets/images/workshop_spiritual_direction_1790374234054.jpg",
+    image: "/src/assets/images/nature_garden_circle_listening_1790449431149.jpg",
     excerpt:
       "Pause at midday for ancient slow reading of poetry and scripture, followed by quiet reflection and gentle group sharing.",
     overviewLead:
@@ -520,7 +520,7 @@ window.BOL_WORKSHOPS = [
     status: "Closed",
     seatsLeft: 0,
     scopes: ["All"],
-    image: "/src/assets/images/workshop_centering_prayer_1790374264644.jpg",
+    image: "/src/assets/images/nature_guided_walk_oaks_1790449419333.jpg",
     excerpt:
       "An outdoor morning of walking meditation, breath prayer, and unhurried stillness along our stone courtyard labyrinth.",
     overviewLead:
