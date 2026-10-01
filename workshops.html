@@ -1084,6 +1084,345 @@
         opacity: 0.85;
       }
 
+      /* =========================================================
+         WORKSHOP DETAIL MODAL DRAWER
+         ========================================================= */
+      .bol-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 2200;
+        background: rgba(22, 19, 14, 0.62);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        display: flex;
+        justify-content: flex-end;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.32s ease, visibility 0.32s ease;
+      }
+      .bol-modal-backdrop.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .bol-modal-dialog {
+        width: 100%;
+        max-width: 760px;
+        height: 100%;
+        background: #fdfbf7;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        box-shadow: -10px 0 40px rgba(22, 19, 14, 0.28);
+        transform: translateX(100%);
+        transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow: hidden;
+      }
+      .bol-modal-backdrop.is-open .bol-modal-dialog {
+        transform: translateX(0);
+      }
+      .bol-modal-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        z-index: 20;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: none;
+        box-shadow: 0 3px 12px rgba(24, 20, 15, 0.22);
+        color: #2b2418;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      }
+      .bol-modal-close:hover {
+        transform: scale(1.08);
+        background: #faf6ec;
+        color: #000;
+      }
+      .bol-modal-close:focus-visible {
+        outline: 3px solid #47653f;
+        outline-offset: 2px;
+      }
+      .bol-modal-scroll {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+      .bol-modal-hero {
+        position: relative;
+        width: 100%;
+        height: 270px;
+        overflow: hidden;
+        background: #2b2418;
+      }
+      .bol-modal-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .bol-modal-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(28, 24, 18, 0.25) 0%,
+          rgba(28, 24, 18, 0.05) 50%,
+          rgba(28, 24, 18, 0.32) 100%
+        );
+        pointer-events: none;
+      }
+      .bol-modal-body {
+        padding: clamp(26px, 3.5vw, 36px) clamp(24px, 4vw, 42px) 44px;
+      }
+      .bol-modal-pill {
+        display: inline-block;
+        background: #eaf1e7;
+        color: #3f5e48;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 4px;
+        margin-bottom: 12px;
+      }
+      .bol-modal-title {
+        font-family: 'Fraunces', serif !important;
+        font-size: clamp(26px, 3.2vw, 34px) !important;
+        font-weight: 600 !important;
+        line-height: 1.22 !important;
+        color: #1e1a14 !important;
+        margin: 0 0 10px 0 !important;
+      }
+      .bol-modal-subtitle {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 16px;
+        line-height: 1.45;
+        color: #554b3d;
+        margin: 0 0 24px 0;
+      }
+      .bol-modal-meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding: 18px 0;
+        border-top: 1px solid #e8e0d2;
+        border-bottom: 1px solid #e8e0d2;
+        margin-bottom: 28px;
+      }
+      .bol-modal-meta-item {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      .bol-modal-meta-item:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: -8px;
+        top: 4px;
+        bottom: 4px;
+        width: 1px;
+        background: #e8e0d2;
+      }
+      .bol-modal-meta-label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #8c7e6c;
+        margin-bottom: 4px;
+      }
+      .bol-modal-meta-label svg {
+        stroke: #3f5e48;
+        flex-shrink: 0;
+      }
+      .bol-modal-meta-val {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 13.5px;
+        font-weight: 700;
+        color: #1e1a14;
+        line-height: 1.3;
+      }
+      .bol-modal-meta-sub {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 12.5px;
+        color: #6a5e4e;
+        line-height: 1.3;
+        margin-top: 2px;
+      }
+      .bol-modal-content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.25fr;
+        gap: 26px;
+        align-items: start;
+        margin-bottom: 26px;
+      }
+      .bol-modal-secondary-img {
+        width: 100%;
+        aspect-ratio: 16 / 11;
+        object-fit: cover;
+        border-radius: 6px;
+        box-shadow: 0 4px 14px rgba(30, 26, 20, 0.08);
+      }
+      .bol-modal-about h3 {
+        font-family: 'Fraunces', serif !important;
+        font-size: 21px !important;
+        font-weight: 600 !important;
+        color: #1e1a14 !important;
+        margin: 0 0 10px 0 !important;
+      }
+      .bol-modal-about p {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 14px;
+        line-height: 1.55;
+        color: #4a4133;
+        margin: 0 0 14px 0;
+      }
+      .bol-modal-expect-title {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: #1e1a14;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 8px;
+      }
+      .bol-modal-expect-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .bol-modal-expect-list li {
+        position: relative;
+        padding-left: 18px;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 13.5px;
+        color: #4a4133;
+        line-height: 1.4;
+      }
+      .bol-modal-expect-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        top: -1px;
+        color: #3f5e48;
+        font-size: 17px;
+        font-weight: 700;
+      }
+      .bol-modal-divider {
+        border: none;
+        border-top: 1px solid #e8e0d2;
+        margin: 24px 0 22px 0;
+      }
+      .bol-modal-facilitator {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        background: #ffffff;
+        border: 1px solid #ebe4d8;
+        border-radius: 6px;
+        padding: 16px 20px;
+        margin-bottom: 28px;
+      }
+      .bol-modal-avatar {
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        box-shadow: 0 2px 8px rgba(30, 26, 20, 0.1);
+      }
+      .bol-modal-fac-content {
+        min-width: 0;
+      }
+      .bol-modal-fac-tag {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #8c7e6c;
+        margin-bottom: 2px;
+      }
+      .bol-modal-fac-name {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 15.5px;
+        font-weight: 700;
+        color: #1e1a14;
+        margin-bottom: 4px;
+      }
+      .bol-modal-fac-bio {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 13px;
+        line-height: 1.45;
+        color: #554b3d;
+      }
+      .bol-modal-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .bol-modal-register-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #3f5e48;
+        color: #ffffff !important;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 15.5px;
+        font-weight: 700;
+        height: 48px;
+        padding: 0 44px;
+        border-radius: 999px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 16px rgba(63, 94, 72, 0.32);
+      }
+      .bol-modal-register-btn:hover {
+        background: #334d3a;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(63, 94, 72, 0.4);
+      }
+      .bol-modal-note {
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 12px;
+        color: #8c7e6c;
+        text-align: center;
+      }
+      @media (max-width: 680px) {
+        .bol-modal-content-grid {
+          grid-template-columns: 1fr;
+        }
+        .bol-modal-meta {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .bol-modal-meta-item:not(:last-child)::after {
+          display: none;
+        }
+      }
+
       /* calendar/list view */
       #calendar {
         margin-top: 1.75rem;
@@ -2126,7 +2465,7 @@
 
       <div class="body">
         <div class="category">${categoryDisplay}</div>
-        <h3 class="title"><a href="${detailUrl}">${w.title}</a></h3>
+        <h3 class="title"><a href="${detailUrl}" class="js-open-modal" data-workshop-id="${w.id}">${w.title}</a></h3>
 
         <div class="details">
           <div class="row">
@@ -2145,7 +2484,7 @@
             ${costParsed.sub ? `<span>${costParsed.sub}</span>` : ""}
           </div>
           <div class="btn-group">
-            <a href="${detailUrl}" class="btn btn-outline">View</a>
+            <a href="${detailUrl}" class="btn btn-outline js-open-modal" data-workshop-id="${w.id}">View</a>
             ${registerBtnHtml}
           </div>
         </div>
@@ -2166,11 +2505,11 @@
     <div class="row" id="card-${w.id}">
       <div class="date-badge"><div class="mon">${md.mon}</div><div class="day">${md.day}</div></div>
       <div class="row-main">
-        <h3><a href="${detailUrl}" style="color: inherit; text-decoration: none;">${w.title}</a></h3>
+        <h3><a href="${detailUrl}" class="js-open-modal" data-workshop-id="${w.id}" style="color: inherit; text-decoration: none;">${w.title}</a></h3>
         <div class="row-sub">${w.category} · ${w.format} · ${w.time} · ${w.facilitator} · <strong>${status}</strong></div>
       </div>
       <div class="row-actions">
-        <a class="btn ghost" href="${detailUrl}">View</a>
+        <a class="btn ghost js-open-modal" data-workshop-id="${w.id}" href="${detailUrl}">View</a>
         ${
           isOpen
             ? `<a class="btn primary" href="${registerHref}">Register</a>`
@@ -2235,10 +2574,178 @@
 
       render();
 
+      const FACILITATOR_AVATARS = {
+        "Sr. Clare Joseph": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&q=80",
+        "David Sterling, M.Div": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&q=80",
+        "Deacon Marcus Reyes": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&q=80",
+        "Rev. Dr. Amara Okonkwo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=80",
+        "Hannah Alvarez, LMFT": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&q=80",
+        "Elena Rostova, MA": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&q=80",
+      };
+
+      const SECONDARY_IMAGES = {
+        "workshop-1": "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=800&q=80",
+        "workshop-2": "https://images.unsplash.com/photo-1517582082343-63e26f9dbd68?auto=format&fit=crop&w=800&q=80",
+        "workshop-3": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80",
+        "workshop-4": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
+        "workshop-5": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+        "workshop-6": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",
+        "workshop-7": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
+        "workshop-8": "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=800&q=80",
+        "workshop-9": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
+        "workshop-10": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=800&q=80",
+        "workshop-11": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80",
+        "workshop-12": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80",
+        "workshop-13": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80",
+        "workshop-14": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
+      };
+
+      function openWorkshopModal(id) {
+        const list = window.BOL_WORKSHOPS || workshops || [];
+        const w = list.find((item) => item.id === id);
+        if (!w) return;
+
+        const avatar = FACILITATOR_AVATARS[w.facilitator] || "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&q=80";
+        const secondaryImg = SECONDARY_IMAGES[w.id] || "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=800&q=80";
+        const categoryDisplay = w.category === "Retreats" ? "Retreat" : w.category;
+        const registerHref = `workshop-detail.html?id=${encodeURIComponent(w.id)}&register=1`;
+        const role = w.facilitatorRole || "Spiritual Director";
+        const locationMain = w.venueName ? w.venueName.replace("Bread of Life Center — ", "") : w.location.replace("Sacramento Center — ", "");
+        const locationSub = w.isPhysical === false ? "Online via Zoom" : "Sacramento, CA";
+        const overviewP = (w.overviewBody && w.overviewBody[0]) || w.excerpt;
+
+        const modalHtml = `
+          <div class="bol-modal-hero">
+            <img src="${w.image}" alt="${w.title}" referrerpolicy="no-referrer" />
+          </div>
+          <div class="bol-modal-body">
+            <span class="bol-modal-pill">${categoryDisplay}</span>
+            <h2 class="bol-modal-title" id="modalWorkshopTitle">${w.title}</h2>
+            <p class="bol-modal-subtitle">${w.excerpt || "A guided retreat for reflection, prayer and spiritual renewal."}</p>
+
+            <div class="bol-modal-meta">
+              <div class="bol-modal-meta-item">
+                <div class="bol-modal-meta-label">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span>Date</span>
+                </div>
+                <div class="bol-modal-meta-val">${w.date}</div>
+                <div class="bol-modal-meta-sub">${w.time}</div>
+              </div>
+
+              <div class="bol-modal-meta-item">
+                <div class="bol-modal-meta-label">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                  <span>Location</span>
+                </div>
+                <div class="bol-modal-meta-val">${locationMain}</div>
+                <div class="bol-modal-meta-sub">${locationSub}</div>
+              </div>
+
+              <div class="bol-modal-meta-item">
+                <div class="bol-modal-meta-label">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <span>Facilitator</span>
+                </div>
+                <div class="bol-modal-meta-val">${w.facilitator}</div>
+                <div class="bol-modal-meta-sub">${role}</div>
+              </div>
+            </div>
+
+            <div class="bol-modal-content-grid">
+              <img src="${secondaryImg}" alt="Contemplative nature setting" class="bol-modal-secondary-img" referrerpolicy="no-referrer" />
+              <div class="bol-modal-about">
+                <h3>About this workshop</h3>
+                <p>${overviewP}</p>
+                <div class="bol-modal-expect-title">What to expect</div>
+                <ul class="bol-modal-expect-list">
+                  <li>Guided meditation and prayer</li>
+                  <li>Thoughtful reflection time</li>
+                  <li>Small group sharing</li>
+                  <li>Beautiful natural surroundings</li>
+                </ul>
+              </div>
+            </div>
+
+            <hr class="bol-modal-divider" />
+
+            <div class="bol-modal-facilitator">
+              <img src="${avatar}" alt="${w.facilitator}" class="bol-modal-avatar" referrerpolicy="no-referrer" />
+              <div class="bol-modal-fac-content">
+                <div class="bol-modal-fac-tag">About the Facilitator</div>
+                <div class="bol-modal-fac-name">${w.facilitator}</div>
+                <div class="bol-modal-fac-bio">${w.facilitatorBio}</div>
+              </div>
+            </div>
+
+            <div class="bol-modal-actions">
+              <a href="${registerHref}" class="bol-modal-register-btn">
+                <span>Register Now</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <div class="bol-modal-note">Spaces are limited. We look forward to welcoming you.</div>
+            </div>
+          </div>
+        `;
+
+        document.getElementById("modalContent").innerHTML = modalHtml;
+        const backdrop = document.getElementById("workshopModalBackdrop");
+        backdrop.classList.add("is-open");
+        backdrop.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeWorkshopModal() {
+        const backdrop = document.getElementById("workshopModalBackdrop");
+        if (!backdrop) return;
+        backdrop.classList.remove("is-open");
+        backdrop.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      // Delegate click on View button or Title
+      document.addEventListener("click", (e) => {
+        const trigger = e.target.closest(".js-open-modal");
+        if (trigger) {
+          e.preventDefault();
+          const workshopId = trigger.getAttribute("data-workshop-id");
+          if (workshopId) {
+            openWorkshopModal(workshopId);
+          }
+        }
+      });
+
+      document.getElementById("modalCloseBtn").addEventListener("click", closeWorkshopModal);
+
+      document.getElementById("workshopModalBackdrop").addEventListener("click", (e) => {
+        if (e.target.id === "workshopModalBackdrop") {
+          closeWorkshopModal();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeWorkshopModal();
+        }
+      });
+
       const initialId = location.hash.replace("#", "");
       if (initialId && workshops.some((w) => w.id === initialId)) {
-        window.location.href = `workshop-detail.html?id=${encodeURIComponent(initialId)}`;
+        openWorkshopModal(initialId);
       }
     </script>
+
+    <!-- Workshop Detail Side-Drawer Modal -->
+    <div class="bol-modal-backdrop" id="workshopModalBackdrop" aria-hidden="true">
+      <div class="bol-modal-dialog" id="workshopModalDialog" role="dialog" aria-modal="true" aria-labelledby="modalWorkshopTitle">
+        <button type="button" class="bol-modal-close" id="modalCloseBtn" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="bol-modal-scroll" id="modalContent"></div>
+      </div>
+    </div>
   </body>
 </html>
