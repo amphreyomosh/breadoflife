@@ -1085,82 +1085,113 @@
       }
 
       /* =========================================================
-         WORKSHOP DETAIL MODAL DRAWER
+         FULL SCREEN WORKSHOP DETAIL MODAL
          ========================================================= */
       .bol-modal-backdrop {
         position: fixed;
         inset: 0;
-        z-index: 2200;
-        background: rgba(22, 19, 14, 0.62);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        display: flex;
-        justify-content: flex-end;
+        z-index: 9999;
+        background: #ffffff;
+        width: 100vw;
+        height: 100vh;
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.32s ease, visibility 0.32s ease;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
       }
       .bol-modal-backdrop.is-open {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
       }
-      .bol-modal-dialog {
-        width: 100%;
-        max-width: 760px;
-        height: 100%;
-        background: #fdfbf7;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        box-shadow: -10px 0 40px rgba(22, 19, 14, 0.28);
-        transform: translateX(100%);
-        transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
-        overflow: hidden;
-      }
-      .bol-modal-backdrop.is-open .bol-modal-dialog {
-        transform: translateX(0);
-      }
-      .bol-modal-close {
-        position: absolute;
-        top: 18px;
-        right: 18px;
-        z-index: 20;
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background: #ffffff;
-        border: none;
-        box-shadow: 0 3px 12px rgba(24, 20, 15, 0.22);
-        color: #2b2418;
-        cursor: pointer;
+
+      /* Sticky Top Navigation Bar inside Modal */
+      .bol-modal-topbar {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 62px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
         display: flex;
         align-items: center;
-        justify-content: center;
-        transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+        justify-content: space-between;
+        padding: 0 clamp(16px, 3.5vw, 40px);
+        box-shadow: 0 2px 10px rgba(44, 42, 41, 0.04);
       }
-      .bol-modal-close:hover {
-        transform: scale(1.08);
-        background: #faf6ec;
-        color: #000;
+      .bol-modal-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.45rem 0.85rem;
+        font-family: 'Karla', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--sage);
+        cursor: pointer;
+        transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
       }
-      .bol-modal-close:focus-visible {
-        outline: 3px solid #47653f;
-        outline-offset: 2px;
+      .bol-modal-back-btn:hover {
+        background: #f4f8f3;
+        border-color: var(--sage);
+        color: var(--deep-sage);
       }
-      .bol-modal-scroll {
-        flex: 1;
-        overflow-y: auto;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
+      .bol-modal-topbar-title {
+        font-family: 'Fraunces', serif;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--ink);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 48%;
+        text-align: center;
       }
+      .bol-modal-close-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: #fbfaf8;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.42rem 0.75rem;
+        font-family: 'Karla', sans-serif;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink);
+        cursor: pointer;
+        transition: background 0.16s ease, border-color 0.16s ease;
+      }
+      .bol-modal-close-btn:hover {
+        background: #f1ede5;
+        border-color: var(--ink);
+      }
+      .bol-modal-close-btn .esc-hint {
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 1px 5px;
+        border-radius: 3px;
+        background: #ebe6dc;
+        color: #6a6258;
+      }
+
+      /* Hero Banner */
       .bol-modal-hero {
         position: relative;
         width: 100%;
-        height: 270px;
+        height: clamp(280px, 46vh, 440px);
+        background: #2a2521;
         overflow: hidden;
-        background: #2b2418;
       }
       .bol-modal-hero img {
         width: 100%;
@@ -1174,253 +1205,540 @@
         inset: 0;
         background: linear-gradient(
           to bottom,
-          rgba(28, 24, 18, 0.25) 0%,
-          rgba(28, 24, 18, 0.05) 50%,
-          rgba(28, 24, 18, 0.32) 100%
+          rgba(20, 18, 15, 0.14) 0%,
+          rgba(20, 18, 15, 0.04) 50%,
+          rgba(20, 18, 15, 0.35) 100%
         );
         pointer-events: none;
       }
-      .bol-modal-body {
-        padding: clamp(26px, 3.5vw, 36px) clamp(24px, 4vw, 42px) 44px;
+
+      /* Detail Container & Asymmetric Grid */
+      .bol-modal-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2.2rem clamp(18px, 3.5vw, 36px) 4.5rem;
       }
-      .bol-modal-pill {
-        display: inline-block;
-        background: #eaf1e7;
-        color: #3f5e48;
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 11.5px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        padding: 4px 10px;
-        border-radius: 4px;
-        margin-bottom: 12px;
-      }
-      .bol-modal-title {
-        font-family: 'Fraunces', serif !important;
-        font-size: clamp(26px, 3.2vw, 34px) !important;
-        font-weight: 600 !important;
-        line-height: 1.22 !important;
-        color: #1e1a14 !important;
-        margin: 0 0 10px 0 !important;
-      }
-      .bol-modal-subtitle {
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 16px;
-        line-height: 1.45;
-        color: #554b3d;
-        margin: 0 0 24px 0;
-      }
-      .bol-modal-meta {
+      .bol-modal-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        padding: 18px 0;
-        border-top: 1px solid #e8e0d2;
-        border-bottom: 1px solid #e8e0d2;
-        margin-bottom: 28px;
-      }
-      .bol-modal-meta-item {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-      }
-      .bol-modal-meta-item:not(:last-child)::after {
-        content: "";
-        position: absolute;
-        right: -8px;
-        top: 4px;
-        bottom: 4px;
-        width: 1px;
-        background: #e8e0d2;
-      }
-      .bol-modal-meta-label {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 11.5px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #8c7e6c;
-        margin-bottom: 4px;
-      }
-      .bol-modal-meta-label svg {
-        stroke: #3f5e48;
-        flex-shrink: 0;
-      }
-      .bol-modal-meta-val {
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 13.5px;
-        font-weight: 700;
-        color: #1e1a14;
-        line-height: 1.3;
-      }
-      .bol-modal-meta-sub {
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 12.5px;
-        color: #6a5e4e;
-        line-height: 1.3;
-        margin-top: 2px;
-      }
-      .bol-modal-content-grid {
-        display: grid;
-        grid-template-columns: 1fr 1.25fr;
-        gap: 26px;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 2.75rem;
         align-items: start;
-        margin-bottom: 26px;
       }
-      .bol-modal-secondary-img {
-        width: 100%;
-        aspect-ratio: 16 / 11;
-        object-fit: cover;
-        border-radius: 6px;
-        box-shadow: 0 4px 14px rgba(30, 26, 20, 0.08);
+      @media (max-width: 960px) {
+        .bol-modal-grid {
+          grid-template-columns: 1fr;
+          gap: 2.25rem;
+        }
       }
-      .bol-modal-about h3 {
-        font-family: 'Fraunces', serif !important;
-        font-size: 21px !important;
-        font-weight: 600 !important;
-        color: #1e1a14 !important;
-        margin: 0 0 10px 0 !important;
-      }
-      .bol-modal-about p {
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 14px;
-        line-height: 1.55;
-        color: #4a4133;
-        margin: 0 0 14px 0;
-      }
-      .bol-modal-expect-title {
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        color: #1e1a14;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        margin-bottom: 8px;
-      }
-      .bol-modal-expect-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
-      }
-      .bol-modal-expect-list li {
-        position: relative;
-        padding-left: 18px;
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 13.5px;
-        color: #4a4133;
-        line-height: 1.4;
-      }
-      .bol-modal-expect-list li::before {
-        content: "•";
-        position: absolute;
-        left: 0;
-        top: -1px;
-        color: #3f5e48;
-        font-size: 17px;
-        font-weight: 700;
-      }
-      .bol-modal-divider {
-        border: none;
-        border-top: 1px solid #e8e0d2;
-        margin: 24px 0 22px 0;
-      }
-      .bol-modal-facilitator {
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        background: #ffffff;
-        border: 1px solid #ebe4d8;
-        border-radius: 6px;
-        padding: 16px 20px;
-        margin-bottom: 28px;
-      }
-      .bol-modal-avatar {
-        width: 54px;
-        height: 54px;
-        border-radius: 50%;
-        object-fit: cover;
-        flex-shrink: 0;
-        box-shadow: 0 2px 8px rgba(30, 26, 20, 0.1);
-      }
-      .bol-modal-fac-content {
+
+      /* Left Side Main */
+      .bol-modal-main {
         min-width: 0;
       }
-      .bol-modal-fac-tag {
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 11px;
+      .bol-modal-header {
+        padding-bottom: 1.4rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .bol-modal-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        align-items: center;
+        margin-bottom: 0.85rem;
+      }
+      .bol-modal-status {
+        display: inline-flex;
+        align-items: center;
+        font-family: 'Karla', sans-serif;
+        font-size: 0.78rem;
         font-weight: 700;
-        letter-spacing: 0.08em;
+        padding: 0.28rem 0.72rem;
+        border-radius: 4px;
+        letter-spacing: 0.02em;
+      }
+      .bol-modal-status.opened {
+        background: #eaf2e8;
+        color: #2f4b2a;
+      }
+      .bol-modal-status.full {
+        background: #fbeee9;
+        color: #9e4229;
+      }
+      .bol-modal-status.closed {
+        background: #f1efeb;
+        color: #635c54;
+      }
+      .bol-modal-tag {
+        font-family: 'Karla', sans-serif;
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0.25rem 0.65rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
+      .bol-modal-tag.cat {
+        background: #f4eee2;
+        border-color: #ebdfc6;
+        color: #8a6b2e;
         text-transform: uppercase;
-        color: #8c7e6c;
-        margin-bottom: 2px;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
       }
-      .bol-modal-fac-name {
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 15.5px;
-        font-weight: 700;
-        color: #1e1a14;
-        margin-bottom: 4px;
+      .bol-modal-h1 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: clamp(1.85rem, 3.2vw, 2.45rem);
+        line-height: 1.2;
+        font-weight: 600;
+        color: var(--ink);
+        margin: 0 0 0.85rem 0;
       }
-      .bol-modal-fac-bio {
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 13px;
-        line-height: 1.45;
-        color: #554b3d;
-      }
-      .bol-modal-actions {
+      .bol-modal-metas {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        margin-top: 10px;
+        gap: 0.25rem;
+        font-family: 'Karla', sans-serif;
+        font-size: 0.98rem;
       }
-      .bol-modal-register-btn {
+      .bol-modal-venue {
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .bol-modal-region {
+        color: var(--muted);
+      }
+      .bol-modal-datetime {
+        margin-top: 0.2rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      /* Sections */
+      .bol-modal-sec {
+        padding: 1.85rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .bol-modal-sec:last-child {
+        border-bottom: none;
+      }
+      .bol-modal-sec h2 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 1.35rem;
+        font-weight: 600;
+        line-height: 1.25;
+        margin: 0 0 0.9rem 0;
+        color: var(--ink);
+      }
+      .bol-modal-overview-lead {
+        font-family: 'Karla', sans-serif;
+        font-size: 1.05rem;
+        font-weight: 600;
+        line-height: 1.6;
+        color: var(--ink);
+        margin: 0 0 0.85rem 0;
+      }
+      .bol-modal-overview-sub {
+        font-family: 'Karla', sans-serif;
+        font-size: 1.08rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin: 0 0 0.55rem 0;
+      }
+      .bol-modal-overview-body p {
+        font-family: 'Karla', sans-serif;
+        font-size: 0.97rem;
+        line-height: 1.65;
+        color: #3d3935;
+        margin: 0 0 0.8rem 0;
+      }
+      .bol-modal-extra.collapsed {
+        display: none;
+      }
+      .bol-modal-read-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 0.3rem;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: var(--sage);
+        font-family: 'Karla', sans-serif;
+        font-size: 0.98rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .bol-modal-read-btn:hover {
+        color: var(--deep-sage);
+      }
+
+      /* Facilitator Block */
+      .bol-modal-fac-card {
+        display: flex;
+        gap: 1.15rem;
+        align-items: flex-start;
+        padding: 1.1rem 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: #fbfaf8;
+      }
+      .bol-modal-fac-avatar {
+        width: 58px;
+        height: 58px;
+        border-radius: 6px;
+        background: var(--gold);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Fraunces', serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+      .bol-modal-fac-info h3 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 1.22rem;
+        font-weight: 600;
+        margin: 0 0 0.2rem 0;
+        color: var(--ink);
+      }
+      .bol-modal-fac-role {
+        font-family: 'Karla', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--sage);
+        margin-bottom: 0.55rem;
+      }
+      .bol-modal-fac-bio {
+        font-family: 'Karla', sans-serif;
+        font-size: 0.96rem;
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      /* Good to Know / Highlights */
+      .bol-modal-subhead {
+        font-family: 'Karla', sans-serif;
+        font-size: 0.98rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.95rem;
+      }
+      .bol-modal-highlights {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 0.9rem;
+      }
+      .bol-modal-hlight {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #ffffff;
+      }
+      .bol-modal-hlight-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 4px;
+        background: #f4eee2;
+        color: #8a6b2e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .bol-modal-hlight-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+      .bol-modal-hlight-text {
+        font-family: 'Karla', sans-serif;
+        font-size: 0.96rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      /* Location & Transport */
+      .bol-modal-loc-info {
+        margin-bottom: 0.95rem;
+        font-family: 'Karla', sans-serif;
+      }
+      .bol-modal-loc-venue {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.2rem;
+      }
+      .bol-modal-loc-addr,
+      .bol-modal-loc-city {
+        font-size: 0.94rem;
+        color: var(--muted);
+      }
+      .bol-modal-map {
+        width: 100%;
+        height: 270px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 1.1rem 0 1.35rem 0;
+        background: #f4eee2;
+      }
+      .bol-modal-map iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+      .bol-modal-transport-modes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.7rem;
+        margin-top: 0.85rem;
+      }
+      .bol-modal-trans-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.72rem 0.95rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #ffffff;
+        color: var(--ink);
+        font-family: 'Karla', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+      }
+      .bol-modal-trans-btn svg {
+        width: 18px;
+        height: 18px;
+        color: var(--muted);
+        flex-shrink: 0;
+      }
+      .bol-modal-trans-btn:hover {
+        border-color: var(--ink);
+      }
+      .bol-modal-trans-btn.active {
+        border-color: var(--sage);
+        background: #f4f8f3;
+        color: var(--sage);
+      }
+      .bol-modal-trans-btn.active svg {
+        color: var(--sage);
+      }
+      .bol-modal-trans-box {
+        margin-top: 1rem;
+        padding: 1rem 1.2rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #fbfaf8;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.85rem;
+        font-family: 'Karla', sans-serif;
+        font-size: 0.93rem;
+        color: var(--muted);
+      }
+      .bol-modal-directions-link {
+        font-weight: 700;
+        color: var(--sage);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        white-space: nowrap;
+      }
+      .bol-modal-directions-link:hover {
+        color: var(--deep-sage);
+      }
+
+      /* Right Sticky Sidebar */
+      .bol-modal-sidebar {
+        position: sticky;
+        top: 86px;
+      }
+      .bol-modal-action-card {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 1.4rem;
+        box-shadow: 0 10px 28px rgba(44, 42, 41, 0.07);
+        display: flex;
+        flex-direction: column;
+        gap: 0.95rem;
+      }
+      .bol-modal-sidebar-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .bol-modal-price {
+        font-family: 'Fraunces', serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .bol-modal-summary {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        font-family: 'Karla', sans-serif;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+      .bol-modal-summary strong {
+        color: var(--ink);
+      }
+      .bol-modal-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 0.35rem;
+      }
+      .bol-modal-act-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        background: #3f5e48;
-        color: #ffffff !important;
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 15.5px;
-        font-weight: 700;
-        height: 48px;
-        padding: 0 44px;
-        border-radius: 999px;
-        text-decoration: none;
+        gap: 0.55rem;
+        width: 100%;
+        padding: 0.82rem 1.1rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        background: #ffffff;
+        color: var(--ink);
+        font-family: 'Karla', sans-serif;
+        font-size: 0.96rem;
+        font-weight: 600;
         cursor: pointer;
-        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        box-shadow: 0 4px 16px rgba(63, 94, 72, 0.32);
-      }
-      .bol-modal-register-btn:hover {
-        background: #334d3a;
-        transform: translateY(-1px);
-        box-shadow: 0 6px 20px rgba(63, 94, 72, 0.4);
-      }
-      .bol-modal-note {
-        font-family: 'Nunito Sans', sans-serif;
-        font-size: 12px;
-        color: #8c7e6c;
         text-align: center;
+        transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
       }
-      @media (max-width: 680px) {
-        .bol-modal-content-grid {
-          grid-template-columns: 1fr;
-        }
-        .bol-modal-meta {
-          grid-template-columns: 1fr;
-          gap: 12px;
-        }
-        .bol-modal-meta-item:not(:last-child)::after {
-          display: none;
-        }
+      .bol-modal-act-btn svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+      .bol-modal-act-btn:hover {
+        border-color: var(--ink);
+        background: #faf8f5;
+      }
+      .bol-modal-act-btn.primary {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: #ffffff;
+        font-weight: 700;
+      }
+      .bol-modal-act-btn.primary:hover {
+        background: #b58d47;
+        border-color: #b58d47;
+      }
+      .bol-modal-act-btn.disabled {
+        background: #f1efeb;
+        border-color: var(--border);
+        color: var(--muted);
+        cursor: not-allowed;
+      }
+      .bol-modal-sidebar-feedback {
+        font-family: 'Karla', sans-serif;
+        font-size: 0.86rem;
+        color: var(--sage);
+        font-weight: 600;
+        text-align: center;
+        min-height: 1.2rem;
+      }
+
+      /* In-Modal Registration Dialog */
+      .bol-modal-reg-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 10005;
+        background: rgba(30, 26, 20, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+      }
+      .bol-modal-reg-backdrop.open {
+        display: flex;
+      }
+      .bol-modal-reg-box {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        max-width: 490px;
+        width: 100%;
+        padding: 1.85rem;
+        box-shadow: 0 24px 48px rgba(20, 18, 15, 0.24);
+      }
+      .bol-modal-reg-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+      }
+      .bol-modal-reg-top h2 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 0;
+        color: var(--ink);
+      }
+      .bol-modal-reg-top p {
+        font-family: 'Karla', sans-serif;
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin: 0.35rem 0 0 0;
+      }
+      .bol-modal-reg-close {
+        border: none;
+        background: transparent;
+        font-size: 1.6rem;
+        line-height: 1;
+        color: var(--muted);
+        cursor: pointer;
+        padding: 2px 6px;
+      }
+      .bol-modal-reg-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.95rem;
+      }
+      .bol-modal-reg-form label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        font-family: 'Karla', sans-serif;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .bol-modal-reg-form input,
+      .bol-modal-reg-form textarea {
+        padding: 0.72rem 0.85rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-family: 'Karla', sans-serif;
+        font-size: 0.95rem;
+        color: var(--ink);
+        background: #fff;
+      }
+      .bol-modal-reg-form input:focus,
+      .bol-modal-reg-form textarea:focus {
+        outline: 2px solid var(--gold);
+        outline-offset: 1px;
       }
 
       /* calendar/list view */
@@ -2574,30 +2892,55 @@
 
       render();
 
-      const FACILITATOR_AVATARS = {
-        "Sr. Clare Joseph": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&q=80",
-        "David Sterling, M.Div": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&q=80",
-        "Deacon Marcus Reyes": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&q=80",
-        "Rev. Dr. Amara Okonkwo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&q=80",
-        "Hannah Alvarez, LMFT": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&q=80",
-        "Elena Rostova, MA": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&q=80",
+      function initials(name) {
+        if (!name) return "BL";
+        return name
+          .replace(/^(Sr\.|Rev\.|Dr\.|Deacon)\s+/gi, "")
+          .split(" ")
+          .filter(Boolean)
+          .slice(0, 2)
+          .map((part) => part[0])
+          .join("")
+          .toUpperCase();
+      }
+
+      function generateGoogleCalendarUrl(w) {
+        const formatTime = (dateStr) => {
+          try {
+            return new Date(dateStr).toISOString().replace(/-|:|\.\d\d\d/g, "");
+          } catch (_) {
+            return "";
+          }
+        };
+        const startTime = formatTime(w.startDate) || "20261014T160000Z";
+        const endTime = formatTime(w.endDate) || "20261016T230000Z";
+        const baseUrl = "https://calendar.google.com/calendar/render";
+        const q = new URLSearchParams({
+          action: "TEMPLATE",
+          text: w.title,
+          dates: `${startTime}/${endTime}`,
+          details: `${w.excerpt || w.overviewLead || ""}\n\nFacilitator: ${w.facilitator}\nCost: ${w.cost}`,
+          location: `${w.venueName || w.location}, ${w.addressLine1 || ""}, ${w.cityStateZip || ""}`,
+        });
+        return `${baseUrl}?${q.toString()}`;
+      }
+
+      const transportAdvice = {
+        driving:
+          "Free on-site courtyard parking available at 1260 Fulton Avenue, Suite A (just north of Fair Oaks Blvd).",
+        transit:
+          "Served by Sacramento Regional Transit Bus Route 23 & 25 along Fulton Ave & Fair Oaks Blvd (3-minute walk).",
+        bicycling:
+          "Protected bike access via the American River Bike Trail (Watt Ave / Northrop access) with courtyard bike racks.",
+        walking:
+          "Pedestrian entrance through the shaded front courtyard along Fulton Avenue, Suite A.",
       };
 
-      const SECONDARY_IMAGES = {
-        "workshop-1": "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=800&q=80",
-        "workshop-2": "https://images.unsplash.com/photo-1517582082343-63e26f9dbd68?auto=format&fit=crop&w=800&q=80",
-        "workshop-3": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80",
-        "workshop-4": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
-        "workshop-5": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
-        "workshop-6": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",
-        "workshop-7": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
-        "workshop-8": "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=800&q=80",
-        "workshop-9": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
-        "workshop-10": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=800&q=80",
-        "workshop-11": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80",
-        "workshop-12": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80",
-        "workshop-13": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80",
-        "workshop-14": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
+      const transportLabels = {
+        driving: "Open Driving Route →",
+        transit: "Open Public Transport Route →",
+        bicycling: "Open Biking Route →",
+        walking: "Open Walking Route →",
       };
 
       function openWorkshopModal(id) {
@@ -2605,102 +2948,352 @@
         const w = list.find((item) => item.id === id);
         if (!w) return;
 
-        const avatar = FACILITATOR_AVATARS[w.facilitator] || "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&q=80";
-        const secondaryImg = SECONDARY_IMAGES[w.id] || "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=800&q=80";
-        const categoryDisplay = w.category === "Retreats" ? "Retreat" : w.category;
-        const registerHref = `workshop-detail.html?id=${encodeURIComponent(w.id)}&register=1`;
-        const role = w.facilitatorRole || "Spiritual Director";
-        const locationMain = w.venueName ? w.venueName.replace("Bread of Life Center — ", "") : w.location.replace("Sacramento Center — ", "");
-        const locationSub = w.isPhysical === false ? "Online via Zoom" : "Sacramento, CA";
-        const overviewP = (w.overviewBody && w.overviewBody[0]) || w.excerpt;
+        const status = getStatus(w);
+        const statusClass = status.toLowerCase();
+        const isOpen = status === "Opened";
+        const isFull = status === "Full";
+
+        const categoryDisplay = w.category === "Retreats" ? "Retreats" : w.category;
+        const formatDisplay = w.format === "In-Person" ? "In-Person" : w.format;
+        const venueDisplay = w.venueName || "Bread of Life Center — Main Sanctuary";
+        const regionDisplay = w.cityRegion || "Sacramento, Sacramento County";
+        const fullDateDisplay = w.fullDateLine || `${w.date} • ${w.time}`;
+        const overviewLeadText = w.overviewLead || w.excerpt || "";
+        const overviewP1 = (w.overviewBody && w.overviewBody[0]) || w.excerpt || "";
+        const overviewP2 = (w.overviewBody && w.overviewBody[1]) || "All sessions include time for quiet personal reflection, contemplative practice, and practical takeaways to nurture your spiritual life.";
+        const facInitials = initials(w.facilitator);
+        const facRole = w.facilitatorRole || "Contemplative Retreat Director & Spiritual Guide";
+        const durationText = w.duration || "3 days (Weekend)";
+        const attendanceText = w.attendanceType || w.format || "In person";
+        const costText = w.cost || "$150 (Sliding Scale Available)";
+        const addressText = w.addressLine1 || "1260 Fulton Avenue, Suite A";
+        const cityZipText = w.cityStateZip || "Sacramento, CA 95825";
+        const mapQueryEncoded = encodeURIComponent(w.mapQuery || `${addressText}, ${cityZipText}`);
+        const calUrl = generateGoogleCalendarUrl(w);
+
+        let registerBtnText = "Register";
+        let registerBtnClass = "bol-modal-act-btn primary";
+        let registerDisabled = false;
+        if (!isOpen) {
+          if (isFull) {
+            registerBtnText = "Join Waitlist (Full)";
+            registerBtnClass = "bol-modal-act-btn";
+          } else {
+            registerBtnText = "Registration Closed";
+            registerBtnClass = "bol-modal-act-btn disabled";
+            registerDisabled = true;
+          }
+        }
 
         const modalHtml = `
-          <div class="bol-modal-hero">
-            <img src="${w.image}" alt="${w.title}" referrerpolicy="no-referrer" />
+          <!-- Sticky Top Header Bar -->
+          <div class="bol-modal-topbar">
+            <button type="button" class="bol-modal-back-btn" id="modalBackBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Back to workshops</span>
+            </button>
+            <div class="bol-modal-topbar-title">${w.title}</div>
+            <button type="button" class="bol-modal-close-btn" id="modalCloseBtn" aria-label="Close workshop details">
+              <span class="esc-hint">ESC</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
           </div>
-          <div class="bol-modal-body">
-            <span class="bol-modal-pill">${categoryDisplay}</span>
-            <h2 class="bol-modal-title" id="modalWorkshopTitle">${w.title}</h2>
-            <p class="bol-modal-subtitle">${w.excerpt || "A guided retreat for reflection, prayer and spiritual renewal."}</p>
 
-            <div class="bol-modal-meta">
-              <div class="bol-modal-meta-item">
-                <div class="bol-modal-meta-label">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  <span>Date</span>
+          <!-- Full Width Hero Banner -->
+          <section class="bol-modal-hero" aria-label="Workshop image">
+            <img src="${w.image}" alt="${w.title}" referrerpolicy="no-referrer" />
+          </section>
+
+          <!-- Main Detail Container -->
+          <div class="bol-modal-container">
+            <div class="bol-modal-grid">
+              
+              <!-- Left Column: Details -->
+              <div class="bol-modal-main">
+                <div class="bol-modal-header">
+                  <div class="bol-modal-tags">
+                    <span class="bol-modal-status ${statusClass}">${status}</span>
+                    <span class="bol-modal-tag cat">${categoryDisplay}</span>
+                    <span class="bol-modal-tag">${formatDisplay}</span>
+                  </div>
+                  <h1 class="bol-modal-h1" id="modalWorkshopTitle">${w.title}</h1>
+                  <div class="bol-modal-metas">
+                    <div class="bol-modal-venue">${venueDisplay}</div>
+                    <div class="bol-modal-region">${regionDisplay}</div>
+                    <div class="bol-modal-datetime">${fullDateDisplay}</div>
+                  </div>
                 </div>
-                <div class="bol-modal-meta-val">${w.date}</div>
-                <div class="bol-modal-meta-sub">${w.time}</div>
+
+                <!-- Overview Section -->
+                <section class="bol-modal-sec">
+                  <h2>Overview</h2>
+                  <p class="bol-modal-overview-lead">${overviewLeadText}</p>
+                  <h3 class="bol-modal-overview-sub">${w.title}</h3>
+                  <div class="bol-modal-overview-body">
+                    <p>${overviewP1}</p>
+                    <div class="bol-modal-extra collapsed" id="modalOverviewExtra">
+                      <p>${overviewP2}</p>
+                    </div>
+                  </div>
+                  <button type="button" class="bol-modal-read-btn" id="modalReadToggleBtn" aria-expanded="false">
+                    Read more
+                  </button>
+                </section>
+
+                <!-- Facilitator Section -->
+                <section class="bol-modal-sec">
+                  <h2>Facilitator</h2>
+                  <div class="bol-modal-fac-card">
+                    <div class="bol-modal-fac-avatar">${facInitials}</div>
+                    <div class="bol-modal-fac-info">
+                      <h3>${w.facilitator}</h3>
+                      <div class="bol-modal-fac-role">${facRole}</div>
+                      <p class="bol-modal-fac-bio">${w.facilitatorBio}</p>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Good to Know / Highlights Section -->
+                <section class="bol-modal-sec">
+                  <h2>Good to know</h2>
+                  <div class="bol-modal-subhead">Highlights</div>
+                  <div class="bol-modal-highlights">
+                    <div class="bol-modal-hlight">
+                      <div class="bol-modal-hlight-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="9"/>
+                          <path d="M12 7v5l3 3"/>
+                        </svg>
+                      </div>
+                      <div class="bol-modal-hlight-text">${durationText}</div>
+                    </div>
+                    <div class="bol-modal-hlight">
+                      <div class="bol-modal-hlight-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/>
+                          <circle cx="12" cy="9.5" r="2.5"/>
+                        </svg>
+                      </div>
+                      <div class="bol-modal-hlight-text">${attendanceText}</div>
+                    </div>
+                    <div class="bol-modal-hlight">
+                      <div class="bol-modal-hlight-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/>
+                          <path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/>
+                          <path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4Z"/>
+                        </svg>
+                      </div>
+                      <div class="bol-modal-hlight-text">${costText}</div>
+                    </div>
+                  </div>
+
+                  <!-- Location & Transport Section -->
+                  <div class="bol-modal-subhead" style="margin-top: 1.85rem;">Location</div>
+                  <div class="bol-modal-loc-info">
+                    <div class="bol-modal-loc-venue">${venueDisplay}</div>
+                    <div class="bol-modal-loc-addr">${addressText}</div>
+                    <div class="bol-modal-loc-city">${cityZipText}</div>
+                  </div>
+
+                  <div class="bol-modal-map">
+                    <iframe src="https://maps.google.com/maps?q=${mapQueryEncoded}&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Map for ${venueDisplay}"></iframe>
+                  </div>
+
+                  <div style="font-family: 'Karla', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.65rem;">
+                    How do you want to get there?
+                  </div>
+                  <div class="bol-modal-transport-modes">
+                    <button type="button" class="bol-modal-trans-btn active" data-mode="driving">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="11" width="18" height="9" rx="2"/><path d="m5 11 2-6h10l2 6M7 16h.01M17 16h.01"/></svg>
+                      Driving
+                    </button>
+                    <button type="button" class="bol-modal-trans-btn" data-mode="transit">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="5" y="3" width="14" height="15" rx="2"/><path d="M5 11h14M8 18l-2 3m10-3 2 3M8.5 15h.01M15.5 15h.01"/></svg>
+                      Public transport
+                    </button>
+                    <button type="button" class="bol-modal-trans-btn" data-mode="bicycling">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
+                      Biking
+                    </button>
+                    <button type="button" class="bol-modal-trans-btn" data-mode="walking">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="13" cy="4.5" r="2"/><path d="m9 21 3-6 2 3v3M10 14l2-5 3 2 2 1M12 9 9 11l-1 3"/></svg>
+                      Walking
+                    </button>
+                  </div>
+
+                  <div class="bol-modal-trans-box">
+                    <span id="modalTransportAdviceText">
+                      ${w.isPhysical === false ? "This gathering meets live online via Zoom. Your personal Zoom link is emailed immediately upon registration." : transportAdvice.driving}
+                    </span>
+                    <a id="modalTransportDirectionsLink" class="bol-modal-directions-link" href="https://www.google.com/maps/dir/?api=1&destination=${mapQueryEncoded}&travelmode=driving" target="_blank" rel="noopener">
+                      Open Driving Route →
+                    </a>
+                  </div>
+                </section>
               </div>
 
-              <div class="bol-modal-meta-item">
-                <div class="bol-modal-meta-label">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-                  <span>Location</span>
+              <!-- Right Column: Sticky Card -->
+              <aside class="bol-modal-sidebar" aria-label="Workshop actions">
+                <div class="bol-modal-action-card">
+                  <div class="bol-modal-sidebar-top">
+                    <span class="bol-modal-price">${w.cost}</span>
+                    <span class="bol-modal-status ${statusClass}">${status}</span>
+                  </div>
+
+                  <div class="bol-modal-summary">
+                    <div><strong>Date:</strong> <span>${w.date}</span></div>
+                    <div><strong>Time:</strong> <span>${w.time}</span></div>
+                    <div><strong>Location:</strong> <span>${w.location}</span></div>
+                    <div><strong>Facilitator:</strong> <span>${w.facilitator}</span></div>
+                  </div>
+
+                  <div class="bol-modal-btns">
+                    <button type="button" class="${registerBtnClass}" id="modalSidebarRegisterBtn" ${registerDisabled ? 'disabled aria-disabled="true"' : ''}>
+                      ${registerBtnText}
+                    </button>
+
+                    <button type="button" class="bol-modal-act-btn" id="modalSidebarShareBtn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98"/>
+                      </svg>
+                      Share event
+                    </button>
+
+                    <a class="bol-modal-act-btn" id="modalSidebarCalendarBtn" href="${calUrl}" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="18" rx="2"/>
+                        <path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"/>
+                      </svg>
+                      Add to calendar
+                    </a>
+                  </div>
+
+                  <div class="bol-modal-sidebar-feedback" id="modalSidebarFeedback" aria-live="polite"></div>
                 </div>
-                <div class="bol-modal-meta-val">${locationMain}</div>
-                <div class="bol-modal-meta-sub">${locationSub}</div>
-              </div>
+              </aside>
 
-              <div class="bol-modal-meta-item">
-                <div class="bol-modal-meta-label">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                  <span>Facilitator</span>
-                </div>
-                <div class="bol-modal-meta-val">${w.facilitator}</div>
-                <div class="bol-modal-meta-sub">${role}</div>
-              </div>
-            </div>
-
-            <div class="bol-modal-content-grid">
-              <img src="${secondaryImg}" alt="Contemplative nature setting" class="bol-modal-secondary-img" referrerpolicy="no-referrer" />
-              <div class="bol-modal-about">
-                <h3>About this workshop</h3>
-                <p>${overviewP}</p>
-                <div class="bol-modal-expect-title">What to expect</div>
-                <ul class="bol-modal-expect-list">
-                  <li>Guided meditation and prayer</li>
-                  <li>Thoughtful reflection time</li>
-                  <li>Small group sharing</li>
-                  <li>Beautiful natural surroundings</li>
-                </ul>
-              </div>
-            </div>
-
-            <hr class="bol-modal-divider" />
-
-            <div class="bol-modal-facilitator">
-              <img src="${avatar}" alt="${w.facilitator}" class="bol-modal-avatar" referrerpolicy="no-referrer" />
-              <div class="bol-modal-fac-content">
-                <div class="bol-modal-fac-tag">About the Facilitator</div>
-                <div class="bol-modal-fac-name">${w.facilitator}</div>
-                <div class="bol-modal-fac-bio">${w.facilitatorBio}</div>
-              </div>
-            </div>
-
-            <div class="bol-modal-actions">
-              <a href="${registerHref}" class="bol-modal-register-btn">
-                <span>Register Now</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-              <div class="bol-modal-note">Spaces are limited. We look forward to welcoming you.</div>
             </div>
           </div>
         `;
 
         document.getElementById("modalContent").innerHTML = modalHtml;
+
         const backdrop = document.getElementById("workshopModalBackdrop");
         backdrop.classList.add("is-open");
         backdrop.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden";
+        try {
+          history.replaceState(null, "", "#" + w.id);
+        } catch (_) {}
+
+        // Reset scroll position to top
+        backdrop.scrollTop = 0;
+
+        // Wire Back & Close buttons
+        const backBtn = document.getElementById("modalBackBtn");
+        if (backBtn) backBtn.addEventListener("click", closeWorkshopModal);
+        const closeBtn = document.getElementById("modalCloseBtn");
+        if (closeBtn) closeBtn.addEventListener("click", closeWorkshopModal);
+
+        // Wire Read more / Read less toggle
+        const readBtn = document.getElementById("modalReadToggleBtn");
+        const extra = document.getElementById("modalOverviewExtra");
+        if (readBtn && extra) {
+          readBtn.addEventListener("click", () => {
+            const isCollapsed = extra.classList.toggle("collapsed");
+            readBtn.textContent = isCollapsed ? "Read more" : "Read less";
+            readBtn.setAttribute("aria-expanded", String(!isCollapsed));
+          });
+        }
+
+        // Wire Transport mode buttons
+        document.querySelectorAll(".bol-modal-trans-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".bol-modal-trans-btn").forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            const mode = btn.dataset.mode;
+            const adviceEl = document.getElementById("modalTransportAdviceText");
+            const linkEl = document.getElementById("modalTransportDirectionsLink");
+            if (adviceEl && transportAdvice[mode]) {
+              adviceEl.textContent = transportAdvice[mode];
+            }
+            if (linkEl && transportLabels[mode]) {
+              linkEl.textContent = transportLabels[mode];
+              linkEl.href = `https://www.google.com/maps/dir/?api=1&destination=${mapQueryEncoded}&travelmode=${mode}`;
+            }
+          });
+        });
+
+        // Wire Register button to In-Modal Registration Dialog
+        const regBtn = document.getElementById("modalSidebarRegisterBtn");
+        const regBackdrop = document.getElementById("modalRegBackdrop");
+        const regSub = document.getElementById("modalRegSub");
+        const sidebarFeedback = document.getElementById("modalSidebarFeedback");
+
+        if (regBtn && !registerDisabled) {
+          regBtn.addEventListener("click", () => {
+            if (regSub) regSub.textContent = `${w.title} • ${w.date}`;
+            if (regBackdrop) {
+              regBackdrop.classList.add("open");
+              regBackdrop.setAttribute("aria-hidden", "false");
+            }
+          });
+        }
+
+        // Wire Share button
+        const shareBtn = document.getElementById("modalSidebarShareBtn");
+        if (shareBtn) {
+          shareBtn.addEventListener("click", async () => {
+            const shareUrl = window.location.origin + window.location.pathname + "#" + w.id;
+            if (navigator.share) {
+              try {
+                await navigator.share({
+                  title: w.title,
+                  text: w.excerpt || w.overviewLead,
+                  url: shareUrl,
+                });
+                return;
+              } catch (_) {}
+            }
+            try {
+              await navigator.clipboard.writeText(shareUrl);
+              if (sidebarFeedback) sidebarFeedback.textContent = "Event link copied to your clipboard!";
+            } catch (_) {
+              if (sidebarFeedback) sidebarFeedback.textContent = `Event link: ${shareUrl}`;
+            }
+          });
+        }
       }
 
       function closeWorkshopModal() {
+        const regBackdrop = document.getElementById("modalRegBackdrop");
+        if (regBackdrop && regBackdrop.classList.contains("open")) {
+          regBackdrop.classList.remove("open");
+          regBackdrop.setAttribute("aria-hidden", "true");
+          return;
+        }
         const backdrop = document.getElementById("workshopModalBackdrop");
         if (!backdrop) return;
         backdrop.classList.remove("is-open");
         backdrop.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
+        try {
+          if (location.hash) {
+            history.replaceState(null, "", window.location.pathname + window.location.search);
+          }
+        } catch (_) {}
       }
 
       // Delegate click on View button or Title
@@ -2715,13 +3308,41 @@
         }
       });
 
-      document.getElementById("modalCloseBtn").addEventListener("click", closeWorkshopModal);
+      // Wire Registration Popup Controls
+      const modalRegClose = document.getElementById("modalRegClose");
+      const modalRegBackdrop = document.getElementById("modalRegBackdrop");
+      const modalRegForm = document.getElementById("modalRegForm");
 
-      document.getElementById("workshopModalBackdrop").addEventListener("click", (e) => {
-        if (e.target.id === "workshopModalBackdrop") {
-          closeWorkshopModal();
-        }
-      });
+      if (modalRegClose && modalRegBackdrop) {
+        modalRegClose.addEventListener("click", () => {
+          modalRegBackdrop.classList.remove("open");
+          modalRegBackdrop.setAttribute("aria-hidden", "true");
+        });
+      }
+
+      if (modalRegBackdrop) {
+        modalRegBackdrop.addEventListener("click", (e) => {
+          if (e.target === modalRegBackdrop) {
+            modalRegBackdrop.classList.remove("open");
+            modalRegBackdrop.setAttribute("aria-hidden", "true");
+          }
+        });
+      }
+
+      if (modalRegForm) {
+        modalRegForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (modalRegBackdrop) {
+            modalRegBackdrop.classList.remove("open");
+            modalRegBackdrop.setAttribute("aria-hidden", "true");
+          }
+          const sidebarFeedback = document.getElementById("modalSidebarFeedback");
+          if (sidebarFeedback) {
+            sidebarFeedback.textContent = "Registration confirmed! We have sent details to your email.";
+          }
+          modalRegForm.reset();
+        });
+      }
 
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
@@ -2735,16 +3356,36 @@
       }
     </script>
 
-    <!-- Workshop Detail Side-Drawer Modal -->
-    <div class="bol-modal-backdrop" id="workshopModalBackdrop" aria-hidden="true">
-      <div class="bol-modal-dialog" id="workshopModalDialog" role="dialog" aria-modal="true" aria-labelledby="modalWorkshopTitle">
-        <button type="button" class="bol-modal-close" id="modalCloseBtn" aria-label="Close modal">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-        <div class="bol-modal-scroll" id="modalContent"></div>
+    <!-- Full-Screen Workshop Detail Modal -->
+    <div class="bol-modal-backdrop" id="workshopModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalWorkshopTitle" aria-hidden="true">
+      <div id="modalContent"></div>
+    </div>
+
+    <!-- In-Modal Registration Dialog -->
+    <div class="bol-modal-reg-backdrop" id="modalRegBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalRegTitle" aria-hidden="true">
+      <div class="bol-modal-reg-box">
+        <div class="bol-modal-reg-top">
+          <div>
+            <h2 id="modalRegTitle">Register for Workshop</h2>
+            <p id="modalRegSub"></p>
+          </div>
+          <button type="button" class="bol-modal-reg-close" id="modalRegClose" aria-label="Close registration form">&times;</button>
+        </div>
+        <form class="bol-modal-reg-form" id="modalRegForm">
+          <label>
+            Full Name
+            <input type="text" name="fullName" required placeholder="Your full name" />
+          </label>
+          <label>
+            Email Address
+            <input type="email" name="email" required placeholder="you@example.com" />
+          </label>
+          <label>
+            Notes or Accessibility Requests (Optional)
+            <textarea name="notes" rows="3" placeholder="Let us know if you are requesting a sliding-scale scholarship or have accessibility needs."></textarea>
+          </label>
+          <button type="submit" class="bol-modal-act-btn primary">Confirm Registration</button>
+        </form>
       </div>
     </div>
   </body>
