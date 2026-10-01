@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -23,11 +23,14 @@
         --bol-body: "Karla", system-ui, -apple-system, sans-serif;
         --bol-rhythm: clamp(76px, 9vw, 136px);
         --bg: #ffffff;
-        --gold: #c9a25e;
-        --ink: #2c2a29;
+        --gold: #c9a45c;
+        --gold-deep: #8a6a2a;
+        --ink: #2b2418;
+        --ink-soft: #4a4030;
         --border: #e2ded6;
         --card: #ffffff;
-        --muted: #7a7570;
+        --muted: #6b5f48;
+        --line: #efe8d8;
       }
       * {
         box-sizing: border-box;
@@ -580,7 +583,7 @@
         padding: clamp(48px, 6vw, 88px) 0 clamp(64px, 8vw, 112px);
       }
       .workshop-index-wrap {
-        max-width: 1200px;
+        max-width: 1240px;
         margin: 0 auto;
         padding: 0 24px;
       }
@@ -757,145 +760,316 @@
         color: #fff;
       }
 
-      /* grid view */
+      /* grid view: 3 cards in a row on large screens */
       #grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 1.75rem;
+        grid-template-columns: 1fr;
+        gap: 28px;
         margin-top: 2rem;
       }
+      @media (min-width: 640px) {
+        #grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 992px) {
+        #grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
       .card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        overflow: hidden;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 6px 22px rgba(44, 42, 41, 0.05);
-        transition:
-          transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        background: #fff;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 1px 2px rgba(43,36,24,.06), 0 12px 32px rgba(43,36,24,.10);
+        transition: transform .25s ease, box-shadow .25s ease;
+        font-family: 'Nunito Sans', sans-serif !important;
+        color: var(--ink);
+        box-sizing: border-box;
+      }
+      .card * {
+        box-sizing: border-box;
       }
       .card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 30px rgba(44, 42, 41, 0.09);
+        transform: translateY(-4px);
+        box-shadow: 0 2px 4px rgba(43,36,24,.08), 0 18px 40px rgba(43,36,24,.16);
       }
-      .card-media {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        min-height: 215px;
-        background: #f4eee2;
-        overflow: hidden;
+
+      /* Image area: replace placeholder with <img> */
+      .card .media {
         position: relative;
+        aspect-ratio: 16 / 10;
+        background: #e4d9c3;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #7a6a48;
+        font-family: 'Nunito Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .04em;
       }
-      .card-media img {
+      .card .media img {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        display: block;
+        transition: transform .4s ease;
       }
-      .card-body {
-        padding: 1.4rem 1.5rem 1.55rem;
+      .card:hover .media img {
+        transform: scale(1.04);
+      }
+
+      .card .badge-date {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 6px 12px;
+        font-family: 'Nunito Sans', sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: var(--ink) !important;
+        line-height: 1.2;
+        box-shadow: 0 2px 8px rgba(43,36,24,.12);
+        z-index: 2;
+      }
+      .card .badge-format {
+        position: absolute;
+        bottom: 14px;
+        left: 14px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(43,36,24,.78);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-family: 'Nunito Sans', sans-serif !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        color: #fff !important;
+        line-height: 1.2;
+        z-index: 2;
+      }
+      .card .badge-format svg {
+        flex-shrink: 0;
+      }
+
+      .card .body {
         display: flex;
         flex-direction: column;
-        gap: 0.65rem;
+        gap: 10px;
+        padding: 22px 24px 24px;
+        background: #fff;
         flex: 1;
       }
-      .tag-row {
-        display: flex;
-        gap: 0.45rem;
-        flex-wrap: wrap;
-        align-items: center;
+      .card .category {
+        font-family: 'Nunito Sans', sans-serif !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        letter-spacing: .12em !important;
+        text-transform: uppercase !important;
+        color: var(--gold-deep) !important;
+        line-height: 1.2;
       }
-      .status-badge {
-        display: inline-flex;
-        align-items: center;
-        font-size: 0.78rem;
-        font-weight: 700;
-        padding: 0.28rem 0.72rem;
-        border-radius: 4px;
-        letter-spacing: 0.01em;
-        white-space: nowrap;
+      .card .title {
+        margin: 0;
+        font-family: 'Fraunces', serif !important;
+        font-size: 24px !important;
+        line-height: 1.25 !important;
+        font-weight: 600 !important;
+        color: var(--ink) !important;
+        letter-spacing: normal !important;
       }
-      .status-badge.opened {
-        background: #eaf2e8;
-        color: #2f4b2a;
+      .card .title a {
+        color: inherit !important;
+        text-decoration: none !important;
       }
-      .status-badge.full {
-        background: #fbeee9;
-        color: #9e4229;
+      .card .title a:hover {
+        color: var(--gold-deep) !important;
       }
-      .status-badge.closed {
-        background: #f1efeb;
-        color: #635c54;
+      /* Makes the whole card clickable through the title link */
+      .card .title a::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
       }
-      .tag {
-        font-size: 0.76rem;
-        padding: 0.24rem 0.6rem;
-        border-radius: 4px;
-        border: 1px solid var(--border);
-        color: var(--muted);
-        font-weight: 500;
-        white-space: nowrap;
-      }
-      .tag.cat {
-        background: #f4eee2;
-        border-color: #ebdfc6;
-        color: #8a6b2e;
-      }
-      .card h3 {
-        font-size: 1.32rem;
-        font-weight: 600;
-        line-height: 1.28;
-        color: var(--ink);
-        margin-top: 0.15rem;
-      }
-      .card .excerpt {
-        color: var(--muted);
-        font-size: 0.96rem;
-        line-height: 1.6;
-      }
-      .meta {
-        font-size: 0.92rem;
-        color: var(--ink);
+
+      .card .details {
         display: flex;
         flex-direction: column;
-        gap: 0.28rem;
-        margin-top: 0.25rem;
+        gap: 8px;
+        margin-top: 6px;
+        font-family: 'Nunito Sans', sans-serif !important;
+        font-size: 14px !important;
+        color: var(--ink-soft) !important;
+      }
+      .card .details .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 !important;
+        border: none !important;
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.35 !important;
+        color: var(--ink-soft) !important;
+      }
+      .card .details .row svg {
+        flex-shrink: 0;
+      }
+
+      .card .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 14px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        background: transparent;
+      }
+      .card .price {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Nunito Sans', sans-serif !important;
+      }
+      .card .price strong {
+        font-family: 'Nunito Sans', sans-serif !important;
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        color: var(--ink) !important;
+        line-height: 1.1 !important;
+      }
+      .card .price span {
+        font-family: 'Nunito Sans', sans-serif !important;
+        font-size: 12px !important;
+        color: var(--muted) !important;
+        line-height: 1.25 !important;
+        margin-top: 2px !important;
+      }
+
+      .card .btn-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .card .btn {
+        position: relative;
+        z-index: 2; /* sits above the card-wide link */
+        min-height: 44px;
+        padding: 0 28px;
+        border: 0;
+        border-radius: 4px;
+        background: var(--gold);
+        color: var(--ink);
+        font-family: 'Nunito Sans', sans-serif !important;
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-sizing: border-box;
+        transition: filter .2s ease;
+      }
+      .card .btn-outline {
+        background: #fff !important;
+        border: 1.5px solid #d9cfb8 !important;
+        padding: 0 20px !important;
+        color: var(--ink) !important;
+      }
+      .card .btn-outline:hover {
+        filter: none;
+        border-color: var(--gold-deep) !important;
+        background: #faf6ec !important;
+        color: var(--ink) !important;
+      }
+      .card .btn:hover {
+        filter: brightness(.95);
+      }
+      .card .btn:focus-visible {
+        outline: 3px solid var(--ink);
+        outline-offset: 2px;
+      }
+      .card .btn.disabled {
+        background: #e5ded3 !important;
+        color: #8c8273 !important;
+        cursor: not-allowed;
+        opacity: 0.85;
+      }
+
+      /* calendar/list view */
+      #calendar {
+        margin-top: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0 1.25rem;
+      }
+      #calendar .row {
+        display: flex;
+        gap: 1.1rem;
+        align-items: center;
+        padding: 1.1rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      #calendar .row:last-child {
+        border-bottom: none;
+      }
+      #calendar .date-badge {
+        flex: 0 0 64px;
+        text-align: center;
         font-variant-numeric: tabular-nums;
       }
-      .meta-date {
+      #calendar .date-badge .mon {
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
         font-weight: 600;
-        color: var(--ink);
-        font-size: 0.95rem;
-      }
-      .meta-location {
         color: var(--muted);
-        font-size: 0.92rem;
       }
-      .meta-facilitator {
-        color: var(--muted);
-        font-size: 0.88rem;
+      #calendar .date-badge .day {
+        font-family: "Fraunces", serif;
+        font-size: 1.65rem;
+        line-height: 1.1;
+        color: var(--gold);
       }
-      .meta-cost {
-        font-weight: 700;
+      #calendar .row-main {
+        flex: 1;
+        min-width: 0;
+      }
+      #calendar .row-main h3 {
+        font-size: 1.08rem;
+        font-weight: 500;
         color: var(--ink);
-        font-size: 0.98rem;
-        margin-top: 0.15rem;
       }
-      .card-actions {
-        display: flex;
-        gap: 0.7rem;
-        margin-top: auto;
-        padding-top: 0.85rem;
-      }
-      .card-actions .btn,
-      .row-actions .btn,
-      .modal-actions .btn {
-        font-family: inherit;
+      #calendar .row-sub {
         font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 0.25rem;
+      }
+      #calendar .row-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex: 0 0 auto;
+      }
+      #calendar .row-actions .btn {
+        font-family: inherit;
+        font-size: 0.82rem;
         font-weight: 600;
-        padding: 0.58rem 0.95rem;
+        padding: 0.5rem 0.85rem;
         border-radius: 4px;
         border: 1px solid var(--border);
         background: transparent;
@@ -909,95 +1083,24 @@
           border-color 0.16s ease,
           color 0.16s ease;
       }
-      .card-actions .btn:hover,
-      .row-actions .btn:hover,
-      .modal-actions .btn:hover {
-        border-color: var(--ink);
-      }
-      .btn.primary {
+      #calendar .row-actions .btn.primary {
         background: var(--gold);
         border-color: var(--gold);
         color: #fff;
-        flex: 1;
       }
-      .btn.primary:hover {
+      #calendar .row-actions .btn.primary:hover {
         background: #b58d47;
-        border-color: #b58d47;
-        color: #fff;
       }
-      .btn.ghost {
-        flex: 1;
+      #calendar .row-actions .btn.ghost {
         background: var(--card);
       }
-      .btn.disabled {
+      #calendar .row-actions .btn.ghost:hover {
+        border-color: var(--ink);
+      }
+      #calendar .row-actions .btn.disabled {
         background: var(--border);
-        border-color: var(--border);
         color: var(--muted);
-        flex: 1;
         cursor: not-allowed;
-        pointer-events: none;
-      }
-
-      /* calendar/list view */
-      #calendar {
-        margin-top: 1.75rem;
-        display: flex;
-        flex-direction: column;
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        padding: 0 1.25rem;
-      }
-      .row {
-        display: flex;
-        gap: 1.1rem;
-        align-items: center;
-        padding: 1.1rem 0;
-        border-bottom: 1px solid var(--border);
-      }
-      .row:last-child {
-        border-bottom: none;
-      }
-      .date-badge {
-        flex: 0 0 64px;
-        text-align: center;
-        font-variant-numeric: tabular-nums;
-      }
-      .date-badge .mon {
-        font-size: 0.72rem;
-        letter-spacing: 0.04em;
-        font-weight: 600;
-        color: var(--muted);
-      }
-      .date-badge .day {
-        font-family: "Fraunces", serif;
-        font-size: 1.65rem;
-        line-height: 1.1;
-        color: var(--gold);
-      }
-      .row-main {
-        flex: 1;
-        min-width: 0;
-      }
-      .row-main h3 {
-        font-size: 1.08rem;
-        font-weight: 500;
-        color: var(--ink);
-      }
-      .row-sub {
-        font-size: 0.85rem;
-        color: var(--muted);
-        margin-top: 0.25rem;
-      }
-      .row-actions {
-        display: flex;
-        gap: 0.5rem;
-        flex: 0 0 auto;
-      }
-      .row-actions .btn {
-        padding: 0.5rem 0.85rem;
-        font-size: 0.82rem;
-        flex: 0 0 auto;
       }
 
       .empty {
@@ -2153,6 +2256,40 @@
         };
       }
 
+      function formatBadgeDate(dateStr) {
+        if (!dateStr) return "";
+        let clean = dateStr.replace(/,\s*\d{4}/g, "").trim();
+        clean = clean.replace(/\s*[–-]\s*/g, " to ");
+        return clean;
+      }
+
+      function formatTimeDisplay(timeStr) {
+        if (!timeStr) return "";
+        return timeStr.replace(/\s*-\s*/g, " – ");
+      }
+
+      function formatLocationDisplay(loc) {
+        if (!loc) return "";
+        return loc.replace(/\s*[-—–]\s*/g, " · ");
+      }
+
+      function parseCostDisplay(costStr) {
+        if (!costStr) return { main: "$0", sub: "" };
+        if (costStr.toLowerCase().startsWith("free")) {
+          return { main: "Free", sub: "Open to all" };
+        }
+        const match = costStr.match(/^(\$[\d,]+)(?:\s*\((.*?)\))?/);
+        if (match) {
+          const main = match[1];
+          let sub = match[2] || "";
+          if (sub) {
+            sub = sub.charAt(0).toUpperCase() + sub.slice(1).toLowerCase();
+          }
+          return { main, sub };
+        }
+        return { main: costStr, sub: "" };
+      }
+
       function getStatus(w) {
         if (w.status) return w.status;
         if (new Date(w.endDate) < new Date()) return "Closed";
@@ -2200,39 +2337,63 @@
         document.getElementById("grid").innerHTML = list
           .map((w) => {
             const status = getStatus(w);
-            const statusClass = status.toLowerCase();
             const isOpen = status === "Opened";
             const detailUrl = `workshop-detail.html?id=${encodeURIComponent(w.id)}`;
             const registerHref = `workshop-detail.html?id=${encodeURIComponent(w.id)}&register=1`;
+            const dateBadge = formatBadgeDate(w.date);
+            const timeDisplay = formatTimeDisplay(w.time);
+            const locationDisplay = formatLocationDisplay(w.location);
+            const costParsed = parseCostDisplay(w.cost);
+            const formatDisplay = w.format === "In-Person" ? "In-person" : w.format;
+            const categoryDisplay = w.category === "Retreats" ? "Retreat" : w.category;
+
+            let registerBtnHtml = "";
+            if (isOpen) {
+              registerBtnHtml = `<a href="${registerHref}" class="btn">Register</a>`;
+            } else if (status === "Full") {
+              registerBtnHtml = `<a href="${registerHref}" class="btn btn-outline" style="border-color: #d9cfb8; color: #8a6a2a;">Waitlist</a>`;
+            } else {
+              registerBtnHtml = `<span class="btn disabled" aria-disabled="true">Closed</span>`;
+            }
+
             return `
-    <div class="card" id="card-${w.id}">
-      <a class="card-media" href="${detailUrl}" aria-label="View ${w.title}">
+    <article class="card" id="card-${w.id}">
+      <div class="media">
         <img src="${w.image}" alt="${w.title}" referrerpolicy="no-referrer" loading="lazy" />
-      </a>
-      <div class="card-body">
-        <div class="tag-row">
-          <span class="status-badge ${statusClass}">${status}</span>
-          <span class="tag cat">${w.category}</span>
-          <span class="tag">${w.format}</span>
-        </div>
-        <h3><a href="${detailUrl}" style="color: inherit; text-decoration: none;">${w.title}</a></h3>
-        <p class="excerpt">${w.excerpt}</p>
-        <div class="meta">
-          <span class="meta-date">${w.date} • ${w.time}</span>
-          <span class="meta-location">${w.location}</span>
-          <span class="meta-facilitator">Facilitated by ${w.facilitator}</span>
-          <span class="meta-cost">${w.cost}</span>
-        </div>
-        <div class="card-actions">
-          <a class="btn ghost" href="${detailUrl}">View</a>
-          ${
-            isOpen
-              ? `<a class="btn primary" href="${registerHref}">Register</a>`
-              : `<a class="btn disabled" aria-disabled="true">${status}</a>`
-          }
+        <div class="badge-date">${dateBadge}</div>
+        <div class="badge-format">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          ${formatDisplay}
         </div>
       </div>
-    </div>
+
+      <div class="body">
+        <div class="category">${categoryDisplay}</div>
+        <h3 class="title"><a href="${detailUrl}">${w.title}</a></h3>
+
+        <div class="details">
+          <div class="row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8a6a2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>${timeDisplay}</span>
+          </div>
+          <div class="row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8a6a2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <span>${locationDisplay}</span>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div class="price">
+            <strong>${costParsed.main}</strong>
+            ${costParsed.sub ? `<span>${costParsed.sub}</span>` : ""}
+          </div>
+          <div class="btn-group">
+            <a href="${detailUrl}" class="btn btn-outline">View</a>
+            ${registerBtnHtml}
+          </div>
+        </div>
+      </div>
+    </article>
   `;
           })
           .join("");
