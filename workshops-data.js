@@ -26,7 +26,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 4,
     scopes: ["All", "For you", "This weekend"],
-    image: "/src/assets/images/nature_meadow_journaling_reflection_1790449443945.jpg",
+    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "A weekend dedicated to silence, guided reflection, and restoring spiritual clarity through ancient contemplative practices.",
     overviewLead:
@@ -64,7 +64,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 12,
     scopes: ["All", "For you", "Today"],
-    image: "/src/assets/images/nature_sunlit_conversation_veranda_1790449455567.jpg",
+    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "Learn the core principles of deep listening and walking alongside others in their personal faith journey.",
     overviewLead:
@@ -102,7 +102,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 20,
     scopes: ["All", "For you", "Today"],
-    image: "/src/assets/images/nature_garden_circle_listening_1790449431149.jpg",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "Begin the week grounded — a quiet half hour of shared scripture and silence, open to newcomers any Tuesday.",
     overviewLead:
@@ -140,7 +140,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 2,
     scopes: ["All", "For you", "This weekend"],
-    image: "/src/assets/images/nature_courtyard_table_gathering_1790449477315.jpg",
+    image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "A day for those who lead others to slow down, reflect on their own formation, and return to their communities renewed.",
     overviewLead:
@@ -178,7 +178,7 @@ window.BOL_WORKSHOPS = [
     status: "Full",
     seatsLeft: 0,
     scopes: ["All", "This weekend"],
-    image: "/src/assets/images/nature_riverbank_stillness_trees_1790449467034.jpg",
+    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "A one-day deep dive into the practice of centering prayer, with extended silence and guided instruction.",
     overviewLead:
@@ -216,7 +216,7 @@ window.BOL_WORKSHOPS = [
     status: "Closed",
     seatsLeft: 0,
     scopes: ["All", "Today"],
-    image: "/src/assets/images/nature_guided_walk_oaks_1790449419333.jpg",
+    image: "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "An evening of shared reflection to open the season together, online.",
     overviewLead:
@@ -254,7 +254,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 6,
     scopes: ["All", "For you", "This weekend"],
-    image: "/src/assets/images/nature_garden_circle_listening_1790449431149.jpg",
+    image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "A gentle half day of companionship, guided reflection, and quiet space for people carrying a loss, recent or long held.",
     overviewLead:
@@ -292,7 +292,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 8,
     scopes: ["All", "For you", "Today"],
-    image: "/src/assets/images/nature_guided_walk_oaks_1790449419333.jpg",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "Grounded contemplative practices for a crossroads or decision you have been carrying for a while without forcing quick answers.",
     overviewLead:
@@ -330,7 +330,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 5,
     scopes: ["All", "For you"],
-    image: "/src/assets/images/nature_courtyard_table_gathering_1790449477315.jpg",
+    image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "Six weeks in a small, facilitated circle exploring your personal story, life transitions, and shared sacred presence.",
     overviewLead:
@@ -368,7 +368,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 9,
     scopes: ["All", "This weekend"],
-    image: "/src/assets/images/nature_riverbank_stillness_trees_1790449467034.jpg",
+    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "A morning workshop on release and unburdening, for whatever season of life is asking you to set something down.",
     overviewLead:
@@ -406,7 +406,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 14,
     scopes: ["All", "For you", "This weekend"],
-    image: "/src/assets/images/nature_meadow_journaling_reflection_1790449443945.jpg",
+    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "Two unhurried hours on sitting quietly with attention and openness. No prior contemplative background assumed.",
     overviewLead:
@@ -444,7 +444,7 @@ window.BOL_WORKSHOPS = [
     status: "Full",
     seatsLeft: 0,
     scopes: ["All", "This weekend"],
-    image: "/src/assets/images/nature_sunlit_conversation_veranda_1790449455567.jpg",
+    image: "https://images.unsplash.com/photo-1517582082343-63e26f9dbd68?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "Restorative practices and honest conversation for those who spend their weeks holding space for others in healthcare, education, or ministry.",
     overviewLead:
@@ -482,7 +482,7 @@ window.BOL_WORKSHOPS = [
     status: "Opened",
     seatsLeft: 18,
     scopes: ["All", "Today"],
-    image: "/src/assets/images/nature_garden_circle_listening_1790449431149.jpg",
+    image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "Pause at midday for ancient slow reading of poetry and scripture, followed by quiet reflection and gentle group sharing.",
     overviewLead:
@@ -520,7 +520,7 @@ window.BOL_WORKSHOPS = [
     status: "Closed",
     seatsLeft: 0,
     scopes: ["All"],
-    image: "/src/assets/images/nature_guided_walk_oaks_1790449419333.jpg",
+    image: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=800&q=80",
     excerpt:
       "An outdoor morning of walking meditation, breath prayer, and unhurried stillness along our stone courtyard labyrinth.",
     overviewLead:

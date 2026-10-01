@@ -1416,12 +1416,25 @@
         overflow: hidden;
         border-radius: 2px;
         background: #f5f0e8;
+        position: relative;
       }
       .bol-event-media img {
         display: block;
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+      .bol-event-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(36, 30, 22, 0.22) 0%,
+          rgba(36, 30, 22, 0.08) 50%,
+          rgba(36, 30, 22, 0.28) 100%
+        );
+        pointer-events: none;
       }
       .bol-event:last-of-type {
         border-bottom: 1px solid var(--bol-hairline);
@@ -3447,8 +3460,8 @@
             </div>
             <div class="bol-event-media">
               <img
-                src="/src/assets/images/nature_meadow_journaling_reflection_1790449443945.jpg"
-                alt="People reflecting quietly overlooking a sunlit meadow"
+                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80"
+                alt="Morning journaling with pen and natural light"
                 referrerpolicy="no-referrer"
               />
             </div>
@@ -3466,8 +3479,8 @@
             </div>
             <div class="bol-event-media">
               <img
-                src="/src/assets/images/nature_garden_circle_listening_1790449431149.jpg"
-                alt="People gathered in a peaceful garden circle"
+                src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80"
+                alt="Quiet morning by a peaceful lake"
                 referrerpolicy="no-referrer"
               />
             </div>
@@ -3485,8 +3498,8 @@
             </div>
             <div class="bol-event-media">
               <img
-                src="/src/assets/images/nature_guided_walk_oaks_1790449419333.jpg"
-                alt="Guided walk along a sunlit oak grove trail"
+                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+                alt="Sunbeam along a peaceful forest trail"
                 referrerpolicy="no-referrer"
               />
             </div>
@@ -3507,8 +3520,8 @@
             </div>
             <div class="bol-event-media">
               <img
-                src="/src/assets/images/nature_courtyard_table_gathering_1790449477315.jpg"
-                alt="Guided small group gathering around a garden table"
+                src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80"
+                alt="Small group gathered around a garden table"
                 referrerpolicy="no-referrer"
               />
             </div>
