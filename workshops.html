@@ -626,7 +626,21 @@
         gap: 1.75rem;
         border-bottom: 1px solid var(--border);
         margin-bottom: 1.5rem;
-        overflow-x: auto;
+        overflow: visible;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .scope-tabs::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+      @media (max-width: 640px) {
+        .scope-tabs {
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+        }
       }
       .scope-tab {
         position: relative;
@@ -764,7 +778,7 @@
       #grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: clamp(16px, 1.8vw, 28px);
         margin-top: 2rem;
       }
       @media (min-width: 640px) {
@@ -800,7 +814,10 @@
         box-shadow: 0 2px 4px rgba(43,36,24,.08), 0 18px 40px rgba(43,36,24,.16);
       }
 
-      /* Image area: replace placeholder with <img> */
+      /* Image area: media-wrap, media, and hover-revealed badges */
+      .card .media-wrap {
+        position: relative;
+      }
       .card .media {
         position: relative;
         aspect-ratio: 16 / 10;
@@ -827,25 +844,35 @@
         transform: scale(1.04);
       }
 
+      /* Date badge: straddles the image and the white body, on the right */
       .card .badge-date {
         position: absolute;
-        top: 14px;
-        left: 14px;
+        right: 24px;
+        bottom: 0;
+        z-index: 3;
         background: #fff;
-        border-radius: 10px;
-        padding: 6px 12px;
+        border-radius: 4px;
+        padding: 8px 14px;
         font-family: 'Nunito Sans', sans-serif !important;
         font-size: 13px !important;
         font-weight: 700 !important;
         color: var(--ink) !important;
         line-height: 1.2;
-        box-shadow: 0 2px 8px rgba(43,36,24,.12);
-        z-index: 2;
+        box-shadow: 0 6px 16px rgba(43,36,24,.16);
+        opacity: 0;
+        transform: translateY(calc(50% + 10px)); /* hidden: lower than final position */
+        transition: opacity .25s ease, transform .25s ease;
+        pointer-events: none;
       }
+
+      /* Format pill: top left of the image */
       .card .badge-format {
         position: absolute;
-        bottom: 14px;
+        top: 14px;
         left: 14px;
+        opacity: 0;
+        transform: translateY(-6px); /* hidden: slightly higher than final position */
+        transition: opacity .25s ease, transform .25s ease;
         display: flex;
         align-items: center;
         gap: 6px;
@@ -863,13 +890,38 @@
         flex-shrink: 0;
       }
 
+      /* Reveal on hover, and on keyboard focus inside the card */
+      .card:hover .badge-date,
+      .card:focus-within .badge-date {
+        opacity: 1;
+        transform: translateY(50%); /* half over the image, half over the body */
+      }
+      .card:hover .badge-format,
+      .card:focus-within .badge-format {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Touch screens have no hover, so keep both visible */
+      @media (hover: none) {
+        .card .badge-date {
+          opacity: 1;
+          transform: translateY(50%);
+        }
+        .card .badge-format {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
       .card .body {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        padding: 22px 24px 24px;
+        padding: clamp(16px, 1.8vw, 22px) clamp(14px, 1.6vw, 22px) clamp(16px, 1.8vw, 24px);
         background: #fff;
         flex: 1;
+        box-sizing: border-box;
       }
       .card .category {
         font-family: 'Nunito Sans', sans-serif !important;
@@ -883,7 +935,7 @@
       .card .title {
         margin: 0;
         font-family: 'Fraunces', serif !important;
-        font-size: 24px !important;
+        font-size: clamp(18px, 1.6vw, 22px) !important;
         line-height: 1.25 !important;
         font-weight: 600 !important;
         color: var(--ink) !important;
@@ -908,33 +960,34 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
-        margin-top: 6px;
+        margin-top: 4px;
         font-family: 'Nunito Sans', sans-serif !important;
-        font-size: 14px !important;
+        font-size: clamp(12.5px, 1.1vw, 13.5px) !important;
         color: var(--ink-soft) !important;
       }
       .card .details .row {
         display: flex;
-        align-items: center;
-        gap: 10px;
+        align-items: flex-start;
+        gap: 8px;
         padding: 0 !important;
         border: none !important;
         margin: 0 !important;
-        font-size: 14px !important;
+        font-size: clamp(12.5px, 1.1vw, 13.5px) !important;
         line-height: 1.35 !important;
         color: var(--ink-soft) !important;
       }
       .card .details .row svg {
         flex-shrink: 0;
+        margin-top: 2px;
       }
 
       .card .footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 16px;
-        margin-top: 14px;
-        padding-top: 18px;
+        gap: clamp(8px, 1vw, 14px);
+        margin-top: auto;
+        padding-top: 14px;
         border-top: 1px solid var(--line);
         background: transparent;
       }
@@ -942,17 +995,19 @@
         display: flex;
         flex-direction: column;
         font-family: 'Nunito Sans', sans-serif !important;
+        min-width: 0;
+        flex: 1 1 auto;
       }
       .card .price strong {
         font-family: 'Nunito Sans', sans-serif !important;
-        font-size: 22px !important;
+        font-size: clamp(18px, 1.55vw, 22px) !important;
         font-weight: 700 !important;
         color: var(--ink) !important;
         line-height: 1.1 !important;
       }
       .card .price span {
         font-family: 'Nunito Sans', sans-serif !important;
-        font-size: 12px !important;
+        font-size: clamp(11px, 0.95vw, 12px) !important;
         color: var(--muted) !important;
         line-height: 1.25 !important;
         margin-top: 2px !important;
@@ -961,19 +1016,21 @@
       .card .btn-group {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: clamp(5px, 0.6vw, 8px);
+        flex-shrink: 0;
       }
       .card .btn {
         position: relative;
         z-index: 2; /* sits above the card-wide link */
-        min-height: 44px;
-        padding: 0 28px;
+        min-height: 38px;
+        height: 38px;
+        padding: 0 clamp(12px, 1.25vw, 22px) !important;
         border: 0;
         border-radius: 4px;
         background: var(--gold);
         color: var(--ink);
         font-family: 'Nunito Sans', sans-serif !important;
-        font-size: 15px !important;
+        font-size: clamp(13px, 1.05vw, 14.5px) !important;
         font-weight: 700 !important;
         cursor: pointer;
         display: inline-flex;
@@ -981,12 +1038,13 @@
         justify-content: center;
         text-decoration: none;
         box-sizing: border-box;
+        white-space: nowrap;
         transition: filter .2s ease;
       }
       .card .btn-outline {
         background: #fff !important;
         border: 1.5px solid #d9cfb8 !important;
-        padding: 0 20px !important;
+        padding: 0 clamp(10px, 1vw, 16px) !important;
         color: var(--ink) !important;
       }
       .card .btn-outline:hover {
@@ -2358,13 +2416,15 @@
 
             return `
     <article class="card" id="card-${w.id}">
-      <div class="media">
-        <img src="${w.image}" alt="${w.title}" referrerpolicy="no-referrer" loading="lazy" />
-        <div class="badge-date">${dateBadge}</div>
-        <div class="badge-format">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-          ${formatDisplay}
+      <div class="media-wrap">
+        <div class="media">
+          <img src="${w.image}" alt="${w.title}" referrerpolicy="no-referrer" loading="lazy" />
+          <div class="badge-format">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            ${formatDisplay}
+          </div>
         </div>
+        <div class="badge-date">${dateBadge}</div>
       </div>
 
       <div class="body">
