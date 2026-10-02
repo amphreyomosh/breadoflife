@@ -41,7 +41,7 @@
         .join("") +
       '<div class="bol-site-feature"><h3 class="bol-site-col-title">Coming up</h3><p>Sat, Oct 3 &middot; In person</p><h3>' +
       feature.title +
-      '</h3><a href="events.html">See full calendar</a></div>' +
+      '</h3><a href="workshops.html?view=calendar">See full calendar</a></div>' +
       "</div></div></div>"
     );
   }

@@ -3142,6 +3142,39 @@
       </div>
     </footer>
 
+    <!-- Full-Screen Workshop Detail Modal -->
+    <div class="bol-modal-backdrop" id="workshopModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalWorkshopTitle" aria-hidden="true">
+      <div id="modalContent"></div>
+    </div>
+
+    <!-- In-Modal Registration Dialog -->
+    <div class="bol-modal-reg-backdrop" id="modalRegBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalRegTitle" aria-hidden="true">
+      <div class="bol-modal-reg-box">
+        <div class="bol-modal-reg-top">
+          <div>
+            <h2 id="modalRegTitle">Register for Workshop</h2>
+            <p id="modalRegSub"></p>
+          </div>
+          <button type="button" class="bol-modal-reg-close" id="modalRegClose" aria-label="Close registration form">&times;</button>
+        </div>
+        <form class="bol-modal-reg-form" id="modalRegForm">
+          <label>
+            Full Name
+            <input type="text" name="fullName" required placeholder="Your full name" />
+          </label>
+          <label>
+            Email Address
+            <input type="email" name="email" required placeholder="you@example.com" />
+          </label>
+          <label>
+            Notes or Accessibility Requests (Optional)
+            <textarea name="notes" rows="3" placeholder="Let us know if you are requesting a sliding-scale scholarship or have accessibility needs."></textarea>
+          </label>
+          <button type="submit" class="bol-modal-act-btn primary">Confirm Registration</button>
+        </form>
+      </div>
+    </div>
+
     <script>
       (function () {
         var mast = document.getElementById("bolMasthead"),
@@ -3226,12 +3259,23 @@
         const typeParam = (params.get("type") || "").toLowerCase();
         const formatParam = (params.get("format") || "").toLowerCase();
         const whenParam = (params.get("when") || "").toLowerCase();
+        const viewParam = (params.get("view") || params.get("tab") || "").toLowerCase();
         const qParam = params.get("q") || "";
 
         activeCat = SLUG_TO_CATEGORY[typeParam] || "All";
         activeFormat = SLUG_TO_FORMAT[formatParam] || "All";
         activeWhen = SLUG_TO_WHEN[whenParam] || "All";
         query = qParam;
+
+        if (
+          viewParam === "cal" ||
+          viewParam === "calendar" ||
+          window.location.hash === "#calendar"
+        ) {
+          viewMode = "cal";
+        } else {
+          viewMode = "grid";
+        }
 
         const searchEl = document.getElementById("search");
         if (searchEl) searchEl.value = query;
@@ -3250,6 +3294,9 @@
         }
         if (query.trim()) {
           params.set("q", query.trim());
+        }
+        if (viewMode === "cal") {
+          params.set("view", "calendar");
         }
         const qs = params.toString();
         const nextUrl =
@@ -3745,6 +3792,7 @@
         try {
           localStorage.setItem("bol_workshops_view", viewMode);
         } catch (_) {}
+        writeUrlState(true);
         render(true);
       }
 
@@ -4311,38 +4359,5 @@
         openWorkshopModal(initialId);
       }
     </script>
-
-    <!-- Full-Screen Workshop Detail Modal -->
-    <div class="bol-modal-backdrop" id="workshopModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalWorkshopTitle" aria-hidden="true">
-      <div id="modalContent"></div>
-    </div>
-
-    <!-- In-Modal Registration Dialog -->
-    <div class="bol-modal-reg-backdrop" id="modalRegBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalRegTitle" aria-hidden="true">
-      <div class="bol-modal-reg-box">
-        <div class="bol-modal-reg-top">
-          <div>
-            <h2 id="modalRegTitle">Register for Workshop</h2>
-            <p id="modalRegSub"></p>
-          </div>
-          <button type="button" class="bol-modal-reg-close" id="modalRegClose" aria-label="Close registration form">&times;</button>
-        </div>
-        <form class="bol-modal-reg-form" id="modalRegForm">
-          <label>
-            Full Name
-            <input type="text" name="fullName" required placeholder="Your full name" />
-          </label>
-          <label>
-            Email Address
-            <input type="email" name="email" required placeholder="you@example.com" />
-          </label>
-          <label>
-            Notes or Accessibility Requests (Optional)
-            <textarea name="notes" rows="3" placeholder="Let us know if you are requesting a sliding-scale scholarship or have accessibility needs."></textarea>
-          </label>
-          <button type="submit" class="bol-modal-act-btn primary">Confirm Registration</button>
-        </form>
-      </div>
-    </div>
   </body>
 </html>
