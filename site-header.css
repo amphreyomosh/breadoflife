@@ -386,7 +386,7 @@
     transition: max-height 0.3s ease;
   }
   .bol-site-item[data-open="true"] .bol-site-panel {
-    max-height: 700px;
+    max-height: 1200px;
   }
   .bol-site-panel-inner {
     padding: 18px 0 18px 18px !important;
@@ -396,8 +396,31 @@
     flex-direction: column;
     gap: 18px;
   }
+  .bol-site-col-title {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 8px;
+    color: var(--bol-ink-mute);
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+  }
   .bol-site-links {
     padding-left: 14px;
+    gap: 4px;
+  }
+  .bol-site-link {
+    padding: 9px 0;
+    margin: 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--bol-hairline-soft);
+  }
+  .bol-site-link:last-child {
+    border-bottom: none;
+  }
+  .bol-site-link strong {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
   }
   .bol-site-feature {
     display: none;
