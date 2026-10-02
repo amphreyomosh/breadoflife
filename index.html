@@ -2880,8 +2880,775 @@
           padding: 40px 28px calc(36px + env(safe-area-inset-bottom, 0px)) !important;
         }
       }
+
+      /* =========================================================
+         CALENDAR ITEMS & 3/4 DRAWER WORKSHOP DETAIL MODAL
+         ========================================================= */
+      :root {
+        --border: #e2ded6;
+        --ink: #2c2a29;
+        --sage: #47653f;
+        --deep-sage: #355030;
+        --muted: #6e675f;
+        --gold: #c9a25e;
+        --card: #ffffff;
+        --green: #47653f;
+        --green-deep: #355030;
+      }
+
+      #calendar {
+        margin-top: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0 1.25rem;
+      }
+      #calendar .row {
+        display: flex;
+        gap: 1.1rem;
+        align-items: center;
+        padding: 1.1rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      #calendar .row:last-child {
+        border-bottom: none;
+      }
+      #calendar .date-badge {
+        flex: 0 0 64px;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+        cursor: pointer;
+      }
+      #calendar .date-badge .mon {
+        font-family: "Karla", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      #calendar .date-badge .day {
+        font-family: "Fraunces", serif;
+        font-size: 1.65rem;
+        line-height: 1.1;
+        color: var(--gold);
+      }
+      #calendar .row-main {
+        flex: 1;
+        min-width: 0;
+        cursor: pointer;
+      }
+      #calendar .row-main h3 {
+        font-family: "Fraunces", serif;
+        font-size: 1.08rem;
+        font-weight: 500;
+        color: var(--ink);
+        margin: 0;
+        line-height: 1.3;
+      }
+      #calendar .row-main:hover h3 {
+        color: #8a6a2b;
+      }
+      #calendar .row-sub {
+        font-family: "Karla", sans-serif;
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 0.25rem;
+        line-height: 1.45;
+      }
+      #calendar .row-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex: 0 0 auto;
+      }
+      #calendar .row-actions .btn {
+        font-family: "Karla", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        padding: 0.5rem 0.85rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        background: transparent;
+        cursor: pointer;
+        color: var(--ink);
+        text-decoration: none;
+        text-align: center;
+        white-space: nowrap;
+        transition:
+          background 0.16s ease,
+          border-color 0.16s ease,
+          color 0.16s ease;
+      }
+      #calendar .row-actions .btn.primary {
+        background: var(--green);
+        border-color: var(--green);
+        color: #ffffff;
+      }
+      #calendar .row-actions .btn.primary:hover {
+        background: var(--green-deep);
+      }
+      #calendar .row-actions .btn.ghost {
+        background: var(--card);
+      }
+      #calendar .row-actions .btn.ghost:hover {
+        border-color: var(--ink);
+      }
+      #calendar .row-actions .btn.disabled {
+        background: var(--border);
+        color: var(--muted);
+        cursor: not-allowed;
+      }
+      @media (max-width: 560px) {
+        #calendar .row {
+          flex-wrap: wrap;
+        }
+        #calendar .row-actions {
+          width: 100%;
+          justify-content: flex-start;
+          margin-top: 0.4rem;
+        }
+      }
+
+      .bol-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(18, 15, 12, 0.65);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.32s ease, visibility 0.32s ease;
+        display: flex;
+        justify-content: flex-end;
+        align-items: stretch;
+        cursor: pointer;
+      }
+      .bol-modal-backdrop.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      #modalContent {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: stretch;
+        pointer-events: none;
+      }
+      .bol-modal-dialog {
+        width: 75vw;
+        max-width: 75vw;
+        height: 100vh;
+        background: #ffffff;
+        box-shadow: -15px 0 50px rgba(10, 8, 6, 0.35);
+        position: relative;
+        cursor: default;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        transform: translateX(100%);
+        transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: auto;
+      }
+      .bol-modal-backdrop.is-open .bol-modal-dialog {
+        transform: translateX(0);
+      }
+      @media (max-width: 960px) {
+        .bol-modal-dialog {
+          width: 88vw;
+          max-width: 88vw;
+        }
+      }
+      @media (max-width: 640px) {
+        .bol-modal-dialog {
+          width: 100vw;
+          max-width: 100vw;
+        }
+      }
+      .bol-modal-topbar {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 56px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        display: flex;
+        align-items: center;
+        padding: 0 clamp(16px, 3.5vw, 40px);
+        box-shadow: 0 2px 10px rgba(44, 42, 41, 0.04);
+      }
+      .bol-modal-back-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        color: var(--ink);
+        cursor: pointer;
+        transition: background 0.16s ease, border-color 0.16s ease, transform 0.16s ease, color 0.16s ease;
+      }
+      .bol-modal-back-btn:hover {
+        background: #f4f8f3;
+        border-color: var(--sage);
+        color: var(--sage);
+        transform: translateX(-2px);
+      }
+      .bol-modal-hero {
+        position: relative;
+        width: 100%;
+        height: clamp(280px, 46vh, 440px);
+        background: #2a2521;
+        overflow: hidden;
+      }
+      .bol-modal-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .bol-modal-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(20, 18, 15, 0.14) 0%,
+          rgba(20, 18, 15, 0.04) 50%,
+          rgba(20, 18, 15, 0.35) 100%
+        );
+        pointer-events: none;
+      }
+      .bol-modal-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2.2rem clamp(18px, 3.5vw, 36px) 4.5rem;
+      }
+      .bol-modal-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 2.75rem;
+        align-items: start;
+      }
+      @media (max-width: 960px) {
+        .bol-modal-grid {
+          grid-template-columns: 1fr;
+          gap: 2.25rem;
+        }
+      }
+      .bol-modal-main {
+        min-width: 0;
+      }
+      .bol-modal-header {
+        padding-bottom: 1.4rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .bol-modal-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        align-items: center;
+        margin-bottom: 0.85rem;
+      }
+      .bol-modal-status {
+        display: inline-flex;
+        align-items: center;
+        font-family: "Karla", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 0.28rem 0.72rem;
+        border-radius: 4px;
+        letter-spacing: 0.02em;
+      }
+      .bol-modal-status.opened {
+        background: #eaf2e8;
+        color: #2f4b2a;
+      }
+      .bol-modal-status.full {
+        background: #fbeee9;
+        color: #9e4229;
+      }
+      .bol-modal-status.closed {
+        background: #f1efeb;
+        color: #635c54;
+      }
+      .bol-modal-tag {
+        font-family: "Karla", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0.25rem 0.65rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
+      .bol-modal-tag.cat {
+        background: #f4eee2;
+        border-color: #ebdfc6;
+        color: #8a6b2e;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+      }
+      .bol-modal-h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(1.85rem, 3.2vw, 2.45rem);
+        line-height: 1.2;
+        font-weight: 600;
+        color: var(--ink);
+        margin: 0 0 0.85rem 0;
+      }
+      .bol-modal-metas {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-family: "Karla", sans-serif;
+        font-size: 0.98rem;
+      }
+      .bol-modal-venue {
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .bol-modal-region {
+        color: var(--muted);
+      }
+      .bol-modal-datetime {
+        margin-top: 0.2rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .bol-modal-sec {
+        padding: 1.85rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .bol-modal-sec:last-child {
+        border-bottom: none;
+      }
+      .bol-modal-sec h2 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.35rem;
+        font-weight: 600;
+        line-height: 1.25;
+        margin: 0 0 0.9rem 0;
+        color: var(--ink);
+      }
+      .bol-modal-overview-lead {
+        font-family: "Karla", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 600;
+        line-height: 1.6;
+        color: var(--ink);
+        margin: 0 0 0.85rem 0;
+      }
+      .bol-modal-overview-sub {
+        font-family: "Karla", sans-serif;
+        font-size: 1.08rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin: 0 0 0.55rem 0;
+      }
+      .bol-modal-overview-body p {
+        font-family: "Karla", sans-serif;
+        font-size: 0.97rem;
+        line-height: 1.65;
+        color: #3d3935;
+        margin: 0 0 0.8rem 0;
+      }
+      .bol-modal-extra.collapsed {
+        display: none;
+      }
+      .bol-modal-read-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 0.3rem;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: var(--sage);
+        font-family: "Karla", sans-serif;
+        font-size: 0.98rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .bol-modal-read-btn:hover {
+        color: var(--deep-sage);
+      }
+      .bol-modal-fac-card {
+        display: flex;
+        gap: 1.15rem;
+        align-items: flex-start;
+        padding: 1.1rem 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: #fbfaf8;
+      }
+      .bol-modal-fac-avatar {
+        width: 58px;
+        height: 58px;
+        border-radius: 6px;
+        background: var(--gold);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Fraunces", serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        flex-shrink: 0;
+      }
+      .bol-modal-fac-info h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.22rem;
+        font-weight: 600;
+        margin: 0 0 0.2rem 0;
+        color: var(--ink);
+      }
+      .bol-modal-fac-role {
+        font-family: "Karla", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--sage);
+        margin-bottom: 0.55rem;
+      }
+      .bol-modal-fac-bio {
+        font-family: "Karla", sans-serif;
+        font-size: 0.96rem;
+        color: var(--muted);
+        margin: 0;
+        line-height: 1.6;
+      }
+      .bol-modal-subhead {
+        font-family: "Karla", sans-serif;
+        font-size: 0.98rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.95rem;
+      }
+      .bol-modal-highlights {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 0.9rem;
+      }
+      .bol-modal-hlight {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #ffffff;
+      }
+      .bol-modal-hlight-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 4px;
+        background: #f4eee2;
+        color: #8a6b2e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .bol-modal-hlight-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+      .bol-modal-hlight-text {
+        font-family: "Karla", sans-serif;
+        font-size: 0.96rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .bol-modal-loc-info {
+        margin-bottom: 0.95rem;
+        font-family: "Karla", sans-serif;
+      }
+      .bol-modal-loc-venue {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.2rem;
+      }
+      .bol-modal-loc-addr,
+      .bol-modal-loc-city {
+        font-size: 0.94rem;
+        color: var(--muted);
+      }
+      .bol-modal-map {
+        width: 100%;
+        height: 270px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 1.1rem 0 1.35rem 0;
+        background: #f4eee2;
+      }
+      .bol-modal-map iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+      .bol-modal-transport-modes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.7rem;
+        margin-top: 0.85rem;
+      }
+      .bol-modal-trans-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.72rem 0.95rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #ffffff;
+        color: var(--ink);
+        font-family: "Karla", sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
+      }
+      .bol-modal-trans-btn svg {
+        width: 18px;
+        height: 18px;
+        color: var(--muted);
+        flex-shrink: 0;
+      }
+      .bol-modal-trans-btn:hover {
+        border-color: var(--ink);
+      }
+      .bol-modal-trans-btn.active {
+        border-color: var(--sage);
+        background: #f4f8f3;
+        color: var(--sage);
+      }
+      .bol-modal-trans-btn.active svg {
+        color: var(--sage);
+      }
+      .bol-modal-trans-box {
+        margin-top: 1rem;
+        padding: 1rem 1.2rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #fbfaf8;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.85rem;
+        font-family: "Karla", sans-serif;
+        font-size: 0.93rem;
+        color: var(--muted);
+      }
+      .bol-modal-directions-link {
+        font-weight: 700;
+        color: var(--sage);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        white-space: nowrap;
+      }
+      .bol-modal-directions-link:hover {
+        color: var(--deep-sage);
+      }
+      .bol-modal-sidebar {
+        position: sticky;
+        top: 86px;
+      }
+      .bol-modal-action-card {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 1.4rem;
+        box-shadow: 0 10px 28px rgba(44, 42, 41, 0.07);
+        display: flex;
+        flex-direction: column;
+        gap: 0.95rem;
+      }
+      .bol-modal-sidebar-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .bol-modal-price {
+        font-family: "Fraunces", serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .bol-modal-summary {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        font-family: "Karla", sans-serif;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+      .bol-modal-summary strong {
+        color: var(--ink);
+      }
+      .bol-modal-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 0.35rem;
+      }
+      .bol-modal-act-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        width: 100%;
+        padding: 0.82rem 1.1rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        background: #ffffff;
+        color: var(--ink);
+        font-family: "Karla", sans-serif;
+        font-size: 0.96rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: center;
+        transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+      }
+      .bol-modal-act-btn svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+      .bol-modal-act-btn:hover {
+        border-color: var(--ink);
+        background: #faf8f5;
+      }
+      .bol-modal-act-btn.primary {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: #ffffff;
+        font-weight: 700;
+      }
+      .bol-modal-act-btn.primary:hover {
+        background: #b58d47;
+        border-color: #b58d47;
+      }
+      .bol-modal-act-btn.disabled {
+        background: #f1efeb;
+        border-color: var(--border);
+        color: var(--muted);
+        cursor: not-allowed;
+      }
+      .bol-modal-sidebar-feedback {
+        font-family: "Karla", sans-serif;
+        font-size: 0.86rem;
+        color: var(--sage);
+        font-weight: 600;
+        text-align: center;
+        min-height: 1.2rem;
+      }
+      .bol-modal-reg-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 10005;
+        background: rgba(30, 26, 20, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+      }
+      .bol-modal-reg-backdrop.open {
+        display: flex;
+      }
+      .bol-modal-reg-box {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        max-width: 490px;
+        width: 100%;
+        padding: 1.85rem;
+        box-shadow: 0 24px 48px rgba(20, 18, 15, 0.24);
+      }
+      .bol-modal-reg-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+      }
+      .bol-modal-reg-top h2 {
+        font-family: "Fraunces", serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 0;
+        color: var(--ink);
+      }
+      .bol-modal-reg-top p {
+        font-family: "Karla", sans-serif;
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin: 0.35rem 0 0 0;
+      }
+      .bol-modal-reg-close {
+        border: none;
+        background: transparent;
+        font-size: 1.6rem;
+        line-height: 1;
+        color: var(--muted);
+        cursor: pointer;
+        padding: 2px 6px;
+      }
+      .bol-modal-reg-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.95rem;
+      }
+      .bol-modal-reg-form label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        font-family: "Karla", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .bol-modal-reg-form input,
+      .bol-modal-reg-form textarea {
+        padding: 0.72rem 0.85rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-family: "Karla", sans-serif;
+        font-size: 0.95rem;
+        color: var(--ink);
+        background: #fff;
+      }
+      .bol-modal-reg-form input:focus,
+      .bol-modal-reg-form textarea:focus {
+        outline: 2px solid var(--gold);
+        outline-offset: 1px;
+      }
     </style>
     <link rel="stylesheet" href="footer.css" />
+    <script src="workshops-data.js"></script>
   </head>
   <body>
     <link rel="stylesheet" href="site-header.css" />
@@ -3445,87 +4212,89 @@
             <a class="bol-textlink" href="workshops.html?view=calendar">See the full calendar</a>
           </div>
 
-          <a class="bol-event" href="workshop-detail.html?id=workshop-11">
-            <div class="bol-event-date">
-              14 Aug
-              <span>Thursday</span>
-              <div class="bol-event-meta">Sacramento &middot; 6:30pm</div>
-            </div>
-            <div>
-              <h3>Contemplative prayer for beginners</h3>
-              <p>
-                Two hours on sitting quietly with attention. No background
-                assumed.
-              </p>
-            </div>
-            <div class="bol-event-media">
-              <img
-                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80"
-                alt="Morning journaling with pen and natural light"
-                referrerpolicy="no-referrer"
-              />
-            </div>
-          </a>
+          <div id="homeCalendarList">
+            <a class="bol-event js-open-modal" data-workshop-id="workshop-11" href="workshop-detail.html?id=workshop-11">
+              <div class="bol-event-date">
+                14 Aug
+                <span>Thursday</span>
+                <div class="bol-event-meta">Sacramento &middot; 6:30pm</div>
+              </div>
+              <div>
+                <h3>Contemplative prayer for beginners</h3>
+                <p>
+                  Two hours on sitting quietly with attention. No background
+                  assumed.
+                </p>
+              </div>
+              <div class="bol-event-media">
+                <img
+                  src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80"
+                  alt="Morning journaling with pen and natural light"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+            </a>
 
-          <a class="bol-event" href="workshop-detail.html?id=workshop-7">
-            <div class="bol-event-date">
-              6 Sep
-              <span>Saturday</span>
-              <div class="bol-event-meta">Sacramento &middot; 9:00am</div>
-            </div>
-            <div>
-              <h3>Sitting with grief</h3>
-              <p>A half day for people carrying a loss, recent or long held.</p>
-            </div>
-            <div class="bol-event-media">
-              <img
-                src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80"
-                alt="Quiet morning by a peaceful lake"
-                referrerpolicy="no-referrer"
-              />
-            </div>
-          </a>
+            <a class="bol-event js-open-modal" data-workshop-id="workshop-7" href="workshop-detail.html?id=workshop-7">
+              <div class="bol-event-date">
+                6 Sep
+                <span>Saturday</span>
+                <div class="bol-event-meta">Sacramento &middot; 9:00am</div>
+              </div>
+              <div>
+                <h3>Sitting with grief</h3>
+                <p>A half day for people carrying a loss, recent or long held.</p>
+              </div>
+              <div class="bol-event-media">
+                <img
+                  src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80"
+                  alt="Quiet morning by a peaceful lake"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+            </a>
 
-          <a class="bol-event" href="workshop-detail.html?id=workshop-8">
-            <div class="bol-event-date">
-              18 Sep
-              <span>Thursday</span>
-              <div class="bol-event-meta">Online &middot; 7:00pm</div>
-            </div>
-            <div>
-              <h3>Discernment when the next step is unclear</h3>
-              <p>Practices for a decision you have been carrying a while.</p>
-            </div>
-            <div class="bol-event-media">
-              <img
-                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
-                alt="Sunbeam along a peaceful forest trail"
-                referrerpolicy="no-referrer"
-              />
-            </div>
-          </a>
+            <a class="bol-event js-open-modal" data-workshop-id="workshop-8" href="workshop-detail.html?id=workshop-8">
+              <div class="bol-event-date">
+                18 Sep
+                <span>Thursday</span>
+                <div class="bol-event-meta">Online &middot; 7:00pm</div>
+              </div>
+              <div>
+                <h3>Discernment when the next step is unclear</h3>
+                <p>Practices for a decision you have been carrying a while.</p>
+              </div>
+              <div class="bol-event-media">
+                <img
+                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+                  alt="Sunbeam along a peaceful forest trail"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+            </a>
 
-          <a class="bol-event" href="workshop-detail.html?id=workshop-9">
-            <div class="bol-event-date">
-              2 Oct
-              <span>Thursday</span>
-              <div class="bol-event-meta">Sacramento &middot; 6:00pm</div>
-            </div>
-            <div>
-              <h3>Listen to Your Life: autumn cohort opens</h3>
-              <p>
-                Six weeks, small group, facilitated. Registration closes when
-                the group fills.
-              </p>
-            </div>
-            <div class="bol-event-media">
-              <img
-                src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80"
-                alt="Small group gathered around a garden table"
-                referrerpolicy="no-referrer"
-              />
-            </div>
-          </a>
+            <a class="bol-event js-open-modal" data-workshop-id="workshop-9" href="workshop-detail.html?id=workshop-9">
+              <div class="bol-event-date">
+                2 Oct
+                <span>Thursday</span>
+                <div class="bol-event-meta">Sacramento &middot; 6:00pm</div>
+              </div>
+              <div>
+                <h3>Listen to Your Life: autumn cohort opens</h3>
+                <p>
+                  Six weeks, small group, facilitated. Registration closes when
+                  the group fills.
+                </p>
+              </div>
+              <div class="bol-event-media">
+                <img
+                  src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80"
+                  alt="Small group gathered around a garden table"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -3705,6 +4474,39 @@
       </div>
     </footer>
 
+    <!-- Full-Screen Workshop Detail Modal -->
+    <div class="bol-modal-backdrop" id="workshopModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalWorkshopTitle" aria-hidden="true">
+      <div id="modalContent"></div>
+    </div>
+
+    <!-- In-Modal Registration Dialog -->
+    <div class="bol-modal-reg-backdrop" id="modalRegBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalRegTitle" aria-hidden="true">
+      <div class="bol-modal-reg-box">
+        <div class="bol-modal-reg-top">
+          <div>
+            <h2 id="modalRegTitle">Register for Workshop</h2>
+            <p id="modalRegSub"></p>
+          </div>
+          <button type="button" class="bol-modal-reg-close" id="modalRegClose" aria-label="Close registration form">&times;</button>
+        </div>
+        <form class="bol-modal-reg-form" id="modalRegForm">
+          <label>
+            Full Name
+            <input type="text" name="fullName" required placeholder="Your full name" />
+          </label>
+          <label>
+            Email Address
+            <input type="email" name="email" required placeholder="you@example.com" />
+          </label>
+          <label>
+            Notes or Accessibility Requests (Optional)
+            <textarea name="notes" rows="3" placeholder="Let us know if you are requesting a sliding-scale scholarship or have accessibility needs."></textarea>
+          </label>
+          <button type="submit" class="bol-modal-act-btn primary">Confirm Registration</button>
+        </form>
+      </div>
+    </div>
+
     <script>
       (function () {
         var mast = document.getElementById("bolMasthead"),
@@ -3750,6 +4552,470 @@
               }
             }
           });
+        });
+
+        // Render homepage calendar items and wire full workshop modal
+        const workshops = window.BOL_WORKSHOPS || [];
+
+        function getStatus(w) {
+          if (w.status) return w.status;
+          if (new Date(w.endDate) < new Date()) return "Closed";
+          if (w.seatsLeft === 0) return "Full";
+          return "Opened";
+        }
+
+        function formatMonthDay(startDate) {
+          const d = new Date(startDate);
+          return {
+            mon: d.toLocaleString("en-US", { month: "short" }).toUpperCase(),
+            day: d.getDate(),
+          };
+        }
+
+        function initials(name) {
+          if (!name) return "BL";
+          return name
+            .replace(/^(Sr\.|Rev\.|Dr\.|Deacon)\s+/gi, "")
+            .split(" ")
+            .filter(Boolean)
+            .slice(0, 2)
+            .map((part) => part[0])
+            .join("")
+            .toUpperCase();
+        }
+
+        function generateGoogleCalendarUrl(w) {
+          const formatTime = (dateStr) => {
+            try {
+              return new Date(dateStr).toISOString().replace(/-|:|\.\d\d\d/g, "");
+            } catch (_) {
+              return "";
+            }
+          };
+          const startTime = formatTime(w.startDate) || "20261014T160000Z";
+          const endTime = formatTime(w.endDate) || "20261016T230000Z";
+          const baseUrl = "https://calendar.google.com/calendar/render";
+          const q = new URLSearchParams({
+            action: "TEMPLATE",
+            text: w.title,
+            dates: `${startTime}/${endTime}`,
+            details: `${w.excerpt || w.overviewLead || ""}\n\nFacilitator: ${w.facilitator}\nCost: ${w.cost}`,
+            location: `${w.venueName || w.location}, ${w.addressLine1 || ""}, ${w.cityStateZip || ""}`,
+          });
+          return `${baseUrl}?${q.toString()}`;
+        }
+
+        const transportAdvice = {
+          driving:
+            "Free on-site courtyard parking available at 1260 Fulton Avenue, Suite A (just north of Fair Oaks Blvd).",
+          transit:
+            "Served by Sacramento Regional Transit Bus Route 23 & 25 along Fulton Ave & Fair Oaks Blvd (3-minute walk).",
+          bicycling:
+            "Protected bike access via the American River Bike Trail (Watt Ave / Northrop access) with courtyard bike racks.",
+          walking:
+            "Pedestrian entrance through the shaded front courtyard along Fulton Avenue, Suite A.",
+        };
+
+        const transportLabels = {
+          driving: "Open Driving Route →",
+          transit: "Open Public Transport Route →",
+          bicycling: "Open Biking Route →",
+          walking: "Open Walking Route →",
+        };
+
+        function openWorkshopModal(id) {
+          const list = window.BOL_WORKSHOPS || workshops || [];
+          const w = list.find((item) => item.id === id);
+          if (!w) return;
+
+          const status = getStatus(w);
+          const statusClass = status.toLowerCase();
+          const isOpen = status === "Opened";
+          const isFull = status === "Full";
+
+          const categoryDisplay = w.category === "Retreats" ? "Retreats" : w.category;
+          const formatDisplay = w.format === "In-Person" ? "In-Person" : w.format;
+          const venueDisplay = w.venueName || "Bread of Life Center — Main Sanctuary";
+          const regionDisplay = w.cityRegion || "Sacramento, Sacramento County";
+          const fullDateDisplay = w.fullDateLine || `${w.date} • ${w.time}`;
+          const overviewLeadText = w.overviewLead || w.excerpt || "";
+          const overviewP1 = (w.overviewBody && w.overviewBody[0]) || w.excerpt || "";
+          const overviewP2 = (w.overviewBody && w.overviewBody[1]) || "All sessions include time for quiet personal reflection, contemplative practice, and practical takeaways to nurture your spiritual life.";
+          const facInitials = initials(w.facilitator);
+          const facRole = w.facilitatorRole || "Contemplative Retreat Director & Spiritual Guide";
+          const durationText = w.duration || "3 days (Weekend)";
+          const attendanceText = w.attendanceType || w.format || "In person";
+          const costText = w.cost || "$150 (Sliding Scale Available)";
+          const addressText = w.addressLine1 || "1260 Fulton Avenue, Suite A";
+          const cityZipText = w.cityStateZip || "Sacramento, CA 95825";
+          const mapQueryEncoded = encodeURIComponent(w.mapQuery || `${addressText}, ${cityZipText}`);
+          const calUrl = generateGoogleCalendarUrl(w);
+
+          let registerBtnText = "Register";
+          let registerBtnClass = "bol-modal-act-btn primary";
+          let registerDisabled = false;
+          if (!isOpen) {
+            if (isFull) {
+              registerBtnText = "Join Waitlist (Full)";
+              registerBtnClass = "bol-modal-act-btn";
+            } else {
+              registerBtnText = "Registration Closed";
+              registerBtnClass = "bol-modal-act-btn disabled";
+              registerDisabled = true;
+            }
+          }
+
+          const modalHtml = `
+          <div class="bol-modal-dialog" id="modalDialog">
+            <div class="bol-modal-topbar">
+              <button type="button" class="bol-modal-back-btn" id="modalBackBtn" aria-label="Close and go back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <section class="bol-modal-hero" aria-label="Workshop image">
+              <img src="${w.image}" alt="${w.title}" referrerpolicy="no-referrer" />
+            </section>
+
+            <div class="bol-modal-container">
+              <div class="bol-modal-grid">
+                <div class="bol-modal-main">
+                  <div class="bol-modal-header">
+                    <div class="bol-modal-tags">
+                      <span class="bol-modal-status ${statusClass}">${status}</span>
+                      <span class="bol-modal-tag cat">${categoryDisplay}</span>
+                      <span class="bol-modal-tag">${formatDisplay}</span>
+                    </div>
+                    <h1 class="bol-modal-h1" id="modalWorkshopTitle">${w.title}</h1>
+                    <div class="bol-modal-metas">
+                      <div class="bol-modal-venue">${venueDisplay}</div>
+                      <div class="bol-modal-region">${regionDisplay}</div>
+                      <div class="bol-modal-datetime">${fullDateDisplay}</div>
+                    </div>
+                  </div>
+
+                  <section class="bol-modal-sec">
+                    <h2>Overview</h2>
+                    <p class="bol-modal-overview-lead">${overviewLeadText}</p>
+                    <h3 class="bol-modal-overview-sub">${w.title}</h3>
+                    <div class="bol-modal-overview-body">
+                      <p>${overviewP1}</p>
+                      <div class="bol-modal-extra collapsed" id="modalOverviewExtra">
+                        <p>${overviewP2}</p>
+                      </div>
+                    </div>
+                    <button type="button" class="bol-modal-read-btn" id="modalReadToggleBtn" aria-expanded="false">
+                      Read more
+                    </button>
+                  </section>
+
+                  <section class="bol-modal-sec">
+                    <h2>Facilitator</h2>
+                    <div class="bol-modal-fac-card">
+                      <div class="bol-modal-fac-avatar">${facInitials}</div>
+                      <div class="bol-modal-fac-info">
+                        <h3>${w.facilitator}</h3>
+                        <div class="bol-modal-fac-role">${facRole}</div>
+                        <p class="bol-modal-fac-bio">${w.facilitatorBio}</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="bol-modal-sec">
+                    <h2>Good to know</h2>
+                    <div class="bol-modal-subhead">Highlights</div>
+                    <div class="bol-modal-highlights">
+                      <div class="bol-modal-hlight">
+                        <div class="bol-modal-hlight-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M12 7v5l3 3"/>
+                          </svg>
+                        </div>
+                        <div class="bol-modal-hlight-text">${durationText}</div>
+                      </div>
+                      <div class="bol-modal-hlight">
+                        <div class="bol-modal-hlight-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/>
+                            <circle cx="12" cy="9.5" r="2.5"/>
+                          </svg>
+                        </div>
+                        <div class="bol-modal-hlight-text">${attendanceText}</div>
+                      </div>
+                      <div class="bol-modal-hlight">
+                        <div class="bol-modal-hlight-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/>
+                            <path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/>
+                            <path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4Z"/>
+                          </svg>
+                        </div>
+                        <div class="bol-modal-hlight-text">${costText}</div>
+                      </div>
+                    </div>
+
+                    <div class="bol-modal-subhead" style="margin-top: 1.85rem;">Location</div>
+                    <div class="bol-modal-loc-info">
+                      <div class="bol-modal-loc-venue">${venueDisplay}</div>
+                      <div class="bol-modal-loc-addr">${addressText}</div>
+                      <div class="bol-modal-loc-city">${cityZipText}</div>
+                    </div>
+
+                    <div class="bol-modal-map">
+                      <iframe src="https://maps.google.com/maps?q=${mapQueryEncoded}&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Map for ${venueDisplay}"></iframe>
+                    </div>
+
+                    <div style="font-family: 'Karla', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.65rem;">
+                      How do you want to get there?
+                    </div>
+                    <div class="bol-modal-transport-modes">
+                      <button type="button" class="bol-modal-trans-btn active" data-mode="driving">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="11" width="18" height="9" rx="2"/><path d="m5 11 2-6h10l2 6M7 16h.01M17 16h.01"/></svg>
+                        Driving
+                      </button>
+                      <button type="button" class="bol-modal-trans-btn" data-mode="transit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="5" y="3" width="14" height="15" rx="2"/><path d="M5 11h14M8 18l-2 3m10-3 2 3M8.5 15h.01M15.5 15h.01"/></svg>
+                        Public transport
+                      </button>
+                      <button type="button" class="bol-modal-trans-btn" data-mode="bicycling">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-3 11.5V14l-3-3 4-3 2 3h2"/></svg>
+                        Biking
+                      </button>
+                      <button type="button" class="bol-modal-trans-btn" data-mode="walking">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="13" cy="4.5" r="2"/><path d="m9 21 3-6 2 3v3M10 14l2-5 3 2 2 1M12 9 9 11l-1 3"/></svg>
+                        Walking
+                      </button>
+                    </div>
+
+                    <div class="bol-modal-trans-box">
+                      <span id="modalTransportAdviceText">
+                        ${w.isPhysical === false ? "This gathering meets live online via Zoom. Your personal Zoom link is emailed immediately upon registration." : transportAdvice.driving}
+                      </span>
+                      <a id="modalTransportDirectionsLink" class="bol-modal-directions-link" href="https://www.google.com/maps/dir/?api=1&destination=${mapQueryEncoded}&travelmode=driving" target="_blank" rel="noopener">
+                        Open Driving Route →
+                      </a>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="bol-modal-sidebar" aria-label="Workshop actions">
+                  <div class="bol-modal-action-card">
+                    <div class="bol-modal-sidebar-top">
+                      <span class="bol-modal-price">${w.cost}</span>
+                      <span class="bol-modal-status ${statusClass}">${status}</span>
+                    </div>
+
+                    <div class="bol-modal-summary">
+                      <div><strong>Date:</strong> <span>${w.date}</span></div>
+                      <div><strong>Time:</strong> <span>${w.time}</span></div>
+                      <div><strong>Location:</strong> <span>${w.location}</span></div>
+                      <div><strong>Facilitator:</strong> <span>${w.facilitator}</span></div>
+                    </div>
+
+                    <div class="bol-modal-btns">
+                      <button type="button" class="${registerBtnClass}" id="modalSidebarRegisterBtn" ${registerDisabled ? 'disabled aria-disabled="true"' : ''}>
+                        ${registerBtnText}
+                      </button>
+
+                      <button type="button" class="bol-modal-act-btn" id="modalSidebarShareBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                          <circle cx="18" cy="5" r="3"/>
+                          <circle cx="6" cy="12" r="3"/>
+                          <circle cx="18" cy="19" r="3"/>
+                          <path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98"/>
+                        </svg>
+                        Share event
+                      </button>
+
+                      <a class="bol-modal-act-btn" id="modalSidebarCalendarBtn" href="${calUrl}" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                          <rect x="3" y="4" width="18" height="18" rx="2"/>
+                          <path d="M16 2v4M8 2v4M3 10h18M12 14v4M10 16h4"/>
+                        </svg>
+                        Add to calendar
+                      </a>
+                    </div>
+
+                    <div class="bol-modal-sidebar-feedback" id="modalSidebarFeedback" aria-live="polite"></div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+          `;
+
+          document.getElementById("modalContent").innerHTML = modalHtml;
+
+          const backdrop = document.getElementById("workshopModalBackdrop");
+          backdrop.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+          document.documentElement.style.overflow = "hidden";
+
+          const dialog = document.getElementById("modalDialog");
+          if (dialog) {
+            dialog.scrollTop = 0;
+            dialog.addEventListener("click", (e) => {
+              e.stopPropagation();
+            });
+          }
+
+          void backdrop.offsetWidth;
+          requestAnimationFrame(() => {
+            backdrop.classList.add("is-open");
+          });
+
+          const backBtn = document.getElementById("modalBackBtn");
+          if (backBtn) backBtn.addEventListener("click", closeWorkshopModal);
+
+          const readBtn = document.getElementById("modalReadToggleBtn");
+          const extra = document.getElementById("modalOverviewExtra");
+          if (readBtn && extra) {
+            readBtn.addEventListener("click", () => {
+              const isCollapsed = extra.classList.toggle("collapsed");
+              readBtn.textContent = isCollapsed ? "Read more" : "Read less";
+              readBtn.setAttribute("aria-expanded", String(!isCollapsed));
+            });
+          }
+
+          document.querySelectorAll(".bol-modal-trans-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              document.querySelectorAll(".bol-modal-trans-btn").forEach((b) => b.classList.remove("active"));
+              btn.classList.add("active");
+              const mode = btn.dataset.mode;
+              const adviceEl = document.getElementById("modalTransportAdviceText");
+              const linkEl = document.getElementById("modalTransportDirectionsLink");
+              if (adviceEl && transportAdvice[mode]) {
+                adviceEl.textContent = transportAdvice[mode];
+              }
+              if (linkEl && transportLabels[mode]) {
+                linkEl.textContent = transportLabels[mode];
+                linkEl.href = `https://www.google.com/maps/dir/?api=1&destination=${mapQueryEncoded}&travelmode=${mode}`;
+              }
+            });
+          });
+
+          const regBtn = document.getElementById("modalSidebarRegisterBtn");
+          const regBackdrop = document.getElementById("modalRegBackdrop");
+          const regSub = document.getElementById("modalRegSub");
+          const sidebarFeedback = document.getElementById("modalSidebarFeedback");
+
+          if (regBtn && !registerDisabled) {
+            regBtn.addEventListener("click", () => {
+              if (regSub) regSub.textContent = `${w.title} • ${w.date}`;
+              if (regBackdrop) {
+                regBackdrop.classList.add("open");
+                regBackdrop.setAttribute("aria-hidden", "false");
+              }
+            });
+          }
+
+          const shareBtn = document.getElementById("modalSidebarShareBtn");
+          if (shareBtn) {
+            shareBtn.addEventListener("click", async () => {
+              const shareUrl = window.location.origin + "/workshops.html#" + w.id;
+              if (navigator.share) {
+                try {
+                  await navigator.share({
+                    title: w.title,
+                    text: w.excerpt || w.overviewLead,
+                    url: shareUrl,
+                  });
+                  return;
+                } catch (_) {}
+              }
+              try {
+                await navigator.clipboard.writeText(shareUrl);
+                if (sidebarFeedback) sidebarFeedback.textContent = "Event link copied to your clipboard!";
+              } catch (_) {
+                if (sidebarFeedback) sidebarFeedback.textContent = `Event link: ${shareUrl}`;
+              }
+            });
+          }
+        }
+
+        function closeWorkshopModal() {
+          const regBackdrop = document.getElementById("modalRegBackdrop");
+          if (regBackdrop && regBackdrop.classList.contains("open")) {
+            regBackdrop.classList.remove("open");
+            regBackdrop.setAttribute("aria-hidden", "true");
+            return;
+          }
+          const backdrop = document.getElementById("workshopModalBackdrop");
+          if (!backdrop) return;
+          backdrop.classList.remove("is-open");
+          backdrop.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+          document.documentElement.style.overflow = "";
+        }
+
+        document.addEventListener("click", (e) => {
+          const trigger = e.target.closest(".js-open-modal");
+          if (trigger) {
+            e.preventDefault();
+            const workshopId = trigger.getAttribute("data-workshop-id");
+            if (workshopId) {
+              openWorkshopModal(workshopId);
+            }
+          }
+        });
+
+        const modalRegClose = document.getElementById("modalRegClose");
+        const modalRegBackdrop = document.getElementById("modalRegBackdrop");
+        const modalRegForm = document.getElementById("modalRegForm");
+
+        if (modalRegClose && modalRegBackdrop) {
+          modalRegClose.addEventListener("click", () => {
+            modalRegBackdrop.classList.remove("open");
+            modalRegBackdrop.setAttribute("aria-hidden", "true");
+          });
+        }
+
+        if (modalRegBackdrop) {
+          modalRegBackdrop.addEventListener("click", (e) => {
+            if (e.target === modalRegBackdrop) {
+              modalRegBackdrop.classList.remove("open");
+              modalRegBackdrop.setAttribute("aria-hidden", "true");
+            }
+          });
+        }
+
+        if (modalRegForm) {
+          modalRegForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (modalRegBackdrop) {
+              modalRegBackdrop.classList.remove("open");
+              modalRegBackdrop.setAttribute("aria-hidden", "true");
+            }
+            const sidebarFeedback = document.getElementById("modalSidebarFeedback");
+            if (sidebarFeedback) {
+              sidebarFeedback.textContent = "Registration confirmed! We have sent details to your email.";
+            }
+            modalRegForm.reset();
+          });
+        }
+
+        const workshopModalBackdrop = document.getElementById("workshopModalBackdrop");
+        if (workshopModalBackdrop) {
+          workshopModalBackdrop.addEventListener("click", (e) => {
+            const regBackdrop = document.getElementById("modalRegBackdrop");
+            if (regBackdrop && regBackdrop.classList.contains("open")) {
+              return;
+            }
+            const dialog = document.getElementById("modalDialog");
+            if (!dialog || !dialog.contains(e.target)) {
+              closeWorkshopModal();
+            }
+          });
+        }
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeWorkshopModal();
+          }
         });
       })();
     </script>

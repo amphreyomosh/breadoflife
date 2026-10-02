@@ -9,6 +9,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 
+// Redirect legacy events page to the workshops calendar tab
+app.get(['/events', '/events.html'], (req, res) => {
+  res.redirect(301, '/workshops.html?view=calendar');
+});
+
 // Serve static files from root directory with .html extension support
 app.use(express.static(__dirname, { extensions: ['html'] }));
 

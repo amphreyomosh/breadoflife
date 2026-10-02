@@ -148,7 +148,7 @@
           link(
             "Weekend Retreats",
             "Multi-day gatherings held at our Sacramento retreat house.",
-            "events.html",
+            "workshops.html?type=retreats",
             '<path d="M12 20s-7-4.35-9.5-9A5.5 5.5 0 0 1 12 5.5 5.5 5.5 0 0 1 21.5 11c-2.5 4.65-9.5 9-9.5 9Z"/>',
           ),
         ],
@@ -217,7 +217,7 @@
           link(
             "COP Retreat RSVP",
             "Reserve your spot at the next retreat.",
-            "events.html",
+            "workshops.html?view=calendar",
             '<rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/>',
           ),
         ],
